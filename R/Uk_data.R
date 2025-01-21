@@ -1,17 +1,16 @@
-library(tidyverse)
-library(lubridate)
 
+# Flu data ----------------------------------------------------------------
 
-setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
-getwd()
+flu_uk_data <- read.csv("csv/UK/influenza.csv") %>%
+  mutate(year = factor(year)) %>% 
+  select(sex, age, year, month, epiweek, date, metric_value)
 
-
-flu_df <- read.csv("csv/influenza.csv") %>%
+rsv_uk_data <- read.csv("csv/UK/RSV.csv") %>%
   mutate(year = factor(year)) %>% 
   select(sex, age, year, month, epiweek, date, metric_value)
 
 
-flu_df %>%
+flu_uk_data %>%
   filter(age == "all") %>%  # Filter before grouping for efficiency
   group_by(epiweek, year) %>%
   summarise(
@@ -31,12 +30,7 @@ flu_df %>%
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
-library(dplyr)
-library(ggplot2)
-library(lubridate) # For extracting month
-
-flu_df %>%
+flu_uk_data %>%
   filter(age == "all") %>%  # Filter for all ages and dates from 2015 onwards
   group_by(date) %>%  # Ensure grouping by date
   summarise(
@@ -49,7 +43,7 @@ flu_df %>%
   scale_colour_brewer(palette = "Paired") +  # Add a colour palette for months
   labs(
     x = "Time",
-    y = "Hospital Admission Rate",
+    y = "Hospital Admission Rate  ",
     colour = "Month",
     title = "Seasonality Trends of Influenza - Weekly Hospitalisations"
   ) +
@@ -58,4 +52,5 @@ flu_df %>%
     axis.text.x = element_text(angle = 45, hjust = 1),
     legend.position = "bottom"
   )
+
 
