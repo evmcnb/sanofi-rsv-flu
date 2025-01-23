@@ -1,0 +1,2039 @@
+Region_name_en,Region_Name_fr,Week_Number,Begin_of_Week_Date,End_of_Week_Date,Activity_Level,PR_HRUID
+Eastern,Est,202335,2023-08-27,2023-09-02,1,1011
+Labrador-Grenfell,Grenfell Labrador,202335,2023-08-27,2023-09-02,1,1014
+Central,Centre,202335,2023-08-27,2023-09-02,1,1012
+Western,Ouest,202335,2023-08-27,2023-09-02,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202335,2023-08-27,2023-09-02,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202335,2023-08-27,2023-09-02,1,1234
+Zone 3 - Eastern,Zone 3 - Est,202335,2023-08-27,2023-09-02,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202335,2023-08-27,2023-09-02,1,1269
+Region 1,Région de santé publique 1,202335,2023-08-27,2023-09-02,1,1301
+Region 2,Région de santé publique 2,202335,2023-08-27,2023-09-02,1,1302
+Region 3,Région de santé publique 3,202335,2023-08-27,2023-09-02,1,1303
+Region 4,Région de santé publique 4,202335,2023-08-27,2023-09-02,1,1304
+Region 5,Région de santé publique 5,202335,2023-08-27,2023-09-02,1,1305
+Region 6,Région de santé publique 6,202335,2023-08-27,2023-09-02,1,1306
+Region 7,Région de santé publique 7,202335,2023-08-27,2023-09-02,1,1307
+Nord-est,Nord-est,202335,2023-08-27,2023-09-02,1,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202335,2023-08-27,2023-09-02,2,2412
+Centre-du-Québec,Centre-du-Québec,202335,2023-08-27,2023-09-02,1,2404
+Montréal et Laval,Montréal et Laval,202335,2023-08-27,2023-09-02,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202335,2023-08-27,2023-09-02,1,2414
+Montérégie,Montérégie,202335,2023-08-27,2023-09-02,2,2416
+Central East,Centre-Est,202335,2023-08-27,2023-09-02,2,3570
+Central West,Centre-Ouest,202335,2023-08-27,2023-09-02,2,3527
+Eastern,Est,202335,2023-08-27,2023-09-02,2,3551
+North East,Nord-Est,202335,2023-08-27,2023-09-02,1,3547
+North West,Nord-Ouest,202335,2023-08-27,2023-09-02,2,3549
+South West,Sud-Ouest,202335,2023-08-27,2023-09-02,2,3531
+Toronto,Toronto,202335,2023-08-27,2023-09-02,2,3595
+North,Nord,202335,2023-08-27,2023-09-02,1,4708
+Central,Centre,202335,2023-08-27,2023-09-02,1,4705
+South,Sud,202335,2023-08-27,2023-09-02,2,4701
+North Zone,Du nord,202335,2023-08-27,2023-09-02,2,4835
+Edmonton,Edmonton,202335,2023-08-27,2023-09-02,2,4834
+Central Zone,Centre,202335,2023-08-27,2023-09-02,2,4833
+Calgary,Calgary,202335,2023-08-27,2023-09-02,3,4832
+South Zone,Du sud,202335,2023-08-27,2023-09-02,2,4831
+Interior,Intérieur,202335,2023-08-27,2023-09-02,2,5911
+Fraser,Fraser,202335,2023-08-27,2023-09-02,3,5921
+Vancouver Coastal,Vancouver Coastal,202335,2023-08-27,2023-09-02,2,5931
+Vancouver Island,Île de Vancouver,202335,2023-08-27,2023-09-02,2,5941
+Northern,Nord,202335,2023-08-27,2023-09-02,1,5951
+Yukon,Yukon,202335,2023-08-27,2023-09-02,2,6001
+North,Région nord des TNO,202335,2023-08-27,2023-09-02,1,6101
+South,Région sud des TNO,202335,2023-08-27,2023-09-02,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202335,2023-08-27,2023-09-02,1,6204
+Kivalliq,Kivalliq,202335,2023-08-27,2023-09-02,1,6205
+Kitimeot,Kitimeot,202335,2023-08-27,2023-09-02,1,6208
+Eastern,Est,202336,2023-09-03,2023-09-09,1,1011
+Labrador-Grenfell,Grenfell Labrador,202336,2023-09-03,2023-09-09,1,1014
+Central,Centre,202336,2023-09-03,2023-09-09,1,1012
+Western,Ouest,202336,2023-09-03,2023-09-09,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202336,2023-09-03,2023-09-09,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202336,2023-09-03,2023-09-09,1,1234
+Zone 3 - Eastern,Zone 3 - Est,202336,2023-09-03,2023-09-09,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202336,2023-09-03,2023-09-09,1,1269
+Region 1,Région de santé publique 1,202336,2023-09-03,2023-09-09,1,1301
+Region 2,Région de santé publique 2,202336,2023-09-03,2023-09-09,1,1302
+Region 3,Région de santé publique 3,202336,2023-09-03,2023-09-09,1,1303
+Region 4,Région de santé publique 4,202336,2023-09-03,2023-09-09,1,1304
+Region 5,Région de santé publique 5,202336,2023-09-03,2023-09-09,1,1305
+Region 6,Région de santé publique 6,202336,2023-09-03,2023-09-09,1,1306
+Region 7,Région de santé publique 7,202336,2023-09-03,2023-09-09,1,1307
+Nord-est,Nord-est,202336,2023-09-03,2023-09-09,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202336,2023-09-03,2023-09-09,2,2412
+Centre-du-Québec,Centre-du-Québec,202336,2023-09-03,2023-09-09,1,2404
+Montréal et Laval,Montréal et Laval,202336,2023-09-03,2023-09-09,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202336,2023-09-03,2023-09-09,1,2414
+Montérégie,Montérégie,202336,2023-09-03,2023-09-09,2,2416
+Central East,Centre-Est,202336,2023-09-03,2023-09-09,2,3570
+Central West,Centre-Ouest,202336,2023-09-03,2023-09-09,2,3527
+Eastern,Est,202336,2023-09-03,2023-09-09,2,3551
+North East,Nord-Est,202336,2023-09-03,2023-09-09,2,3547
+North West,Nord-Ouest,202336,2023-09-03,2023-09-09,2,3549
+South West,Sud-Ouest,202336,2023-09-03,2023-09-09,2,3531
+Toronto,Toronto,202336,2023-09-03,2023-09-09,2,3595
+North,Nord,202336,2023-09-03,2023-09-09,1,4708
+Central,Centre,202336,2023-09-03,2023-09-09,1,4705
+South,Sud,202336,2023-09-03,2023-09-09,1,4701
+North Zone,Du nord,202336,2023-09-03,2023-09-09,1,4835
+Edmonton,Edmonton,202336,2023-09-03,2023-09-09,2,4834
+Central Zone,Centre,202336,2023-09-03,2023-09-09,2,4833
+Calgary,Calgary,202336,2023-09-03,2023-09-09,2,4832
+South Zone,Du sud,202336,2023-09-03,2023-09-09,1,4831
+Interior,Intérieur,202336,2023-09-03,2023-09-09,1,5911
+Fraser,Fraser,202336,2023-09-03,2023-09-09,2,5921
+Vancouver Coastal,Vancouver Coastal,202336,2023-09-03,2023-09-09,2,5931
+Vancouver Island,Île de Vancouver,202336,2023-09-03,2023-09-09,2,5941
+Northern,Nord,202336,2023-09-03,2023-09-09,1,5951
+Yukon,Yukon,202336,2023-09-03,2023-09-09,2,6001
+North,Région nord des TNO,202336,2023-09-03,2023-09-09,1,6101
+South,Région sud des TNO,202336,2023-09-03,2023-09-09,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202336,2023-09-03,2023-09-09,1,6204
+Kivalliq,Kivalliq,202336,2023-09-03,2023-09-09,1,6205
+Kitimeot,Kitimeot,202336,2023-09-03,2023-09-09,1,6208
+Eastern,Est,202337,2023-09-10,2023-09-16,1,1011
+Labrador-Grenfell,Grenfell Labrador,202337,2023-09-10,2023-09-16,1,1014
+Central,Centre,202337,2023-09-10,2023-09-16,1,1012
+Western,Ouest,202337,2023-09-10,2023-09-16,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202337,2023-09-10,2023-09-16,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202337,2023-09-10,2023-09-16,1,1234
+Zone 3 - Eastern,Zone 3 - Est,202337,2023-09-10,2023-09-16,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202337,2023-09-10,2023-09-16,1,1269
+Region 1,Région de santé publique 1,202337,2023-09-10,2023-09-16,1,1301
+Region 2,Région de santé publique 2,202337,2023-09-10,2023-09-16,1,1302
+Region 3,Région de santé publique 3,202337,2023-09-10,2023-09-16,1,1303
+Region 4,Région de santé publique 4,202337,2023-09-10,2023-09-16,1,1304
+Region 5,Région de santé publique 5,202337,2023-09-10,2023-09-16,1,1305
+Region 6,Région de santé publique 6,202337,2023-09-10,2023-09-16,2,1306
+Region 7,Région de santé publique 7,202337,2023-09-10,2023-09-16,1,1307
+Nord-est,Nord-est,202337,2023-09-10,2023-09-16,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202337,2023-09-10,2023-09-16,2,2412
+Centre-du-Québec,Centre-du-Québec,202337,2023-09-10,2023-09-16,2,2404
+Montréal et Laval,Montréal et Laval,202337,2023-09-10,2023-09-16,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202337,2023-09-10,2023-09-16,2,2414
+Montérégie,Montérégie,202337,2023-09-10,2023-09-16,2,2416
+Central East,Centre-Est,202337,2023-09-10,2023-09-16,2,3570
+Central West,Centre-Ouest,202337,2023-09-10,2023-09-16,2,3527
+Eastern,Est,202337,2023-09-10,2023-09-16,2,3551
+North East,Nord-Est,202337,2023-09-10,2023-09-16,1,3547
+North West,Nord-Ouest,202337,2023-09-10,2023-09-16,1,3549
+South West,Sud-Ouest,202337,2023-09-10,2023-09-16,2,3531
+Toronto,Toronto,202337,2023-09-10,2023-09-16,2,3595
+North,Nord,202337,2023-09-10,2023-09-16,1,4708
+Central,Centre,202337,2023-09-10,2023-09-16,1,4705
+South,Sud,202337,2023-09-10,2023-09-16,1,4701
+North Zone,Du nord,202337,2023-09-10,2023-09-16,2,4835
+Edmonton,Edmonton,202337,2023-09-10,2023-09-16,2,4834
+Central Zone,Centre,202337,2023-09-10,2023-09-16,2,4833
+Calgary,Calgary,202337,2023-09-10,2023-09-16,2,4832
+South Zone,Du sud,202337,2023-09-10,2023-09-16,1,4831
+Interior,Intérieur,202337,2023-09-10,2023-09-16,2,5911
+Fraser,Fraser,202337,2023-09-10,2023-09-16,2,5921
+Vancouver Coastal,Vancouver Coastal,202337,2023-09-10,2023-09-16,2,5931
+Vancouver Island,Île de Vancouver,202337,2023-09-10,2023-09-16,3,5941
+Northern,Nord,202337,2023-09-10,2023-09-16,2,5951
+Yukon,Yukon,202337,2023-09-10,2023-09-16,2,6001
+North,Région nord des TNO,202337,2023-09-10,2023-09-16,1,6101
+South,Région sud des TNO,202337,2023-09-10,2023-09-16,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202337,2023-09-10,2023-09-16,1,6204
+Kivalliq,Kivalliq,202337,2023-09-10,2023-09-16,1,6205
+Kitimeot,Kitimeot,202337,2023-09-10,2023-09-16,1,6208
+Eastern,Est,202338,2023-09-17,2023-09-23,1,1011
+Labrador-Grenfell,Grenfell Labrador,202338,2023-09-17,2023-09-23,1,1014
+Central,Centre,202338,2023-09-17,2023-09-23,1,1012
+Western,Ouest,202338,2023-09-17,2023-09-23,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202338,2023-09-17,2023-09-23,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202338,2023-09-17,2023-09-23,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202338,2023-09-17,2023-09-23,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202338,2023-09-17,2023-09-23,1,1269
+Region 1,Région de santé publique 1,202338,2023-09-17,2023-09-23,1,1301
+Region 2,Région de santé publique 2,202338,2023-09-17,2023-09-23,1,1302
+Region 3,Région de santé publique 3,202338,2023-09-17,2023-09-23,1,1303
+Region 4,Région de santé publique 4,202338,2023-09-17,2023-09-23,1,1304
+Region 5,Région de santé publique 5,202338,2023-09-17,2023-09-23,1,1305
+Region 6,Région de santé publique 6,202338,2023-09-17,2023-09-23,1,1306
+Region 7,Région de santé publique 7,202338,2023-09-17,2023-09-23,1,1307
+Nord-est,Nord-est,202338,2023-09-17,2023-09-23,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202338,2023-09-17,2023-09-23,2,2412
+Centre-du-Québec,Centre-du-Québec,202338,2023-09-17,2023-09-23,2,2404
+Montréal et Laval,Montréal et Laval,202338,2023-09-17,2023-09-23,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202338,2023-09-17,2023-09-23,2,2414
+Montérégie,Montérégie,202338,2023-09-17,2023-09-23,2,2416
+Central East,Centre-Est,202338,2023-09-17,2023-09-23,2,3570
+Central West,Centre-Ouest,202338,2023-09-17,2023-09-23,2,3527
+Eastern,Est,202338,2023-09-17,2023-09-23,2,3551
+North East,Nord-Est,202338,2023-09-17,2023-09-23,1,3547
+North West,Nord-Ouest,202338,2023-09-17,2023-09-23,2,3549
+South West,Sud-Ouest,202338,2023-09-17,2023-09-23,1,3531
+Toronto,Toronto,202338,2023-09-17,2023-09-23,2,3595
+North,Nord,202338,2023-09-17,2023-09-23,1,4708
+Central,Centre,202338,2023-09-17,2023-09-23,2,4705
+South,Sud,202338,2023-09-17,2023-09-23,2,4701
+North Zone,Du nord,202338,2023-09-17,2023-09-23,2,4835
+Edmonton,Edmonton,202338,2023-09-17,2023-09-23,2,4834
+Central Zone,Centre,202338,2023-09-17,2023-09-23,2,4833
+Calgary,Calgary,202338,2023-09-17,2023-09-23,2,4832
+South Zone,Du sud,202338,2023-09-17,2023-09-23,1,4831
+Interior,Intérieur,202338,2023-09-17,2023-09-23,2,5911
+Fraser,Fraser,202338,2023-09-17,2023-09-23,2,5921
+Vancouver Coastal,Vancouver Coastal,202338,2023-09-17,2023-09-23,3,5931
+Vancouver Island,Île de Vancouver,202338,2023-09-17,2023-09-23,2,5941
+Northern,Nord,202338,2023-09-17,2023-09-23,1,5951
+Yukon,Yukon,202338,2023-09-17,2023-09-23,2,6001
+North,Région nord des TNO,202338,2023-09-17,2023-09-23,1,6101
+South,Région sud des TNO,202338,2023-09-17,2023-09-23,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202338,2023-09-17,2023-09-23,1,6204
+Kivalliq,Kivalliq,202338,2023-09-17,2023-09-23,1,6205
+Kitimeot,Kitimeot,202338,2023-09-17,2023-09-23,1,6208
+Eastern,Est,202339,2023-09-24,2023-09-30,1,1011
+Labrador-Grenfell,Grenfell Labrador,202339,2023-09-24,2023-09-30,1,1014
+Central,Centre,202339,2023-09-24,2023-09-30,1,1012
+Western,Ouest,202339,2023-09-24,2023-09-30,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202339,2023-09-24,2023-09-30,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202339,2023-09-24,2023-09-30,1,1234
+Zone 3 - Eastern,Zone 3 - Est,202339,2023-09-24,2023-09-30,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202339,2023-09-24,2023-09-30,1,1269
+Region 1,Région de santé publique 1,202339,2023-09-24,2023-09-30,1,1301
+Region 2,Région de santé publique 2,202339,2023-09-24,2023-09-30,1,1302
+Region 3,Région de santé publique 3,202339,2023-09-24,2023-09-30,1,1303
+Region 4,Région de santé publique 4,202339,2023-09-24,2023-09-30,1,1304
+Region 5,Région de santé publique 5,202339,2023-09-24,2023-09-30,2,1305
+Region 6,Région de santé publique 6,202339,2023-09-24,2023-09-30,1,1306
+Region 7,Région de santé publique 7,202339,2023-09-24,2023-09-30,1,1307
+Nord-est,Nord-est,202339,2023-09-24,2023-09-30,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202339,2023-09-24,2023-09-30,2,2412
+Centre-du-Québec,Centre-du-Québec,202339,2023-09-24,2023-09-30,2,2404
+Montréal et Laval,Montréal et Laval,202339,2023-09-24,2023-09-30,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202339,2023-09-24,2023-09-30,2,2414
+Montérégie,Montérégie,202339,2023-09-24,2023-09-30,2,2416
+Central East,Centre-Est,202339,2023-09-24,2023-09-30,3,3570
+Central West,Centre-Ouest,202339,2023-09-24,2023-09-30,2,3527
+Eastern,Est,202339,2023-09-24,2023-09-30,2,3551
+North East,Nord-Est,202339,2023-09-24,2023-09-30,1,3547
+North West,Nord-Ouest,202339,2023-09-24,2023-09-30,2,3549
+South West,Sud-Ouest,202339,2023-09-24,2023-09-30,2,3531
+Toronto,Toronto,202339,2023-09-24,2023-09-30,2,3595
+North,Nord,202339,2023-09-24,2023-09-30,1,4708
+Central,Centre,202339,2023-09-24,2023-09-30,1,4705
+South,Sud,202339,2023-09-24,2023-09-30,2,4701
+North Zone,Du nord,202339,2023-09-24,2023-09-30,2,4835
+Edmonton,Edmonton,202339,2023-09-24,2023-09-30,2,4834
+Central Zone,Centre,202339,2023-09-24,2023-09-30,1,4833
+Calgary,Calgary,202339,2023-09-24,2023-09-30,2,4832
+South Zone,Du sud,202339,2023-09-24,2023-09-30,1,4831
+Interior,Intérieur,202339,2023-09-24,2023-09-30,2,5911
+Fraser,Fraser,202339,2023-09-24,2023-09-30,3,5921
+Vancouver Coastal,Vancouver Coastal,202339,2023-09-24,2023-09-30,2,5931
+Vancouver Island,Île de Vancouver,202339,2023-09-24,2023-09-30,2,5941
+Northern,Nord,202339,2023-09-24,2023-09-30,2,5951
+Yukon,Yukon,202339,2023-09-24,2023-09-30,2,6001
+North,Région nord des TNO,202339,2023-09-24,2023-09-30,1,6101
+South,Région sud des TNO,202339,2023-09-24,2023-09-30,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202339,2023-09-24,2023-09-30,1,6204
+Kivalliq,Kivalliq,202339,2023-09-24,2023-09-30,1,6205
+Kitimeot,Kitimeot,202339,2023-09-24,2023-09-30,1,6208
+Eastern,Est,202340,2023-10-01,2023-10-07,1,1011
+Labrador-Grenfell,Grenfell Labrador,202340,2023-10-01,2023-10-07,1,1014
+Central,Centre,202340,2023-10-01,2023-10-07,1,1012
+Western,Ouest,202340,2023-10-01,2023-10-07,1,1013
+Zone 1 - Western,Zone 1 - Ouest,202340,2023-10-01,2023-10-07,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202340,2023-10-01,2023-10-07,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202340,2023-10-01,2023-10-07,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202340,2023-10-01,2023-10-07,1,1269
+Region 1,Région de santé publique 1,202340,2023-10-01,2023-10-07,1,1301
+Region 2,Région de santé publique 2,202340,2023-10-01,2023-10-07,3,1302
+Region 3,Région de santé publique 3,202340,2023-10-01,2023-10-07,2,1303
+Region 4,Région de santé publique 4,202340,2023-10-01,2023-10-07,1,1304
+Region 5,Région de santé publique 5,202340,2023-10-01,2023-10-07,1,1305
+Region 6,Région de santé publique 6,202340,2023-10-01,2023-10-07,1,1306
+Region 7,Région de santé publique 7,202340,2023-10-01,2023-10-07,1,1307
+Nord-est,Nord-est,202340,2023-10-01,2023-10-07,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202340,2023-10-01,2023-10-07,2,2412
+Centre-du-Québec,Centre-du-Québec,202340,2023-10-01,2023-10-07,2,2404
+Montréal et Laval,Montréal et Laval,202340,2023-10-01,2023-10-07,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202340,2023-10-01,2023-10-07,2,2414
+Montérégie,Montérégie,202340,2023-10-01,2023-10-07,2,2416
+Central East,Centre-Est,202340,2023-10-01,2023-10-07,3,3570
+Central West,Centre-Ouest,202340,2023-10-01,2023-10-07,2,3527
+Eastern,Est,202340,2023-10-01,2023-10-07,2,3551
+North East,Nord-Est,202340,2023-10-01,2023-10-07,1,3547
+North West,Nord-Ouest,202340,2023-10-01,2023-10-07,1,3549
+South West,Sud-Ouest,202340,2023-10-01,2023-10-07,2,3531
+Toronto,Toronto,202340,2023-10-01,2023-10-07,2,3595
+North,Nord,202340,2023-10-01,2023-10-07,1,4708
+Central,Centre,202340,2023-10-01,2023-10-07,2,4705
+South,Sud,202340,2023-10-01,2023-10-07,2,4701
+North Zone,Du nord,202340,2023-10-01,2023-10-07,2,4835
+Edmonton,Edmonton,202340,2023-10-01,2023-10-07,2,4834
+Central Zone,Centre,202340,2023-10-01,2023-10-07,2,4833
+Calgary,Calgary,202340,2023-10-01,2023-10-07,3,4832
+South Zone,Du sud,202340,2023-10-01,2023-10-07,1,4831
+Interior,Intérieur,202340,2023-10-01,2023-10-07,2,5911
+Fraser,Fraser,202340,2023-10-01,2023-10-07,2,5921
+Vancouver Coastal,Vancouver Coastal,202340,2023-10-01,2023-10-07,2,5931
+Vancouver Island,Île de Vancouver,202340,2023-10-01,2023-10-07,2,5941
+Northern,Nord,202340,2023-10-01,2023-10-07,1,5951
+Yukon,Yukon,202340,2023-10-01,2023-10-07,2,6001
+North,Région nord des TNO,202340,2023-10-01,2023-10-07,1,6101
+South,Région sud des TNO,202340,2023-10-01,2023-10-07,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202340,2023-10-01,2023-10-07,1,6204
+Kivalliq,Kivalliq,202340,2023-10-01,2023-10-07,1,6205
+Kitimeot,Kitimeot,202340,2023-10-01,2023-10-07,1,6208
+Eastern,Est,202341,2023-10-08,2023-10-14,2,1011
+Labrador-Grenfell,Grenfell Labrador,202341,2023-10-08,2023-10-14,1,1014
+Central,Centre,202341,2023-10-08,2023-10-14,1,1012
+Western,Ouest,202341,2023-10-08,2023-10-14,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202341,2023-10-08,2023-10-14,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202341,2023-10-08,2023-10-14,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202341,2023-10-08,2023-10-14,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202341,2023-10-08,2023-10-14,1,1269
+Region 1,Région de santé publique 1,202341,2023-10-08,2023-10-14,1,1301
+Region 2,Région de santé publique 2,202341,2023-10-08,2023-10-14,2,1302
+Region 3,Région de santé publique 3,202341,2023-10-08,2023-10-14,1,1303
+Region 4,Région de santé publique 4,202341,2023-10-08,2023-10-14,1,1304
+Region 5,Région de santé publique 5,202341,2023-10-08,2023-10-14,1,1305
+Region 6,Région de santé publique 6,202341,2023-10-08,2023-10-14,1,1306
+Region 7,Région de santé publique 7,202341,2023-10-08,2023-10-14,1,1307
+Nord-est,Nord-est,202341,2023-10-08,2023-10-14,1,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202341,2023-10-08,2023-10-14,2,2412
+Centre-du-Québec,Centre-du-Québec,202341,2023-10-08,2023-10-14,2,2404
+Montréal et Laval,Montréal et Laval,202341,2023-10-08,2023-10-14,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202341,2023-10-08,2023-10-14,2,2414
+Montérégie,Montérégie,202341,2023-10-08,2023-10-14,2,2416
+Central East,Centre-Est,202341,2023-10-08,2023-10-14,3,3570
+Central West,Centre-Ouest,202341,2023-10-08,2023-10-14,2,3527
+Eastern,Est,202341,2023-10-08,2023-10-14,2,3551
+North East,Nord-Est,202341,2023-10-08,2023-10-14,2,3547
+North West,Nord-Ouest,202341,2023-10-08,2023-10-14,2,3549
+South West,Sud-Ouest,202341,2023-10-08,2023-10-14,2,3531
+Toronto,Toronto,202341,2023-10-08,2023-10-14,2,3595
+North,Nord,202341,2023-10-08,2023-10-14,2,4708
+Central,Centre,202341,2023-10-08,2023-10-14,2,4705
+South,Sud,202341,2023-10-08,2023-10-14,2,4701
+North Zone,Du nord,202341,2023-10-08,2023-10-14,2,4835
+Edmonton,Edmonton,202341,2023-10-08,2023-10-14,2,4834
+Central Zone,Centre,202341,2023-10-08,2023-10-14,2,4833
+Calgary,Calgary,202341,2023-10-08,2023-10-14,2,4832
+South Zone,Du sud,202341,2023-10-08,2023-10-14,2,4831
+Interior,Intérieur,202341,2023-10-08,2023-10-14,2,5911
+Fraser,Fraser,202341,2023-10-08,2023-10-14,2,5921
+Vancouver Coastal,Vancouver Coastal,202341,2023-10-08,2023-10-14,2,5931
+Vancouver Island,Île de Vancouver,202341,2023-10-08,2023-10-14,2,5941
+Northern,Nord,202341,2023-10-08,2023-10-14,2,5951
+Yukon,Yukon,202341,2023-10-08,2023-10-14,2,6001
+North,Région nord des TNO,202341,2023-10-08,2023-10-14,1,6101
+South,Région sud des TNO,202341,2023-10-08,2023-10-14,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202341,2023-10-08,2023-10-14,1,6204
+Kivalliq,Kivalliq,202341,2023-10-08,2023-10-14,1,6205
+Kitimeot,Kitimeot,202341,2023-10-08,2023-10-14,1,6208
+Eastern,Est,202342,2023-10-15,2023-10-21,2,1011
+Labrador-Grenfell,Grenfell Labrador,202342,2023-10-15,2023-10-21,1,1014
+Central,Centre,202342,2023-10-15,2023-10-21,1,1012
+Western,Ouest,202342,2023-10-15,2023-10-21,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202342,2023-10-15,2023-10-21,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202342,2023-10-15,2023-10-21,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202342,2023-10-15,2023-10-21,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202342,2023-10-15,2023-10-21,2,1269
+Region 1,Région de santé publique 1,202342,2023-10-15,2023-10-21,2,1301
+Region 2,Région de santé publique 2,202342,2023-10-15,2023-10-21,2,1302
+Region 3,Région de santé publique 3,202342,2023-10-15,2023-10-21,1,1303
+Region 4,Région de santé publique 4,202342,2023-10-15,2023-10-21,1,1304
+Region 5,Région de santé publique 5,202342,2023-10-15,2023-10-21,1,1305
+Region 6,Région de santé publique 6,202342,2023-10-15,2023-10-21,1,1306
+Region 7,Région de santé publique 7,202342,2023-10-15,2023-10-21,1,1307
+Nord-est,Nord-est,202342,2023-10-15,2023-10-21,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202342,2023-10-15,2023-10-21,2,2412
+Centre-du-Québec,Centre-du-Québec,202342,2023-10-15,2023-10-21,2,2404
+Montréal et Laval,Montréal et Laval,202342,2023-10-15,2023-10-21,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202342,2023-10-15,2023-10-21,2,2414
+Montérégie,Montérégie,202342,2023-10-15,2023-10-21,2,2416
+Central East,Centre-Est,202342,2023-10-15,2023-10-21,3,3570
+Central West,Centre-Ouest,202342,2023-10-15,2023-10-21,2,3527
+Eastern,Est,202342,2023-10-15,2023-10-21,2,3551
+North East,Nord-Est,202342,2023-10-15,2023-10-21,2,3547
+North West,Nord-Ouest,202342,2023-10-15,2023-10-21,1,3549
+South West,Sud-Ouest,202342,2023-10-15,2023-10-21,2,3531
+Toronto,Toronto,202342,2023-10-15,2023-10-21,2,3595
+North,Nord,202342,2023-10-15,2023-10-21,2,4708
+Central,Centre,202342,2023-10-15,2023-10-21,2,4705
+South,Sud,202342,2023-10-15,2023-10-21,2,4701
+North Zone,Du nord,202342,2023-10-15,2023-10-21,2,4835
+Edmonton,Edmonton,202342,2023-10-15,2023-10-21,2,4834
+Central Zone,Centre,202342,2023-10-15,2023-10-21,2,4833
+Calgary,Calgary,202342,2023-10-15,2023-10-21,3,4832
+South Zone,Du sud,202342,2023-10-15,2023-10-21,2,4831
+Interior,Intérieur,202342,2023-10-15,2023-10-21,2,5911
+Fraser,Fraser,202342,2023-10-15,2023-10-21,2,5921
+Vancouver Coastal,Vancouver Coastal,202342,2023-10-15,2023-10-21,2,5931
+Vancouver Island,Île de Vancouver,202342,2023-10-15,2023-10-21,2,5941
+Northern,Nord,202342,2023-10-15,2023-10-21,1,5951
+Yukon,Yukon,202342,2023-10-15,2023-10-21,2,6001
+North,Région nord des TNO,202342,2023-10-15,2023-10-21,1,6101
+South,Région sud des TNO,202342,2023-10-15,2023-10-21,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202342,2023-10-15,2023-10-21,1,6204
+Kivalliq,Kivalliq,202342,2023-10-15,2023-10-21,1,6205
+Kitimeot,Kitimeot,202342,2023-10-15,2023-10-21,1,6208
+Eastern,Est,202343,2023-10-22,2023-10-28,3,1011
+Labrador-Grenfell,Grenfell Labrador,202343,2023-10-22,2023-10-28,1,1014
+Central,Centre,202343,2023-10-22,2023-10-28,1,1012
+Western,Ouest,202343,2023-10-22,2023-10-28,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202343,2023-10-22,2023-10-28,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202343,2023-10-22,2023-10-28,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202343,2023-10-22,2023-10-28,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202343,2023-10-22,2023-10-28,2,1269
+Region 1,Région de santé publique 1,202343,2023-10-22,2023-10-28,2,1301
+Region 2,Région de santé publique 2,202343,2023-10-22,2023-10-28,1,1302
+Region 3,Région de santé publique 3,202343,2023-10-22,2023-10-28,3,1303
+Region 4,Région de santé publique 4,202343,2023-10-22,2023-10-28,1,1304
+Region 5,Région de santé publique 5,202343,2023-10-22,2023-10-28,1,1305
+Region 6,Région de santé publique 6,202343,2023-10-22,2023-10-28,1,1306
+Region 7,Région de santé publique 7,202343,2023-10-22,2023-10-28,1,1307
+Nord-est,Nord-est,202343,2023-10-22,2023-10-28,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202343,2023-10-22,2023-10-28,2,2412
+Centre-du-Québec,Centre-du-Québec,202343,2023-10-22,2023-10-28,2,2404
+Montréal et Laval,Montréal et Laval,202343,2023-10-22,2023-10-28,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202343,2023-10-22,2023-10-28,2,2414
+Montérégie,Montérégie,202343,2023-10-22,2023-10-28,2,2416
+Central East,Centre-Est,202343,2023-10-22,2023-10-28,3,3570
+Central West,Centre-Ouest,202343,2023-10-22,2023-10-28,2,3527
+Eastern,Est,202343,2023-10-22,2023-10-28,3,3551
+North East,Nord-Est,202343,2023-10-22,2023-10-28,1,3547
+North West,Nord-Ouest,202343,2023-10-22,2023-10-28,2,3549
+South West,Sud-Ouest,202343,2023-10-22,2023-10-28,2,3531
+Toronto,Toronto,202343,2023-10-22,2023-10-28,3,3595
+North,Nord,202343,2023-10-22,2023-10-28,2,4708
+Central,Centre,202343,2023-10-22,2023-10-28,2,4705
+South,Sud,202343,2023-10-22,2023-10-28,2,4701
+North Zone,Du nord,202343,2023-10-22,2023-10-28,2,4835
+Edmonton,Edmonton,202343,2023-10-22,2023-10-28,2,4834
+Central Zone,Centre,202343,2023-10-22,2023-10-28,2,4833
+Calgary,Calgary,202343,2023-10-22,2023-10-28,3,4832
+South Zone,Du sud,202343,2023-10-22,2023-10-28,2,4831
+Interior,Intérieur,202343,2023-10-22,2023-10-28,2,5911
+Fraser,Fraser,202343,2023-10-22,2023-10-28,2,5921
+Vancouver Coastal,Vancouver Coastal,202343,2023-10-22,2023-10-28,2,5931
+Vancouver Island,Île de Vancouver,202343,2023-10-22,2023-10-28,2,5941
+Northern,Nord,202343,2023-10-22,2023-10-28,2,5951
+Yukon,Yukon,202343,2023-10-22,2023-10-28,2,6001
+North,Région nord des TNO,202343,2023-10-22,2023-10-28,1,6101
+South,Région sud des TNO,202343,2023-10-22,2023-10-28,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202343,2023-10-22,2023-10-28,1,6204
+Kivalliq,Kivalliq,202343,2023-10-22,2023-10-28,1,6205
+Kitimeot,Kitimeot,202343,2023-10-22,2023-10-28,1,6208
+Eastern,Est,202344,2023-10-29,2023-11-04,3,1011
+Labrador-Grenfell,Grenfell Labrador,202344,2023-10-29,2023-11-04,1,1014
+Central,Centre,202344,2023-10-29,2023-11-04,1,1012
+Western,Ouest,202344,2023-10-29,2023-11-04,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202344,2023-10-29,2023-11-04,1,1103
+Zone 1 - Western,Zone 1 - Ouest,202344,2023-10-29,2023-11-04,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202344,2023-10-29,2023-11-04,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202344,2023-10-29,2023-11-04,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202344,2023-10-29,2023-11-04,2,1269
+Region 1,Région de santé publique 1,202344,2023-10-29,2023-11-04,2,1301
+Region 2,Région de santé publique 2,202344,2023-10-29,2023-11-04,2,1302
+Region 3,Région de santé publique 3,202344,2023-10-29,2023-11-04,1,1303
+Region 4,Région de santé publique 4,202344,2023-10-29,2023-11-04,1,1304
+Region 5,Région de santé publique 5,202344,2023-10-29,2023-11-04,1,1305
+Region 6,Région de santé publique 6,202344,2023-10-29,2023-11-04,1,1306
+Region 7,Région de santé publique 7,202344,2023-10-29,2023-11-04,1,1307
+Nord-est,Nord-est,202344,2023-10-29,2023-11-04,1,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202344,2023-10-29,2023-11-04,2,2412
+Centre-du-Québec,Centre-du-Québec,202344,2023-10-29,2023-11-04,2,2404
+Montréal et Laval,Montréal et Laval,202344,2023-10-29,2023-11-04,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202344,2023-10-29,2023-11-04,2,2414
+Montérégie,Montérégie,202344,2023-10-29,2023-11-04,2,2416
+Central East,Centre-Est,202344,2023-10-29,2023-11-04,3,3570
+Central West,Centre-Ouest,202344,2023-10-29,2023-11-04,2,3527
+Eastern,Est,202344,2023-10-29,2023-11-04,2,3551
+North East,Nord-Est,202344,2023-10-29,2023-11-04,2,3547
+North West,Nord-Ouest,202344,2023-10-29,2023-11-04,1,3549
+South West,Sud-Ouest,202344,2023-10-29,2023-11-04,2,3531
+Toronto,Toronto,202344,2023-10-29,2023-11-04,3,3595
+North,Nord,202344,2023-10-29,2023-11-04,2,4708
+Central,Centre,202344,2023-10-29,2023-11-04,2,4705
+South,Sud,202344,2023-10-29,2023-11-04,2,4701
+North Zone,Du nord,202344,2023-10-29,2023-11-04,2,4835
+Edmonton,Edmonton,202344,2023-10-29,2023-11-04,3,4834
+Central Zone,Centre,202344,2023-10-29,2023-11-04,2,4833
+Calgary,Calgary,202344,2023-10-29,2023-11-04,3,4832
+South Zone,Du sud,202344,2023-10-29,2023-11-04,2,4831
+Interior,Intérieur,202344,2023-10-29,2023-11-04,2,5911
+Fraser,Fraser,202344,2023-10-29,2023-11-04,2,5921
+Vancouver Coastal,Vancouver Coastal,202344,2023-10-29,2023-11-04,3,5931
+Vancouver Island,Île de Vancouver,202344,2023-10-29,2023-11-04,2,5941
+Northern,Nord,202344,2023-10-29,2023-11-04,2,5951
+Yukon,Yukon,202344,2023-10-29,2023-11-04,2,6001
+North,Région nord des TNO,202344,2023-10-29,2023-11-04,1,6101
+South,Région sud des TNO,202344,2023-10-29,2023-11-04,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202344,2023-10-29,2023-11-04,2,6204
+Kivalliq,Kivalliq,202344,2023-10-29,2023-11-04,1,6205
+Kitimeot,Kitimeot,202344,2023-10-29,2023-11-04,1,6208
+Eastern,Est,202345,2023-11-05,2023-11-11,3,1011
+Labrador-Grenfell,Grenfell Labrador,202345,2023-11-05,2023-11-11,1,1014
+Central,Centre,202345,2023-11-05,2023-11-11,3,1012
+Western,Ouest,202345,2023-11-05,2023-11-11,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202345,2023-11-05,2023-11-11,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202345,2023-11-05,2023-11-11,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202345,2023-11-05,2023-11-11,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202345,2023-11-05,2023-11-11,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202345,2023-11-05,2023-11-11,2,1269
+Region 1,Région de santé publique 1,202345,2023-11-05,2023-11-11,2,1301
+Region 2,Région de santé publique 2,202345,2023-11-05,2023-11-11,1,1302
+Region 3,Région de santé publique 3,202345,2023-11-05,2023-11-11,1,1303
+Region 4,Région de santé publique 4,202345,2023-11-05,2023-11-11,1,1304
+Region 5,Région de santé publique 5,202345,2023-11-05,2023-11-11,1,1305
+Region 6,Région de santé publique 6,202345,2023-11-05,2023-11-11,1,1306
+Region 7,Région de santé publique 7,202345,2023-11-05,2023-11-11,2,1307
+Nord-est,Nord-est,202345,2023-11-05,2023-11-11,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202345,2023-11-05,2023-11-11,2,2412
+Centre-du-Québec,Centre-du-Québec,202345,2023-11-05,2023-11-11,2,2404
+Montréal et Laval,Montréal et Laval,202345,2023-11-05,2023-11-11,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202345,2023-11-05,2023-11-11,2,2414
+Montérégie,Montérégie,202345,2023-11-05,2023-11-11,2,2416
+Central East,Centre-Est,202345,2023-11-05,2023-11-11,3,3570
+Central West,Centre-Ouest,202345,2023-11-05,2023-11-11,3,3527
+Eastern,Est,202345,2023-11-05,2023-11-11,3,3551
+North East,Nord-Est,202345,2023-11-05,2023-11-11,3,3547
+North West,Nord-Ouest,202345,2023-11-05,2023-11-11,2,3549
+South West,Sud-Ouest,202345,2023-11-05,2023-11-11,2,3531
+Toronto,Toronto,202345,2023-11-05,2023-11-11,3,3595
+North,Nord,202345,2023-11-05,2023-11-11,2,4708
+Central,Centre,202345,2023-11-05,2023-11-11,3,4705
+South,Sud,202345,2023-11-05,2023-11-11,3,4701
+North Zone,Du nord,202345,2023-11-05,2023-11-11,2,4835
+Edmonton,Edmonton,202345,2023-11-05,2023-11-11,2,4834
+Central Zone,Centre,202345,2023-11-05,2023-11-11,2,4833
+Calgary,Calgary,202345,2023-11-05,2023-11-11,3,4832
+South Zone,Du sud,202345,2023-11-05,2023-11-11,2,4831
+Interior,Intérieur,202345,2023-11-05,2023-11-11,2,5911
+Fraser,Fraser,202345,2023-11-05,2023-11-11,2,5921
+Vancouver Coastal,Vancouver Coastal,202345,2023-11-05,2023-11-11,3,5931
+Vancouver Island,Île de Vancouver,202345,2023-11-05,2023-11-11,2,5941
+Northern,Nord,202345,2023-11-05,2023-11-11,2,5951
+Yukon,Yukon,202345,2023-11-05,2023-11-11,2,6001
+North,Région nord des TNO,202345,2023-11-05,2023-11-11,1,6101
+South,Région sud des TNO,202345,2023-11-05,2023-11-11,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202345,2023-11-05,2023-11-11,1,6204
+Kivalliq,Kivalliq,202345,2023-11-05,2023-11-11,1,6205
+Kitimeot,Kitimeot,202345,2023-11-05,2023-11-11,1,6208
+Eastern,Est,202346,2023-11-12,2023-11-18,3,1011
+Labrador-Grenfell,Grenfell Labrador,202346,2023-11-12,2023-11-18,1,1014
+Central,Centre,202346,2023-11-12,2023-11-18,1,1012
+Western,Ouest,202346,2023-11-12,2023-11-18,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202346,2023-11-12,2023-11-18,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202346,2023-11-12,2023-11-18,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202346,2023-11-12,2023-11-18,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202346,2023-11-12,2023-11-18,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202346,2023-11-12,2023-11-18,3,1269
+Region 1,Région de santé publique 1,202346,2023-11-12,2023-11-18,2,1301
+Region 2,Région de santé publique 2,202346,2023-11-12,2023-11-18,2,1302
+Region 3,Région de santé publique 3,202346,2023-11-12,2023-11-18,3,1303
+Region 4,Région de santé publique 4,202346,2023-11-12,2023-11-18,1,1304
+Region 5,Région de santé publique 5,202346,2023-11-12,2023-11-18,1,1305
+Region 6,Région de santé publique 6,202346,2023-11-12,2023-11-18,2,1306
+Region 7,Région de santé publique 7,202346,2023-11-12,2023-11-18,3,1307
+Nord-est,Nord-est,202346,2023-11-12,2023-11-18,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202346,2023-11-12,2023-11-18,2,2412
+Centre-du-Québec,Centre-du-Québec,202346,2023-11-12,2023-11-18,2,2404
+Montréal et Laval,Montréal et Laval,202346,2023-11-12,2023-11-18,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202346,2023-11-12,2023-11-18,2,2414
+Montérégie,Montérégie,202346,2023-11-12,2023-11-18,2,2416
+Central East,Centre-Est,202346,2023-11-12,2023-11-18,3,3570
+Central West,Centre-Ouest,202346,2023-11-12,2023-11-18,3,3527
+Eastern,Est,202346,2023-11-12,2023-11-18,3,3551
+North East,Nord-Est,202346,2023-11-12,2023-11-18,3,3547
+North West,Nord-Ouest,202346,2023-11-12,2023-11-18,2,3549
+South West,Sud-Ouest,202346,2023-11-12,2023-11-18,2,3531
+Toronto,Toronto,202346,2023-11-12,2023-11-18,3,3595
+North,Nord,202346,2023-11-12,2023-11-18,2,4708
+Central,Centre,202346,2023-11-12,2023-11-18,3,4705
+South,Sud,202346,2023-11-12,2023-11-18,3,4701
+North Zone,Du nord,202346,2023-11-12,2023-11-18,4,4835
+Edmonton,Edmonton,202346,2023-11-12,2023-11-18,2,4834
+Central Zone,Centre,202346,2023-11-12,2023-11-18,3,4833
+Calgary,Calgary,202346,2023-11-12,2023-11-18,3,4832
+South Zone,Du sud,202346,2023-11-12,2023-11-18,2,4831
+Interior,Intérieur,202346,2023-11-12,2023-11-18,2,5911
+Fraser,Fraser,202346,2023-11-12,2023-11-18,2,5921
+Vancouver Coastal,Vancouver Coastal,202346,2023-11-12,2023-11-18,2,5931
+Vancouver Island,Île de Vancouver,202346,2023-11-12,2023-11-18,2,5941
+Northern,Nord,202346,2023-11-12,2023-11-18,2,5951
+Yukon,Yukon,202346,2023-11-12,2023-11-18,2,6001
+North,Région nord des TNO,202346,2023-11-12,2023-11-18,1,6101
+South,Région sud des TNO,202346,2023-11-12,2023-11-18,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202346,2023-11-12,2023-11-18,1,6204
+Kivalliq,Kivalliq,202346,2023-11-12,2023-11-18,1,6205
+Kitimeot,Kitimeot,202346,2023-11-12,2023-11-18,1,6208
+Eastern,Est,202347,2023-11-19,2023-11-25,3,1011
+Labrador-Grenfell,Grenfell Labrador,202347,2023-11-19,2023-11-25,1,1014
+Central,Centre,202347,2023-11-19,2023-11-25,2,1012
+Western,Ouest,202347,2023-11-19,2023-11-25,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202347,2023-11-19,2023-11-25,1,1103
+Zone 1 - Western,Zone 1 - Ouest,202347,2023-11-19,2023-11-25,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202347,2023-11-19,2023-11-25,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202347,2023-11-19,2023-11-25,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202347,2023-11-19,2023-11-25,2,1269
+Region 1,Région de santé publique 1,202347,2023-11-19,2023-11-25,2,1301
+Region 2,Région de santé publique 2,202347,2023-11-19,2023-11-25,3,1302
+Region 3,Région de santé publique 3,202347,2023-11-19,2023-11-25,1,1303
+Region 4,Région de santé publique 4,202347,2023-11-19,2023-11-25,1,1304
+Region 5,Région de santé publique 5,202347,2023-11-19,2023-11-25,2,1305
+Region 6,Région de santé publique 6,202347,2023-11-19,2023-11-25,2,1306
+Region 7,Région de santé publique 7,202347,2023-11-19,2023-11-25,2,1307
+Nord-est,Nord-est,202347,2023-11-19,2023-11-25,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202347,2023-11-19,2023-11-25,2,2412
+Centre-du-Québec,Centre-du-Québec,202347,2023-11-19,2023-11-25,2,2404
+Montréal et Laval,Montréal et Laval,202347,2023-11-19,2023-11-25,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202347,2023-11-19,2023-11-25,2,2414
+Montérégie,Montérégie,202347,2023-11-19,2023-11-25,2,2416
+Central East,Centre-Est,202347,2023-11-19,2023-11-25,2,3570
+Central West,Centre-Ouest,202347,2023-11-19,2023-11-25,3,3527
+Eastern,Est,202347,2023-11-19,2023-11-25,3,3551
+North East,Nord-Est,202347,2023-11-19,2023-11-25,3,3547
+North West,Nord-Ouest,202347,2023-11-19,2023-11-25,2,3549
+South West,Sud-Ouest,202347,2023-11-19,2023-11-25,2,3531
+Toronto,Toronto,202347,2023-11-19,2023-11-25,3,3595
+North,Nord,202347,2023-11-19,2023-11-25,3,4708
+Central,Centre,202347,2023-11-19,2023-11-25,2,4705
+South,Sud,202347,2023-11-19,2023-11-25,3,4701
+North Zone,Du nord,202347,2023-11-19,2023-11-25,4,4835
+Edmonton,Edmonton,202347,2023-11-19,2023-11-25,3,4834
+Central Zone,Centre,202347,2023-11-19,2023-11-25,4,4833
+Calgary,Calgary,202347,2023-11-19,2023-11-25,3,4832
+South Zone,Du sud,202347,2023-11-19,2023-11-25,2,4831
+Interior,Intérieur,202347,2023-11-19,2023-11-25,2,5911
+Fraser,Fraser,202347,2023-11-19,2023-11-25,2,5921
+Vancouver Coastal,Vancouver Coastal,202347,2023-11-19,2023-11-25,2,5931
+Vancouver Island,Île de Vancouver,202347,2023-11-19,2023-11-25,2,5941
+Northern,Nord,202347,2023-11-19,2023-11-25,2,5951
+Yukon,Yukon,202347,2023-11-19,2023-11-25,2,6001
+North,Région nord des TNO,202347,2023-11-19,2023-11-25,1,6101
+South,Région sud des TNO,202347,2023-11-19,2023-11-25,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202347,2023-11-19,2023-11-25,2,6204
+Kivalliq,Kivalliq,202347,2023-11-19,2023-11-25,2,6205
+Kitimeot,Kitimeot,202347,2023-11-19,2023-11-25,1,6208
+Eastern,Est,202348,2023-11-26,2023-12-02,3,1011
+Labrador-Grenfell,Grenfell Labrador,202348,2023-11-26,2023-12-02,1,1014
+Central,Centre,202348,2023-11-26,2023-12-02,2,1012
+Western,Ouest,202348,2023-11-26,2023-12-02,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202348,2023-11-26,2023-12-02,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202348,2023-11-26,2023-12-02,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202348,2023-11-26,2023-12-02,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202348,2023-11-26,2023-12-02,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202348,2023-11-26,2023-12-02,2,1269
+Region 1,Région de santé publique 1,202348,2023-11-26,2023-12-02,2,1301
+Region 2,Région de santé publique 2,202348,2023-11-26,2023-12-02,3,1302
+Region 3,Région de santé publique 3,202348,2023-11-26,2023-12-02,3,1303
+Region 4,Région de santé publique 4,202348,2023-11-26,2023-12-02,1,1304
+Region 5,Région de santé publique 5,202348,2023-11-26,2023-12-02,2,1305
+Region 6,Région de santé publique 6,202348,2023-11-26,2023-12-02,2,1306
+Region 7,Région de santé publique 7,202348,2023-11-26,2023-12-02,3,1307
+Nord-est,Nord-est,202348,2023-11-26,2023-12-02,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202348,2023-11-26,2023-12-02,2,2412
+Centre-du-Québec,Centre-du-Québec,202348,2023-11-26,2023-12-02,2,2404
+Montréal et Laval,Montréal et Laval,202348,2023-11-26,2023-12-02,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202348,2023-11-26,2023-12-02,2,2414
+Montérégie,Montérégie,202348,2023-11-26,2023-12-02,2,2416
+Central East,Centre-Est,202348,2023-11-26,2023-12-02,2,3570
+Central West,Centre-Ouest,202348,2023-11-26,2023-12-02,3,3527
+Eastern,Est,202348,2023-11-26,2023-12-02,3,3551
+North East,Nord-Est,202348,2023-11-26,2023-12-02,2,3547
+North West,Nord-Ouest,202348,2023-11-26,2023-12-02,2,3549
+South West,Sud-Ouest,202348,2023-11-26,2023-12-02,3,3531
+Toronto,Toronto,202348,2023-11-26,2023-12-02,3,3595
+North,Nord,202348,2023-11-26,2023-12-02,3,4708
+Central,Centre,202348,2023-11-26,2023-12-02,3,4705
+South,Sud,202348,2023-11-26,2023-12-02,3,4701
+North Zone,Du nord,202348,2023-11-26,2023-12-02,4,4835
+Edmonton,Edmonton,202348,2023-11-26,2023-12-02,4,4834
+Central Zone,Centre,202348,2023-11-26,2023-12-02,4,4833
+Calgary,Calgary,202348,2023-11-26,2023-12-02,3,4832
+South Zone,Du sud,202348,2023-11-26,2023-12-02,4,4831
+Interior,Intérieur,202348,2023-11-26,2023-12-02,2,5911
+Fraser,Fraser,202348,2023-11-26,2023-12-02,2,5921
+Vancouver Coastal,Vancouver Coastal,202348,2023-11-26,2023-12-02,3,5931
+Vancouver Island,Île de Vancouver,202348,2023-11-26,2023-12-02,3,5941
+Northern,Nord,202348,2023-11-26,2023-12-02,3,5951
+Yukon,Yukon,202348,2023-11-26,2023-12-02,2,6001
+North,Région nord des TNO,202348,2023-11-26,2023-12-02,2,6101
+South,Région sud des TNO,202348,2023-11-26,2023-12-02,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202348,2023-11-26,2023-12-02,2,6204
+Kivalliq,Kivalliq,202348,2023-11-26,2023-12-02,2,6205
+Kitimeot,Kitimeot,202348,2023-11-26,2023-12-02,1,6208
+Eastern,Est,202349,2023-12-03,2023-12-09,3,1011
+Labrador-Grenfell,Grenfell Labrador,202349,2023-12-03,2023-12-09,1,1014
+Central,Centre,202349,2023-12-03,2023-12-09,3,1012
+Western,Ouest,202349,2023-12-03,2023-12-09,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202349,2023-12-03,2023-12-09,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202349,2023-12-03,2023-12-09,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202349,2023-12-03,2023-12-09,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202349,2023-12-03,2023-12-09,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202349,2023-12-03,2023-12-09,2,1269
+Region 1,Région de santé publique 1,202349,2023-12-03,2023-12-09,2,1301
+Region 2,Région de santé publique 2,202349,2023-12-03,2023-12-09,3,1302
+Region 3,Région de santé publique 3,202349,2023-12-03,2023-12-09,3,1303
+Region 4,Région de santé publique 4,202349,2023-12-03,2023-12-09,2,1304
+Region 5,Région de santé publique 5,202349,2023-12-03,2023-12-09,2,1305
+Region 6,Région de santé publique 6,202349,2023-12-03,2023-12-09,3,1306
+Region 7,Région de santé publique 7,202349,2023-12-03,2023-12-09,3,1307
+Nord-est,Nord-est,202349,2023-12-03,2023-12-09,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202349,2023-12-03,2023-12-09,2,2412
+Centre-du-Québec,Centre-du-Québec,202349,2023-12-03,2023-12-09,2,2404
+Montréal et Laval,Montréal et Laval,202349,2023-12-03,2023-12-09,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202349,2023-12-03,2023-12-09,2,2414
+Montérégie,Montérégie,202349,2023-12-03,2023-12-09,2,2416
+Central East,Centre-Est,202349,2023-12-03,2023-12-09,3,3570
+Central West,Centre-Ouest,202349,2023-12-03,2023-12-09,3,3527
+Eastern,Est,202349,2023-12-03,2023-12-09,3,3551
+North East,Nord-Est,202349,2023-12-03,2023-12-09,3,3547
+North West,Nord-Ouest,202349,2023-12-03,2023-12-09,3,3549
+South West,Sud-Ouest,202349,2023-12-03,2023-12-09,3,3531
+Toronto,Toronto,202349,2023-12-03,2023-12-09,3,3595
+North,Nord,202349,2023-12-03,2023-12-09,2,4708
+Central,Centre,202349,2023-12-03,2023-12-09,3,4705
+South,Sud,202349,2023-12-03,2023-12-09,3,4701
+North Zone,Du nord,202349,2023-12-03,2023-12-09,4,4835
+Edmonton,Edmonton,202349,2023-12-03,2023-12-09,4,4834
+Central Zone,Centre,202349,2023-12-03,2023-12-09,4,4833
+Calgary,Calgary,202349,2023-12-03,2023-12-09,3,4832
+South Zone,Du sud,202349,2023-12-03,2023-12-09,4,4831
+Interior,Intérieur,202349,2023-12-03,2023-12-09,2,5911
+Fraser,Fraser,202349,2023-12-03,2023-12-09,3,5921
+Vancouver Coastal,Vancouver Coastal,202349,2023-12-03,2023-12-09,4,5931
+Vancouver Island,Île de Vancouver,202349,2023-12-03,2023-12-09,2,5941
+Northern,Nord,202349,2023-12-03,2023-12-09,2,5951
+Yukon,Yukon,202349,2023-12-03,2023-12-09,2,6001
+North,Région nord des TNO,202349,2023-12-03,2023-12-09,2,6101
+South,Région sud des TNO,202349,2023-12-03,2023-12-09,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202349,2023-12-03,2023-12-09,2,6204
+Kivalliq,Kivalliq,202349,2023-12-03,2023-12-09,2,6205
+Kitimeot,Kitimeot,202349,2023-12-03,2023-12-09,2,6208
+Eastern,Est,202350,2023-12-10,2023-12-16,3,1011
+Labrador-Grenfell,Grenfell Labrador,202350,2023-12-10,2023-12-16,2,1014
+Central,Centre,202350,2023-12-10,2023-12-16,3,1012
+Western,Ouest,202350,2023-12-10,2023-12-16,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202350,2023-12-10,2023-12-16,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202350,2023-12-10,2023-12-16,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202350,2023-12-10,2023-12-16,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202350,2023-12-10,2023-12-16,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202350,2023-12-10,2023-12-16,2,1269
+Region 1,Région de santé publique 1,202350,2023-12-10,2023-12-16,2,1301
+Region 2,Région de santé publique 2,202350,2023-12-10,2023-12-16,3,1302
+Region 3,Région de santé publique 3,202350,2023-12-10,2023-12-16,3,1303
+Region 4,Région de santé publique 4,202350,2023-12-10,2023-12-16,2,1304
+Region 5,Région de santé publique 5,202350,2023-12-10,2023-12-16,2,1305
+Region 6,Région de santé publique 6,202350,2023-12-10,2023-12-16,3,1306
+Region 7,Région de santé publique 7,202350,2023-12-10,2023-12-16,3,1307
+Nord-est,Nord-est,202350,2023-12-10,2023-12-16,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202350,2023-12-10,2023-12-16,2,2412
+Centre-du-Québec,Centre-du-Québec,202350,2023-12-10,2023-12-16,2,2404
+Montréal et Laval,Montréal et Laval,202350,2023-12-10,2023-12-16,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202350,2023-12-10,2023-12-16,2,2414
+Montérégie,Montérégie,202350,2023-12-10,2023-12-16,2,2416
+Central East,Centre-Est,202350,2023-12-10,2023-12-16,3,3570
+Central West,Centre-Ouest,202350,2023-12-10,2023-12-16,3,3527
+Eastern,Est,202350,2023-12-10,2023-12-16,3,3551
+North East,Nord-Est,202350,2023-12-10,2023-12-16,3,3547
+North West,Nord-Ouest,202350,2023-12-10,2023-12-16,3,3549
+South West,Sud-Ouest,202350,2023-12-10,2023-12-16,3,3531
+Toronto,Toronto,202350,2023-12-10,2023-12-16,3,3595
+North,Nord,202350,2023-12-10,2023-12-16,3,4708
+Central,Centre,202350,2023-12-10,2023-12-16,3,4705
+South,Sud,202350,2023-12-10,2023-12-16,3,4701
+North Zone,Du nord,202350,2023-12-10,2023-12-16,4,4835
+Edmonton,Edmonton,202350,2023-12-10,2023-12-16,4,4834
+Central Zone,Centre,202350,2023-12-10,2023-12-16,4,4833
+Calgary,Calgary,202350,2023-12-10,2023-12-16,3,4832
+South Zone,Du sud,202350,2023-12-10,2023-12-16,4,4831
+Interior,Intérieur,202350,2023-12-10,2023-12-16,3,5911
+Fraser,Fraser,202350,2023-12-10,2023-12-16,2,5921
+Vancouver Coastal,Vancouver Coastal,202350,2023-12-10,2023-12-16,4,5931
+Vancouver Island,Île de Vancouver,202350,2023-12-10,2023-12-16,2,5941
+Northern,Nord,202350,2023-12-10,2023-12-16,2,5951
+Yukon,Yukon,202350,2023-12-10,2023-12-16,2,6001
+North,Région nord des TNO,202350,2023-12-10,2023-12-16,2,6101
+South,Région sud des TNO,202350,2023-12-10,2023-12-16,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202350,2023-12-10,2023-12-16,2,6204
+Kivalliq,Kivalliq,202350,2023-12-10,2023-12-16,2,6205
+Kitimeot,Kitimeot,202350,2023-12-10,2023-12-16,2,6208
+Eastern,Est,202351,2023-12-17,2023-12-23,3,1011
+Labrador-Grenfell,Grenfell Labrador,202351,2023-12-17,2023-12-23,2,1014
+Prince Edward Island,Île-du-Prince-Édouard,202351,2023-12-17,2023-12-23,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202351,2023-12-17,2023-12-23,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202351,2023-12-17,2023-12-23,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202351,2023-12-17,2023-12-23,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202351,2023-12-17,2023-12-23,2,1269
+Region 1,Région de santé publique 1,202351,2023-12-17,2023-12-23,2,1301
+Region 2,Région de santé publique 2,202351,2023-12-17,2023-12-23,2,1302
+Region 3,Région de santé publique 3,202351,2023-12-17,2023-12-23,3,1303
+Region 4,Région de santé publique 4,202351,2023-12-17,2023-12-23,2,1304
+Region 5,Région de santé publique 5,202351,2023-12-17,2023-12-23,3,1305
+Region 6,Région de santé publique 6,202351,2023-12-17,2023-12-23,2,1306
+Region 7,Région de santé publique 7,202351,2023-12-17,2023-12-23,3,1307
+Nord-est,Nord-est,202351,2023-12-17,2023-12-23,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202351,2023-12-17,2023-12-23,2,2412
+Centre-du-Québec,Centre-du-Québec,202351,2023-12-17,2023-12-23,2,2404
+Montréal et Laval,Montréal et Laval,202351,2023-12-17,2023-12-23,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202351,2023-12-17,2023-12-23,2,2414
+Montérégie,Montérégie,202351,2023-12-17,2023-12-23,2,2416
+Central East,Centre-Est,202351,2023-12-17,2023-12-23,3,3570
+Central West,Centre-Ouest,202351,2023-12-17,2023-12-23,3,3527
+Eastern,Est,202351,2023-12-17,2023-12-23,3,3551
+North East,Nord-Est,202351,2023-12-17,2023-12-23,3,3547
+North West,Nord-Ouest,202351,2023-12-17,2023-12-23,3,3549
+South West,Sud-Ouest,202351,2023-12-17,2023-12-23,3,3531
+Toronto,Toronto,202351,2023-12-17,2023-12-23,3,3595
+North,Nord,202351,2023-12-17,2023-12-23,3,4708
+Central,Centre,202351,2023-12-17,2023-12-23,3,4705
+South,Sud,202351,2023-12-17,2023-12-23,3,4701
+North Zone,Du nord,202351,2023-12-17,2023-12-23,4,4835
+Edmonton,Edmonton,202351,2023-12-17,2023-12-23,3,4834
+Central Zone,Centre,202351,2023-12-17,2023-12-23,4,4833
+Calgary,Calgary,202351,2023-12-17,2023-12-23,3,4832
+South Zone,Du sud,202351,2023-12-17,2023-12-23,4,4831
+Interior,Intérieur,202351,2023-12-17,2023-12-23,2,5911
+Fraser,Fraser,202351,2023-12-17,2023-12-23,4,5921
+Vancouver Coastal,Vancouver Coastal,202351,2023-12-17,2023-12-23,2,5931
+Vancouver Island,Île de Vancouver,202351,2023-12-17,2023-12-23,3,5941
+Northern,Nord,202351,2023-12-17,2023-12-23,2,5951
+Yukon,Yukon,202351,2023-12-17,2023-12-23,2,6001
+North,Région nord des TNO,202351,2023-12-17,2023-12-23,2,6101
+South,Région sud des TNO,202351,2023-12-17,2023-12-23,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202351,2023-12-17,2023-12-23,2,6204
+Kivalliq,Kivalliq,202351,2023-12-17,2023-12-23,2,6205
+Kitimeot,Kitimeot,202351,2023-12-17,2023-12-23,2,6208
+Eastern,Est,202352,2023-12-24,2023-12-30,3,1011
+Labrador-Grenfell,Grenfell Labrador,202352,2023-12-24,2023-12-30,2,1014
+Central,Centre,202352,2023-12-24,2023-12-30,2,1012
+Western,Ouest,202352,2023-12-24,2023-12-30,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202352,2023-12-24,2023-12-30,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202352,2023-12-24,2023-12-30,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202352,2023-12-24,2023-12-30,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202352,2023-12-24,2023-12-30,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202352,2023-12-24,2023-12-30,2,1269
+Region 1,Région de santé publique 1,202352,2023-12-24,2023-12-30,3,1301
+Region 2,Région de santé publique 2,202352,2023-12-24,2023-12-30,3,1302
+Region 3,Région de santé publique 3,202352,2023-12-24,2023-12-30,2,1303
+Region 4,Région de santé publique 4,202352,2023-12-24,2023-12-30,2,1304
+Region 5,Région de santé publique 5,202352,2023-12-24,2023-12-30,2,1305
+Region 6,Région de santé publique 6,202352,2023-12-24,2023-12-30,3,1306
+Region 7,Région de santé publique 7,202352,2023-12-24,2023-12-30,3,1307
+Nord-est,Nord-est,202352,2023-12-24,2023-12-30,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202352,2023-12-24,2023-12-30,2,2412
+Centre-du-Québec,Centre-du-Québec,202352,2023-12-24,2023-12-30,2,2404
+Montréal et Laval,Montréal et Laval,202352,2023-12-24,2023-12-30,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202352,2023-12-24,2023-12-30,2,2414
+Montérégie,Montérégie,202352,2023-12-24,2023-12-30,2,2416
+Central East,Centre-Est,202352,2023-12-24,2023-12-30,3,3570
+Central West,Centre-Ouest,202352,2023-12-24,2023-12-30,3,3527
+Eastern,Est,202352,2023-12-24,2023-12-30,3,3551
+North East,Nord-Est,202352,2023-12-24,2023-12-30,3,3547
+North West,Nord-Ouest,202352,2023-12-24,2023-12-30,3,3549
+South West,Sud-Ouest,202352,2023-12-24,2023-12-30,3,3531
+Toronto,Toronto,202352,2023-12-24,2023-12-30,3,3595
+North,Nord,202352,2023-12-24,2023-12-30,3,4708
+Central,Centre,202352,2023-12-24,2023-12-30,3,4705
+South,Sud,202352,2023-12-24,2023-12-30,3,4701
+North Zone,Du nord,202352,2023-12-24,2023-12-30,4,4835
+Edmonton,Edmonton,202352,2023-12-24,2023-12-30,3,4834
+Central Zone,Centre,202352,2023-12-24,2023-12-30,4,4833
+Calgary,Calgary,202352,2023-12-24,2023-12-30,3,4832
+South Zone,Du sud,202352,2023-12-24,2023-12-30,4,4831
+Interior,Intérieur,202352,2023-12-24,2023-12-30,3,5911
+Fraser,Fraser,202352,2023-12-24,2023-12-30,4,5921
+Vancouver Coastal,Vancouver Coastal,202352,2023-12-24,2023-12-30,4,5931
+Vancouver Island,Île de Vancouver,202352,2023-12-24,2023-12-30,2,5941
+Northern,Nord,202352,2023-12-24,2023-12-30,2,5951
+Yukon,Yukon,202352,2023-12-24,2023-12-30,2,6001
+North,Région nord des TNO,202352,2023-12-24,2023-12-30,2,6101
+South,Région sud des TNO,202352,2023-12-24,2023-12-30,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202352,2023-12-24,2023-12-30,2,6204
+Kivalliq,Kivalliq,202352,2023-12-24,2023-12-30,2,6205
+Kitimeot,Kitimeot,202352,2023-12-24,2023-12-30,2,6208
+Eastern,Est,202401,2023-12-31,2024-01-06,3,1011
+Labrador-Grenfell,Grenfell Labrador,202401,2023-12-31,2024-01-06,2,1014
+Central,Centre,202401,2023-12-31,2024-01-06,3,1012
+Western,Ouest,202401,2023-12-31,2024-01-06,3,1013
+Prince Edward Island,Île-du-Prince-Édouard,202401,2023-12-31,2024-01-06,4,1103
+Zone 1 - Western,Zone 1 - Ouest,202401,2023-12-31,2024-01-06,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202401,2023-12-31,2024-01-06,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202401,2023-12-31,2024-01-06,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202401,2023-12-31,2024-01-06,2,1269
+Region 1,Région de santé publique 1,202401,2023-12-31,2024-01-06,3,1301
+Region 2,Région de santé publique 2,202401,2023-12-31,2024-01-06,3,1302
+Region 3,Région de santé publique 3,202401,2023-12-31,2024-01-06,3,1303
+Region 4,Région de santé publique 4,202401,2023-12-31,2024-01-06,3,1304
+Region 5,Région de santé publique 5,202401,2023-12-31,2024-01-06,2,1305
+Region 6,Région de santé publique 6,202401,2023-12-31,2024-01-06,3,1306
+Region 7,Région de santé publique 7,202401,2023-12-31,2024-01-06,2,1307
+Nord-est,Nord-est,202401,2023-12-31,2024-01-06,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202401,2023-12-31,2024-01-06,2,2412
+Centre-du-Québec,Centre-du-Québec,202401,2023-12-31,2024-01-06,2,2404
+Montréal et Laval,Montréal et Laval,202401,2023-12-31,2024-01-06,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202401,2023-12-31,2024-01-06,2,2414
+Montérégie,Montérégie,202401,2023-12-31,2024-01-06,2,2416
+Central East,Centre-Est,202401,2023-12-31,2024-01-06,3,3570
+Central West,Centre-Ouest,202401,2023-12-31,2024-01-06,3,3527
+Eastern,Est,202401,2023-12-31,2024-01-06,3,3551
+North East,Nord-Est,202401,2023-12-31,2024-01-06,3,3547
+North West,Nord-Ouest,202401,2023-12-31,2024-01-06,3,3549
+South West,Sud-Ouest,202401,2023-12-31,2024-01-06,3,3531
+Toronto,Toronto,202401,2023-12-31,2024-01-06,3,3595
+North,Nord,202401,2023-12-31,2024-01-06,2,4708
+Central,Centre,202401,2023-12-31,2024-01-06,2,4705
+South,Sud,202401,2023-12-31,2024-01-06,3,4701
+North Zone,Du nord,202401,2023-12-31,2024-01-06,3,4835
+Edmonton,Edmonton,202401,2023-12-31,2024-01-06,3,4834
+Central Zone,Centre,202401,2023-12-31,2024-01-06,3,4833
+Calgary,Calgary,202401,2023-12-31,2024-01-06,3,4832
+South Zone,Du sud,202401,2023-12-31,2024-01-06,3,4831
+Interior,Intérieur,202401,2023-12-31,2024-01-06,3,5911
+Fraser,Fraser,202401,2023-12-31,2024-01-06,4,5921
+Vancouver Coastal,Vancouver Coastal,202401,2023-12-31,2024-01-06,4,5931
+Vancouver Island,Île de Vancouver,202401,2023-12-31,2024-01-06,3,5941
+Northern,Nord,202401,2023-12-31,2024-01-06,3,5951
+Yukon,Yukon,202401,2023-12-31,2024-01-06,2,6001
+North,Région nord des TNO,202401,2023-12-31,2024-01-06,2,6101
+South,Région sud des TNO,202401,2023-12-31,2024-01-06,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202401,2023-12-31,2024-01-06,2,6204
+Kivalliq,Kivalliq,202401,2023-12-31,2024-01-06,2,6205
+Kitimeot,Kitimeot,202401,2023-12-31,2024-01-06,1,6208
+Eastern,Est,202402,2024-01-07,2024-01-13,3,1011
+Labrador-Grenfell,Grenfell Labrador,202402,2024-01-07,2024-01-13,2,1014
+Central,Centre,202402,2024-01-07,2024-01-13,2,1012
+Western,Ouest,202402,2024-01-07,2024-01-13,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202402,2024-01-07,2024-01-13,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202402,2024-01-07,2024-01-13,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202402,2024-01-07,2024-01-13,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202402,2024-01-07,2024-01-13,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202402,2024-01-07,2024-01-13,2,1269
+Region 1,Région de santé publique 1,202402,2024-01-07,2024-01-13,3,1301
+Region 2,Région de santé publique 2,202402,2024-01-07,2024-01-13,3,1302
+Region 3,Région de santé publique 3,202402,2024-01-07,2024-01-13,3,1303
+Region 4,Région de santé publique 4,202402,2024-01-07,2024-01-13,2,1304
+Region 5,Région de santé publique 5,202402,2024-01-07,2024-01-13,2,1305
+Region 6,Région de santé publique 6,202402,2024-01-07,2024-01-13,3,1306
+Region 7,Région de santé publique 7,202402,2024-01-07,2024-01-13,3,1307
+Nord-est,Nord-est,202402,2024-01-07,2024-01-13,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202402,2024-01-07,2024-01-13,2,2412
+Centre-du-Québec,Centre-du-Québec,202402,2024-01-07,2024-01-13,2,2404
+Montréal et Laval,Montréal et Laval,202402,2024-01-07,2024-01-13,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202402,2024-01-07,2024-01-13,2,2414
+Montérégie,Montérégie,202402,2024-01-07,2024-01-13,2,2416
+Central East,Centre-Est,202402,2024-01-07,2024-01-13,3,3570
+Central West,Centre-Ouest,202402,2024-01-07,2024-01-13,3,3527
+Eastern,Est,202402,2024-01-07,2024-01-13,3,3551
+North East,Nord-Est,202402,2024-01-07,2024-01-13,3,3547
+North West,Nord-Ouest,202402,2024-01-07,2024-01-13,3,3549
+South West,Sud-Ouest,202402,2024-01-07,2024-01-13,3,3531
+Toronto,Toronto,202402,2024-01-07,2024-01-13,3,3595
+North,Nord,202402,2024-01-07,2024-01-13,2,4708
+Central,Centre,202402,2024-01-07,2024-01-13,2,4705
+South,Sud,202402,2024-01-07,2024-01-13,3,4701
+North Zone,Du nord,202402,2024-01-07,2024-01-13,3,4835
+Edmonton,Edmonton,202402,2024-01-07,2024-01-13,3,4834
+Central Zone,Centre,202402,2024-01-07,2024-01-13,3,4833
+Calgary,Calgary,202402,2024-01-07,2024-01-13,3,4832
+South Zone,Du sud,202402,2024-01-07,2024-01-13,3,4831
+Interior,Intérieur,202402,2024-01-07,2024-01-13,2,5911
+Fraser,Fraser,202402,2024-01-07,2024-01-13,4,5921
+Vancouver Coastal,Vancouver Coastal,202402,2024-01-07,2024-01-13,3,5931
+Vancouver Island,Île de Vancouver,202402,2024-01-07,2024-01-13,4,5941
+Northern,Nord,202402,2024-01-07,2024-01-13,3,5951
+Yukon,Yukon,202402,2024-01-07,2024-01-13,2,6001
+North,Région nord des TNO,202402,2024-01-07,2024-01-13,2,6101
+South,Région sud des TNO,202402,2024-01-07,2024-01-13,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202402,2024-01-07,2024-01-13,2,6204
+Kivalliq,Kivalliq,202402,2024-01-07,2024-01-13,2,6205
+Kitimeot,Kitimeot,202402,2024-01-07,2024-01-13,1,6208
+Eastern,Est,202403,2024-01-14,2024-01-20,3,1011
+Labrador-Grenfell,Grenfell Labrador,202403,2024-01-14,2024-01-20,2,1014
+Central,Centre,202403,2024-01-14,2024-01-20,2,1012
+Western,Ouest,202403,2024-01-14,2024-01-20,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202403,2024-01-14,2024-01-20,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202403,2024-01-14,2024-01-20,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202403,2024-01-14,2024-01-20,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202403,2024-01-14,2024-01-20,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202403,2024-01-14,2024-01-20,2,1269
+Region 1,Région de santé publique 1,202403,2024-01-14,2024-01-20,3,1301
+Region 2,Région de santé publique 2,202403,2024-01-14,2024-01-20,3,1302
+Region 3,Région de santé publique 3,202403,2024-01-14,2024-01-20,3,1303
+Region 4,Région de santé publique 4,202403,2024-01-14,2024-01-20,2,1304
+Region 5,Région de santé publique 5,202403,2024-01-14,2024-01-20,2,1305
+Region 6,Région de santé publique 6,202403,2024-01-14,2024-01-20,2,1306
+Region 7,Région de santé publique 7,202403,2024-01-14,2024-01-20,3,1307
+Nord-est,Nord-est,202403,2024-01-14,2024-01-20,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202403,2024-01-14,2024-01-20,2,2412
+Centre-du-Québec,Centre-du-Québec,202403,2024-01-14,2024-01-20,2,2404
+Montréal et Laval,Montréal et Laval,202403,2024-01-14,2024-01-20,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202403,2024-01-14,2024-01-20,2,2414
+Montérégie,Montérégie,202403,2024-01-14,2024-01-20,2,2416
+Central East,Centre-Est,202403,2024-01-14,2024-01-20,3,3570
+Central West,Centre-Ouest,202403,2024-01-14,2024-01-20,3,3527
+Eastern,Est,202403,2024-01-14,2024-01-20,4,3551
+North East,Nord-Est,202403,2024-01-14,2024-01-20,3,3547
+North West,Nord-Ouest,202403,2024-01-14,2024-01-20,3,3549
+South West,Sud-Ouest,202403,2024-01-14,2024-01-20,3,3531
+Toronto,Toronto,202403,2024-01-14,2024-01-20,3,3595
+North,Nord,202403,2024-01-14,2024-01-20,2,4708
+Central,Centre,202403,2024-01-14,2024-01-20,2,4705
+South,Sud,202403,2024-01-14,2024-01-20,3,4701
+North Zone,Du nord,202403,2024-01-14,2024-01-20,2,4835
+Edmonton,Edmonton,202403,2024-01-14,2024-01-20,3,4834
+Central Zone,Centre,202403,2024-01-14,2024-01-20,2,4833
+Calgary,Calgary,202403,2024-01-14,2024-01-20,3,4832
+South Zone,Du sud,202403,2024-01-14,2024-01-20,3,4831
+Interior,Intérieur,202403,2024-01-14,2024-01-20,2,5911
+Fraser,Fraser,202403,2024-01-14,2024-01-20,3,5921
+Vancouver Coastal,Vancouver Coastal,202403,2024-01-14,2024-01-20,4,5931
+Vancouver Island,Île de Vancouver,202403,2024-01-14,2024-01-20,3,5941
+Northern,Nord,202403,2024-01-14,2024-01-20,2,5951
+Yukon,Yukon,202403,2024-01-14,2024-01-20,2,6001
+North,Région nord des TNO,202403,2024-01-14,2024-01-20,2,6101
+South,Région sud des TNO,202403,2024-01-14,2024-01-20,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202403,2024-01-14,2024-01-20,2,6204
+Kivalliq,Kivalliq,202403,2024-01-14,2024-01-20,1,6205
+Kitimeot,Kitimeot,202403,2024-01-14,2024-01-20,2,6208
+Eastern,Est,202404,2024-01-21,2024-01-27,3,1011
+Labrador-Grenfell,Grenfell Labrador,202404,2024-01-21,2024-01-27,2,1014
+Central,Centre,202404,2024-01-21,2024-01-27,2,1012
+Western,Ouest,202404,2024-01-21,2024-01-27,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202404,2024-01-21,2024-01-27,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202404,2024-01-21,2024-01-27,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202404,2024-01-21,2024-01-27,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202404,2024-01-21,2024-01-27,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202404,2024-01-21,2024-01-27,2,1269
+Region 1,Région de santé publique 1,202404,2024-01-21,2024-01-27,2,1301
+Region 2,Région de santé publique 2,202404,2024-01-21,2024-01-27,3,1302
+Region 3,Région de santé publique 3,202404,2024-01-21,2024-01-27,3,1303
+Region 4,Région de santé publique 4,202404,2024-01-21,2024-01-27,3,1304
+Region 5,Région de santé publique 5,202404,2024-01-21,2024-01-27,2,1305
+Region 6,Région de santé publique 6,202404,2024-01-21,2024-01-27,2,1306
+Region 7,Région de santé publique 7,202404,2024-01-21,2024-01-27,1,1307
+Nord-est,Nord-est,202404,2024-01-21,2024-01-27,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202404,2024-01-21,2024-01-27,2,2412
+Centre-du-Québec,Centre-du-Québec,202404,2024-01-21,2024-01-27,2,2404
+Montréal et Laval,Montréal et Laval,202404,2024-01-21,2024-01-27,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202404,2024-01-21,2024-01-27,2,2414
+Montérégie,Montérégie,202404,2024-01-21,2024-01-27,2,2416
+Central East,Centre-Est,202404,2024-01-21,2024-01-27,3,3570
+Central West,Centre-Ouest,202404,2024-01-21,2024-01-27,3,3527
+Eastern,Est,202404,2024-01-21,2024-01-27,3,3551
+North East,Nord-Est,202404,2024-01-21,2024-01-27,3,3547
+North West,Nord-Ouest,202404,2024-01-21,2024-01-27,3,3549
+South West,Sud-Ouest,202404,2024-01-21,2024-01-27,3,3531
+Toronto,Toronto,202404,2024-01-21,2024-01-27,3,3595
+North,Nord,202404,2024-01-21,2024-01-27,1,4708
+Central,Centre,202404,2024-01-21,2024-01-27,2,4705
+South,Sud,202404,2024-01-21,2024-01-27,2,4701
+North Zone,Du nord,202404,2024-01-21,2024-01-27,2,4835
+Edmonton,Edmonton,202404,2024-01-21,2024-01-27,2,4834
+Central Zone,Centre,202404,2024-01-21,2024-01-27,2,4833
+Calgary,Calgary,202404,2024-01-21,2024-01-27,3,4832
+South Zone,Du sud,202404,2024-01-21,2024-01-27,2,4831
+Interior,Intérieur,202404,2024-01-21,2024-01-27,3,5911
+Fraser,Fraser,202404,2024-01-21,2024-01-27,3,5921
+Vancouver Coastal,Vancouver Coastal,202404,2024-01-21,2024-01-27,3,5931
+Vancouver Island,Île de Vancouver,202404,2024-01-21,2024-01-27,3,5941
+Northern,Nord,202404,2024-01-21,2024-01-27,3,5951
+Yukon,Yukon,202404,2024-01-21,2024-01-27,2,6001
+North,Région nord des TNO,202404,2024-01-21,2024-01-27,1,6101
+South,Région sud des TNO,202404,2024-01-21,2024-01-27,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202404,2024-01-21,2024-01-27,2,6204
+Kivalliq,Kivalliq,202404,2024-01-21,2024-01-27,1,6205
+Kitimeot,Kitimeot,202404,2024-01-21,2024-01-27,1,6208
+Eastern,Est,202405,2024-01-28,2024-02-03,3,1011
+Labrador-Grenfell,Grenfell Labrador,202405,2024-01-28,2024-02-03,3,1014
+Central,Centre,202405,2024-01-28,2024-02-03,3,1012
+Western,Ouest,202405,2024-01-28,2024-02-03,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202405,2024-01-28,2024-02-03,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202405,2024-01-28,2024-02-03,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202405,2024-01-28,2024-02-03,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202405,2024-01-28,2024-02-03,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202405,2024-01-28,2024-02-03,2,1269
+Region 1,Région de santé publique 1,202405,2024-01-28,2024-02-03,3,1301
+Region 2,Région de santé publique 2,202405,2024-01-28,2024-02-03,3,1302
+Region 3,Région de santé publique 3,202405,2024-01-28,2024-02-03,3,1303
+Region 4,Région de santé publique 4,202405,2024-01-28,2024-02-03,3,1304
+Region 5,Région de santé publique 5,202405,2024-01-28,2024-02-03,2,1305
+Region 6,Région de santé publique 6,202405,2024-01-28,2024-02-03,3,1306
+Region 7,Région de santé publique 7,202405,2024-01-28,2024-02-03,2,1307
+Nord-est,Nord-est,202405,2024-01-28,2024-02-03,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202405,2024-01-28,2024-02-03,2,2412
+Centre-du-Québec,Centre-du-Québec,202405,2024-01-28,2024-02-03,2,2404
+Montréal et Laval,Montréal et Laval,202405,2024-01-28,2024-02-03,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202405,2024-01-28,2024-02-03,2,2414
+Montérégie,Montérégie,202405,2024-01-28,2024-02-03,2,2416
+Central East,Centre-Est,202405,2024-01-28,2024-02-03,3,3570
+Central West,Centre-Ouest,202405,2024-01-28,2024-02-03,3,3527
+Eastern,Est,202405,2024-01-28,2024-02-03,3,3551
+North East,Nord-Est,202405,2024-01-28,2024-02-03,3,3547
+North West,Nord-Ouest,202405,2024-01-28,2024-02-03,3,3549
+South West,Sud-Ouest,202405,2024-01-28,2024-02-03,3,3531
+Toronto,Toronto,202405,2024-01-28,2024-02-03,3,3595
+North,Nord,202405,2024-01-28,2024-02-03,2,4708
+Central,Centre,202405,2024-01-28,2024-02-03,2,4705
+South,Sud,202405,2024-01-28,2024-02-03,2,4701
+North Zone,Du nord,202405,2024-01-28,2024-02-03,2,4835
+Edmonton,Edmonton,202405,2024-01-28,2024-02-03,2,4834
+Central Zone,Centre,202405,2024-01-28,2024-02-03,2,4833
+Calgary,Calgary,202405,2024-01-28,2024-02-03,2,4832
+South Zone,Du sud,202405,2024-01-28,2024-02-03,2,4831
+Interior,Intérieur,202405,2024-01-28,2024-02-03,4,5911
+Fraser,Fraser,202405,2024-01-28,2024-02-03,3,5921
+Vancouver Coastal,Vancouver Coastal,202405,2024-01-28,2024-02-03,2,5931
+Vancouver Island,Île de Vancouver,202405,2024-01-28,2024-02-03,2,5941
+Northern,Nord,202405,2024-01-28,2024-02-03,2,5951
+Yukon,Yukon,202405,2024-01-28,2024-02-03,2,6001
+North,Région nord des TNO,202405,2024-01-28,2024-02-03,2,6101
+South,Région sud des TNO,202405,2024-01-28,2024-02-03,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202405,2024-01-28,2024-02-03,1,6204
+Kivalliq,Kivalliq,202405,2024-01-28,2024-02-03,2,6205
+Kitimeot,Kitimeot,202405,2024-01-28,2024-02-03,1,6208
+Eastern,Est,202406,2024-02-04,2024-02-10,3,1011
+Labrador-Grenfell,Grenfell Labrador,202406,2024-02-04,2024-02-10,3,1014
+Central,Centre,202406,2024-02-04,2024-02-10,2,1012
+Western,Ouest,202406,2024-02-04,2024-02-10,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202406,2024-02-04,2024-02-10,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202406,2024-02-04,2024-02-10,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202406,2024-02-04,2024-02-10,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202406,2024-02-04,2024-02-10,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202406,2024-02-04,2024-02-10,2,1269
+Region 1,Région de santé publique 1,202406,2024-02-04,2024-02-10,3,1301
+Region 2,Région de santé publique 2,202406,2024-02-04,2024-02-10,3,1302
+Region 3,Région de santé publique 3,202406,2024-02-04,2024-02-10,3,1303
+Region 4,Région de santé publique 4,202406,2024-02-04,2024-02-10,2,1304
+Region 5,Région de santé publique 5,202406,2024-02-04,2024-02-10,3,1305
+Region 6,Région de santé publique 6,202406,2024-02-04,2024-02-10,3,1306
+Region 7,Région de santé publique 7,202406,2024-02-04,2024-02-10,2,1307
+Nord-est,Nord-est,202406,2024-02-04,2024-02-10,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202406,2024-02-04,2024-02-10,2,2412
+Centre-du-Québec,Centre-du-Québec,202406,2024-02-04,2024-02-10,2,2404
+Montréal et Laval,Montréal et Laval,202406,2024-02-04,2024-02-10,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202406,2024-02-04,2024-02-10,2,2414
+Montérégie,Montérégie,202406,2024-02-04,2024-02-10,2,2416
+Central East,Centre-Est,202406,2024-02-04,2024-02-10,3,3570
+Central West,Centre-Ouest,202406,2024-02-04,2024-02-10,3,3527
+Eastern,Est,202406,2024-02-04,2024-02-10,3,3551
+North East,Nord-Est,202406,2024-02-04,2024-02-10,3,3547
+North West,Nord-Ouest,202406,2024-02-04,2024-02-10,3,3549
+South West,Sud-Ouest,202406,2024-02-04,2024-02-10,3,3531
+Toronto,Toronto,202406,2024-02-04,2024-02-10,4,3595
+North,Nord,202406,2024-02-04,2024-02-10,2,4708
+Central,Centre,202406,2024-02-04,2024-02-10,2,4705
+South,Sud,202406,2024-02-04,2024-02-10,3,4701
+North Zone,Du nord,202406,2024-02-04,2024-02-10,2,4835
+Edmonton,Edmonton,202406,2024-02-04,2024-02-10,2,4834
+Central Zone,Centre,202406,2024-02-04,2024-02-10,2,4833
+Calgary,Calgary,202406,2024-02-04,2024-02-10,2,4832
+South Zone,Du sud,202406,2024-02-04,2024-02-10,2,4831
+Interior,Intérieur,202406,2024-02-04,2024-02-10,3,5911
+Fraser,Fraser,202406,2024-02-04,2024-02-10,2,5921
+Vancouver Coastal,Vancouver Coastal,202406,2024-02-04,2024-02-10,4,5931
+Vancouver Island,Île de Vancouver,202406,2024-02-04,2024-02-10,2,5941
+Northern,Nord,202406,2024-02-04,2024-02-10,2,5951
+Yukon,Yukon,202406,2024-02-04,2024-02-10,2,6001
+North,Région nord des TNO,202406,2024-02-04,2024-02-10,1,6101
+South,Région sud des TNO,202406,2024-02-04,2024-02-10,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202406,2024-02-04,2024-02-10,2,6204
+Kivalliq,Kivalliq,202406,2024-02-04,2024-02-10,2,6205
+Kitimeot,Kitimeot,202406,2024-02-04,2024-02-10,1,6208
+Eastern,Est,202407,2024-02-11,2024-02-17,3,1011
+Labrador-Grenfell,Grenfell Labrador,202407,2024-02-11,2024-02-17,2,1014
+Central,Centre,202407,2024-02-11,2024-02-17,2,1012
+Western,Ouest,202407,2024-02-11,2024-02-17,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202407,2024-02-11,2024-02-17,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202407,2024-02-11,2024-02-17,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202407,2024-02-11,2024-02-17,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202407,2024-02-11,2024-02-17,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202407,2024-02-11,2024-02-17,3,1269
+Region 1,Région de santé publique 1,202407,2024-02-11,2024-02-17,3,1301
+Region 2,Région de santé publique 2,202407,2024-02-11,2024-02-17,3,1302
+Region 3,Région de santé publique 3,202407,2024-02-11,2024-02-17,3,1303
+Region 4,Région de santé publique 4,202407,2024-02-11,2024-02-17,2,1304
+Region 5,Région de santé publique 5,202407,2024-02-11,2024-02-17,2,1305
+Region 6,Région de santé publique 6,202407,2024-02-11,2024-02-17,3,1306
+Region 7,Région de santé publique 7,202407,2024-02-11,2024-02-17,2,1307
+Nord-est,Nord-est,202407,2024-02-11,2024-02-17,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202407,2024-02-11,2024-02-17,2,2412
+Centre-du-Québec,Centre-du-Québec,202407,2024-02-11,2024-02-17,2,2404
+Montréal et Laval,Montréal et Laval,202407,2024-02-11,2024-02-17,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202407,2024-02-11,2024-02-17,2,2414
+Montérégie,Montérégie,202407,2024-02-11,2024-02-17,2,2416
+Central East,Centre-Est,202407,2024-02-11,2024-02-17,3,3570
+Central West,Centre-Ouest,202407,2024-02-11,2024-02-17,3,3527
+Eastern,Est,202407,2024-02-11,2024-02-17,3,3551
+North East,Nord-Est,202407,2024-02-11,2024-02-17,3,3547
+North West,Nord-Ouest,202407,2024-02-11,2024-02-17,3,3549
+South West,Sud-Ouest,202407,2024-02-11,2024-02-17,3,3531
+Toronto,Toronto,202407,2024-02-11,2024-02-17,3,3595
+North,Nord,202407,2024-02-11,2024-02-17,2,4708
+Central,Centre,202407,2024-02-11,2024-02-17,2,4705
+South,Sud,202407,2024-02-11,2024-02-17,2,4701
+North Zone,Du nord,202407,2024-02-11,2024-02-17,2,4835
+Edmonton,Edmonton,202407,2024-02-11,2024-02-17,2,4834
+Central Zone,Centre,202407,2024-02-11,2024-02-17,2,4833
+Calgary,Calgary,202407,2024-02-11,2024-02-17,2,4832
+South Zone,Du sud,202407,2024-02-11,2024-02-17,2,4831
+Interior,Intérieur,202407,2024-02-11,2024-02-17,2,5911
+Fraser,Fraser,202407,2024-02-11,2024-02-17,2,5921
+Vancouver Coastal,Vancouver Coastal,202407,2024-02-11,2024-02-17,3,5931
+Vancouver Island,Île de Vancouver,202407,2024-02-11,2024-02-17,3,5941
+Northern,Nord,202407,2024-02-11,2024-02-17,2,5951
+Yukon,Yukon,202407,2024-02-11,2024-02-17,2,6001
+North,Région nord des TNO,202407,2024-02-11,2024-02-17,2,6101
+South,Région sud des TNO,202407,2024-02-11,2024-02-17,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202407,2024-02-11,2024-02-17,1,6204
+Kivalliq,Kivalliq,202407,2024-02-11,2024-02-17,2,6205
+Kitimeot,Kitimeot,202407,2024-02-11,2024-02-17,2,6208
+Eastern,Est,202408,2024-02-18,2024-02-24,3,1011
+Labrador-Grenfell,Grenfell Labrador,202408,2024-02-18,2024-02-24,2,1014
+Central,Centre,202408,2024-02-18,2024-02-24,2,1012
+Western,Ouest,202408,2024-02-18,2024-02-24,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202408,2024-02-18,2024-02-24,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202408,2024-02-18,2024-02-24,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202408,2024-02-18,2024-02-24,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202408,2024-02-18,2024-02-24,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202408,2024-02-18,2024-02-24,2,1269
+Region 1,Région de santé publique 1,202408,2024-02-18,2024-02-24,2,1301
+Region 2,Région de santé publique 2,202408,2024-02-18,2024-02-24,2,1302
+Region 3,Région de santé publique 3,202408,2024-02-18,2024-02-24,3,1303
+Region 4,Région de santé publique 4,202408,2024-02-18,2024-02-24,2,1304
+Region 5,Région de santé publique 5,202408,2024-02-18,2024-02-24,2,1305
+Region 6,Région de santé publique 6,202408,2024-02-18,2024-02-24,2,1306
+Region 7,Région de santé publique 7,202408,2024-02-18,2024-02-24,2,1307
+Nord-est,Nord-est,202408,2024-02-18,2024-02-24,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202408,2024-02-18,2024-02-24,2,2412
+Centre-du-Québec,Centre-du-Québec,202408,2024-02-18,2024-02-24,2,2404
+Montréal et Laval,Montréal et Laval,202408,2024-02-18,2024-02-24,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202408,2024-02-18,2024-02-24,2,2414
+Montérégie,Montérégie,202408,2024-02-18,2024-02-24,2,2416
+Central East,Centre-Est,202408,2024-02-18,2024-02-24,3,3570
+Central West,Centre-Ouest,202408,2024-02-18,2024-02-24,3,3527
+Eastern,Est,202408,2024-02-18,2024-02-24,3,3551
+North East,Nord-Est,202408,2024-02-18,2024-02-24,3,3547
+North West,Nord-Ouest,202408,2024-02-18,2024-02-24,3,3549
+South West,Sud-Ouest,202408,2024-02-18,2024-02-24,3,3531
+Toronto,Toronto,202408,2024-02-18,2024-02-24,3,3595
+North,Nord,202408,2024-02-18,2024-02-24,2,4708
+Central,Centre,202408,2024-02-18,2024-02-24,2,4705
+South,Sud,202408,2024-02-18,2024-02-24,3,4701
+North Zone,Du nord,202408,2024-02-18,2024-02-24,2,4835
+Edmonton,Edmonton,202408,2024-02-18,2024-02-24,2,4834
+Central Zone,Centre,202408,2024-02-18,2024-02-24,2,4833
+Calgary,Calgary,202408,2024-02-18,2024-02-24,2,4832
+South Zone,Du sud,202408,2024-02-18,2024-02-24,2,4831
+Interior,Intérieur,202408,2024-02-18,2024-02-24,2,5911
+Fraser,Fraser,202408,2024-02-18,2024-02-24,3,5921
+Vancouver Coastal,Vancouver Coastal,202408,2024-02-18,2024-02-24,3,5931
+Vancouver Island,Île de Vancouver,202408,2024-02-18,2024-02-24,2,5941
+Northern,Nord,202408,2024-02-18,2024-02-24,3,5951
+Yukon,Yukon,202408,2024-02-18,2024-02-24,2,6001
+North,Région nord des TNO,202408,2024-02-18,2024-02-24,2,6101
+South,Région sud des TNO,202408,2024-02-18,2024-02-24,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202408,2024-02-18,2024-02-24,1,6204
+Kivalliq,Kivalliq,202408,2024-02-18,2024-02-24,2,6205
+Kitimeot,Kitimeot,202408,2024-02-18,2024-02-24,1,6208
+Eastern,Est,202409,2024-02-25,2024-03-02,2,1011
+Labrador-Grenfell,Grenfell Labrador,202409,2024-02-25,2024-03-02,2,1014
+Central,Centre,202409,2024-02-25,2024-03-02,2,1012
+Western,Ouest,202409,2024-02-25,2024-03-02,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202409,2024-02-25,2024-03-02,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202409,2024-02-25,2024-03-02,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202409,2024-02-25,2024-03-02,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202409,2024-02-25,2024-03-02,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202409,2024-02-25,2024-03-02,2,1269
+Region 1,Région de santé publique 1,202409,2024-02-25,2024-03-02,2,1301
+Region 2,Région de santé publique 2,202409,2024-02-25,2024-03-02,2,1302
+Region 3,Région de santé publique 3,202409,2024-02-25,2024-03-02,3,1303
+Region 4,Région de santé publique 4,202409,2024-02-25,2024-03-02,2,1304
+Region 5,Région de santé publique 5,202409,2024-02-25,2024-03-02,2,1305
+Region 6,Région de santé publique 6,202409,2024-02-25,2024-03-02,2,1306
+Region 7,Région de santé publique 7,202409,2024-02-25,2024-03-02,1,1307
+Nord-est,Nord-est,202409,2024-02-25,2024-03-02,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202409,2024-02-25,2024-03-02,2,2412
+Centre-du-Québec,Centre-du-Québec,202409,2024-02-25,2024-03-02,2,2404
+Montréal et Laval,Montréal et Laval,202409,2024-02-25,2024-03-02,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202409,2024-02-25,2024-03-02,2,2414
+Montérégie,Montérégie,202409,2024-02-25,2024-03-02,2,2416
+Central East,Centre-Est,202409,2024-02-25,2024-03-02,3,3570
+Central West,Centre-Ouest,202409,2024-02-25,2024-03-02,3,3527
+Eastern,Est,202409,2024-02-25,2024-03-02,3,3551
+North East,Nord-Est,202409,2024-02-25,2024-03-02,3,3547
+North West,Nord-Ouest,202409,2024-02-25,2024-03-02,3,3549
+South West,Sud-Ouest,202409,2024-02-25,2024-03-02,3,3531
+Toronto,Toronto,202409,2024-02-25,2024-03-02,3,3595
+North,Nord,202409,2024-02-25,2024-03-02,2,4708
+Central,Centre,202409,2024-02-25,2024-03-02,2,4705
+South,Sud,202409,2024-02-25,2024-03-02,2,4701
+North Zone,Du nord,202409,2024-02-25,2024-03-02,2,4835
+Edmonton,Edmonton,202409,2024-02-25,2024-03-02,2,4834
+Central Zone,Centre,202409,2024-02-25,2024-03-02,2,4833
+Calgary,Calgary,202409,2024-02-25,2024-03-02,2,4832
+South Zone,Du sud,202409,2024-02-25,2024-03-02,2,4831
+Interior,Intérieur,202409,2024-02-25,2024-03-02,3,5911
+Fraser,Fraser,202409,2024-02-25,2024-03-02,2,5921
+Vancouver Coastal,Vancouver Coastal,202409,2024-02-25,2024-03-02,3,5931
+Vancouver Island,Île de Vancouver,202409,2024-02-25,2024-03-02,2,5941
+Northern,Nord,202409,2024-02-25,2024-03-02,3,5951
+Yukon,Yukon,202409,2024-02-25,2024-03-02,2,6001
+North,Région nord des TNO,202409,2024-02-25,2024-03-02,2,6101
+South,Région sud des TNO,202409,2024-02-25,2024-03-02,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202409,2024-02-25,2024-03-02,1,6204
+Kivalliq,Kivalliq,202409,2024-02-25,2024-03-02,2,6205
+Kitimeot,Kitimeot,202409,2024-02-25,2024-03-02,1,6208
+Eastern,Est,202410,2024-03-03,2024-03-09,2,1011
+Labrador-Grenfell,Grenfell Labrador,202410,2024-03-03,2024-03-09,2,1014
+Central,Centre,202410,2024-03-03,2024-03-09,1,1012
+Western,Ouest,202410,2024-03-03,2024-03-09,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202410,2024-03-03,2024-03-09,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202410,2024-03-03,2024-03-09,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202410,2024-03-03,2024-03-09,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202410,2024-03-03,2024-03-09,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202410,2024-03-03,2024-03-09,2,1269
+Region 1,Région de santé publique 1,202410,2024-03-03,2024-03-09,2,1301
+Region 2,Région de santé publique 2,202410,2024-03-03,2024-03-09,2,1302
+Region 3,Région de santé publique 3,202410,2024-03-03,2024-03-09,3,1303
+Region 4,Région de santé publique 4,202410,2024-03-03,2024-03-09,2,1304
+Region 5,Région de santé publique 5,202410,2024-03-03,2024-03-09,2,1305
+Region 6,Région de santé publique 6,202410,2024-03-03,2024-03-09,2,1306
+Region 7,Région de santé publique 7,202410,2024-03-03,2024-03-09,1,1307
+Nord-est,Nord-est,202410,2024-03-03,2024-03-09,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202410,2024-03-03,2024-03-09,2,2412
+Centre-du-Québec,Centre-du-Québec,202410,2024-03-03,2024-03-09,2,2404
+Montréal et Laval,Montréal et Laval,202410,2024-03-03,2024-03-09,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202410,2024-03-03,2024-03-09,2,2414
+Montérégie,Montérégie,202410,2024-03-03,2024-03-09,2,2416
+Central East,Centre-Est,202410,2024-03-03,2024-03-09,3,3570
+Central West,Centre-Ouest,202410,2024-03-03,2024-03-09,3,3527
+Eastern,Est,202410,2024-03-03,2024-03-09,3,3551
+North East,Nord-Est,202410,2024-03-03,2024-03-09,3,3547
+North West,Nord-Ouest,202410,2024-03-03,2024-03-09,3,3549
+South West,Sud-Ouest,202410,2024-03-03,2024-03-09,3,3531
+Toronto,Toronto,202410,2024-03-03,2024-03-09,3,3595
+North,Nord,202410,2024-03-03,2024-03-09,2,4708
+Central,Centre,202410,2024-03-03,2024-03-09,2,4705
+South,Sud,202410,2024-03-03,2024-03-09,2,4701
+North Zone,Du nord,202410,2024-03-03,2024-03-09,2,4835
+Edmonton,Edmonton,202410,2024-03-03,2024-03-09,2,4834
+Central Zone,Centre,202410,2024-03-03,2024-03-09,2,4833
+Calgary,Calgary,202410,2024-03-03,2024-03-09,3,4832
+South Zone,Du sud,202410,2024-03-03,2024-03-09,2,4831
+Interior,Intérieur,202410,2024-03-03,2024-03-09,2,5911
+Fraser,Fraser,202410,2024-03-03,2024-03-09,2,5921
+Vancouver Coastal,Vancouver Coastal,202410,2024-03-03,2024-03-09,3,5931
+Vancouver Island,Île de Vancouver,202410,2024-03-03,2024-03-09,2,5941
+Northern,Nord,202410,2024-03-03,2024-03-09,3,5951
+Yukon,Yukon,202410,2024-03-03,2024-03-09,2,6001
+North,Région nord des TNO,202410,2024-03-03,2024-03-09,2,6101
+South,Région sud des TNO,202410,2024-03-03,2024-03-09,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202410,2024-03-03,2024-03-09,1,6204
+Kivalliq,Kivalliq,202410,2024-03-03,2024-03-09,2,6205
+Kitimeot,Kitimeot,202410,2024-03-03,2024-03-09,1,6208
+Eastern,Est,202411,2024-03-10,2024-03-16,2,1011
+Labrador-Grenfell,Grenfell Labrador,202411,2024-03-10,2024-03-16,2,1014
+Central,Centre,202411,2024-03-10,2024-03-16,2,1012
+Western,Ouest,202411,2024-03-10,2024-03-16,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202411,2024-03-10,2024-03-16,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202411,2024-03-10,2024-03-16,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202411,2024-03-10,2024-03-16,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202411,2024-03-10,2024-03-16,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202411,2024-03-10,2024-03-16,2,1269
+Region 1,Région de santé publique 1,202411,2024-03-10,2024-03-16,3,1301
+Region 2,Région de santé publique 2,202411,2024-03-10,2024-03-16,3,1302
+Region 3,Région de santé publique 3,202411,2024-03-10,2024-03-16,3,1303
+Region 4,Région de santé publique 4,202411,2024-03-10,2024-03-16,2,1304
+Region 5,Région de santé publique 5,202411,2024-03-10,2024-03-16,2,1305
+Region 6,Région de santé publique 6,202411,2024-03-10,2024-03-16,2,1306
+Region 7,Région de santé publique 7,202411,2024-03-10,2024-03-16,2,1307
+Nord-est,Nord-est,202411,2024-03-10,2024-03-16,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202411,2024-03-10,2024-03-16,2,2412
+Centre-du-Québec,Centre-du-Québec,202411,2024-03-10,2024-03-16,2,2404
+Montréal et Laval,Montréal et Laval,202411,2024-03-10,2024-03-16,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202411,2024-03-10,2024-03-16,2,2414
+Montérégie,Montérégie,202411,2024-03-10,2024-03-16,2,2416
+Central East,Centre-Est,202411,2024-03-10,2024-03-16,3,3570
+Central West,Centre-Ouest,202411,2024-03-10,2024-03-16,3,3527
+Eastern,Est,202411,2024-03-10,2024-03-16,3,3551
+North East,Nord-Est,202411,2024-03-10,2024-03-16,3,3547
+North West,Nord-Ouest,202411,2024-03-10,2024-03-16,2,3549
+South West,Sud-Ouest,202411,2024-03-10,2024-03-16,3,3531
+Toronto,Toronto,202411,2024-03-10,2024-03-16,3,3595
+North,Nord,202411,2024-03-10,2024-03-16,2,4708
+Central,Centre,202411,2024-03-10,2024-03-16,2,4705
+South,Sud,202411,2024-03-10,2024-03-16,3,4701
+North Zone,Du nord,202411,2024-03-10,2024-03-16,2,4835
+Edmonton,Edmonton,202411,2024-03-10,2024-03-16,2,4834
+Central Zone,Centre,202411,2024-03-10,2024-03-16,2,4833
+Calgary,Calgary,202411,2024-03-10,2024-03-16,2,4832
+South Zone,Du sud,202411,2024-03-10,2024-03-16,2,4831
+Interior,Intérieur,202411,2024-03-10,2024-03-16,2,5911
+Fraser,Fraser,202411,2024-03-10,2024-03-16,2,5921
+Vancouver Coastal,Vancouver Coastal,202411,2024-03-10,2024-03-16,3,5931
+Vancouver Island,Île de Vancouver,202411,2024-03-10,2024-03-16,3,5941
+Northern,Nord,202411,2024-03-10,2024-03-16,2,5951
+Yukon,Yukon,202411,2024-03-10,2024-03-16,2,6001
+North,Région nord des TNO,202411,2024-03-10,2024-03-16,2,6101
+South,Région sud des TNO,202411,2024-03-10,2024-03-16,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202411,2024-03-10,2024-03-16,1,6204
+Kivalliq,Kivalliq,202411,2024-03-10,2024-03-16,2,6205
+Kitimeot,Kitimeot,202411,2024-03-10,2024-03-16,2,6208
+Eastern,Est,202412,2024-03-17,2024-03-23,2,1011
+Labrador-Grenfell,Grenfell Labrador,202412,2024-03-17,2024-03-23,2,1014
+Central,Centre,202412,2024-03-17,2024-03-23,2,1012
+Western,Ouest,202412,2024-03-17,2024-03-23,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202412,2024-03-17,2024-03-23,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202412,2024-03-17,2024-03-23,3,1211
+Zone 2 - Northern,Zone 2 - Nord,202412,2024-03-17,2024-03-23,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202412,2024-03-17,2024-03-23,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202412,2024-03-17,2024-03-23,2,1269
+Region 1,Région de santé publique 1,202412,2024-03-17,2024-03-23,2,1301
+Region 2,Région de santé publique 2,202412,2024-03-17,2024-03-23,3,1302
+Region 3,Région de santé publique 3,202412,2024-03-17,2024-03-23,3,1303
+Region 4,Région de santé publique 4,202412,2024-03-17,2024-03-23,2,1304
+Region 5,Région de santé publique 5,202412,2024-03-17,2024-03-23,2,1305
+Region 6,Région de santé publique 6,202412,2024-03-17,2024-03-23,2,1306
+Region 7,Région de santé publique 7,202412,2024-03-17,2024-03-23,3,1307
+Nord-est,Nord-est,202412,2024-03-17,2024-03-23,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202412,2024-03-17,2024-03-23,2,2412
+Centre-du-Québec,Centre-du-Québec,202412,2024-03-17,2024-03-23,2,2404
+Montréal et Laval,Montréal et Laval,202412,2024-03-17,2024-03-23,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202412,2024-03-17,2024-03-23,2,2414
+Montérégie,Montérégie,202412,2024-03-17,2024-03-23,2,2416
+Central East,Centre-Est,202412,2024-03-17,2024-03-23,3,3570
+Central West,Centre-Ouest,202412,2024-03-17,2024-03-23,3,3527
+Eastern,Est,202412,2024-03-17,2024-03-23,3,3551
+North East,Nord-Est,202412,2024-03-17,2024-03-23,3,3547
+North West,Nord-Ouest,202412,2024-03-17,2024-03-23,2,3549
+South West,Sud-Ouest,202412,2024-03-17,2024-03-23,3,3531
+Toronto,Toronto,202412,2024-03-17,2024-03-23,3,3595
+North,Nord,202412,2024-03-17,2024-03-23,2,4708
+Central,Centre,202412,2024-03-17,2024-03-23,2,4705
+South,Sud,202412,2024-03-17,2024-03-23,2,4701
+North Zone,Du nord,202412,2024-03-17,2024-03-23,2,4835
+Edmonton,Edmonton,202412,2024-03-17,2024-03-23,2,4834
+Central Zone,Centre,202412,2024-03-17,2024-03-23,2,4833
+Calgary,Calgary,202412,2024-03-17,2024-03-23,2,4832
+South Zone,Du sud,202412,2024-03-17,2024-03-23,2,4831
+Interior,Intérieur,202412,2024-03-17,2024-03-23,2,5911
+Fraser,Fraser,202412,2024-03-17,2024-03-23,3,5921
+Vancouver Coastal,Vancouver Coastal,202412,2024-03-17,2024-03-23,2,5931
+Vancouver Island,Île de Vancouver,202412,2024-03-17,2024-03-23,2,5941
+Northern,Nord,202412,2024-03-17,2024-03-23,2,5951
+Yukon,Yukon,202412,2024-03-17,2024-03-23,2,6001
+North,Région nord des TNO,202412,2024-03-17,2024-03-23,2,6101
+South,Région sud des TNO,202412,2024-03-17,2024-03-23,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202412,2024-03-17,2024-03-23,2,6204
+Kivalliq,Kivalliq,202412,2024-03-17,2024-03-23,3,6205
+Kitimeot,Kitimeot,202412,2024-03-17,2024-03-23,1,6208
+Eastern,Est,202413,2024-03-24,2024-03-30,2,1011
+Labrador-Grenfell,Grenfell Labrador,202413,2024-03-24,2024-03-30,1,1014
+Central,Centre,202413,2024-03-24,2024-03-30,1,1012
+Western,Ouest,202413,2024-03-24,2024-03-30,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202413,2024-03-24,2024-03-30,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202413,2024-03-24,2024-03-30,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202413,2024-03-24,2024-03-30,3,1234
+Zone 3 - Eastern,Zone 3 - Est,202413,2024-03-24,2024-03-30,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202413,2024-03-24,2024-03-30,2,1269
+Region 1,Région de santé publique 1,202413,2024-03-24,2024-03-30,3,1301
+Region 2,Région de santé publique 2,202413,2024-03-24,2024-03-30,3,1302
+Region 3,Région de santé publique 3,202413,2024-03-24,2024-03-30,3,1303
+Region 4,Région de santé publique 4,202413,2024-03-24,2024-03-30,2,1304
+Region 5,Région de santé publique 5,202413,2024-03-24,2024-03-30,2,1305
+Region 6,Région de santé publique 6,202413,2024-03-24,2024-03-30,2,1306
+Region 7,Région de santé publique 7,202413,2024-03-24,2024-03-30,2,1307
+Nord-est,Nord-est,202413,2024-03-24,2024-03-30,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202413,2024-03-24,2024-03-30,2,2412
+Centre-du-Québec,Centre-du-Québec,202413,2024-03-24,2024-03-30,2,2404
+Montréal et Laval,Montréal et Laval,202413,2024-03-24,2024-03-30,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202413,2024-03-24,2024-03-30,2,2414
+Montérégie,Montérégie,202413,2024-03-24,2024-03-30,2,2416
+Central East,Centre-Est,202413,2024-03-24,2024-03-30,3,3570
+Central West,Centre-Ouest,202413,2024-03-24,2024-03-30,3,3527
+Eastern,Est,202413,2024-03-24,2024-03-30,3,3551
+North East,Nord-Est,202413,2024-03-24,2024-03-30,3,3547
+North West,Nord-Ouest,202413,2024-03-24,2024-03-30,2,3549
+South West,Sud-Ouest,202413,2024-03-24,2024-03-30,3,3531
+Toronto,Toronto,202413,2024-03-24,2024-03-30,3,3595
+North,Nord,202413,2024-03-24,2024-03-30,2,4708
+Central,Centre,202413,2024-03-24,2024-03-30,2,4705
+South,Sud,202413,2024-03-24,2024-03-30,2,4701
+North Zone,Du nord,202413,2024-03-24,2024-03-30,2,4835
+Edmonton,Edmonton,202413,2024-03-24,2024-03-30,3,4834
+Central Zone,Centre,202413,2024-03-24,2024-03-30,2,4833
+Calgary,Calgary,202413,2024-03-24,2024-03-30,2,4832
+South Zone,Du sud,202413,2024-03-24,2024-03-30,2,4831
+Interior,Intérieur,202413,2024-03-24,2024-03-30,2,5911
+Fraser,Fraser,202413,2024-03-24,2024-03-30,3,5921
+Vancouver Coastal,Vancouver Coastal,202413,2024-03-24,2024-03-30,3,5931
+Vancouver Island,Île de Vancouver,202413,2024-03-24,2024-03-30,2,5941
+Northern,Nord,202413,2024-03-24,2024-03-30,2,5951
+Yukon,Yukon,202413,2024-03-24,2024-03-30,1,6001
+North,Région nord des TNO,202413,2024-03-24,2024-03-30,2,6101
+South,Région sud des TNO,202413,2024-03-24,2024-03-30,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202413,2024-03-24,2024-03-30,2,6204
+Kivalliq,Kivalliq,202413,2024-03-24,2024-03-30,3,6205
+Kitimeot,Kitimeot,202413,2024-03-24,2024-03-30,2,6208
+Eastern,Est,202414,2024-03-31,2024-04-06,2,1011
+Labrador-Grenfell,Grenfell Labrador,202414,2024-03-31,2024-04-06,2,1014
+Central,Centre,202414,2024-03-31,2024-04-06,2,1012
+Western,Ouest,202414,2024-03-31,2024-04-06,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202414,2024-03-31,2024-04-06,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202414,2024-03-31,2024-04-06,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202414,2024-03-31,2024-04-06,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202414,2024-03-31,2024-04-06,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202414,2024-03-31,2024-04-06,2,1269
+Region 1,Région de santé publique 1,202414,2024-03-31,2024-04-06,2,1301
+Region 2,Région de santé publique 2,202414,2024-03-31,2024-04-06,3,1302
+Region 3,Région de santé publique 3,202414,2024-03-31,2024-04-06,2,1303
+Region 4,Région de santé publique 4,202414,2024-03-31,2024-04-06,2,1304
+Region 5,Région de santé publique 5,202414,2024-03-31,2024-04-06,2,1305
+Region 6,Région de santé publique 6,202414,2024-03-31,2024-04-06,2,1306
+Region 7,Région de santé publique 7,202414,2024-03-31,2024-04-06,3,1307
+Nord-est,Nord-est,202414,2024-03-31,2024-04-06,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202414,2024-03-31,2024-04-06,2,2412
+Centre-du-Québec,Centre-du-Québec,202414,2024-03-31,2024-04-06,2,2404
+Montréal et Laval,Montréal et Laval,202414,2024-03-31,2024-04-06,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202414,2024-03-31,2024-04-06,2,2414
+Montérégie,Montérégie,202414,2024-03-31,2024-04-06,2,2416
+Central East,Centre-Est,202414,2024-03-31,2024-04-06,3,3570
+Central West,Centre-Ouest,202414,2024-03-31,2024-04-06,3,3527
+Eastern,Est,202414,2024-03-31,2024-04-06,3,3551
+North East,Nord-Est,202414,2024-03-31,2024-04-06,3,3547
+North West,Nord-Ouest,202414,2024-03-31,2024-04-06,2,3549
+South West,Sud-Ouest,202414,2024-03-31,2024-04-06,3,3531
+Toronto,Toronto,202414,2024-03-31,2024-04-06,3,3595
+North,Nord,202414,2024-03-31,2024-04-06,3,4708
+Central,Centre,202414,2024-03-31,2024-04-06,2,4705
+South,Sud,202414,2024-03-31,2024-04-06,2,4701
+North Zone,Du nord,202414,2024-03-31,2024-04-06,2,4835
+Edmonton,Edmonton,202414,2024-03-31,2024-04-06,3,4834
+Central Zone,Centre,202414,2024-03-31,2024-04-06,3,4833
+Calgary,Calgary,202414,2024-03-31,2024-04-06,2,4832
+South Zone,Du sud,202414,2024-03-31,2024-04-06,2,4831
+Interior,Intérieur,202414,2024-03-31,2024-04-06,2,5911
+Fraser,Fraser,202414,2024-03-31,2024-04-06,2,5921
+Vancouver Coastal,Vancouver Coastal,202414,2024-03-31,2024-04-06,2,5931
+Vancouver Island,Île de Vancouver,202414,2024-03-31,2024-04-06,2,5941
+Northern,Nord,202414,2024-03-31,2024-04-06,3,5951
+Yukon,Yukon,202414,2024-03-31,2024-04-06,2,6001
+North,Région nord des TNO,202414,2024-03-31,2024-04-06,1,6101
+South,Région sud des TNO,202414,2024-03-31,2024-04-06,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202414,2024-03-31,2024-04-06,2,6204
+Kivalliq,Kivalliq,202414,2024-03-31,2024-04-06,2,6205
+Kitimeot,Kitimeot,202414,2024-03-31,2024-04-06,1,6208
+Eastern,Est,202415,2024-04-07,2024-04-13,2,1011
+Labrador-Grenfell,Grenfell Labrador,202415,2024-04-07,2024-04-13,1,1014
+Central,Centre,202415,2024-04-07,2024-04-13,2,1012
+Western,Ouest,202415,2024-04-07,2024-04-13,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202415,2024-04-07,2024-04-13,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202415,2024-04-07,2024-04-13,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202415,2024-04-07,2024-04-13,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202415,2024-04-07,2024-04-13,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202415,2024-04-07,2024-04-13,2,1269
+Region 1,Région de santé publique 1,202415,2024-04-07,2024-04-13,2,1301
+Region 2,Région de santé publique 2,202415,2024-04-07,2024-04-13,2,1302
+Region 3,Région de santé publique 3,202415,2024-04-07,2024-04-13,3,1303
+Region 4,Région de santé publique 4,202415,2024-04-07,2024-04-13,2,1304
+Region 5,Région de santé publique 5,202415,2024-04-07,2024-04-13,2,1305
+Region 6,Région de santé publique 6,202415,2024-04-07,2024-04-13,2,1306
+Region 7,Région de santé publique 7,202415,2024-04-07,2024-04-13,2,1307
+Nord-est,Nord-est,202415,2024-04-07,2024-04-13,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202415,2024-04-07,2024-04-13,2,2412
+Centre-du-Québec,Centre-du-Québec,202415,2024-04-07,2024-04-13,2,2404
+Montréal et Laval,Montréal et Laval,202415,2024-04-07,2024-04-13,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202415,2024-04-07,2024-04-13,2,2414
+Montérégie,Montérégie,202415,2024-04-07,2024-04-13,2,2416
+Central East,Centre-Est,202415,2024-04-07,2024-04-13,3,3570
+Central West,Centre-Ouest,202415,2024-04-07,2024-04-13,3,3527
+Eastern,Est,202415,2024-04-07,2024-04-13,3,3551
+North East,Nord-Est,202415,2024-04-07,2024-04-13,3,3547
+North West,Nord-Ouest,202415,2024-04-07,2024-04-13,2,3549
+South West,Sud-Ouest,202415,2024-04-07,2024-04-13,3,3531
+Toronto,Toronto,202415,2024-04-07,2024-04-13,3,3595
+North,Nord,202415,2024-04-07,2024-04-13,3,4708
+Central,Centre,202415,2024-04-07,2024-04-13,2,4705
+South,Sud,202415,2024-04-07,2024-04-13,2,4701
+North Zone,Du nord,202415,2024-04-07,2024-04-13,2,4835
+Edmonton,Edmonton,202415,2024-04-07,2024-04-13,2,4834
+Central Zone,Centre,202415,2024-04-07,2024-04-13,2,4833
+Calgary,Calgary,202415,2024-04-07,2024-04-13,2,4832
+South Zone,Du sud,202415,2024-04-07,2024-04-13,2,4831
+Interior,Intérieur,202415,2024-04-07,2024-04-13,2,5911
+Fraser,Fraser,202415,2024-04-07,2024-04-13,2,5921
+Vancouver Coastal,Vancouver Coastal,202415,2024-04-07,2024-04-13,2,5931
+Vancouver Island,Île de Vancouver,202415,2024-04-07,2024-04-13,3,5941
+Northern,Nord,202415,2024-04-07,2024-04-13,2,5951
+Yukon,Yukon,202415,2024-04-07,2024-04-13,2,6001
+North,Région nord des TNO,202415,2024-04-07,2024-04-13,2,6101
+South,Région sud des TNO,202415,2024-04-07,2024-04-13,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202415,2024-04-07,2024-04-13,2,6204
+Kivalliq,Kivalliq,202415,2024-04-07,2024-04-13,2,6205
+Kitimeot,Kitimeot,202415,2024-04-07,2024-04-13,2,6208
+Eastern,Est,202416,2024-04-14,2024-04-20,2,1011
+Labrador-Grenfell,Grenfell Labrador,202416,2024-04-14,2024-04-20,1,1014
+Central,Centre,202416,2024-04-14,2024-04-20,2,1012
+Western,Ouest,202416,2024-04-14,2024-04-20,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202416,2024-04-14,2024-04-20,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202416,2024-04-14,2024-04-20,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202416,2024-04-14,2024-04-20,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202416,2024-04-14,2024-04-20,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202416,2024-04-14,2024-04-20,2,1269
+Region 1,Région de santé publique 1,202416,2024-04-14,2024-04-20,2,1301
+Region 2,Région de santé publique 2,202416,2024-04-14,2024-04-20,2,1302
+Region 3,Région de santé publique 3,202416,2024-04-14,2024-04-20,2,1303
+Region 4,Région de santé publique 4,202416,2024-04-14,2024-04-20,2,1304
+Region 5,Région de santé publique 5,202416,2024-04-14,2024-04-20,2,1305
+Region 6,Région de santé publique 6,202416,2024-04-14,2024-04-20,2,1306
+Region 7,Région de santé publique 7,202416,2024-04-14,2024-04-20,2,1307
+Nord-est,Nord-est,202416,2024-04-14,2024-04-20,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202416,2024-04-14,2024-04-20,2,2412
+Centre-du-Québec,Centre-du-Québec,202416,2024-04-14,2024-04-20,2,2404
+Montréal et Laval,Montréal et Laval,202416,2024-04-14,2024-04-20,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202416,2024-04-14,2024-04-20,2,2414
+Montérégie,Montérégie,202416,2024-04-14,2024-04-20,2,2416
+Central East,Centre-Est,202416,2024-04-14,2024-04-20,3,3570
+Central West,Centre-Ouest,202416,2024-04-14,2024-04-20,3,3527
+Eastern,Est,202416,2024-04-14,2024-04-20,3,3551
+North East,Nord-Est,202416,2024-04-14,2024-04-20,3,3547
+North West,Nord-Ouest,202416,2024-04-14,2024-04-20,3,3549
+South West,Sud-Ouest,202416,2024-04-14,2024-04-20,3,3531
+Toronto,Toronto,202416,2024-04-14,2024-04-20,3,3595
+North,Nord,202416,2024-04-14,2024-04-20,2,4708
+Central,Centre,202416,2024-04-14,2024-04-20,2,4705
+South,Sud,202416,2024-04-14,2024-04-20,2,4701
+North Zone,Du nord,202416,2024-04-14,2024-04-20,2,4835
+Edmonton,Edmonton,202416,2024-04-14,2024-04-20,2,4834
+Central Zone,Centre,202416,2024-04-14,2024-04-20,2,4833
+Calgary,Calgary,202416,2024-04-14,2024-04-20,3,4832
+South Zone,Du sud,202416,2024-04-14,2024-04-20,2,4831
+Interior,Intérieur,202416,2024-04-14,2024-04-20,2,5911
+Fraser,Fraser,202416,2024-04-14,2024-04-20,2,5921
+Vancouver Coastal,Vancouver Coastal,202416,2024-04-14,2024-04-20,2,5931
+Vancouver Island,Île de Vancouver,202416,2024-04-14,2024-04-20,3,5941
+Northern,Nord,202416,2024-04-14,2024-04-20,2,5951
+Yukon,Yukon,202416,2024-04-14,2024-04-20,2,6001
+North,Région nord des TNO,202416,2024-04-14,2024-04-20,2,6101
+South,Région sud des TNO,202416,2024-04-14,2024-04-20,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202416,2024-04-14,2024-04-20,1,6204
+Kivalliq,Kivalliq,202416,2024-04-14,2024-04-20,2,6205
+Kitimeot,Kitimeot,202416,2024-04-14,2024-04-20,1,6208
+Eastern,Est,202417,2024-04-21,2024-04-27,2,1011
+Labrador-Grenfell,Grenfell Labrador,202417,2024-04-21,2024-04-27,2,1014
+Central,Centre,202417,2024-04-21,2024-04-27,2,1012
+Western,Ouest,202417,2024-04-21,2024-04-27,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202417,2024-04-21,2024-04-27,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202417,2024-04-21,2024-04-27,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202417,2024-04-21,2024-04-27,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202417,2024-04-21,2024-04-27,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202417,2024-04-21,2024-04-27,2,1269
+Region 1,Région de santé publique 1,202417,2024-04-21,2024-04-27,2,1301
+Region 2,Région de santé publique 2,202417,2024-04-21,2024-04-27,2,1302
+Region 3,Région de santé publique 3,202417,2024-04-21,2024-04-27,2,1303
+Region 4,Région de santé publique 4,202417,2024-04-21,2024-04-27,2,1304
+Region 5,Région de santé publique 5,202417,2024-04-21,2024-04-27,2,1305
+Region 6,Région de santé publique 6,202417,2024-04-21,2024-04-27,2,1306
+Region 7,Région de santé publique 7,202417,2024-04-21,2024-04-27,2,1307
+Nord-est,Nord-est,202417,2024-04-21,2024-04-27,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202417,2024-04-21,2024-04-27,2,2412
+Centre-du-Québec,Centre-du-Québec,202417,2024-04-21,2024-04-27,2,2404
+Montréal et Laval,Montréal et Laval,202417,2024-04-21,2024-04-27,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202417,2024-04-21,2024-04-27,2,2414
+Montérégie,Montérégie,202417,2024-04-21,2024-04-27,2,2416
+Central East,Centre-Est,202417,2024-04-21,2024-04-27,3,3570
+Central West,Centre-Ouest,202417,2024-04-21,2024-04-27,3,3527
+Eastern,Est,202417,2024-04-21,2024-04-27,3,3551
+North East,Nord-Est,202417,2024-04-21,2024-04-27,3,3547
+North West,Nord-Ouest,202417,2024-04-21,2024-04-27,3,3549
+South West,Sud-Ouest,202417,2024-04-21,2024-04-27,3,3531
+Toronto,Toronto,202417,2024-04-21,2024-04-27,3,3595
+North,Nord,202417,2024-04-21,2024-04-27,2,4708
+Central,Centre,202417,2024-04-21,2024-04-27,2,4705
+South,Sud,202417,2024-04-21,2024-04-27,3,4701
+North Zone,Du nord,202417,2024-04-21,2024-04-27,2,4835
+Edmonton,Edmonton,202417,2024-04-21,2024-04-27,2,4834
+Central Zone,Centre,202417,2024-04-21,2024-04-27,2,4833
+Calgary,Calgary,202417,2024-04-21,2024-04-27,2,4832
+South Zone,Du sud,202417,2024-04-21,2024-04-27,2,4831
+Interior,Intérieur,202417,2024-04-21,2024-04-27,2,5911
+Fraser,Fraser,202417,2024-04-21,2024-04-27,3,5921
+Vancouver Coastal,Vancouver Coastal,202417,2024-04-21,2024-04-27,2,5931
+Vancouver Island,Île de Vancouver,202417,2024-04-21,2024-04-27,3,5941
+Northern,Nord,202417,2024-04-21,2024-04-27,2,5951
+Yukon,Yukon,202417,2024-04-21,2024-04-27,2,6001
+North,Région nord des TNO,202417,2024-04-21,2024-04-27,1,6101
+South,Région sud des TNO,202417,2024-04-21,2024-04-27,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202417,2024-04-21,2024-04-27,2,6204
+Kivalliq,Kivalliq,202417,2024-04-21,2024-04-27,2,6205
+Kitimeot,Kitimeot,202417,2024-04-21,2024-04-27,1,6208
+Eastern,Est,202418,2024-04-28,2024-05-04,2,1011
+Labrador-Grenfell,Grenfell Labrador,202418,2024-04-28,2024-05-04,2,1014
+Central,Centre,202418,2024-04-28,2024-05-04,2,1012
+Western,Ouest,202418,2024-04-28,2024-05-04,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202418,2024-04-28,2024-05-04,3,1103
+Zone 1 - Western,Zone 1 - Ouest,202418,2024-04-28,2024-05-04,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202418,2024-04-28,2024-05-04,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202418,2024-04-28,2024-05-04,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202418,2024-04-28,2024-05-04,2,1269
+Region 1,Région de santé publique 1,202418,2024-04-28,2024-05-04,2,1301
+Region 2,Région de santé publique 2,202418,2024-04-28,2024-05-04,2,1302
+Region 3,Région de santé publique 3,202418,2024-04-28,2024-05-04,2,1303
+Region 4,Région de santé publique 4,202418,2024-04-28,2024-05-04,1,1304
+Region 5,Région de santé publique 5,202418,2024-04-28,2024-05-04,1,1305
+Region 6,Région de santé publique 6,202418,2024-04-28,2024-05-04,2,1306
+Region 7,Région de santé publique 7,202418,2024-04-28,2024-05-04,2,1307
+Nord-est,Nord-est,202418,2024-04-28,2024-05-04,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202418,2024-04-28,2024-05-04,2,2412
+Centre-du-Québec,Centre-du-Québec,202418,2024-04-28,2024-05-04,2,2404
+Montréal et Laval,Montréal et Laval,202418,2024-04-28,2024-05-04,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202418,2024-04-28,2024-05-04,2,2414
+Montérégie,Montérégie,202418,2024-04-28,2024-05-04,2,2416
+Central East,Centre-Est,202418,2024-04-28,2024-05-04,3,3570
+Central West,Centre-Ouest,202418,2024-04-28,2024-05-04,3,3527
+Eastern,Est,202418,2024-04-28,2024-05-04,3,3551
+North East,Nord-Est,202418,2024-04-28,2024-05-04,3,3547
+North West,Nord-Ouest,202418,2024-04-28,2024-05-04,3,3549
+South West,Sud-Ouest,202418,2024-04-28,2024-05-04,3,3531
+Toronto,Toronto,202418,2024-04-28,2024-05-04,3,3595
+North,Nord,202418,2024-04-28,2024-05-04,2,4708
+Central,Centre,202418,2024-04-28,2024-05-04,2,4705
+South,Sud,202418,2024-04-28,2024-05-04,2,4701
+North Zone,Du nord,202418,2024-04-28,2024-05-04,2,4835
+Edmonton,Edmonton,202418,2024-04-28,2024-05-04,2,4834
+Central Zone,Centre,202418,2024-04-28,2024-05-04,2,4833
+Calgary,Calgary,202418,2024-04-28,2024-05-04,2,4832
+South Zone,Du sud,202418,2024-04-28,2024-05-04,2,4831
+Yukon,Yukon,202418,2024-04-28,2024-05-04,2,6001
+North,Région nord des TNO,202418,2024-04-28,2024-05-04,2,6101
+South,Région sud des TNO,202418,2024-04-28,2024-05-04,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202418,2024-04-28,2024-05-04,2,6204
+Kivalliq,Kivalliq,202418,2024-04-28,2024-05-04,1,6205
+Kitimeot,Kitimeot,202418,2024-04-28,2024-05-04,2,6208
+Eastern,Est,202419,2024-05-05,2024-05-11,2,1011
+Labrador-Grenfell,Grenfell Labrador,202419,2024-05-05,2024-05-11,2,1014
+Central,Centre,202419,2024-05-05,2024-05-11,2,1012
+Western,Ouest,202419,2024-05-05,2024-05-11,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202419,2024-05-05,2024-05-11,2,1103
+Zone 1 - Western,Zone 1 - Ouest,202419,2024-05-05,2024-05-11,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202419,2024-05-05,2024-05-11,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202419,2024-05-05,2024-05-11,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202419,2024-05-05,2024-05-11,2,1269
+Region 1,Région de santé publique 1,202419,2024-05-05,2024-05-11,2,1301
+Region 2,Région de santé publique 2,202419,2024-05-05,2024-05-11,2,1302
+Region 3,Région de santé publique 3,202419,2024-05-05,2024-05-11,2,1303
+Region 4,Région de santé publique 4,202419,2024-05-05,2024-05-11,1,1304
+Region 5,Région de santé publique 5,202419,2024-05-05,2024-05-11,1,1305
+Region 6,Région de santé publique 6,202419,2024-05-05,2024-05-11,2,1306
+Region 7,Région de santé publique 7,202419,2024-05-05,2024-05-11,1,1307
+Nord-est,Nord-est,202419,2024-05-05,2024-05-11,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202419,2024-05-05,2024-05-11,2,2412
+Centre-du-Québec,Centre-du-Québec,202419,2024-05-05,2024-05-11,2,2404
+Montréal et Laval,Montréal et Laval,202419,2024-05-05,2024-05-11,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202419,2024-05-05,2024-05-11,2,2414
+Montérégie,Montérégie,202419,2024-05-05,2024-05-11,2,2416
+Central East,Centre-Est,202419,2024-05-05,2024-05-11,3,3570
+Central West,Centre-Ouest,202419,2024-05-05,2024-05-11,3,3527
+Eastern,Est,202419,2024-05-05,2024-05-11,3,3551
+North East,Nord-Est,202419,2024-05-05,2024-05-11,3,3547
+North West,Nord-Ouest,202419,2024-05-05,2024-05-11,3,3549
+South West,Sud-Ouest,202419,2024-05-05,2024-05-11,3,3531
+Toronto,Toronto,202419,2024-05-05,2024-05-11,3,3595
+North,Nord,202419,2024-05-05,2024-05-11,2,4708
+Central,Centre,202419,2024-05-05,2024-05-11,2,4705
+South,Sud,202419,2024-05-05,2024-05-11,2,4701
+North Zone,Du nord,202419,2024-05-05,2024-05-11,2,4835
+Edmonton,Edmonton,202419,2024-05-05,2024-05-11,2,4834
+Central Zone,Centre,202419,2024-05-05,2024-05-11,2,4833
+Calgary,Calgary,202419,2024-05-05,2024-05-11,2,4832
+South Zone,Du sud,202419,2024-05-05,2024-05-11,2,4831
+Yukon,Yukon,202419,2024-05-05,2024-05-11,2,6001
+North,Région nord des TNO,202419,2024-05-05,2024-05-11,1,6101
+South,Région sud des TNO,202419,2024-05-05,2024-05-11,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202419,2024-05-05,2024-05-11,2,6204
+Kivalliq,Kivalliq,202419,2024-05-05,2024-05-11,2,6205
+Kitimeot,Kitimeot,202419,2024-05-05,2024-05-11,1,6208
+Eastern,Est,202420,2024-05-12,2024-05-18,2,1011
+Labrador-Grenfell,Grenfell Labrador,202420,2024-05-12,2024-05-18,2,1014
+Central,Centre,202420,2024-05-12,2024-05-18,2,1012
+Western,Ouest,202420,2024-05-12,2024-05-18,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202420,2024-05-12,2024-05-18,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202420,2024-05-12,2024-05-18,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202420,2024-05-12,2024-05-18,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202420,2024-05-12,2024-05-18,2,1269
+Region 1,Région de santé publique 1,202420,2024-05-12,2024-05-18,2,1301
+Region 2,Région de santé publique 2,202420,2024-05-12,2024-05-18,2,1302
+Region 3,Région de santé publique 3,202420,2024-05-12,2024-05-18,2,1303
+Region 4,Région de santé publique 4,202420,2024-05-12,2024-05-18,1,1304
+Region 5,Région de santé publique 5,202420,2024-05-12,2024-05-18,1,1305
+Region 6,Région de santé publique 6,202420,2024-05-12,2024-05-18,2,1306
+Region 7,Région de santé publique 7,202420,2024-05-12,2024-05-18,2,1307
+Nord-est,Nord-est,202420,2024-05-12,2024-05-18,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202420,2024-05-12,2024-05-18,2,2412
+Centre-du-Québec,Centre-du-Québec,202420,2024-05-12,2024-05-18,2,2404
+Montréal et Laval,Montréal et Laval,202420,2024-05-12,2024-05-18,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202420,2024-05-12,2024-05-18,2,2414
+Montérégie,Montérégie,202420,2024-05-12,2024-05-18,2,2416
+Central East,Centre-Est,202420,2024-05-12,2024-05-18,3,3570
+Central West,Centre-Ouest,202420,2024-05-12,2024-05-18,3,3527
+Eastern,Est,202420,2024-05-12,2024-05-18,3,3551
+North East,Nord-Est,202420,2024-05-12,2024-05-18,3,3547
+North West,Nord-Ouest,202420,2024-05-12,2024-05-18,2,3549
+South West,Sud-Ouest,202420,2024-05-12,2024-05-18,3,3531
+Toronto,Toronto,202420,2024-05-12,2024-05-18,3,3595
+North,Nord,202420,2024-05-12,2024-05-18,2,4708
+Central,Centre,202420,2024-05-12,2024-05-18,2,4705
+South,Sud,202420,2024-05-12,2024-05-18,2,4701
+North Zone,Du nord,202420,2024-05-12,2024-05-18,2,4835
+Edmonton,Edmonton,202420,2024-05-12,2024-05-18,3,4834
+Central Zone,Centre,202420,2024-05-12,2024-05-18,2,4833
+Calgary,Calgary,202420,2024-05-12,2024-05-18,2,4832
+South Zone,Du sud,202420,2024-05-12,2024-05-18,2,4831
+Yukon,Yukon,202420,2024-05-12,2024-05-18,2,6001
+North,Région nord des TNO,202420,2024-05-12,2024-05-18,1,6101
+South,Région sud des TNO,202420,2024-05-12,2024-05-18,2,6103
+Qikiqtaaluk,Qikiqtaaluk,202420,2024-05-12,2024-05-18,2,6204
+Kivalliq,Kivalliq,202420,2024-05-12,2024-05-18,2,6205
+Kitimeot,Kitimeot,202420,2024-05-12,2024-05-18,1,6208
+Eastern,Est,202421,2024-05-19,2024-05-25,2,1011
+Labrador-Grenfell,Grenfell Labrador,202421,2024-05-19,2024-05-25,2,1014
+Central,Centre,202421,2024-05-19,2024-05-25,2,1012
+Western,Ouest,202421,2024-05-19,2024-05-25,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202421,2024-05-19,2024-05-25,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202421,2024-05-19,2024-05-25,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202421,2024-05-19,2024-05-25,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202421,2024-05-19,2024-05-25,2,1269
+Region 1,Région de santé publique 1,202421,2024-05-19,2024-05-25,2,1301
+Region 2,Région de santé publique 2,202421,2024-05-19,2024-05-25,2,1302
+Region 3,Région de santé publique 3,202421,2024-05-19,2024-05-25,2,1303
+Region 4,Région de santé publique 4,202421,2024-05-19,2024-05-25,1,1304
+Region 5,Région de santé publique 5,202421,2024-05-19,2024-05-25,1,1305
+Region 6,Région de santé publique 6,202421,2024-05-19,2024-05-25,2,1306
+Region 7,Région de santé publique 7,202421,2024-05-19,2024-05-25,1,1307
+Nord-est,Nord-est,202421,2024-05-19,2024-05-25,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202421,2024-05-19,2024-05-25,2,2412
+Centre-du-Québec,Centre-du-Québec,202421,2024-05-19,2024-05-25,2,2404
+Montréal et Laval,Montréal et Laval,202421,2024-05-19,2024-05-25,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202421,2024-05-19,2024-05-25,2,2414
+Montérégie,Montérégie,202421,2024-05-19,2024-05-25,2,2416
+Central East,Centre-Est,202421,2024-05-19,2024-05-25,3,3570
+Central West,Centre-Ouest,202421,2024-05-19,2024-05-25,3,3527
+Eastern,Est,202421,2024-05-19,2024-05-25,3,3551
+North East,Nord-Est,202421,2024-05-19,2024-05-25,3,3547
+North West,Nord-Ouest,202421,2024-05-19,2024-05-25,3,3549
+South West,Sud-Ouest,202421,2024-05-19,2024-05-25,3,3531
+Toronto,Toronto,202421,2024-05-19,2024-05-25,3,3595
+North,Nord,202421,2024-05-19,2024-05-25,2,4708
+Central,Centre,202421,2024-05-19,2024-05-25,2,4705
+South,Sud,202421,2024-05-19,2024-05-25,2,4701
+North Zone,Du nord,202421,2024-05-19,2024-05-25,2,4835
+Edmonton,Edmonton,202421,2024-05-19,2024-05-25,2,4834
+Central Zone,Centre,202421,2024-05-19,2024-05-25,2,4833
+Calgary,Calgary,202421,2024-05-19,2024-05-25,2,4832
+South Zone,Du sud,202421,2024-05-19,2024-05-25,2,4831
+Yukon,Yukon,202421,2024-05-19,2024-05-25,2,6001
+North,Région nord des TNO,202421,2024-05-19,2024-05-25,1,6101
+South,Région sud des TNO,202421,2024-05-19,2024-05-25,1,6103
+Qikiqtaaluk,Qikiqtaaluk,202421,2024-05-19,2024-05-25,2,6204
+Kivalliq,Kivalliq,202421,2024-05-19,2024-05-25,2,6205
+Kitimeot,Kitimeot,202421,2024-05-19,2024-05-25,1,6208
+Eastern,Est,202422,2024-05-26,2024-06-01,1,1011
+Labrador-Grenfell,Grenfell Labrador,202422,2024-05-26,2024-06-01,2,1014
+Central,Centre,202422,2024-05-26,2024-06-01,2,1012
+Western,Ouest,202422,2024-05-26,2024-06-01,2,1013
+Zone 1 - Western,Zone 1 - Ouest,202422,2024-05-26,2024-06-01,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202422,2024-05-26,2024-06-01,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202422,2024-05-26,2024-06-01,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202422,2024-05-26,2024-06-01,1,1269
+Region 1,Région de santé publique 1,202422,2024-05-26,2024-06-01,2,1301
+Region 2,Région de santé publique 2,202422,2024-05-26,2024-06-01,1,1302
+Region 3,Région de santé publique 3,202422,2024-05-26,2024-06-01,2,1303
+Region 4,Région de santé publique 4,202422,2024-05-26,2024-06-01,1,1304
+Region 5,Région de santé publique 5,202422,2024-05-26,2024-06-01,1,1305
+Region 6,Région de santé publique 6,202422,2024-05-26,2024-06-01,2,1306
+Region 7,Région de santé publique 7,202422,2024-05-26,2024-06-01,1,1307
+Nord-est,Nord-est,202422,2024-05-26,2024-06-01,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202422,2024-05-26,2024-06-01,2,2412
+Centre-du-Québec,Centre-du-Québec,202422,2024-05-26,2024-06-01,2,2404
+Montréal et Laval,Montréal et Laval,202422,2024-05-26,2024-06-01,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202422,2024-05-26,2024-06-01,2,2414
+Montérégie,Montérégie,202422,2024-05-26,2024-06-01,2,2416
+Central East,Centre-Est,202422,2024-05-26,2024-06-01,3,3570
+Central West,Centre-Ouest,202422,2024-05-26,2024-06-01,3,3527
+Eastern,Est,202422,2024-05-26,2024-06-01,3,3551
+North East,Nord-Est,202422,2024-05-26,2024-06-01,3,3547
+North West,Nord-Ouest,202422,2024-05-26,2024-06-01,3,3549
+South West,Sud-Ouest,202422,2024-05-26,2024-06-01,3,3531
+Toronto,Toronto,202422,2024-05-26,2024-06-01,3,3595
+North,Nord,202422,2024-05-26,2024-06-01,2,4708
+Central,Centre,202422,2024-05-26,2024-06-01,2,4705
+South,Sud,202422,2024-05-26,2024-06-01,2,4701
+North Zone,Du nord,202422,2024-05-26,2024-06-01,2,4835
+Edmonton,Edmonton,202422,2024-05-26,2024-06-01,2,4834
+Central Zone,Centre,202422,2024-05-26,2024-06-01,2,4833
+Calgary,Calgary,202422,2024-05-26,2024-06-01,3,4832
+South Zone,Du sud,202422,2024-05-26,2024-06-01,2,4831
+Yukon,Yukon,202422,2024-05-26,2024-06-01,2,6001
+Qikiqtaaluk,Qikiqtaaluk,202422,2024-05-26,2024-06-01,2,6204
+Kivalliq,Kivalliq,202422,2024-05-26,2024-06-01,2,6205
+Kitimeot,Kitimeot,202422,2024-05-26,2024-06-01,1,6208
+Eastern,Est,202423,2024-06-02,2024-06-08,2,1011
+Labrador-Grenfell,Grenfell Labrador,202423,2024-06-02,2024-06-08,2,1014
+Central,Centre,202423,2024-06-02,2024-06-08,1,1012
+Western,Ouest,202423,2024-06-02,2024-06-08,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202423,2024-06-02,2024-06-08,0,1103
+Zone 1 - Western,Zone 1 - Ouest,202423,2024-06-02,2024-06-08,2,1211
+Zone 2 - Northern,Zone 2 - Nord,202423,2024-06-02,2024-06-08,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202423,2024-06-02,2024-06-08,2,1247
+Zone 4 - Central,Zone 4 - Centrale,202423,2024-06-02,2024-06-08,1,1269
+Region 1,Région de santé publique 1,202423,2024-06-02,2024-06-08,1,1301
+Region 2,Région de santé publique 2,202423,2024-06-02,2024-06-08,1,1302
+Region 3,Région de santé publique 3,202423,2024-06-02,2024-06-08,1,1303
+Region 4,Région de santé publique 4,202423,2024-06-02,2024-06-08,1,1304
+Region 5,Région de santé publique 5,202423,2024-06-02,2024-06-08,1,1305
+Region 6,Région de santé publique 6,202423,2024-06-02,2024-06-08,2,1306
+Region 7,Région de santé publique 7,202423,2024-06-02,2024-06-08,2,1307
+Nord-est,Nord-est,202423,2024-06-02,2024-06-08,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202423,2024-06-02,2024-06-08,2,2412
+Centre-du-Québec,Centre-du-Québec,202423,2024-06-02,2024-06-08,2,2404
+Montréal et Laval,Montréal et Laval,202423,2024-06-02,2024-06-08,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202423,2024-06-02,2024-06-08,2,2414
+Montérégie,Montérégie,202423,2024-06-02,2024-06-08,2,2416
+Central East,Centre-Est,202423,2024-06-02,2024-06-08,3,3570
+Central West,Centre-Ouest,202423,2024-06-02,2024-06-08,3,3527
+Eastern,Est,202423,2024-06-02,2024-06-08,3,3551
+North East,Nord-Est,202423,2024-06-02,2024-06-08,2,3547
+North West,Nord-Ouest,202423,2024-06-02,2024-06-08,3,3549
+South West,Sud-Ouest,202423,2024-06-02,2024-06-08,2,3531
+Toronto,Toronto,202423,2024-06-02,2024-06-08,3,3595
+Northern Regional,Northern Regional,202423,2024-06-02,2024-06-08,0,4670
+Prairie Mountain,Prairie Mountain,202423,2024-06-02,2024-06-08,0,4690
+Interlake-Eastern,d'Entre-les-lacs et de l'Est,202423,2024-06-02,2024-06-08,0,4620
+Winnipeg,Winnipeg,202423,2024-06-02,2024-06-08,0,4610
+Southern Health,Santé Sud,202423,2024-06-02,2024-06-08,0,4625
+North,Nord,202423,2024-06-02,2024-06-08,2,4708
+Central,Centre,202423,2024-06-02,2024-06-08,2,4705
+South,Sud,202423,2024-06-02,2024-06-08,2,4701
+North Zone,Du nord,202423,2024-06-02,2024-06-08,1,4835
+Edmonton,Edmonton,202423,2024-06-02,2024-06-08,3,4834
+Central Zone,Centre,202423,2024-06-02,2024-06-08,2,4833
+Calgary,Calgary,202423,2024-06-02,2024-06-08,2,4832
+South Zone,Du sud,202423,2024-06-02,2024-06-08,1,4831
+Interior,Intérieur,202423,2024-06-02,2024-06-08,0,5911
+Fraser,Fraser,202423,2024-06-02,2024-06-08,0,5921
+Vancouver Coastal,Vancouver Coastal,202423,2024-06-02,2024-06-08,0,5931
+Vancouver Island,Île de Vancouver,202423,2024-06-02,2024-06-08,0,5941
+Northern,Nord,202423,2024-06-02,2024-06-08,0,5951
+Yukon,Yukon,202423,2024-06-02,2024-06-08,2,6001
+North,Région nord des TNO,202423,2024-06-02,2024-06-08,0,6101
+South,Région sud des TNO,202423,2024-06-02,2024-06-08,0,6103
+Qikiqtaaluk,Qikiqtaaluk,202423,2024-06-02,2024-06-08,2,6204
+Kivalliq,Kivalliq,202423,2024-06-02,2024-06-08,1,6205
+Kitimeot,Kitimeot,202423,2024-06-02,2024-06-08,1,6208
+Eastern,Est,202424,2024-06-09,2024-06-15,2,1011
+Labrador-Grenfell,Grenfell Labrador,202424,2024-06-09,2024-06-15,2,1014
+Central,Centre,202424,2024-06-09,2024-06-15,1,1012
+Western,Ouest,202424,2024-06-09,2024-06-15,2,1013
+Prince Edward Island,Île-du-Prince-Édouard,202424,2024-06-09,2024-06-15,0,1103
+Zone 1 - Western,Zone 1 - Ouest,202424,2024-06-09,2024-06-15,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202424,2024-06-09,2024-06-15,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202424,2024-06-09,2024-06-15,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202424,2024-06-09,2024-06-15,1,1269
+Region 1,Région de santé publique 1,202424,2024-06-09,2024-06-15,2,1301
+Region 2,Région de santé publique 2,202424,2024-06-09,2024-06-15,1,1302
+Region 3,Région de santé publique 3,202424,2024-06-09,2024-06-15,1,1303
+Region 4,Région de santé publique 4,202424,2024-06-09,2024-06-15,1,1304
+Region 5,Région de santé publique 5,202424,2024-06-09,2024-06-15,1,1305
+Region 6,Région de santé publique 6,202424,2024-06-09,2024-06-15,2,1306
+Region 7,Région de santé publique 7,202424,2024-06-09,2024-06-15,1,1307
+Nord-est,Nord-est,202424,2024-06-09,2024-06-15,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202424,2024-06-09,2024-06-15,2,2412
+Centre-du-Québec,Centre-du-Québec,202424,2024-06-09,2024-06-15,2,2404
+Montréal et Laval,Montréal et Laval,202424,2024-06-09,2024-06-15,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202424,2024-06-09,2024-06-15,2,2414
+Montérégie,Montérégie,202424,2024-06-09,2024-06-15,2,2416
+Central East,Centre-Est,202424,2024-06-09,2024-06-15,2,3570
+Central West,Centre-Ouest,202424,2024-06-09,2024-06-15,3,3527
+Eastern,Est,202424,2024-06-09,2024-06-15,3,3551
+North East,Nord-Est,202424,2024-06-09,2024-06-15,2,3547
+North West,Nord-Ouest,202424,2024-06-09,2024-06-15,2,3549
+South West,Sud-Ouest,202424,2024-06-09,2024-06-15,1,3531
+Toronto,Toronto,202424,2024-06-09,2024-06-15,2,3595
+Northern Regional,Northern Regional,202424,2024-06-09,2024-06-15,0,4670
+Prairie Mountain,Prairie Mountain,202424,2024-06-09,2024-06-15,0,4690
+Interlake-Eastern,d'Entre-les-lacs et de l'Est,202424,2024-06-09,2024-06-15,0,4620
+Winnipeg,Winnipeg,202424,2024-06-09,2024-06-15,0,4610
+Southern Health,Santé Sud,202424,2024-06-09,2024-06-15,0,4625
+North,Nord,202424,2024-06-09,2024-06-15,1,4708
+Central,Centre,202424,2024-06-09,2024-06-15,2,4705
+South,Sud,202424,2024-06-09,2024-06-15,2,4701
+North Zone,Du nord,202424,2024-06-09,2024-06-15,1,4835
+Edmonton,Edmonton,202424,2024-06-09,2024-06-15,2,4834
+Central Zone,Centre,202424,2024-06-09,2024-06-15,2,4833
+Calgary,Calgary,202424,2024-06-09,2024-06-15,2,4832
+South Zone,Du sud,202424,2024-06-09,2024-06-15,1,4831
+Interior,Intérieur,202424,2024-06-09,2024-06-15,0,5911
+Fraser,Fraser,202424,2024-06-09,2024-06-15,0,5921
+Vancouver Coastal,Vancouver Coastal,202424,2024-06-09,2024-06-15,0,5931
+Vancouver Island,Île de Vancouver,202424,2024-06-09,2024-06-15,0,5941
+Northern,Nord,202424,2024-06-09,2024-06-15,0,5951
+Yukon,Yukon,202424,2024-06-09,2024-06-15,2,6001
+North,Région nord des TNO,202424,2024-06-09,2024-06-15,0,6101
+South,Région sud des TNO,202424,2024-06-09,2024-06-15,0,6103
+Qikiqtaaluk,Qikiqtaaluk,202424,2024-06-09,2024-06-15,2,6204
+Kivalliq,Kivalliq,202424,2024-06-09,2024-06-15,2,6205
+Kitimeot,Kitimeot,202424,2024-06-09,2024-06-15,1,6208
+Eastern,Est,202425,2024-06-16,2024-06-22,2,1011
+Labrador-Grenfell,Grenfell Labrador,202425,2024-06-16,2024-06-22,2,1014
+Central,Centre,202425,2024-06-16,2024-06-22,1,1012
+Western,Ouest,202425,2024-06-16,2024-06-22,1,1013
+Prince Edward Island,Île-du-Prince-Édouard,202425,2024-06-16,2024-06-22,0,1103
+Zone 1 - Western,Zone 1 - Ouest,202425,2024-06-16,2024-06-22,1,1211
+Zone 2 - Northern,Zone 2 - Nord,202425,2024-06-16,2024-06-22,2,1234
+Zone 3 - Eastern,Zone 3 - Est,202425,2024-06-16,2024-06-22,1,1247
+Zone 4 - Central,Zone 4 - Centrale,202425,2024-06-16,2024-06-22,2,1269
+Region 1,Région de santé publique 1,202425,2024-06-16,2024-06-22,2,1301
+Region 2,Région de santé publique 2,202425,2024-06-16,2024-06-22,1,1302
+Region 3,Région de santé publique 3,202425,2024-06-16,2024-06-22,1,1303
+Region 4,Région de santé publique 4,202425,2024-06-16,2024-06-22,1,1304
+Region 5,Région de santé publique 5,202425,2024-06-16,2024-06-22,1,1305
+Region 6,Région de santé publique 6,202425,2024-06-16,2024-06-22,2,1306
+Region 7,Région de santé publique 7,202425,2024-06-16,2024-06-22,2,1307
+Nord-est,Nord-est,202425,2024-06-16,2024-06-22,2,2410
+Québec et Chaudieres-Appalaches,Québec et Chaudieres-Appalaches,202425,2024-06-16,2024-06-22,2,2412
+Centre-du-Québec,Centre-du-Québec,202425,2024-06-16,2024-06-22,2,2404
+Montréal et Laval,Montréal et Laval,202425,2024-06-16,2024-06-22,2,2413
+Ouest-du-Québec,Ouest-du-Québec,202425,2024-06-16,2024-06-22,2,2414
+Montérégie,Montérégie,202425,2024-06-16,2024-06-22,2,2416
+Central East,Centre-Est,202425,2024-06-16,2024-06-22,2,3570
+Central West,Centre-Ouest,202425,2024-06-16,2024-06-22,3,3527
+Eastern,Est,202425,2024-06-16,2024-06-22,3,3551
+North East,Nord-Est,202425,2024-06-16,2024-06-22,2,3547
+North West,Nord-Ouest,202425,2024-06-16,2024-06-22,1,3549
+South West,Sud-Ouest,202425,2024-06-16,2024-06-22,1,3531
+Toronto,Toronto,202425,2024-06-16,2024-06-22,2,3595
+Northern Regional,Northern Regional,202425,2024-06-16,2024-06-22,0,4670
+Prairie Mountain,Prairie Mountain,202425,2024-06-16,2024-06-22,0,4690
+Interlake-Eastern,d'Entre-les-lacs et de l'Est,202425,2024-06-16,2024-06-22,0,4620
+Winnipeg,Winnipeg,202425,2024-06-16,2024-06-22,0,4610
+Southern Health,Santé Sud,202425,2024-06-16,2024-06-22,0,4625
+North,Nord,202425,2024-06-16,2024-06-22,2,4708
+Central,Centre,202425,2024-06-16,2024-06-22,1,4705
+South,Sud,202425,2024-06-16,2024-06-22,2,4701
+North Zone,Du nord,202425,2024-06-16,2024-06-22,1,4835
+Edmonton,Edmonton,202425,2024-06-16,2024-06-22,3,4834
+Central Zone,Centre,202425,2024-06-16,2024-06-22,1,4833
+Calgary,Calgary,202425,2024-06-16,2024-06-22,2,4832
+South Zone,Du sud,202425,2024-06-16,2024-06-22,1,4831
+Interior,Intérieur,202425,2024-06-16,2024-06-22,0,5911
+Fraser,Fraser,202425,2024-06-16,2024-06-22,0,5921
+Vancouver Coastal,Vancouver Coastal,202425,2024-06-16,2024-06-22,0,5931
+Vancouver Island,Île de Vancouver,202425,2024-06-16,2024-06-22,0,5941
+Northern,Nord,202425,2024-06-16,2024-06-22,0,5951
+Yukon,Yukon,202425,2024-06-16,2024-06-22,0,6001
+North,Région nord des TNO,202425,2024-06-16,2024-06-22,0,6101
+South,Région sud des TNO,202425,2024-06-16,2024-06-22,0,6103
+Qikiqtaaluk,Qikiqtaaluk,202425,2024-06-16,2024-06-22,0,6204
+Kivalliq,Kivalliq,202425,2024-06-16,2024-06-22,0,6205
+Kitimeot,Kitimeot,202425,2024-06-16,2024-06-22,0,6208
