@@ -1,8 +1,8 @@
 ## -----------------------------------------------------------------------------
 ## Title: Argentina flu and bronchio
 ## Description: This is a script that is pulling the influenza and RSV data from Argentina
-## Author:
-## Date:
+## Author: L.Lampro - Sanofi group
+## Date: 24.01.2025
 ## -----------------------------------------------------------------------------
 
 #install.packages("ggthemes")
