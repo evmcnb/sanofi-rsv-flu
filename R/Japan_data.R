@@ -1,5 +1,3 @@
-setwd("C://Users//lukeb//Downloads//LSHTM//TERM 2//Data Challenge//github//sanofi-rsv-flu")
-
 # directory path for datasets
 path <- "csv/Japan/"
 
