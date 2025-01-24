@@ -78,6 +78,7 @@ Argentina_data %>%
 ## I sorted the data and made sure manually that it seems ok. this is because i wasnt able to do view() bcs of the large file.
 
 summary(Argentina_data)
+head(Argentina_data)
 
 
 
