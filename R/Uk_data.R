@@ -2,7 +2,7 @@
 # Flu data ----------------------------------------------------------------
 
 flu_uk_data <- read.csv("csv/UK/influenza.csv") %>%
-  mutate(year = factor(year)) %>%
+  mutate(year = as.numeric(year)) %>%
   mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
   select(sex, age, year, month, epiweek, date, metric_value)
 
@@ -54,7 +54,7 @@ flu_uk_data %>%
     .groups = "drop"
   ) %>%
   arrange(year, epiweek) %>%
-  ggplot(aes(x = interaction(year, epiweek, sep = "-"), y = count, colour = year)) +
+  ggplot(aes(x = interaction(year, epiweek, sep = "-"), y = count, colour = as.factor(year))) +
   geom_col(position = "dodge",
            width = 0.5,
            fill = "gray30") +
@@ -111,6 +111,46 @@ flu_uk_data %>%
     strip.text.x = element_text(size = 8),
     axis.text.x = element_text(angle = 45, hjust = 1)  # Rotates the x-axis labels for better readability
   )
+
+flu_uk_data %>%
+  filter(age == "all") %>%
+  group_by(year, epiweek) %>%
+  summarise(cases = sum(metric_value, na.rm = TRUE)) %>% 
+  mutate(
+    Adjusted_Week = epiweek + 26,  # Shift all weeks forward by 26
+    Adjusted_Year = if_else(Adjusted_Week > 52, year + 1, year),  # Increment year if week > 52
+    Adjusted_Week = if_else(Adjusted_Week > 52, Adjusted_Week - 52, Adjusted_Week)  # Wrap weeks > 52
+  ) %>%
+  ggplot(aes(x = Adjusted_Week, y = factor(Adjusted_Year), height = cases, fill = factor(Adjusted_Year))) +
+  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01) +
+  labs(
+    title = 'UK Influenza Case Density by Flu Season',
+    x = 'Flu Season Week (Centred around Week 1)'
+  ) +
+  scale_x_continuous(
+    breaks = c(1, 13, 26, 39),  # Key flu season weeks
+    labels = c("Week 26", "Week 39", "Week 1", "Week 13")
+  ) +
+  scale_y_discrete(
+    labels = function(x) paste0(as.numeric(x) - 1, "/", x)  # Convert years to "2014/2015" format
+  ) +
+  theme_fivethirtyeight() +
+  theme(
+    legend.position = "none",
+    panel.spacing = unit(0.1, "lines"),
+    axis.title.x = element_text(),
+    strip.text.x = element_text(size = 8),
+    axis.text.x = element_text(size = 10)
+  )
+
+ggsave(
+  filename = "plots/Other/flu_uk_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = last_plot(),  # This refers to the last plot generated
+  width = 7,  # Width of the plot (in inches)
+  height = 7,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
 
 # Bar graphcs - cases per month
 flu_uk_data %>%

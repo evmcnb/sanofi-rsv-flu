@@ -1,26 +1,13 @@
-## This is a script that is pulling the influenza and RSV data from Argentina
-library(dplyr)
-library(stringr)
-
-## Get the working directory
-
-mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina")
-getwd()
-
 ## Get all the files all at once:
 
 #1. List all CSV files in a directory
-file_list <- list.files(path = mywd, pattern = "*.csv", full.names = TRUE)
+file_list <- list.files("csv/Argentina", pattern = "*.csv", full.names = TRUE)
 
 #2. Read all files into a list of data frames
 data_list <- lapply(file_list, read.csv)
 
 #3. Optionally, combine all data frames into one (if they have the same structure)
 combined_data <- do.call(rbind, data_list)
-
-## check
-head(combined_data)
-tail(combined_data) ## 2866665  rows
 
 ## Translate the headers to English
 
@@ -38,30 +25,16 @@ combined_data <- combined_data %>%
     num_cases = cantidad_casos
   )
 
-tail(combined_data) ## 2866665  rows
-
 ## check the distinct events -- make sure that we only have influenza and RSV
-combined_data %>%
-  distinct(event)
-
-## result indicates that there are more than the resp illnesses that those we care about
-## filter to those with Influenza and bronchiolitis.
-## There is a precedent set to use Bronchiolitis as a stand in for RSV
-## Keeping all bronchiolitis unspecified 
-
-Argentina_data <- combined_data %>% 
+Argentina_data <- combined_data %>%
+  distinct(event) %>% 
   filter(str_detect(event, regex("Bronquiolitis|influenza", ignore_case = TRUE)) ) %>%
-  filter(!str_detect(event, regex("ambulatorios", ignore_case = TRUE)))
+  filter(!str_detect(event, regex("ambulatorios", ignore_case = TRUE))) %>% 
   
-## check
-
-head(Argentina_data)
-tail(Argentina_data) ## 2164687 rows of patients
-
 ## check that it worked
 
-Argentina_data %>%
-  distinct(event)
+# Argentina_data %>%
+#   distinct(event)
 
 ## LL REVISIT this: 
 # check for duplicates : 
@@ -70,23 +43,70 @@ Argentina_data %>%
 #   filter(n() > 1) %>%
 #   ungroup()
 
-
-
 # Write the data to a CSV file
 # write.csv(flu_bronchio_data, "flu_bronchio_data.csv", row.names = TRUE)
 
 ## I sorted the data and made sure manually that it seems ok. this is because i wasnt able to do view() bcs of the large file.
 
-summary(Argentina_data)
-head(Argentina_data)
+rm(list = c("combined_data", "data_list", "file_list"))
 
 
+# Graphics ----------------------------------------------------------------
 
 
+Argentina_data %>%
+  filter(event == "Enfermedad tipo influenza (ETI)") %>% 
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epi_weeks, is_covid) %>% 
+  summarise(cases = sum(num_cases)) %>% 
+  ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  labs(title = 'Argentina Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  coord_polar(theta = "x")
+
+ggsave(
+  filename = "plots/Polar/flu_arg_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = last_plot(),  # This refers to the last plot generated
+  width = 6,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
 
 
+Argentina_data %>%
+  filter(event == "Enfermedad tipo influenza (ETI)") %>%
+  group_by(epi_weeks, year) %>% 
+  summarise(num_cases = sum(num_cases, na.rm = TRUE)) %>% 
+  ggplot(aes(x = epi_weeks, y = factor(year), height = num_cases, fill = factor(year))) +
+  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01) +
+  labs(title = 'Argentina Influenza Case Density by Year', x = 'Week') +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "none",
+    panel.spacing = unit(0.1, "lines"),
+    axis.title.x = element_text(),
+    strip.text.x = element_text(size = 8)
+  )
 
-
+ggsave(
+  filename = "plots/Other/flu_arg_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = last_plot(),  # This refers to the last plot generated
+  width = 7,  # Width of the plot (in inches)
+  height = 7,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
 
 
 
