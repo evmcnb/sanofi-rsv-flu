@@ -1,10 +1,23 @@
-## This is a script that is pulling the influenza and RSV data from Argentina
+## -----------------------------------------------------------------------------
+## Title: Argentina flu and bronchio
+## Description: This is a script that is pulling the influenza and RSV data from Argentina
+## Author:
+## Date:
+## -----------------------------------------------------------------------------
+
+#install.packages("ggthemes")
+
+library(purrr)
+library(readxl)
+library(lubridate)
+library(ggplot2)
+library(ggthemes)
 library(dplyr)
 library(stringr)
 
 ## Get the working directory
 
-mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina")
+mywd <- setwd("./sanofi-rsv-flu/csv/Argentina")
 getwd()
 
 ## Get all the files all at once:
@@ -49,42 +62,143 @@ combined_data %>%
 ## There is a precedent set to use Bronchiolitis as a stand in for RSV
 ## Keeping all bronchiolitis unspecified 
 
-Argentina_data <- combined_data %>% 
+Argentina_all_data <- combined_data %>% 
   filter(str_detect(event, regex("Bronquiolitis|influenza", ignore_case = TRUE)) ) %>%
   filter(!str_detect(event, regex("ambulatorios", ignore_case = TRUE)))
   
 ## check
 
-head(Argentina_data)
-tail(Argentina_data) ## 2164687 rows of patients
+head(Argentina_all_data)
+tail(Argentina_all_data) ## 2164687 rows of patients
 
 ## check that it worked
 
-Argentina_data %>%
+Argentina_all_data %>%
   distinct(event)
 
-## LL REVISIT this: 
-# check for duplicates : 
-# Argentina_data %>%
-#   group_by(across(everything())) %>%
-#   filter(n() > 1) %>%
-#   ungroup()
-
-
-
+## LL REVISIT this:
 # Write the data to a CSV file
 # write.csv(flu_bronchio_data, "flu_bronchio_data.csv", row.names = TRUE)
-
 ## I sorted the data and made sure manually that it seems ok. this is because i wasnt able to do view() bcs of the large file.
 
-summary(Argentina_data)
-head(Argentina_data)
+summary(Argentina_all_data)
+head(Argentina_all_data)
+
+# Process the combined data
+grp_data <- Argentina_data %>%
+  group_by(year , epi_weeks, age_group ) %>%
+  summarise(num_cases = n(), .groups = "drop")
+
+## plot
+grp_data <- grp_data %>%
+  mutate(is_covid = if_else(year < 2021, 
+                            "Before Lockdown", "After Lockdown"))
+#View(grp_data)
+
+grp_data <- grp_data %>%
+  group_by(epi_weeks, is_covid, age_group) %>%
+  summarise(cases = sum(num_cases)) %>%
+  na.omit() 
+
+## ggplot
+main_plot <- grp_data %>% 
+  ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age_group) +
+  labs(title = 'Argentina RSV and Flu Data', subtitle = "Age stratified case data", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+main_plot
+
+## now views by RSV or Influenza
+## split into 2 objects, one for bronchio and one for flu
+
+flu_Argentina <- Argentina_all_data %>% 
+  filter(str_detect(event, regex("influenza", ignore_case = TRUE)) )
+
+bronchio_Argentina <- Argentina_all_data %>% 
+  filter(str_detect(event, regex("Bronquio", ignore_case = TRUE)) )
 
 
+##------------------------------------------------------------------------------
+# Process the FLU data
+grp_flu <- flu_Argentina %>%
+  group_by(year , epi_weeks, age_group ) %>%
+  summarise(num_cases = n(), .groups = "drop")
+grp_flu
 
+## plot
+grp_flu <- grp_flu %>%
+  mutate(is_covid = if_else(year < 2021, 
+                            "Before Lockdown", "After Lockdown"))
+#View(grp_data)
 
+grp_flu <- grp_flu %>%
+  group_by(epi_weeks, is_covid, age_group) %>%
+  summarise(cases = sum(num_cases)) %>%
+  na.omit()
+grp_flu
 
+##------------------------------------------------------------------------------
+## only Flu plot
 
+flu_plot <- grp_flu %>% 
+  ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age_group) +
+  labs(title = 'Argentina Flu Data', subtitle = "Age stratified case data", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+flu_plot
+
+##------------------------------------------------------------------------------
+# Process the Bronchio data
+grp_bronchio <- bronchio_Argentina %>%
+  group_by(year , epi_weeks, age_group ) %>%
+  summarise(num_cases = n(), .groups = "drop")
+grp_bronchio
+
+## plot
+grp_bronchio <- grp_bronchio %>%
+  mutate(is_covid = if_else(year < 2021, 
+                            "Before Lockdown", "After Lockdown"))
+#View(grp_data)
+
+grp_bronchio <- grp_bronchio %>%
+  group_by(epi_weeks, is_covid, age_group) %>%
+  summarise(cases = sum(num_cases)) %>%
+  na.omit()
+grp_bronchio
+
+##------------------------------------------------------------------------------
+## only bronchio plot
+
+bronchio_plot <- grp_bronchio %>% 
+  ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age_group) +
+  labs(title = 'Argentina bronchio Data', subtitle = "Age stratified case data", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+bronchio_plot
 
 
 
