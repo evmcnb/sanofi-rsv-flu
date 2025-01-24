@@ -121,10 +121,10 @@ flu_au_data %>%
   )
 
 ggsave(
-  filename = "plots/Other/flu_au_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  filename = "plots/Other/flu_au_case_density2.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
   plot = last_plot(),  # This refers to the last plot generated
   width = 6,  # Width of the plot (in inches)
-  height = 12,  # Height of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
 
@@ -134,82 +134,82 @@ ggsave(
 
 library(gganimate)
 
-flu_au_data %>%
-  arrange(epi_year, epi_week) %>%
-  group_by(epi_year, epi_week) %>% 
-  summarise(cases = sum(cases)) %>%
-  mutate(order = epi_year+epi_week) %>% 
-  na.omit() %>%
-  ggplot(aes(x = epi_week, y = cases, color = factor(epi_year))) +
-  geom_line(stat="identity") + # use stat="identity" to draw a single line
-  labs(title = 'AU Influenza Data', x = 'Week') +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank(),
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  transition_reveal(order) +
-  coord_polar(theta = "x")
+# flu_au_data %>%
+#   arrange(epi_year, epi_week) %>%
+#   group_by(epi_year, epi_week) %>% 
+#   summarise(cases = sum(cases)) %>%
+#   mutate(order = epi_year+epi_week) %>% 
+#   na.omit() %>%
+#   ggplot(aes(x = epi_week, y = cases, color = factor(epi_year))) +
+#   geom_line(stat="identity") + # use stat="identity" to draw a single line
+#   labs(title = 'AU Influenza Data', x = 'Week') +
+#   theme(
+#     legend.position = "bottom",
+#     legend.title = element_blank(),
+#     panel.spacing = unit(0.1, "lines"),
+#     strip.text.x = element_text(size = 8)
+#   ) +
+#   transition_reveal(order) +
+#   coord_polar(theta = "x")
   
-
-flu_au_data %>%
-  arrange(epi_year, epi_week) %>%
-  group_by(epi_year, epi_week) %>%
-  summarise(cases = sum(cases)) %>%
-  mutate(order = epi_year+epi_week) %>%
-  na.omit() %>%
-  ggplot(aes(x = epi_week, y = cases, color = factor(epi_year))) +
-  geom_line(stat="identity") + 
-  labs(title = 'AU Influenza Data', x = 'Week') +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank(),
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  transition_reveal(order) + # reveal each year one at a time
-  ease_aes("linear") + 
-  coord_polar(theta = "x")
-
-
-library(tidyverse)
-library(gganimate)
-library(av)
-
-flu_au_animation <- flu_au_data %>%
-  arrange(epi_year, epi_week) %>%
-  group_by(epi_year, epi_week) %>%
-  summarise(cases = sum(cases), .groups = "drop") %>%
-  mutate(order = row_number()) %>%  # Sequential order for plotting
-  na.omit() %>%
-  ggplot(aes(
-    x = epi_week,
-    y = cases,
-    group = epi_year,
-    color = factor(epi_year),
-  )) +
-  geom_line() +
-  labs(
-    title = "AU Influenza Data",
-    subtitle = "",
-    x = "Week",
-    y = "Cases"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank(),
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8)
-  ) +
-  coord_polar(theta = "x") +
-  transition_reveal(order) +
-  ease_aes("cubic-in-out")
-
-animate(
-  flu_au_animation,
-  renderer = av_renderer("flu_animation.mp4"), # Specify the output file name
-  width = 1024, height = 1024, res = 150, fps = 20, duration = 20
-)
+# 
+# flu_au_data %>%
+#   arrange(epi_year, epi_week) %>%
+#   group_by(epi_year, epi_week) %>%
+#   summarise(cases = sum(cases)) %>%
+#   mutate(order = epi_year+epi_week) %>%
+#   na.omit() %>%
+#   ggplot(aes(x = epi_week, y = cases, color = factor(epi_year))) +
+#   geom_line(stat="identity") + 
+#   labs(title = 'AU Influenza Data', x = 'Week') +
+#   theme(
+#     legend.position = "bottom",
+#     legend.title = element_blank(),
+#     panel.spacing = unit(0.1, "lines"),
+#     strip.text.x = element_text(size = 8)
+#   ) +
+#   transition_reveal(order) + # reveal each year one at a time
+#   ease_aes("linear") + 
+#   coord_polar(theta = "x")
+# 
+# 
+# library(tidyverse)
+# library(gganimate)
+# library(av)
+# 
+# flu_au_animation <- flu_au_data %>%
+#   arrange(epi_year, epi_week) %>%
+#   group_by(epi_year, epi_week) %>%
+#   summarise(cases = sum(cases), .groups = "drop") %>%
+#   mutate(order = row_number()) %>%  # Sequential order for plotting
+#   na.omit() %>%
+#   ggplot(aes(
+#     x = epi_week,
+#     y = cases,
+#     group = epi_year,
+#     color = factor(epi_year),
+#   )) +
+#   geom_line() +
+#   labs(
+#     title = "AU Influenza Data",
+#     subtitle = "",
+#     x = "Week",
+#     y = "Cases"
+#   ) +
+#   theme_minimal() +
+#   theme(
+#     legend.position = "bottom",
+#     legend.title = element_blank(),
+#     panel.spacing = unit(0.1, "lines"),
+#     strip.text.x = element_text(size = 8)
+#   ) +
+#   coord_polar(theta = "x") +
+#   transition_reveal(order) +
+#   ease_aes("cubic-in-out")
+# 
+# animate(
+#   flu_au_animation,
+#   renderer = av_renderer("flu_animation.mp4"), # Specify the output file name
+#   width = 1024, height = 1024, res = 150, fps = 20, duration = 20
+# )
 

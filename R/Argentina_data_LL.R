@@ -17,7 +17,7 @@ library(stringr)
 
 ## Get the working directory
 
-mywd <- setwd("./sanofi-rsv-flu/csv/Argentina")
+mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina")
 getwd()
 
 ## Get all the files all at once:
@@ -33,7 +33,7 @@ combined_data <- do.call(rbind, data_list)
 
 ## check
 head(combined_data)
-tail(combined_data) ## 2866665  rows
+tail(combined_data) ## 1399662 rows
 
 ## Translate the headers to English
 
@@ -51,7 +51,7 @@ combined_data <- combined_data %>%
     num_cases = cantidad_casos
   )
 
-tail(combined_data) ## 2866665  rows
+tail(combined_data) ## 1399662 rows
 
 ## check the distinct events -- make sure that we only have influenza and RSV
 combined_data %>%
