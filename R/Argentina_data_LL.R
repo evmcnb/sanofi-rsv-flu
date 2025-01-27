@@ -17,7 +17,7 @@ library(stringr)
 
 ## Get the working directory
 
-mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina")
+mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina/test_LL")
 getwd()
 
 ## Get all the files all at once:
@@ -85,7 +85,7 @@ summary(Argentina_all_data)
 head(Argentina_all_data)
 
 # Process the combined data
-grp_data <- Argentina_data %>%
+grp_data <- Argentina_all_data %>%
   group_by(year , epi_weeks, age_group ) %>%
   summarise(num_cases = n(), .groups = "drop")
 
