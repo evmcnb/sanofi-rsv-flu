@@ -7,7 +7,6 @@ flu_uk_data <- read.csv("csv/UK/influenza.csv") %>%
   select(sex, age, year, month, epiweek, date, metric_value)
 
 rsv_uk_data <- read.csv("csv/UK/RSV.csv") %>%
-  mutate(year = factor(year)) %>% 
   mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
   select(sex, age, year, month, epiweek, date, metric_value)
 
@@ -90,11 +89,6 @@ flu_uk_data %>%
     legend.position = "bottom"
   )
 
-
-library(ggplot2)
-library(viridis)
-library(hrbrthemes)
-library(ggridges)
 
 # Density ridge plot - may need to center the data as hard to see trends
 flu_uk_data %>% 
@@ -186,7 +180,7 @@ flu_uk_data %>%
 # Same as above but in polar coordinates. Very clear plot - defo final
 flu_uk_data %>%
   filter(age == "all") %>%
-  mutate(is_covid = if_else(as.numeric(year) < 7, 0, 1),
+  mutate(is_covid = if_else(year < 2021, 0, 1),
          is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
   group_by(epiweek, is_covid) %>%
   summarise(cases = sum(metric_value)) %>%
@@ -213,6 +207,26 @@ ggsave(
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
+
+# Unfortunately not very useful
+flu_uk_data %>%
+  mutate(is_covid = if_else(year < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid, age) %>%
+  summarise(cases = sum(metric_value)) %>%
+  na.omit() %>% 
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age) +
+  labs(title = 'UK Influenza Data', subtitle = "Age stratified case data. Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
 
 
 # Similar to above but not aggregated 
