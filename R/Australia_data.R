@@ -105,11 +105,12 @@ flu_au_data %>%
 
 # Not the clearest plot but maybe still pretty good
 flu_au_data %>% 
+  filter(epi_year > 2014) %>% 
   group_by(epi_week, epi_year) %>%
   summarise(cases = sum(cases)) %>%
   na.omit() %>% 
   ggplot(aes(x = epi_week, y = factor(epi_year), height = cases, fill = factor(epi_year))) +
-  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01) +
+  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01, size = 1) +
   labs(title = 'Australia Influenza Case Density by Year', x = 'Week') +
   theme_fivethirtyeight() + 
   theme(
@@ -117,7 +118,7 @@ flu_au_data %>%
     panel.spacing = unit(0.1, "lines"),
     axis.title.x = element_text(),
     strip.text.x = element_text(size = 8),
-    axis.text.x = element_text(angle = 45, hjust = 1)  # Rotates the x-axis labels for better readability
+    axis.text.x = element_text()  # Rotates the x-axis labels for better readability
   )
 
 ggsave(

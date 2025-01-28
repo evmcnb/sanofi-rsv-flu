@@ -23,7 +23,7 @@ getwd()
 ## Get all the files all at once:
 
 #1. List all CSV files in a directory
-file_list <- list.files(path = mywd, pattern = "*.csv", full.names = TRUE)
+file_list <- list.files(path = "csv/Argentina/test_LL", pattern = "*.csv", full.names = TRUE)
 
 #2. Read all files into a list of data frames
 data_list <- lapply(file_list, read.csv)
@@ -101,7 +101,7 @@ grp_data <- grp_data %>%
   na.omit() 
 
 ## ggplot
-main_plot <- grp_data %>% 
+grp_data %>% 
   ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
   geom_line(size = 1) +
   facet_wrap(~age_group) +
@@ -114,7 +114,6 @@ main_plot <- grp_data %>%
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
   )
-main_plot
 
 ## now views by RSV or Influenza
 ## split into 2 objects, one for bronchio and one for flu
@@ -148,7 +147,7 @@ grp_flu
 ##------------------------------------------------------------------------------
 ## only Flu plot
 
-flu_plot <- grp_flu %>% 
+grp_flu %>% 
   ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
   geom_line(size = 1) +
   facet_wrap(~age_group) +
@@ -161,7 +160,6 @@ flu_plot <- grp_flu %>%
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
   )
-flu_plot
 
 ##------------------------------------------------------------------------------
 # Process the Bronchio data
@@ -200,8 +198,42 @@ bronchio_plot <- grp_bronchio %>%
   )
 bronchio_plot
 
+flu_Argentina %>%
+  mutate(is_covid = if_else(year < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epi_weeks, is_covid) %>%
+  summarise(cases = sum(num_cases)) %>%
+  ggplot(aes(x = epi_weeks, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  labs(title = 'UK Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Cumulative Hosptialization Rate per 10,000") +
+  theme_fivethirtyeight() + 
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  coord_polar(theta = "x")
 
-
+flu_Argentina %>% 
+  group_by(epi_weeks, year) %>%
+  summarise(cases = sum(num_cases)) %>%
+  na.omit() %>% 
+  ggplot(aes(x = epi_weeks, y = factor(year), height = cases, fill = factor(year))) +
+  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01, size = 1) +
+  labs(title = 'Argentina Influenza Case Density by Year', x = 'Week') +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "none",
+    panel.spacing = unit(0.1, "lines"),
+    axis.title.x = element_text(),
+    strip.text.x = element_text(size = 8),
+    axis.text.x = element_text()  # Rotates the x-axis labels for better readability
+  )
 
 
 

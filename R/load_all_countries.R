@@ -2,9 +2,11 @@ library(tidyverse)
 library(lubridate)
 library(readxl)
 library(ggthemes)
+library(ggridges)
 
 rm(list = ls())
 
+# Change this for all data
 setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
 getwd()
 
