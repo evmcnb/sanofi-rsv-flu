@@ -8,20 +8,20 @@
 
 #install.packages("ggthemes")
 
-library(purrr)
-library(readxl)
-library(lubridate)
-library(ggplot2)
-library(ggthemes)
-library(dplyr)
-library(stringr)
+# library(purrr)
+# library(readxl)
+# library(lubridate)
+# library(ggplot2)
+# library(ggthemes)
+# library(dplyr)
+# library(stringr)
 
 ## Get the working directory
 
-mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Taiwan")
-getwd()
+# mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Taiwan")
+# getwd()
 
-Taiwan_flu <- read.csv("Age_County_Gender_487a.csv")
+Taiwan_flu <- read_csv("csv/Taiwan/Age_County_Gender_487a.csv")
 Taiwan_flu
 
 ## check
@@ -29,14 +29,14 @@ head(Taiwan_flu)
 tail(Taiwan_flu) ## 17589 rows
 
 ## rename the variables
-
-Taiwan_flu <- Taiwan_flu %>%
-  rename(
-    year= Year.of.Onset ,
-    month = Month.of.Onset ,
-    cases = Number.of.Confirmed.Cases,
-    age_group = Age.Group
-  )
+# 
+# Taiwan_flu <- Taiwan_flu %>%
+#   rename(
+#     year= Year_of_Onset ,
+#     month = Month_of_Onset ,
+#     cases = Number_of_Confirmed.Cases,
+#     age_group = Age_Group
+#   )
 
 ## transform the month using lubridate
 # Taiwan_flu$month_name <- month.name[Taiwan_flu$month]
