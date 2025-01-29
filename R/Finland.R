@@ -1,4 +1,4 @@
-
+library(tidyr)
 
 # split Time column accordingly
 cases_201019 <- read.csv("csv/Finland/fact_ttr_cases 2010 -2019.csv", sep = ";") |>
