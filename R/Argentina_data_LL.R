@@ -51,7 +51,7 @@ combined_data <- combined_data %>%
     num_cases = cantidad_casos
   )
 
-tail(combined_data) ## 1399662 rows
+tail(combined_data)
 
 ## check the distinct events -- make sure that we only have influenza and RSV
 combined_data %>%
@@ -76,11 +76,7 @@ tail(Argentina_all_data) ## 2164687 rows of patients
 Argentina_all_data %>%
   distinct(event)
 
-## LL REVISIT this:
-# Write the data to a CSV file
-# write.csv(flu_bronchio_data, "flu_bronchio_data.csv", row.names = TRUE)
-## I sorted the data and made sure manually that it seems ok. this is because i wasnt able to do view() bcs of the large file.
-
+## check
 summary(Argentina_all_data)
 head(Argentina_all_data)
 
@@ -235,8 +231,31 @@ flu_Argentina %>%
     axis.text.x = element_text()  # Rotates the x-axis labels for better readability
   )
 
+###--------------------------------------------------------------------LL_main_plot
 
-
+## ggplot by year
+main_plot <- Argentina_all_data %>% 
+  group_by(year, epi_weeks, event) %>%
+  summarise(num_cases = n()) %>% 
+  ggplot(aes(x = epi_weeks, y = num_cases, color = event)) +
+  geom_line(size = 1) +
+  facet_wrap(~ year) +
+  labs(title = 'Argentina Bronchiolitis and Flu Data', subtitle = "Stratified by year",
+       x = 'Week', 
+       y = "Number of Cases",
+       color = "Event") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12) ) +
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(1, 52, by = 4))
+main_plot
 
 
 

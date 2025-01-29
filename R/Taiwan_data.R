@@ -39,41 +39,51 @@ Taiwan_flu <- Taiwan_flu %>%
   )
 
 ## transform the month using lubridate
-Taiwan_flu$month_name <- month.name[Taiwan_flu$month]
+# Taiwan_flu$month_name <- month.name[Taiwan_flu$month]
 
 ## select the variables of interest
 
 Taiwan_flu <- Taiwan_flu %>% 
-  select(year, month_name, age_group, cases)
+  select(year, month, age_group, cases)
 Taiwan_flu
+
+## after 2017 as the data before 2017 are of low quality
+Taiwan_flu <- Taiwan_flu %>% 
+  filter(year >= 2017)
 
 # Process the data
 grp_data <- Taiwan_flu %>%
-  group_by(year , month_name, age_group ) %>%
-  summarise(num_cases = n(), .groups = "drop")
+  group_by(year , month, age_group ) %>%
+  summarise(num_cases = n())
 
-## plot
-grp_data <- grp_data %>%
-  mutate(is_covid = if_else(year < 2021, 
-                            "Before Lockdown", "After Lockdown"))
 
-#View(grp_data)
+summary(grp_data)
 
-grp_data <- grp_data %>%
-  group_by(month_name, is_covid, age_group) %>%
-  summarise(cases = sum(num_cases)) %>%
-  na.omit() 
-grp_data
+
+# ## plot
+# grp_data <- grp_data %>%
+#   mutate(is_covid = if_else(year < 2021, 
+#                             "Before Lockdown", "After Lockdown"))
+# 
+# #View(grp_data)
+# 
+# grp_data <- grp_data %>%
+#   group_by(month_name, is_covid, age_group) %>%
+#   summarise(cases = sum(num_cases)) %>%
+#   na.omit() 
+# grp_data
 
 ##------------------------------------------------------------------------------
-## GGplot  -- LL carry on working from here
-
+## GGplot - plot by age group
 
 main_plot <- grp_data %>% 
-  ggplot(aes(x = month_name, y = cases, color = factor(is_covid))) +
+  ggplot(aes(x = month, y = num_cases)) +#, color = factor(is_covid))) +
   geom_line(size = 1) +
-  facet_wrap(~age_group) +
-  labs(title = 'Taiwan Flu Data', subtitle = "Age stratified case data", x = 'Week', y = "Lab Confirmed Cases") +
+  facet_wrap(~ age_group) +
+  labs(title = 'Taiwan Flu Data', 
+       subtitle = "Age stratified case data", 
+       x = 'Week', 
+       y = "Lab Confirmed Cases") +
   theme_fivethirtyeight() + 
   theme(
     legend.position = "bottom",
@@ -81,7 +91,29 @@ main_plot <- grp_data %>%
     axis.title = element_text(),
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
-  )
+  ) +
+  scale_x_continuous(breaks = 1:12, labels = month.abb)
 main_plot
 
+##------------------------------------------------------------------------------
+## plot by year
 
+main_plot2 <- grp_data %>% 
+  ggplot(aes(x = month, y = num_cases)) +#, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~ year) +
+  labs(title = 'Taiwan Influenza Data', 
+       subtitle = "Stratified by year", 
+       x = 'Week', 
+       y = "Influenza cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  ) +
+  scale_x_continuous(breaks = 1:12, labels = month.abb)
+
+main_plot2
