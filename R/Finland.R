@@ -66,3 +66,28 @@ ggplot(peak_diff, aes(x = Epi_year, y = Difference)) +
        y = "Days Between Peaks") +
   theme_minimal()
 
+
+# Merge with original data for visualization
+plot_data <- Finland_data %>% select(Date, Cases, Group) 
+
+# Create combined plot
+ggplot() +
+  # Main time series plot for RSV and Influenza
+  geom_line(data = plot_data, aes(x = Date, y = Cases, color = Group), linewidth = 1) +
+  
+  # Line plot for peak difference with secondary axis
+  geom_line(data = peak_diff, aes(x = as.Date(paste0(Epi_year, "-01-01")), y = Difference * 10), 
+            color = "black", linewidth = 1) +
+  
+  scale_y_continuous(
+    name = "Cases",
+    sec.axis = sec_axis(~ . / 10, name = "Days Between Peaks")  # Adjust scale for visibility
+  ) +
+  # Horizontal dashed line at y = 0
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +
+  
+  labs(title = "Seasonality of RSV and Influenza with Peak Timing Difference",
+       x = "Date",
+       color = "Disease") +
+  theme_minimal()
+
