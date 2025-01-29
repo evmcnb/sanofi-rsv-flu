@@ -76,6 +76,16 @@ tail(Argentina_all_data) ## 2164687 rows of patients
 Argentina_all_data %>%
   distinct(event)
 
+## rename to the main categories : influenza and bronchiolitis
+Argentina_all_data <- Argentina_all_data %>%
+  mutate(event = recode(event,  "Enfermedad tipo influenza (ETI)" = "Influenza"))
+
+##Now proceed to bronchiolitis
+
+Argentina_all_data <- Argentina_all_data %>%
+  mutate(event = if_else(str_detect(event, "Bronquiolitis"), "Bronchiolitis", event))
+
+
 ## check
 summary(Argentina_all_data)
 head(Argentina_all_data)
