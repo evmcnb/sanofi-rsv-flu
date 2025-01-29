@@ -32,3 +32,37 @@ ggplot(Finland_data, aes(x = Date, y = Cases, color = Group)) +
        x = "Date",
        y = "Cases") +
   theme_minimal()
+
+# work on difference in peaks. adjust data to allow for peaks being on either side of NYE
+Finland_data <- Finland_data |> mutate(Year = as.numeric(Year)) |>
+  mutate(Epi_year = ifelse(month(Date) >= 7, Year, Year-1))
+
+# use function to find peak
+# NB: this data only has months and would benefit from a granular, weekly division
+get_peak_month <- function(data, disease) {
+  data %>%
+    filter(Group == disease, month(Date) %in% c(9:12, 1:5)) %>%  # Focus on Sept-May
+    group_by(Epi_year) %>%
+    slice_max(Cases, n = 1, with_ties = FALSE) %>%  # Find peak within season
+    select(Epi_year, Date) %>%
+    rename(!!paste0(disease, "_Peak") := Date)  # Rename for clarity
+}
+
+# get peak months for each disease
+flu_peaks <- get_peak_month(Finland_data, "Influenza")
+rsv_peaks <- get_peak_month(Finland_data, "RSV")
+
+# REWRITE THIS
+# Merge peak data
+peak_diff <- inner_join(flu_peaks, rsv_peaks, by = "Epi_year") %>%
+  mutate(Difference = as.numeric(difftime(Influenza_Peak, RSV_Peak, units = "days")))  # Compute difference in days
+
+# Plot difference over epidemic seasons
+ggplot(peak_diff, aes(x = Epi_year, y = Difference)) +
+  geom_line() + 
+  geom_point(size = 3, color = "blue") +
+  labs(title = "Timing Difference Between Influenza and RSV Peaks (Epidemic Seasons)",
+       x = "Epidemic Season",
+       y = "Days Between Peaks") +
+  theme_minimal()
+
