@@ -50,7 +50,7 @@ flu_au_data %>%
   coord_polar(theta = "x")
 
 ggsave(
-  filename = "plots/Polar/flu_au_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  filename = "plots/Polar/flu_au_polar_plot_new.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
   plot = last_plot(),  # This refers to the last plot generated
   width = 6,  # Width of the plot (in inches)
   height = 6,  # Height of the plot (in inches)
@@ -103,7 +103,7 @@ flu_au_data %>%
   ) +
   coord_polar(theta = "x")
 
-# Not the clearest plot but maybe still pretty good
+# Pretty good
 flu_au_data %>% 
   filter(epi_year > 2014) %>% 
   group_by(epi_week, epi_year) %>%

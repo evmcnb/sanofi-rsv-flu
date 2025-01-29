@@ -16,6 +16,8 @@ source("R/Australia_data.R")
 source("R/Denmark_data.R")
 source("R/HK_data.R")
 source("R/US_data.R")
+source("R/Argentina_data.R")
+source("R/Cananda_data.R")
 
 world_population <- read_csv("csv/world_population.csv") %>%
   set_names(gsub("\\s+", "_", names(.))) %>%

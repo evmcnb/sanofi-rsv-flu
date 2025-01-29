@@ -163,7 +163,7 @@ flu_uk_data %>%
 # Also might need centering - good thing about the polar plots this isnt needed. year 7 = 2021
 flu_uk_data %>%
   filter(age == "all") %>%
-  mutate(is_covid = if_else(as.numeric(year) < 7, 0, 1),
+  mutate(is_covid = if_else(year < 2021, 0, 1),
          is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>% 
   group_by(epiweek, is_covid) %>%
   summarise(cases = sum(metric_value)) %>% 

@@ -6,19 +6,19 @@
 ## -----------------------------------------------------------------------------
 
 #install.packages("ggthemes")
-
-library(purrr)
-library(readxl)
-library(lubridate)
-library(ggplot2)
-library(ggthemes)
-library(dplyr)
-library(stringr)
-
-## Get the working directory
-
-mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina/test_LL")
-getwd()
+# 
+# library(purrr)
+# library(readxl)
+# library(lubridate)
+# library(ggplot2)
+# library(ggthemes)
+# library(dplyr)
+# library(stringr)
+# 
+# ## Get the working directory
+# 
+# mywd <- setwd("C:/Users/icnarc246/OneDrive - ICNARC/Desktop/Trainings and personal docs/LSHTM/Data challenge/sanofi-rsv-flu/csv/Argentina/test_LL")
+# getwd()
 
 ## Get all the files all at once:
 
