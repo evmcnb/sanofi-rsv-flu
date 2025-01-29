@@ -195,6 +195,37 @@ RSV_IR_MERGE <- rsv_ireland %>%
 
 ba_df <- rbind(ba_df, RSV_IR_MERGE)
 
+FINLAND_MERGE <- Finland_data %>% 
+  mutate(country = "Finland",
+         disease = Group,
+         week = NA,
+         month = Month,
+         year = Year,
+         age = NA,
+         metric = Cases) %>% 
+  select(country, year, month, week, disease, age, metric) %>% 
+  arrange(year, week) %>% 
+  arrange(disease) %>% 
+  view()
+
+ba_df <- rbind(ba_df, FINLAND_MERGE)
+
+JAPAN_MERGE <- Japan_data %>% 
+  pivot_longer(cols = ends_with("cases", ignore.case = TRUE), names_to = "disease", values_to = "metric") %>%
+  mutate(disease = if_else(disease == "flu_cases", "Influenza", "RSV"),
+         country = "Japan",
+         year = Year,
+         week = Week,
+         month = NA,
+         age = NA) %>%
+  select(country, year, month, week, disease, age, metric) %>% 
+  arrange(year, week) %>% 
+  arrange(disease) %>% 
+  view()
+
+ba_df <- rbind(ba_df, JAPAN_MERGE)
+  
+
 world_population <- read_csv("csv/world_population.csv") %>%
   set_names(gsub("\\s+", "_", names(.))) %>%
   pivot_longer(cols = c(starts_with("19"), starts_with("20")), names_to = "Year", values_to = "Population")
