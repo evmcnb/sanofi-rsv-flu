@@ -13,9 +13,22 @@ colnames(cases_202025) <- c("Month", "Year", "Group", "Cases")
 # remove the yearly summaries
 cases_201019 <- cases_201019[cases_201019$Month != "Year", ]
 cases_202025 <- cases_202025[cases_202025$Month != "Year", ]
-head(cases_201019)
-head(cases_202025)
-
 Finland_data <- rbind(cases_201019, cases_202025)
-
 rm(list = c("cases_201019", "cases_202025"))
+
+Fin_flu <- Finland_data[Finland_data$Group=="Influenza",]
+Fin_rsv <- Finland_data[Finland_data$Group=="RSV",]
+
+# libraries for plotting
+library(ggplot2) ; library(lubridate) ; library(dplyr)
+
+# convert month and date to combined format
+Finland_data <- Finland_data |> mutate(Date = dmy(paste("01", Month, Year)))
+
+# plot the data
+ggplot(Finland_data, aes(x = Date, y = Cases, color = Group)) +
+  geom_line() + 
+  labs(title = "Seasonality of RSV and Influenza in Finland 2010-2025",
+       x = "Date",
+       y = "Cases") +
+  theme_minimal()
