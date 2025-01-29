@@ -1,4 +1,4 @@
-Confirmed Disease Name,Year of Onset,Month of Onset,Gender,"Imported Case (0: No, 1: Yes)",Age Group,Number of Confirmed Cases,County/City Code,Township/District Code
+Confirmed Disease Name,year,month,gender,"Imported Case (0: No, 1: Yes)",age_group,cases,County/City Code,Township/District Code
 487a,2003,1,M,0,3,1,,
 487a,2003,1,F,0,3,1,,
 487a,2003,1,M,0,10~14,1,,
