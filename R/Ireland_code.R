@@ -1,4 +1,4 @@
-ireland_data <- read.csv("/Respiratory_Virus_Hub_Open_Data.csv")
+ireland_data <- read.csv("csv/Ireland/Respiratory_Virus_Hub_Open_Data.csv")
 
 # Separate the year and week column
 ireland_data <- ireland_data %>%
@@ -9,5 +9,5 @@ ireland_data <- ireland_data %>%
 flu_ireland <- filter(ireland_data, disease == "Influenza") %>% select(-disease)
 rsv_ireland <- filter(ireland_data, disease == 'RSV') %>% select(-disease)
 
-write_csv(flu_ireland, "/Users/onayomirosenior-patten/Documents/GitHub/sanofi-rsv-flu/csv/Ireland/clean_flu_ireland.csv")
-write_csv(rsv_ireland, "/Users/onayomirosenior-patten/Documents/GitHub/sanofi-rsv-flu/csv/Ireland/clean_rsv_ireland.csv")
+# write_csv(flu_ireland, "/Users/onayomirosenior-patten/Documents/GitHub/sanofi-rsv-flu/csv/Ireland/clean_flu_ireland.csv")
+# write_csv(rsv_ireland, "/Users/onayomirosenior-patten/Documents/GitHub/sanofi-rsv-flu/csv/Ireland/clean_rsv_ireland.csv")

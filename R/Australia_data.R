@@ -49,13 +49,13 @@ flu_au_data %>%
   ) +
   coord_polar(theta = "x")
 
-ggsave(
-  filename = "plots/Polar/flu_au_polar_plot_new.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 6,  # Width of the plot (in inches)
-  height = 6,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = "plots/Polar/flu_au_polar_plot_new.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 6,  # Width of the plot (in inches)
+#   height = 6,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 # Another great plot showing seasonality changes across all age groups. 
@@ -78,13 +78,13 @@ flu_au_data %>%
     strip.text.x = element_text(size = 8)
   )
 
-ggsave(
-  filename = "plots/Age/flu_au_age_facet.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 10,  # Width of the plot (in inches)
-  height = 6,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = "plots/Age/flu_au_age_facet.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 10,  # Width of the plot (in inches)
+#   height = 6,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 # Polar plot with all the years of data
@@ -121,19 +121,19 @@ flu_au_data %>%
     axis.text.x = element_text()  # Rotates the x-axis labels for better readability
   )
 
-ggsave(
-  filename = "plots/Other/flu_au_case_density2.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 6,  # Width of the plot (in inches)
-  height = 6,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = "plots/Other/flu_au_case_density2.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 6,  # Width of the plot (in inches)
+#   height = 6,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 
-# Trying to animate stuff... can ignore ----------------------------------------------
-
-library(gganimate)
+# # Trying to animate stuff... can ignore ----------------------------------------------
+# 
+# library(gganimate)
 
 # flu_au_data %>%
 #   arrange(epi_year, epi_week) %>%
