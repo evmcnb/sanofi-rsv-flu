@@ -23,7 +23,7 @@
 ## Get all the files all at once:
 
 #1. List all CSV files in a directory
-file_list <- list.files(path = "csv/Argentina/test_LL", pattern = "*.csv", full.names = TRUE)
+file_list <- list.files(path = "csv/Argentina/fixed_csvs", pattern = "*.csv", full.names = TRUE)
 
 #2. Read all files into a list of data frames
 data_list <- lapply(file_list, read.csv)
