@@ -21,7 +21,22 @@ uk_standard_data <- uk_data %>%
   arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
 
+fr_standard_data <- flu_france_data %>% 
+  mutate(COUNTRY_CODE = "-99", 
+         ISO_WEEK = as.numeric(week),
+         ISO_YEAR = as.numeric(year),
+         cases = inc,
+         HEMISPHERE = "NH",
+         ISO_WEEKSTARTDATE = NA,
+         AGE_GROUPCODE = "All") %>% 
+  select(COUNTRY_CODE, AGE_GROUPCODE, ISO_WEEK, ISO_YEAR, ISO_WEEKSTARTDATE, HEMISPHERE, cases) %>% 
+  arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
+  view()
+
+
+
 filtered_data <- rbind(filtered_data, uk_standard_data)
+filtered_data <- rbind(filtered_data, fr_standard_data)
 
 filtered_data %>%
   filter(cases < 9000000) %>% 
@@ -34,7 +49,7 @@ filtered_data %>%
   filter(n_distinct(is_covid) == 2) %>%   # Keep only countries with both Before & After data
   pull(COUNTRY_CODE) -> valid_countries
 
-excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB", )
+excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB")
 
 filtered_data %>%
   filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
@@ -84,8 +99,9 @@ world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>%
 
 ggplot(world_map_data) +
   geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "grey") +
-  labs(title = "Change in Peak Flu Week (Before vs After COVID)",
+  # scale_point_fill_continuous() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
+  labs(title = "Change in Time of Influenza Peak Pre- and Post- COVID-19",
        fill = "Week Shift") +
   theme(
     axis.title = element_text(size = 12, face = "bold"),
