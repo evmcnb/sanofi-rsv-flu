@@ -3,7 +3,8 @@ massive_flu_df <- read_csv("C:/Users/Evan/Downloads/VIW_FID.csv")
 # Filter the data for the selected date
 filtered_data <- massive_flu_df %>%
   group_by(COUNTRY_CODE, AGEGROUP_CODE, ISO_WEEK, ISO_YEAR, ISO_WEEKSTARTDATE, HEMISPHERE) %>% 
-  summarize(cases = sum(REPORTED_CASES, na.rm = TRUE)) %>%
+  summarize(cases = sum(REPORTED_CASES, na.rm = TRUE),
+            RSV = sum(RSV, na.ra = TRUE)) %>%
   filter(cases < 1e7) %>% 
   arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
@@ -49,7 +50,7 @@ filtered_data %>%
   filter(n_distinct(is_covid) == 2) %>%   # Keep only countries with both Before & After data
   pull(COUNTRY_CODE) -> valid_countries
 
-excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB")
+excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB". "NRU")
 
 filtered_data %>%
   filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
@@ -71,6 +72,74 @@ filtered_data %>%
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 8)
   )
+
+filtered_data %>%
+  filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
+  mutate(is_covid = if_else(ISO_YEAR < 2021, 0, 1),
+         is_covid = factor(is_covid, levels = c(0,1), labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(ISO_WEEK, is_covid, COUNTRY_CODE) %>%
+  summarise(cases = sum(RSV, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = ISO_WEEK, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~COUNTRY_CODE, scales = "free_y") +
+  labs(title = 'World RSV Data', 
+       subtitle = "Before Lockdown is defined as any data prior to 2021.", 
+       x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+
+flu_median <- median(filtered_data$cases, na.rm = TRUE)
+rsv_median <- median(filtered_data$RSV, na.rm = TRUE)
+
+flu_mean <- mean(filtered_data$cases, na.rm = TRUE)
+rsv_mean <- mean(filtered_data$RSV, na.rm = TRUE)
+
+scale_factor_median <- flu_median / rsv_median
+scale_factor_mean <- flu_mean / rsv_mean
+
+list(
+  median_ratio = scale_factor_median,
+  mean_ratio = scale_factor_mean
+)
+
+scale_factor <- 20
+
+filtered_data %>%
+  filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
+  pivot_longer(cols = c("cases", "RSV"), names_to = "disease", values_to = "cases") %>%
+  group_by(ISO_WEEKSTARTDATE, disease, COUNTRY_CODE) %>%
+  summarise(cases = sum(cases, na.rm = TRUE), .groups = "drop") %>%
+  filter(cases > 10) %>% 
+  ggplot(aes(x = ISO_WEEKSTARTDATE, y = cases, color = factor(disease))) +
+  geom_line(data = . %>% filter(disease == "cases"), aes(y = cases), size = 1) +
+  geom_line(data = . %>% filter(disease == "RSV"), aes(y = cases * scale_factor), size = 1) +
+  facet_wrap(~COUNTRY_CODE, scales = "free_y") +
+  scale_y_continuous(
+    name = "Lab Confirmed Influenza Cases",
+    sec.axis = sec_axis(~ . / scale_factor, name = "Lab Confirmed RSV Cases")
+  ) +
+  labs(
+    title = 'World Influenza vs RSV Data', 
+    subtitle = "Before Lockdown is defined as any data prior to 2021.", 
+    x = 'Week'
+  ) +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+
+
+
 
 library(rnaturalearth)
 library(rnaturalearthdata)
