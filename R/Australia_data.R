@@ -218,7 +218,7 @@ flu_au_data %>%
 
 # Luke week shift plots ---------------------------------------------------------
 
-# UPDATE variable names!
+# UPDATE variable names and tidy up
 
 # combine age groups to obtain weekly cases
 aus_lb <- flu_au_data %>%
