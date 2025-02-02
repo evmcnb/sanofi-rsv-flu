@@ -254,7 +254,7 @@ ggplot(lag_data, aes(x = year, y = shift)) +
   labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
        x = "Year",
        y = "Shift in Weeks") +
-  theme_fivethirtyeight() +#
+  theme_fivethirtyeight() +
   theme(
     axis.title = element_text(size = 12),
     axis.text = element_text(size = 10),
