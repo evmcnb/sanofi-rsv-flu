@@ -18,7 +18,6 @@ flu_au_data <- all_data %>%
 rm(list = c("all_data", "file_path"))
 
 
-
 rsv_au_data <- read_excel("csv/Australia/RSV.xlsx")
 
 
@@ -214,3 +213,51 @@ flu_au_data %>%
 #   width = 1024, height = 1024, res = 150, fps = 20, duration = 20
 # )
 
+
+
+
+# Luke week shift plots ---------------------------------------------------------
+
+# UPDATE variable names!
+
+# combine age groups to obtain weekly cases
+aus_lb <- flu_au_data %>%
+  arrange(epi_year, epi_week) %>%
+  group_by(epi_year, epi_week) %>%
+  summarise(cases = sum(cases), .groups = "drop")
+
+# carry out a time lag correlation / cross-correlation to best estimate the week shift
+# initially compare to 2019 then we can extend this to "pre-covid"
+aus_lb2 <- aus_lb %>%
+  filter(epi_year %in% c(2019, 2022, 2023)) %>%
+  select(epi_year, epi_week, cases)
+
+# convert into wide format for correlation analysis
+aus_wide <- aus_lb2 %>% tidyr::pivot_wider(names_from = epi_year, values_from = cases)
+# calculate correlation for each shift
+ccf_2022 <- ccf(aus_wide$`2019`, aus_wide$`2022`, lag.max = 20, plot = TRUE); # cap the shift at 20 weeks either side
+ccf_2023 <- ccf(aus_wide$`2019`, aus_wide$`2023`, lag.max = 20, plot = TRUE);
+# find the peak correlation and corresponding lag
+lag_2022 <- ccf_2022$lag[which.max(ccf_2022$acf)]  # best shift for 2022
+lag_2023 <- ccf_2023$lag[which.max(ccf_2023$acf)]
+
+# create a lag dataframe
+lag_data <- data.frame(
+  year = c(2022, 2023),
+  shift_in_weeks = c(lag_2022, lag_2023)
+)
+
+# plot the results
+ggplot(lag_data, aes(x = year, y = shift_in_weeks)) +
+  geom_line(aes(group = 1), color = "skyblue", size = 1) +
+  geom_point(color = "skyblue", size = 3) +
+  labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
+       x = "Year",
+       y = "Shift in Weeks") +
+  theme_minimal() +
+  scale_x_continuous(breaks = seq(2022, 2023, by = 1)) +  # Integer years on the x-axis
+  ylim(-10, 10) +  # Set y-axis limits from -10 to +10
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10)
+  )
