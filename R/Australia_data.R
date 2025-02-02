@@ -218,25 +218,24 @@ flu_au_data %>%
 
 # Luke week shift plots ---------------------------------------------------------
 
-# UPDATE variable names and tidy up
 
 # combine age groups to obtain weekly cases
-aus_lb <- flu_au_data %>%
+flu_shift <- flu_au_data %>%
   arrange(epi_year, epi_week) %>%
   group_by(epi_year, epi_week) %>%
   summarise(cases = sum(cases), .groups = "drop")
 
 # carry out a time lag correlation / cross-correlation to best estimate the week shift
 # initially compare to 2019 then we can extend this to "pre-covid"
-aus_lb2 <- aus_lb %>%
+flu_shift <- flu_shift %>%
   filter(epi_year %in% c(2019, 2022, 2023)) %>%
   select(epi_year, epi_week, cases)
 
 # convert into wide format for correlation analysis
-aus_wide <- aus_lb2 %>% tidyr::pivot_wider(names_from = epi_year, values_from = cases)
+flu_shift_wide <- flu_shift %>% tidyr::pivot_wider(names_from = epi_year, values_from = cases)
 # calculate correlation for each shift
-ccf_2022 <- ccf(aus_wide$`2019`, aus_wide$`2022`, lag.max = 20, plot = TRUE); # cap the shift at 20 weeks either side
-ccf_2023 <- ccf(aus_wide$`2019`, aus_wide$`2023`, lag.max = 20, plot = TRUE);
+ccf_2022 <- ccf(flu_shift_wide$`2019`, flu_shift_wide$`2022`, lag.max = 20, plot = TRUE); # cap the shift at 20 weeks either side
+ccf_2023 <- ccf(flu_shift_wide$`2019`, flu_shift_wide$`2023`, lag.max = 20, plot = TRUE);
 # find the peak correlation and corresponding lag
 lag_2022 <- ccf_2022$lag[which.max(ccf_2022$acf)]  # best shift for 2022
 lag_2023 <- ccf_2023$lag[which.max(ccf_2023$acf)]
