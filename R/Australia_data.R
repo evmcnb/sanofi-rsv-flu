@@ -226,37 +226,45 @@ flu_shift <- flu_au_data %>%
   summarise(cases = sum(cases), .groups = "drop")
 
 # carry out a time lag correlation / cross-correlation to best estimate the week shift
-# initially compare to 2019 then we can extend this to "pre-covid"
+# initially compare to 2019 then we can extend this to 'pre-covid'
 flu_shift <- flu_shift %>%
-  filter(epi_year %in% c(2019, 2022, 2023)) %>%
+  filter(epi_year > 2021 | epi_year == 2019) %>%
   select(epi_year, epi_week, cases)
 
 # convert into wide format for correlation analysis
 flu_shift_wide <- flu_shift %>% tidyr::pivot_wider(names_from = epi_year, values_from = cases)
-# calculate correlation for each shift
-ccf_2022 <- ccf(flu_shift_wide$`2019`, flu_shift_wide$`2022`, lag.max = 20, plot = TRUE); # cap the shift at 20 weeks either side
-ccf_2023 <- ccf(flu_shift_wide$`2019`, flu_shift_wide$`2023`, lag.max = 20, plot = TRUE);
-# find the peak correlation and corresponding lag
-lag_2022 <- ccf_2022$lag[which.max(ccf_2022$acf)]  # best shift for 2022
-lag_2023 <- ccf_2023$lag[which.max(ccf_2023$acf)]
 
-# create a lag dataframe
-lag_data <- data.frame(
-  year = c(2022, 2023),
-  shift_in_weeks = c(lag_2022, lag_2023)
-)
+# find which post-2021 years are actually in the dataset
+years_to_analyse <- unique(flu_shift$epi_year[flu_shift$epi_year > 2021])
 
-# plot the results
-ggplot(lag_data, aes(x = year, y = shift_in_weeks)) +
+# calculate lag for each year
+lag_results <- lapply(years_to_analyse, function(year) {
+  ccf_result <- ccf(flu_shift_wide$`2019`, flu_shift_wide[[as.character(year)]], lag.max = 20, plot = TRUE) # cap the shift at 20wks either side
+  best_lag <- ccf_result$lag[which.max(ccf_result$acf)] # find which lag gives highest correlation
+  data.frame(year = year, shift = best_lag)
+})
+
+# combine the results from each year
+lag_data <- do.call(rbind, lag_results)
+
+# plot the results using common aesthetic
+ggplot(lag_data, aes(x = year, y = shift)) +
   geom_line(aes(group = 1), color = "skyblue", size = 1) +
   geom_point(color = "skyblue", size = 3) +
   labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
        x = "Year",
        y = "Shift in Weeks") +
-  theme_minimal() +
-  scale_x_continuous(breaks = seq(2022, 2023, by = 1)) +  # Integer years on the x-axis
-  ylim(-10, 10) +  # Set y-axis limits from -10 to +10
+  theme_fivethirtyeight() +#
   theme(
     axis.title = element_text(size = 12),
-    axis.text = element_text(size = 10)
-  )
+    axis.text = element_text(size = 10),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  scale_x_continuous(breaks = seq(min(lag_data$year), max(lag_data$year), by = 1)) +  # integer years on the x-axis
+  ylim(-10, 10)  # set y-axis limits from -10 to +10
