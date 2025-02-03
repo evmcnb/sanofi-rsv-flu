@@ -269,18 +269,3 @@ main_plot
 
 
        x = "Year",
-       y = "Shift in Weeks") +
-  theme_fivethirtyeight() +
-  theme(
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 10),
-    legend.position = "bottom",
-    axis.ticks.y = element_line(),
-    axis.line.y.left = element_line(),
-    legend.title = element_blank(),
-    panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 8),
-    axis.text.y = element_text()
-  ) +
-  scale_x_continuous(breaks = seq(min(lag_data$year), max(lag_data$year), by = 1)) +  # integer years on the x-axis
-  ylim(-10, 10)  # set y-axis limits from -10 to +10
