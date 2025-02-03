@@ -11,7 +11,7 @@ library(readxl)
 library(ggthemes)
 library(ggplot2)
 
-# retrieve the main dataset with filters
+# retrieve the main dataset with filters on years and disease
 
 flu_dataset <- read_csv("csv/main_dataset.csv", 
                         col_types = cols(
@@ -29,6 +29,12 @@ flu_dataset <- read_csv("csv/main_dataset.csv",
   filter(disease == "Influenza") %>%
   filter(year > 2018) %>% # UPDATE later to include more pre-COVID years
   select(-disease)
+
+# collapse into weekly summaries by summing over age groups
+
+flu_dataset <- flu_dataset %>%
+  group_by(country, year, week) %>%
+  summarise(cases = sum(metric, na.rm = TRUE), .groups = "drop")
 
 ### Argentina
 
