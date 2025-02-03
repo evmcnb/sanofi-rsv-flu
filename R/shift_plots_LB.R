@@ -55,7 +55,7 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
     country_data <- data %>%
       filter(country == !!country) %>%
       mutate(epi_week = case_when(
-        hemisphere[country] == "North" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
+        hemisphere[country] == "N" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
         TRUE ~ week  # Keep same if South
       )) %>%
       arrange(year, epi_week)
@@ -85,8 +85,8 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
   
   # plot the results
   ggplot(lag_data, aes(x = year, y = shift, color = country, group = country)) +
-    geom_line(size = 1) +
-    geom_point(size = 3) +
+    geom_line(size = 1, na.rm = TRUE) +
+    geom_point(size = 3, na.rm = TRUE) +
     labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
          x = "Year",
          y = "Shift in Weeks") +
@@ -109,29 +109,29 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
 
 chosen_countries <- c(
   "Argentina",   
-  "Australia",   
-  "France",     
+  "Australia",
+  "Finland",
+  "France",
   "Hong Kong",  
-  "Ireland",    
+  "Ireland",
+  "Japan",
   "UK",         
-  "USA"         
+  "USA"
 )
 hemisphere_info <- c(
-  "Argentina" = "South", 
-  "Australia" = "South", 
-  "France" = "North", 
-  "Hong Kong" = "North",
-  "Ireland" = "North", 
-  "UK" = "North",
-  "USA" = "North"
+  "Argentina" = "S", 
+  "Australia" = "S",
+  "Finland" = "N",
+  "France" = "N", 
+  "Hong Kong" = "N",
+  "Ireland" = "N",
+  "Japan" = "N",
+  "UK" = "N",
+  "USA" = "N"
 )
 
 plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 
-# Denmark has severe missing values in 2024
-# UK and USA don't show up
-# Hong Kong has extreme shift
-# Issues with Taiwan - only goes up to 48 weeks with some missing values
 
 # error hunting
 tw <- flu_dataset[flu_dataset$country == "Taiwan",]
