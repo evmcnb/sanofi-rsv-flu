@@ -175,15 +175,107 @@ hemisphere_info <- setNames(
   chosen_countries
 )
 
+# new approach which should handle different length years better
+plot_seasonality_shift1 <- function(data, countries, hemisphere) {
+  
+  # initialize lag results
+  lag_results <- list()
+  
+  # run through each country in 'countries'
+  for (country in countries) {
+    
+    country_hemisphere <- hemisphere[[country]]
+    
+    # retrieve the country information and shift weeks based on hemisphere
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      mutate(epi_week = case_when(
+        hemisphere[country] == "N" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
+        TRUE ~ week  # Keep same if South
+      )) %>%
+      arrange(year, epi_week)
+    
+    # Ensure data is numeric and remove NAs for 'cases' column
+    country_data <- country_data %>%
+      mutate(cases = as.numeric(cases)) %>%
+      drop_na(cases)  # Drop rows where cases are NA
+    
+    # Check if 2019 exists and has complete data for the required weeks
+    if (!2019 %in% country_data$year) next
+    
+    # Convert into wide format for correlation analysis
+    country_data_wide <- country_data %>%
+      tidyr::pivot_wider(names_from = year, values_from = cases)
+    
+    # Ensure that the 'year' column exists after pivot_wider
+    if (!"2019" %in% colnames(country_data_wide)) next
+    
+    # Get valid years for the analysis (i.e., years with data)
+    valid_years <- unique(country_data$year)
+    
+    # Perform time lag correlation for each year
+    for (comp_year in valid_years[valid_years > 2021]) {
+      
+      # Ensure numeric and remove NAs from both columns
+      ref_2019 <- as.numeric(country_data_wide$`2019`)
+      comp_year_data <- as.numeric(country_data_wide[[as.character(comp_year)]])
+      
+      # Skip if data is missing or not usable
+      if (length(ref_2019) == 0 | length(comp_year_data) == 0) next
+      
+      # Compute cross-correlation function (ccf) - ignore NA values
+      ccf_result <- tryCatch({
+        ccf(ref_2019, comp_year_data, lag.max = 20, plot = FALSE)
+      }, error = function(e) {
+        # If ccf fails (due to missing data or any other issue), skip the country-year
+        return(NULL)
+      })
+      
+      # If ccf failed (e.g., due to NA values), skip this iteration
+      if (is.null(ccf_result)) next
+      
+      # Find the best lag (highest correlation)
+      best_lag <- ccf_result$lag[which.max(ccf_result$acf)]
+      
+      # Store results
+      lag_results[[paste(country, comp_year, sep = "_")]] <- data.frame(
+        country = country,
+        year = as.numeric(comp_year),
+        shift = best_lag
+      )
+    }
+  }
+  
+  # Combine all results into a single dataframe
+  lag_data <- do.call(rbind, lag_results)
+  
+  # Plot the results
+  ggplot(lag_data, aes(x = year, y = shift, color = country, group = country)) +
+    geom_line(size = 1, na.rm = TRUE) +
+    geom_point(size = 3, na.rm = TRUE) +
+    labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
+         x = "Year",
+         y = "Shift in Weeks") +
+    theme_fivethirtyeight() +  # Apply theme
+    theme(
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
+      legend.position = "right",
+      axis.ticks.y = element_line(),
+      axis.line.y.left = element_line(),
+      legend.title = element_blank(),
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      axis.text.y = element_text()
+    ) +
+    scale_x_continuous(breaks = unique(lag_data$year)) +  # integer years on x-axis
+    ylim(-20, 20)  # set y-axis limit
+}
+
+
+
 # produce the plot
 plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 
-# error hunting
-tw <- flu_dataset[flu_dataset$country == "Taiwan",]
-summary(tw)
-sum(is.na(tw$cases))
-range(tw$week)
-ggplot(tw, aes(x = week, y = cases, color = year, group = year)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Taiwan Data", x = "Week", y = "Cases")
+# produce the plot using (hopefully) more robust method
+plot_seasonality_shift1(flu_dataset, chosen_countries, hemisphere_info)
