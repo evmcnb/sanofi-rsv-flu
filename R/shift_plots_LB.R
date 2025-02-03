@@ -49,6 +49,12 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
   # run through each country in 'countries'
   for (country in countries) {
     
+    # skip countries not in the dataset
+    if (!(country %in% unique(data$country))) {
+      message(paste("Skipping", country, "- not in dataset"))
+      next
+    }
+    
     country_hemisphere <- hemisphere[[country]]
     
     # retrieve the country information and shift weeks based on hemisphere
@@ -60,14 +66,37 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
       )) %>%
       arrange(year, epi_week)
     
+    # identify years with exactly 52 weeks
+    valid_years <- country_data %>%
+      group_by(year) %>%
+      summarise(week_count = n()) %>%
+      filter(week_count == 52) %>%
+      pull(year)
+    
+    # check 2019 has 52 weeks
+    if (!(2019 %in% valid_years)) {
+      message(paste("Skipping", country, "- 2019 does not have 52 weeks"))
+      next
+    }
+    
+    # filter to only include valid years
+    country_data <- country_data %>%
+      filter(year %in% valid_years)
+    
     # convert into wide format for correlation analysis
     country_data_wide <- country_data %>% tidyr::pivot_wider(names_from = year, values_from = cases)
     
     # identify post-2021 years for comparison
-    years_to_analyse <- unique(country_data$year[country_data$year > 2021])
+    years_to_analyse <- valid_years[valid_years > 2021]
     
     # perform time lag correlation for each year - set plot = TRUE to see the ccf plot
     for (comp_year in years_to_analyse) {
+      
+      if (!(as.character(comp_year) %in% colnames(country_data_wide))) {
+        message(paste("Skipping", country, comp_year, "- data missing"))
+        next
+      }
+      
       ccf_result <- ccf(country_data_wide$`2019`, country_data_wide[[as.character(comp_year)]], lag.max = 20) # cap the shift at 20wks either side
       best_lag <- ccf_result$lag[which.max(ccf_result$acf)] # find which lag gives highest correlation
       
@@ -94,7 +123,7 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
     theme(
       axis.title = element_text(size = 12),
       axis.text = element_text(size = 10),
-      legend.position = "bottom",
+      legend.position = "right",
       axis.ticks.y = element_line(),
       axis.line.y.left = element_line(),
       legend.title = element_blank(),
@@ -110,28 +139,44 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
 chosen_countries <- c(
   "Argentina",   
   "Australia",
+  "Colombia",
   "Finland",
   "France",
   "Hong Kong",  
   "Ireland",
   "Japan",
-  "UK",         
-  "USA"
+  "United Kingdom",
+  "United States"
 )
 hemisphere_info <- c(
   "Argentina" = "S", 
   "Australia" = "S",
+  "Colombia" = "S",
   "Finland" = "N",
   "France" = "N", 
   "Hong Kong" = "N",
   "Ireland" = "N",
   "Japan" = "N",
-  "UK" = "N",
-  "USA" = "N"
+  "United Kingdom" = "N",
+  "United States" = "S"
 )
 
-plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
+# more systematic approach
+chosen_countries <- unique(flu_dataset$country)
+southern_hemisphere <- c(
+  "Argentina", "Australia", "Bolivia", "Botswana", "Brazil", "Chile", "Colombia",
+  "Ecuador", "Eswatini", "Fiji", "Lesotho", "Madagascar", "Malawi", "Mauritius",
+  "Mozambique", "Namibia", "New Zealand", "Paraguay", "Peru", "Papua New Guinea",
+  "Rwanda", "Samoa", "Solomon Islands", "South Africa", "Tanzania", "Timor-Leste",
+  "Tonga", "Uruguay", "Vanuatu", "Zambia", "Zimbabwe"
+)
+hemisphere_info <- setNames(
+  ifelse(chosen_countries %in% southern_hemisphere, "S", "N"), 
+  chosen_countries
+)
 
+# produce the plot
+plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 
 # error hunting
 tw <- flu_dataset[flu_dataset$country == "Taiwan",]
