@@ -4,10 +4,15 @@ massive_flu_df <- read_csv("C:/Users/Evan/Downloads/VIW_FID.csv")
 filtered_data <- massive_flu_df %>%
   group_by(COUNTRY_CODE, AGEGROUP_CODE, ISO_WEEK, ISO_YEAR, ISO_WEEKSTARTDATE, HEMISPHERE) %>% 
   summarize(cases = sum(REPORTED_CASES, na.rm = TRUE),
-            RSV = sum(RSV, na.ra = TRUE)) %>%
+            RSV = sum(RSV, na.rm = TRUE)) %>%
   filter(cases < 1e7) %>% 
-  arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
+  arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>%
+  mutate(smooth_case = {
+    smoothed <- ksmooth(ISO_WEEKSTARTDATE, cases, "normal", bandwidth = 3)
+    smoothed$y[match(ISO_WEEKSTARTDATE, smoothed$x)]  # Extract corresponding smoothed value for each week
+  }) %>%
   view()
+
 
 uk_standard_data <- uk_data %>% 
   filter(age_group == "all") %>% 
@@ -50,7 +55,7 @@ filtered_data %>%
   filter(n_distinct(is_covid) == 2) %>%   # Keep only countries with both Before & After data
   pull(COUNTRY_CODE) -> valid_countries
 
-excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB". "NRU")
+excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB", "NRU")
 
 filtered_data %>%
   filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
@@ -147,6 +152,7 @@ library(ggcorrplot)
 
 seasonality_shift <- filtered_data %>%
   filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
+  filter(age)
   mutate(is_covid = if_else(ISO_YEAR < 2021, "Before", "After")) %>%
   group_by(COUNTRY_CODE, is_covid, ISO_WEEK) %>%
   summarise(total_cases = sum(cases, na.rm = TRUE), .groups = "drop") %>%
@@ -162,6 +168,8 @@ seasonality_shift <- filtered_data %>%
       raw_shift
     )
   )
+
+write_csv(seasonality_shift, file = "csv/flu_net_shift.csv")
 
 world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>% 
   left_join(seasonality_shift, by = c("iso_a3" = "COUNTRY_CODE"))
