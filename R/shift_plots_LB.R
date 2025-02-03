@@ -133,6 +133,7 @@ plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 # Hong Kong has extreme shift
 # Issues with Taiwan - only goes up to 48 weeks with some missing values
 
+# error hunting
 tw <- flu_dataset[flu_dataset$country == "Taiwan",]
 summary(tw)
 sum(is.na(tw$cases))
