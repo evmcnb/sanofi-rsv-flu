@@ -136,45 +136,6 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
 }
 
 
-chosen_countries <- c(
-  "Argentina",   
-  "Australia",
-  "Colombia",
-  "Finland",
-  "France",
-  "Hong Kong",  
-  "Ireland",
-  "Japan",
-  "United Kingdom",
-  "United States"
-)
-hemisphere_info <- c(
-  "Argentina" = "S", 
-  "Australia" = "S",
-  "Colombia" = "S",
-  "Finland" = "N",
-  "France" = "N", 
-  "Hong Kong" = "N",
-  "Ireland" = "N",
-  "Japan" = "N",
-  "United Kingdom" = "N",
-  "United States" = "S"
-)
-
-# more systematic approach
-chosen_countries <- unique(flu_dataset$country)
-southern_hemisphere <- c(
-  "Argentina", "Australia", "Bolivia", "Botswana", "Brazil", "Chile", "Colombia",
-  "Ecuador", "Eswatini", "Fiji", "Lesotho", "Madagascar", "Malawi", "Mauritius",
-  "Mozambique", "Namibia", "New Zealand", "Paraguay", "Peru", "Papua New Guinea",
-  "Rwanda", "Samoa", "Solomon Islands", "South Africa", "Tanzania", "Timor-Leste",
-  "Tonga", "Uruguay", "Vanuatu", "Zambia", "Zimbabwe"
-)
-hemisphere_info <- setNames(
-  ifelse(chosen_countries %in% southern_hemisphere, "S", "N"), 
-  chosen_countries
-)
-
 # new approach which should handle different length years better
 plot_seasonality_shift1 <- function(data, countries, hemisphere) {
   
@@ -272,7 +233,19 @@ plot_seasonality_shift1 <- function(data, countries, hemisphere) {
     ylim(-20, 20)  # set y-axis limit
 }
 
-
+# more systematic approach
+chosen_countries <- unique(flu_dataset$country)
+southern_hemisphere <- c(
+  "Argentina", "Australia", "Bolivia", "Botswana", "Brazil", "Chile", "Colombia",
+  "Ecuador", "Eswatini", "Fiji", "Lesotho", "Madagascar", "Malawi", "Mauritius",
+  "Mozambique", "Namibia", "New Zealand", "Paraguay", "Peru", "Papua New Guinea",
+  "Rwanda", "Samoa", "Solomon Islands", "South Africa", "Tanzania", "Timor-Leste",
+  "Tonga", "Uruguay", "Vanuatu", "Zambia", "Zimbabwe"
+)
+hemisphere_info <- setNames(
+  ifelse(chosen_countries %in% southern_hemisphere, "S", "N"), 
+  chosen_countries
+)
 
 # produce the plot
 plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
