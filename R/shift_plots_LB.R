@@ -9,27 +9,32 @@ install.packages("ggthemes")
 library(tidyverse)
 library(readxl)
 library(ggthemes)
+library(ggplot2)
 
-# source all the weekly countries - can introduce France and Japan later
-source("R/France_data.R")
-source("R/Uk_data.R")
-source("R/Australia_data.R")
-source("R/Denmark_data.R")
-source("R/HK_data.R")
-source("R/US_data.R")
-source("R/Argentina_data_LL.R")
-source("R/Ireland_code.R")
-source("R/Taiwan_data.R")
+# retrieve the main dataset with filters
 
-
-
+flu_dataset <- read_csv("csv/main_dataset.csv", 
+                        col_types = cols(
+                          country = col_character(),
+                          source = col_character(),
+                          month = col_character(),
+                          disease = col_character(),
+                          age = col_character(),  # not numeric in some cases
+                          year = col_double(),
+                          week = col_double(),
+                          metric = col_double(),
+                          population = col_double()
+                        )) %>%
+  select(country, year, week, disease, age, metric) %>%
+  filter(disease == "Influenza") %>%
+  filter(year > 2018) %>% # UPDATE later to include more pre-COVID years
+  select(-disease)
 
 ### Argentina
 
 # combine age groups to obtain weekly cases
 flu_shift <- Argentina_all_data %>%
   select(year, epi_weeks, event, age_group, num_cases) %>%
-  filter(event == "Influenza") %>%
   arrange(year, epi_weeks) %>%
   group_by(year, epi_weeks) %>%
   summarise(cases = sum(num_cases), .groups = "drop")
@@ -202,8 +207,10 @@ ggplot(lag_data, aes(x = year, y = shift)) +
 
 
 
-
 ### UK
 
 
 ### USA
+
+
+# import the main dataset to do this more efficiently
