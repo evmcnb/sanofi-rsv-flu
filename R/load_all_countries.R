@@ -7,7 +7,7 @@ library(rnaturalearth)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
-
+library(leaflet)
 
 rm(list = ls())
 
@@ -77,6 +77,8 @@ RSV_UK_MERGE <- rsv_uk_data %>%
   arrange(year, week) %>%
   view()
 
+ba_df <- rbind(ba_df, RSV_UK_MERGE)
+
 FLU_AU_MERGE <- flu_au_data %>%
   mutate(
     country = "Australia",
@@ -121,6 +123,8 @@ RSV_DK_MERGE <- rsv_dk_data %>%
   arrange(year, week) %>%
   view()
 
+ba_df <- rbind(ba_df, RSV_DK_MERGE)
+
 FLU_HK_MERGE <- flu_hk_data %>%
   pivot_longer(cols = starts_with("Adm"),
                names_to = "age",
@@ -135,6 +139,25 @@ FLU_HK_MERGE <- flu_hk_data %>%
   select(country, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
+
+ba_df <- rbind(ba_df, FLU_HK_MERGE)
+
+RSV_HK_MERGE <- flu_hk_data %>%
+  pivot_longer(cols = starts_with("Adm"),
+               names_to = "age",
+               values_to = "metric") %>%
+  mutate(
+    country = "Hong Kong",
+    disease = "Influenza",
+    month = NA,
+    year = Year,
+    week = Week,
+    source = "GOV") %>%
+  select(country, source, year, month, week, disease, age, metric) %>% 
+  arrange(year, week) %>%
+  view()
+
+ba_df <- rbind(ba_df, RSV_HK_MERGE)
 
 ARGENTINA_MERGE <- Argentina_all_data %>%
   mutate(
@@ -154,26 +177,10 @@ ARGENTINA_MERGE <- Argentina_all_data %>%
 
 ba_df <- rbind(ba_df, ARGENTINA_MERGE)
 
-RSV_HK_MERGE <- flu_hk_data %>%
-  pivot_longer(cols = starts_with("Adm"),
-               names_to = "age",
-               values_to = "metric") %>%
-  mutate(
-    country = "Hong Kong",
-    disease = "Influenza",
-    month = NA,
-    year = Year,
-    week = Week,
-    source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
-  arrange(year, week) %>%
-  view()
-
-ba_df <- rbind(ba_df, FLU_HK_MERGE)
 
 FLU_US_MERGE <- flu_us_data %>%
   mutate(
-    country = "United States",
+    country = "United States of America",
     disease = "Influenza",
     month = NA,
     year = YEAR...4,
@@ -296,7 +303,6 @@ TAIWAN_MERGE_FLU <- Taiwan_flu %>%
 
 ba_df <- rbind(ba_df, TAIWAN_MERGE_FLU)
 
-
 massive_flu_df <- read_csv("C:/Users/Evan/Downloads/VIW_FID.csv")
 
 # Filter the data for the selected date
@@ -331,6 +337,7 @@ filtered_data <- filtered_data %>%
 
 ba_df <- rbind(ba_df, filtered_data)
 
+
 df <- ba_df %>% 
   mutate(
     age = case_when(
@@ -347,6 +354,7 @@ df <- ba_df %>%
     month = factor(month, levels = month.abb, ordered = TRUE)
   ) %>%
   view()
+
 
 
 world_population <- read_csv("csv/world_population.csv") %>%
@@ -367,9 +375,9 @@ df <- df %>%
               select(Year, population, Country_Name),
             by = c("year" = "Year", "country" = "Country_Name")
   ) %>%
-  group_by(country) %>%  
-  fill(everything(), .direction = "down") %>%  
-  ungroup() %>%  
+  # group_by(country) %>%  
+  # fill(everything(), .direction = "down") %>%  
+  # ungroup() %>%  
   mutate(
     month = case_when(
       is.na(month) & !is.na(week) ~ month.abb[pmin(ceiling(week / 4), 12)],  # Ensure it doesn't exceed 12
@@ -379,10 +387,15 @@ df <- df %>%
   ) %>% 
   view()
 
+
+
+
 df <- df %>%
   mutate(
     is_monthly = is.na(week) & !is.na(month)  # Identify monthly data
   )
+
+
 
 # Split the dataset into weekly and monthly parts
 df_weekly <- df %>% filter(!is_monthly)
@@ -405,8 +418,30 @@ df <- bind_rows(df_weekly, df_monthly) %>%
   arrange(country, year, week) %>%
   view()
 
+
+au_test <- df %>%
+  filter(week < 53) %>% #
+  filter(country == "Australia") %>%
+  group_by(week) %>%
+  summarize(cases = sum(metric)) %>%
+  view()
+
+
 write.csv(df, file="csv/main_dataset.csv", row.names = FALSE)
 
+au_test <- df_subset %>%
+  filter(week < 53) %>% 
+  group_by(week) %>%
+  summarize(cases = sum(metric)) %>%
+  view()
+
+au_test <- df %>%
+  filter(week < 53) %>% #
+  filter(country == "Australia") %>% 
+  view()
+
+flu_au_data %>% group_by(epi_week) %>% summarize(cases = sum(cases)) %>% view()
+ 
 
 # global_flu_season <- df %>%
 #   filter(disease == "Influenza") %>%

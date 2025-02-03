@@ -48,6 +48,29 @@ flu_au_data %>%
   ) +
   coord_polar(theta = "x")
 
+FLU_AU_MERGE %>%
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(week, is_covid) %>%
+  summarise(metric = sum(metric)) %>%
+  na.omit() %>%
+  view()
+  ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  labs(title = 'AU Influenza Data Changed', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  coord_polar(theta = "x")
+
 # ggsave(
 #   filename = "plots/Polar/flu_au_polar_plot_new.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
 #   plot = last_plot(),  # This refers to the last plot generated
