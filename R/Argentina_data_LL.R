@@ -268,7 +268,4 @@ main_plot <- Argentina_all_data %>%
 main_plot
 
 
-
-
-
-
+       x = "Year",

@@ -18,7 +18,6 @@ flu_au_data <- all_data %>%
 rm(list = c("all_data", "file_path"))
 
 
-
 rsv_au_data <- read_excel("csv/Australia/RSV.xlsx")
 
 
@@ -236,4 +235,3 @@ flu_au_data %>%
 #   renderer = av_renderer("flu_animation.mp4"), # Specify the output file name
 #   width = 1024, height = 1024, res = 150, fps = 20, duration = 20
 # )
-
