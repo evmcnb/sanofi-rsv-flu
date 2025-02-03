@@ -106,7 +106,37 @@ plot_seasonality_shift <- function(data, countries, hemisphere) {
     ylim(-10, 10)  # set y-axis limit
 }
 
-chosen_countries <- c("Argentina", "Australia", "France")
-hemisphere_info <- c("Argentina" = "South", "Australia" = "South", "France" = "North")
+
+chosen_countries <- c(
+  "Argentina",   
+  "Australia",   
+  "France",     
+  "Hong Kong",  
+  "Ireland",    
+  "UK",         
+  "USA"         
+)
+hemisphere_info <- c(
+  "Argentina" = "South", 
+  "Australia" = "South", 
+  "France" = "North", 
+  "Hong Kong" = "North", 
+  "Ireland" = "North", 
+  "UK" = "North",
+  "USA" = "North"
+)
 
 plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
+
+# Denmark has severe missing values in 2024
+# Hong Kong and UK have issues and don't show up
+# Issues with Taiwan
+
+hk <- flu_dataset[flu_dataset$country == "Hong Kong",]
+summary(hk)
+sum(is.na(hk$cases))
+range(hk$week)
+ggplot(hk, aes(x = week, y = cases)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Hong Kong Data", x = "Week", y = "Cases")
