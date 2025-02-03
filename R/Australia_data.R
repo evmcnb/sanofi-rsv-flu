@@ -212,8 +212,3 @@ flu_au_data %>%
 #   renderer = av_renderer("flu_animation.mp4"), # Specify the output file name
 #   width = 1024, height = 1024, res = 150, fps = 20, duration = 20
 # )
-
-
-
-
-# )
