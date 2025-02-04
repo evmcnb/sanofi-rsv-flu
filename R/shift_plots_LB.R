@@ -256,37 +256,39 @@ plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 plot_seasonality_shift1(flu_dataset, chosen_countries, hemisphere_info)
 
 
+
 # Week shift using rolling average -----------------------------------------------
 
 
-# Define the function to compute and plot seasonality shifts using rolling averages
+
+# define the function to compute and plot seasonality shifts using rolling averages
 plot_shift_rolling_average <- function(data, countries, hemisphere, window_size = 3) {
   
-  # Initialise peak shift results
+  # initialise peak shift results
   peak_results <- list()
   
-  # Iterate through each country in 'countries'
+  # iterate through each country in 'countries'
   for (country in countries) {
     
-    # Skip countries not in the dataset
+    # skip countries not in the dataset
     if (!(country %in% unissque(data$country))) {
       message(paste("Skipping", country, "- not in dataset"))
       next
     }
     
-    # Retrieve and arrange country data
+    # retrieve and arrange country data
     country_data <- data %>%
       filter(country == !!country) %>%
       arrange(year, week)
     
-    # Compute rolling average for smoothing
+    # compute rolling average for smoothing
     data_smoothed <- country_data %>%
       group_by(year) %>%
       arrange(week) %>%
       mutate(rolling_cases = rollmean(cases, k = window_size, fill = NA, align = "center")) %>%
       ungroup()
     
-    # Function to find the peak week for a given year
+    # function to find the peak week for a given year
     find_peak_week <- function(data, year) {
       peak_week <- data %>%
         filter(year == !!year) %>%
@@ -301,7 +303,7 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
       }
     }
     
-    # Identify all valid years in the dataset
+    # identify all valid years in the dataset
     valid_years <- unique(data_smoothed$year)
     
     # Ensure 2019 is present, as it is the reference year
@@ -310,7 +312,7 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
       next
     }
     
-    # Compute the peak week for 2019
+    # compute the peak week for 2019
     peak_2019 <- find_peak_week(data_smoothed, 2019)
     
     if (is.na(peak_2019)) {
@@ -318,17 +320,17 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
       next
     }
     
-    # Identify post-2021 years for comparison
+    # identify post-2021 years for comparison
     years_to_analyse <- valid_years[valid_years > 2021 & valid_years < 2025]
     
-    # Compute peak shifts for each year
+    # compute peak shifts for each year
     for (comp_year in years_to_analyse) {
       peak_comp <- find_peak_week(data_smoothed, comp_year)
       
       if (!is.na(peak_comp)) {
         peak_shift <- peak_comp - peak_2019
         
-        # Store results
+        # store results
         peak_results[[paste(country, comp_year, sep = "_")]] <- data.frame(
           country = country,
           year = comp_year,
@@ -338,10 +340,10 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
     }
   }
   
-  # Combine all results into a single dataframe
+  # combine all results into a single dataframe
   peak_data <- do.call(rbind, peak_results)
   
-  # Plot the results
+  # plot the results
   ggplot(peak_data, aes(x = year, y = shift, color = country, group = country)) +
     geom_line(size = 1, na.rm = TRUE) +
     geom_point(size = 3, na.rm = TRUE) +
@@ -365,3 +367,8 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
 }
 
 plot_shift_rolling_average(flu_dataset, chosen_countries, hemisphere_info, window_size=5)
+
+
+
+
+# Week shift using bootstrapping -----------------------------------------------
