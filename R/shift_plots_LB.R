@@ -306,7 +306,7 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
     # identify all valid years in the dataset
     valid_years <- unique(data_smoothed$year)
     
-    # Ensure 2019 is present, as it is the reference year
+    # ensure 2019 is in dataset
     if (!(2019 %in% valid_years)) {
       message(paste("Skipping", country, "- 2019 data missing"))
       next
@@ -321,7 +321,7 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
     }
     
     # identify post-2021 years for comparison
-    years_to_analyse <- valid_years[valid_years > 2021 & valid_years < 2025]
+    years_to_analyse <- valid_years[valid_years > 2021]
     
     # compute peak shifts for each year
     for (comp_year in years_to_analyse) {
