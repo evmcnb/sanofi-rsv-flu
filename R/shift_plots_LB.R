@@ -10,6 +10,8 @@ library(tidyverse)
 library(readxl)
 library(ggthemes)
 library(ggplot2)
+library(dplyr)
+library(zoo)
 
 # retrieve the main dataset with filters on years and disease
 
@@ -252,3 +254,114 @@ plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 
 # produce the plot using (hopefully) more robust method
 plot_seasonality_shift1(flu_dataset, chosen_countries, hemisphere_info)
+
+
+# Week shift using rolling average -----------------------------------------------
+
+
+# Define the function to compute and plot seasonality shifts using rolling averages
+plot_shift_rolling_average <- function(data, countries, hemisphere, window_size = 3) {
+  
+  # Initialise peak shift results
+  peak_results <- list()
+  
+  # Iterate through each country in 'countries'
+  for (country in countries) {
+    
+    # Skip countries not in the dataset
+    if (!(country %in% unissque(data$country))) {
+      message(paste("Skipping", country, "- not in dataset"))
+      next
+    }
+    
+    # Retrieve and arrange country data
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      arrange(year, week)
+    
+    # Compute rolling average for smoothing
+    data_smoothed <- country_data %>%
+      group_by(year) %>%
+      arrange(week) %>%
+      mutate(rolling_cases = rollmean(cases, k = window_size, fill = NA, align = "center")) %>%
+      ungroup()
+    
+    # Function to find the peak week for a given year
+    find_peak_week <- function(data, year) {
+      peak_week <- data %>%
+        filter(year == !!year) %>%
+        filter(rolling_cases == max(rolling_cases, na.rm = TRUE)) %>%
+        pull(week) %>%
+        unique()
+      
+      if (length(peak_week) == 0) {
+        return(NA)  # Return NA if no valid peak found
+      } else {
+        return(min(peak_week))  # Take the first peak if multiple
+      }
+    }
+    
+    # Identify all valid years in the dataset
+    valid_years <- unique(data_smoothed$year)
+    
+    # Ensure 2019 is present, as it is the reference year
+    if (!(2019 %in% valid_years)) {
+      message(paste("Skipping", country, "- 2019 data missing"))
+      next
+    }
+    
+    # Compute the peak week for 2019
+    peak_2019 <- find_peak_week(data_smoothed, 2019)
+    
+    if (is.na(peak_2019)) {
+      message(paste("Skipping", country, "- No valid peak in 2019"))
+      next
+    }
+    
+    # Identify post-2021 years for comparison
+    years_to_analyse <- valid_years[valid_years > 2021 & valid_years < 2025]
+    
+    # Compute peak shifts for each year
+    for (comp_year in years_to_analyse) {
+      peak_comp <- find_peak_week(data_smoothed, comp_year)
+      
+      if (!is.na(peak_comp)) {
+        peak_shift <- peak_comp - peak_2019
+        
+        # Store results
+        peak_results[[paste(country, comp_year, sep = "_")]] <- data.frame(
+          country = country,
+          year = comp_year,
+          shift = peak_shift
+        )
+      }
+    }
+  }
+  
+  # Combine all results into a single dataframe
+  peak_data <- do.call(rbind, peak_results)
+  
+  # Plot the results
+  ggplot(peak_data, aes(x = year, y = shift, color = country, group = country)) +
+    geom_line(size = 1, na.rm = TRUE) +
+    geom_point(size = 3, na.rm = TRUE) +
+    labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
+         x = "Year",
+         y = "Shift in Weeks") +
+    theme_fivethirtyeight() +
+    theme(
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
+      legend.position = "right",
+      axis.ticks.y = element_line(),
+      axis.line.y.left = element_line(),
+      legend.title = element_blank(),
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      axis.text.y = element_text()
+    ) +
+    scale_x_continuous(breaks = unique(peak_data$year)) + 
+    ylim(-20, 20)  
+}
+
+plot_shift_rolling_average(flu_dataset, chosen_countries, hemisphere_info, window_size=5)
