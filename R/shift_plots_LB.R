@@ -271,7 +271,7 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
   for (country in countries) {
     
     # skip countries not in the dataset
-    if (!(country %in% unissque(data$country))) {
+    if (!(country %in% unique(data$country))) {
       message(paste("Skipping", country, "- not in dataset"))
       next
     }
