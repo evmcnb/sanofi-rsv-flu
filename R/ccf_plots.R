@@ -60,4 +60,12 @@ flu_dataset <- flu_dataset %>%
 
 # grouped dataset based on covid
 
-flu_covid <- 
+flu_covid <- flu_dataset %>%
+  mutate(is_covid = ifelse(year < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epi_week, is_covid) %>%
+  summarise(cases = sum(cases)) %>%
+  ungroup()
+
+ggplot(flu_covid, aes(x=epi_week, y=cases, color=is_covid, group=is_covid)) +
+  geom_line() + geom_point()
