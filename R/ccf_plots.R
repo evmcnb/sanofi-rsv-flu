@@ -167,7 +167,7 @@ plot_ccf <- function(data, country, comp_years) {
 }
 
 
-s
+# plot the ccf, based on country and available years
 plot_ccf(flu_dataset, country="Australia", comp_years=c(2019,2022:2024))
 
 # this doesn't work with missing weeks (as in the week number, not cases = NA)
