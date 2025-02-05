@@ -649,7 +649,7 @@ plot_seasonality_shift_wavelet <- function(data, countries, hemisphere) {
   } else {
     message("No valid data to plot.")
   }
-}
+}s
 
 
 plot_seasonality_shift_wavelet(flu_dataset, countries_rep, hemisphere_rep)
