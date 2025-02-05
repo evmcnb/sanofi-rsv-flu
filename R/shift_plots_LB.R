@@ -6,12 +6,15 @@ setwd("C:\\Users\\lukeb\\Downloads\\LSHTM\\TERM 2\\Data Challenge\\github\\sanof
 # packages and libraries
 install.packages("readxl")
 install.packages("ggthemes")
+install.packages("WaveletComp")
 library(tidyverse)
 library(readxl)
 library(ggthemes)
 library(ggplot2)
 library(dplyr)
-library(zoo)
+library(zoo) # library for rolling average
+library(WaveletComp) # library for wavelet transform analysis
+library(boot) # For bootstrap resampling
 
 # retrieve the main dataset with filters on years and disease
 
@@ -255,6 +258,14 @@ plot_seasonality_shift(flu_dataset, chosen_countries, hemisphere_info)
 # produce the plot using (hopefully) more robust method
 plot_seasonality_shift1(flu_dataset, chosen_countries, hemisphere_info)
 
+# select countries for report
+countries_rep <- c("Argentina", "Australia", "Denmark", "France", "Hong Kong",
+                   "Ireland", "Taiwan", "United Kingdom", "United States of America")
+hemisphere_rep <- setNames(
+  ifelse(countries_rep %in% southern_hemisphere, "S", "N"), 
+  countries_rep
+)
+plot_seasonality_shift1(flu_dataset, countries_rep, hemisphere_rep)
 
 
 # Week shift using rolling average -----------------------------------------------
@@ -276,15 +287,19 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
       next
     }
     
-    # retrieve and arrange country data
+    # retrieve the country information and shift weeks based on hemisphere
     country_data <- data %>%
       filter(country == !!country) %>%
-      arrange(year, week)
+      mutate(epi_week = case_when(
+        hemisphere[country] == "N" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
+        TRUE ~ week  # Keep same if South
+      )) %>%
+      arrange(year, epi_week)
     
     # compute rolling average for smoothing
     data_smoothed <- country_data %>%
       group_by(year) %>%
-      arrange(week) %>%
+      arrange(epi_week) %>%
       mutate(rolling_cases = rollmean(cases, k = window_size, fill = NA, align = "center")) %>%
       ungroup()
     
@@ -368,7 +383,273 @@ plot_shift_rolling_average <- function(data, countries, hemisphere, window_size 
 
 plot_shift_rolling_average(flu_dataset, chosen_countries, hemisphere_info, window_size=5)
 
+# plotting select countries for report
 
+plot_shift_rolling_average(flu_dataset, countries_rep, hemisphere_rep)
 
 
 # Week shift using bootstrapping -----------------------------------------------
+
+
+# Function to find the peak week for a given year
+find_peak_week <- function(data, year) {
+  peak_week <- data %>%
+    filter(year == !!year) %>%
+    filter(cases == max(cases, na.rm = TRUE)) %>%
+    pull(epi_week)
+  return(peak_week[1])  # Ensure we take the first peak in case of ties
+}
+
+# Bootstrap function to estimate shift and confidence interval
+bootstrap_shift <- function(data, indices, peak_2019) {
+  sampled_data <- data[indices, ]  # Bootstrap sample
+  peak_sample <- find_peak_week(sampled_data, sampled_data$year[1])  # Find peak for sample
+  shift <- peak_sample - peak_2019  # Calculate shift compared to 2019
+  return(shift)
+}
+
+# calculate peak shifts and perform bootstrap sampling with 90% confidence intervals
+plot_shift_bootstrap <- function(data, countries, hemisphere) {
+  
+  peak_results <- list()
+  
+  # loop through each country
+  for (country in countries) {
+    
+    # check it exists in the dataset
+    if (!(country %in% unique(data$country))) {
+      message(paste("Skipping", country, "- not in dataset"))
+      next
+    }
+    
+    # retrieve country data and shift week based on hemisphere
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      mutate(epi_week = case_when(
+        hemisphere[country] == "N" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
+        TRUE ~ week  # Keep same if South
+      )) %>%
+      arrange(year, epi_week)
+    
+    # Find peak week for 2019 (the baseline year)
+    peak_2019 <- find_peak_week(country_data, 2019)
+    
+    # Skip if peak for 2019 is not found
+    if (is.na(peak_2019)) {
+      message(paste("Skipping", country, "- 2019 peak not found"))
+      next
+    }
+    
+    # Filter data for years after 2021
+    years_to_analyse <- unique(country_data$year[country_data$year > 2021])
+    
+    # Prepare an empty data frame to store peak shift results
+    country_peak_shifts <- data.frame(country = character(), year = integer(), shift = numeric(), 
+                                      lower_ci = numeric(), upper_ci = numeric())
+    
+    # Perform bootstrap for each year after 2021
+    for (year in years_to_analyse) {
+      
+      # Filter data for the specific year
+      year_data <- country_data %>%
+        filter(year == !!year)
+      
+      # Check if there's enough data to perform bootstrapping (at least 30 data points)
+      if (nrow(year_data) < 30) {
+        message(paste("Skipping", country, year, "- not enough data for bootstrapping"))
+        next
+      }
+      
+      # Bootstrap sampling
+      set.seed(123)  # For reproducibility
+      bootstrap_results <- boot(data = year_data, statistic = bootstrap_shift, R = 1000, 
+                                peak_2019 = peak_2019)
+      
+      # Calculate 90% confidence interval for the shift
+      ci <- boot.ci(bootstrap_results, type = "perc", conf = 0.90)$percent[4:5]
+      
+      # Store the results for the country and year
+      country_peak_shifts <- rbind(country_peak_shifts, 
+                                   data.frame(country = country, year = year, 
+                                              shift = mean(bootstrap_results$t), 
+                                              lower_ci = ci[1], upper_ci = ci[2]))
+    }
+    
+    # Append country results to the list
+    peak_results[[country]] <- country_peak_shifts
+  }
+  
+  # Combine all results into a single dataframe
+  peak_results_df <- do.call(rbind, peak_results)
+  
+  # Plot the results with confidence intervals
+  ggplot(peak_results_df, aes(x = year, y = shift, color = country, group = country)) +
+    geom_line(size = 1) +
+    geom_point(size = 3) +
+    geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci), alpha = 0.2) +
+    labs(title = "Peak Week Shift with 90% Confidence Intervals",
+         x = "Year", y = "Peak Week Shift (Compared to 2019)") +
+    theme_fivethirtyeight() +  # Apply theme
+    theme(
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
+      legend.position = "right",   # Positioning of the legend
+      axis.ticks.y = element_line(),
+      axis.line.y.left = element_line(),
+      legend.title = element_blank(),
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      axis.text.y = element_text()
+    ) +
+    scale_x_continuous(breaks = unique(peak_results_df$year)) +  # integer years on x-axis
+    ylim(-20, 20)  # set y-axis limit
+}
+
+
+
+plot_shift_bootstrap(flu_dataset, countries_rep, hemisphere_rep)
+
+
+# Week shift using wavelet transform analysis -----------------------------------
+
+
+# Struggling to get this to work
+
+plot_seasonality_shift_wavelet <- function(data, countries, hemisphere) {
+  
+  shift_results <- list()
+  
+  for (country in countries) {
+    
+    if (!(country %in% unique(data$country))) {
+      message(paste("Skipping", country, "- not in dataset"))
+      next
+    }
+    
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      arrange(year, week)
+    
+    # Normalize weeks based on hemisphere
+    country_data <- country_data %>%
+      mutate(epi_week = case_when(
+        hemisphere[country] == "N" ~ (week + 26) %% 52,
+        TRUE ~ week
+      ))
+    
+    if (!2019 %in% unique(country_data$year)) {
+      message(paste("Skipping", country, "- missing 2019 data"))
+      next
+    }
+    
+    years_to_analyse <- unique(country_data$year[country_data$year > 2021 & country_data$year < 2025])
+    
+    # Convert data into time series format and interpolate missing values
+    country_data_ts <- country_data %>%
+      group_by(year) %>%
+      arrange(epi_week) %>%
+      mutate(
+        time = row_number(),
+        cases = na.fill(cases, "extend")  # More robust interpolation
+      ) %>%
+      ungroup()
+    
+    # Function to apply wavelet transform & detect peak week
+    find_peak_wavelet <- function(year_data) {
+      suppressMessages({
+        wavelet_result <- analyze.wavelet(
+          data.frame(time = year_data$time, cases = year_data$cases),
+          loess.span = 0, dt = 1, dj = 1/12, 
+          lowerPeriod = 20, upperPeriod = 60, make.pval = FALSE  # Seasonal periods
+        )
+      })
+      
+      # Find the closest period to **52 weeks**
+      period_index <- which.min(abs(wavelet_result$Period - 52))
+      
+      # Validate period_index
+      if (length(period_index) == 0 || period_index < 1 || period_index > length(wavelet_result$Period)) {
+        message(paste("Skipping", country, year_data$year[1], "- no valid period index"))
+        return(NA)
+      }
+      
+      # Extract the power spectrum safely
+      if (is.null(dim(wavelet_result$Power.avg))) {
+        message(paste("Skipping", country, year_data$year[1], "- Power.avg is not a matrix"))
+        return(NA)
+      }
+      
+      power_spectrum <- wavelet_result$Power.avg[period_index, , drop = FALSE]  # Ensure matrix format
+      
+      # Identify the **peak week** where power is highest
+      peak_week_index <- which.max(power_spectrum)
+      
+      # Ensure valid index
+      if (length(peak_week_index) == 0 || peak_week_index > nrow(year_data)) {
+        message(paste("Skipping", country, year_data$year[1], "- peak detection failed"))
+        return(NA)
+      }
+      
+      peak_week <- year_data$week[peak_week_index]
+      
+      return(peak_week)
+    }
+    
+    # Find peak for 2019
+    peak_2019 <- find_peak_wavelet(country_data_ts %>% filter(year == 2019))
+    
+    if (is.na(peak_2019)) {
+      message(paste("Skipping", country, "- 2019 peak not found"))
+      next
+    }
+    
+    for (comp_year in years_to_analyse) {
+      
+      peak_comp_year <- find_peak_wavelet(country_data_ts %>% filter(year == comp_year))
+      
+      if (is.na(peak_comp_year)) {
+        message(paste("Skipping", country, comp_year, "- peak not found"))
+        next
+      }
+      
+      shift_value <- peak_comp_year - peak_2019
+      
+      shift_results[[paste(country, comp_year, sep = "_")]] <- data.frame(
+        country = country,
+        year = comp_year,
+        shift = shift_value
+      )
+    }
+  }
+  
+  # Only plot if results exist
+  if (length(shift_results) > 0) {
+    shift_data <- do.call(rbind, shift_results)
+    
+    ggplot(shift_data, aes(x = year, y = shift, color = country, group = country)) +
+      geom_line(size = 1, na.rm = TRUE) +
+      geom_point(size = 3, na.rm = TRUE) +
+      labs(title = "Estimated Seasonality Shift (Wavelet Transform)",
+           x = "Year",
+           y = "Shift in Weeks") +
+      theme_minimal() +
+      theme(
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        legend.position = "right",
+        axis.ticks.y = element_line(),
+        axis.line.y.left = element_line(),
+        legend.title = element_blank(),
+        panel.spacing = unit(0.1, "lines"),
+        strip.text.x = element_text(size = 8),
+        axis.text.y = element_text()
+      ) +
+      scale_x_continuous(breaks = unique(shift_data$year)) +
+      ylim(-20, 20)
+  } else {
+    message("No valid data to plot.")
+  }
+}s
+
+
+plot_seasonality_shift_wavelet(flu_dataset, countries_rep, hemisphere_rep)
