@@ -5,19 +5,18 @@ library(ggthemes)
 library(ggridges)
 library(rnaturalearth)
 library(sf)
-library(rnaturalearth)
 library(rnaturalearthdata)
 
 
 # rm(list = ls())
 
 # Change this for all data
-setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
+# setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
 getwd()
 
 df <- read_csv("csv/main_dataset.csv")
 
-
+# df %>% filter(country == "Armenia" & disease == "RSV") %>% view()
 # Loop through each country and disease type
 unique_countries <- unique(df$country)
 unique_diseases <- unique(df$disease)
@@ -25,30 +24,54 @@ unique_diseases <- unique(df$disease)
 world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>% 
   select(iso_a3, name, pop_est, continent)
 
-df <- merge(df, world_map_data, by.x = "country", by.y = "name")
+df <- df %>% 
+  left_join(world_map_data, by =  join_by(country == name))
 
 NH_COUNTRIES = c("Europe", "North America", "Asia")
+
 
 for (country_i in unique_countries) {
   for (disease_i in unique_diseases) {
     
+    # Skip if there is no data for this combination
+
+    
     # Filter data for the specific country and disease
     df_subset <- df %>%
-      filter(country == country_i, disease == disease_i)
+      filter(country == country_i, disease == disease_i) %>% 
+      filter(year > 2016)
+      
+    if (sum(df_subset$metric, na.rm = TRUE) < 100) next
+    if (nrow(na.omit(df_subset)) < 10) next
     
-    # Skip if there is no data for this combination
-    if (nrow(df_subset) == 0) next
+    df_subset <- df_subset %>%   
+    mutate(is_covid = case_when(
+        year < 2021 ~ "Before Lockdown",
+        year >= 2021 ~ "After Lockdown",
+        TRUE ~ NA_character_  # Explicitly handle NA cases
+      )) %>% 
+      mutate(is_covid = factor(is_covid, labels = c("After Lockdown", "Before Lockdown")))
+    
+    
+    if (sum(df_subset$metric[df_subset$is_covid == "After Lockdown"], na.rm = TRUE) < 100) next
+    if (sum(df_subset$metric[df_subset$is_covid == "Before Lockdown"], na.rm = TRUE) < 100) next
+    
+    
+    print(paste0("CURRENT COUTRNY: ", country_i, " DISEASE: ", disease_i))
     
     plot_polar <- df_subset %>%
-      mutate(is_covid = if_else(year < 2021, 0, 1),
-             is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+      filter(age != "All") %>%
       group_by(week, is_covid) %>%
       filter(week < 53) %>% 
       na.omit() %>% 
       summarise(metric = sum(metric)) %>% 
       ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
       geom_line(size = 1) +
-      labs(title = paste0(country_i, " ", disease_i, " Polar Plot"), subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Country Specific Metric") +
+      labs(title = paste0(country_i, " ", disease_i, " Polar Plot"), 
+           subtitle = "Before Lockdown is defined as any data prior to 2021", 
+           x = 'Week', 
+           y = "Country Specific Metric",
+           caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", which.min(df_subset$year), "-", which.max(df_subset$year))) +
       theme_fivethirtyeight() + 
       theme(
         axis.title = element_text(),
@@ -63,7 +86,7 @@ for (country_i in unique_countries) {
       coord_polar(theta = "x")
     
     ggsave(
-      filename = paste0("plots/generated/test/",disease_i,"/", country_i, "_polar_plot.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+      filename = paste0("plots/",disease_i,"/Polar/", country_i, "_polar_plot.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
       plot = plot_polar,  # This refers to the last plot generated
       width = 6,  # Width of the plot (in inches)
       height = 6,  # Height of the plot (in inches)
@@ -71,9 +94,8 @@ for (country_i in unique_countries) {
     )
     
     if(any(df_subset$continent %in% NH_COUNTRIES)) {
-      
+    
       plot_ridge <- df_subset %>%
-        filter(age == "All") %>%
         filter(week < 53) %>% 
         group_by(year, week) %>%
         summarise(metric = sum(metric, na.rm = TRUE)) %>% 
@@ -85,7 +107,7 @@ for (country_i in unique_countries) {
         ggplot(aes(x = Adjusted_Week, y = factor(Adjusted_Year), height = metric, fill = factor(Adjusted_Year))) +
         geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01) +
         labs(
-          title = paste0(country_i, " ", disease_i, " Density by Year"),
+          title = paste0(country_i, " ", disease_i, " Density by Year"), 
           x = paste0(disease_i, ' Season Week (Centred around Week 1)')
         ) +
         scale_x_continuous(
@@ -105,19 +127,18 @@ for (country_i in unique_countries) {
         )
       
     }
-    
+
     else {
-      
+
       plot_ridge <- df_subset %>%
-        filter(age == "All") %>%
-        filter(week < 53) %>% 
+        filter(week < 53) %>%
         group_by(week, year) %>%
         summarise(metric = sum(metric)) %>%
-        na.omit() %>% 
+        na.omit() %>%
         ggplot(aes(x = week, y = factor(year), height = metric, fill = factor(year))) +
         geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01, size = 1) +
-        labs(title = paste0(country_i, " ", disease_i, " Density by Year"), , x = 'Week') +
-        theme_fivethirtyeight() + 
+        labs(title = paste0(country_i, " ", disease_i, " Density by Year"), x = 'Week') +
+        theme_fivethirtyeight() +
         theme(
           legend.position = "none",
           panel.spacing = unit(0.1, "lines"),
@@ -125,29 +146,29 @@ for (country_i in unique_countries) {
           strip.text.x = element_text(size = 8),
           axis.text.x = element_text()  # Rotates the x-axis labels for better readability
         )
-      
+
     }
-    
+
     ggsave(
-      filename = paste0("plots/generated/test/",disease_i,"/", country_i, "_ridge_density.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+      filename = paste0("plots/",disease_i,"/Other/", country_i, "_ridge_density.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
       plot = plot_ridge,  # This refers to the last plot generated
       width = 6,  # Width of the plot (in inches)
       height = 6,  # Height of the plot (in inches)
       dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
     )
     
-    if (length(unique(df_subset$age)) < 2) next
+    if (nrow(df_subset) == 0 || all(is.na(df_subset$age)) || length(unique(na.omit(df_subset$age))) < 3) {
+      next
+    }
     
     plot_age <- df_subset %>%
       filter(week < 53) %>% 
-      mutate(is_covid = if_else(year < 2021, 0, 1),
-             is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
       group_by(week, is_covid, age) %>%
       summarise(metric = sum(metric)) %>% 
       na.omit() %>% 
       ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
       geom_line(size = 1) +
-      facet_wrap(~age) +
+      facet_wrap(~age) + 
       labs(title = paste0(country_i, " ", disease_i, " by Age"), subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Country Specific Metric") +
       theme_fivethirtyeight() + 
       theme(
@@ -159,7 +180,7 @@ for (country_i in unique_countries) {
       )
     
     ggsave(
-      filename = paste0("plots/generated/test/",disease_i,"/", country_i, "_age_strat_plot.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+      filename = paste0("plots/",disease_i,"/Age/", country_i, "_age_strat_plot.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
       plot = plot_age,  # This refers to the last plot generated
       width = 6,  # Width of the plot (in inches)
       height = 6,  # Height of the plot (in inches)
