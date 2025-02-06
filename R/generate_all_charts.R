@@ -16,6 +16,7 @@ getwd()
 
 df <- read_csv("csv/main_dataset.csv")
 
+
 # df %>% filter(country == "Armenia" & disease == "RSV") %>% view()
 # Loop through each country and disease type
 unique_countries <- unique(df$country)

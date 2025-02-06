@@ -12,7 +12,7 @@ library(leaflet)
 rm(list = ls())
 
 # Change this for all data
-setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
+#setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
 getwd()
 
 source("R/France_data.R")

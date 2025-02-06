@@ -79,75 +79,90 @@ ggplot(flu_covid, aes(x=epi_week, y=cases, color=is_covid, group=is_covid)) +
   geom_line() + geom_point()
 
 
-# plot time lag correlation for a given country and year
-# compares to 2019
-plot_ccf <- function(data, country, comp_years) {
+plot_ccf <- function(data, country, baseline_year, comp_years) {
   
-  # Retrieve selected country
+  # Retrieve selected country data
   country_data <- data %>%
     filter(country == !!country) %>%
     select(epi_year, epi_week, cases) 
   
-  # merge with original data to fill missing weeks with 0 for cases
+  # Fill in missing weeks (ensures all 52 weeks are present)
   country_data_full <- country_data %>%
     complete(epi_year, epi_week = 1:52, fill = list(cases = 0))
   
-  # Ensure 'cases' is numeric (double)
+  # Ensure 'cases' is numeric
   country_data_full$cases <- as.numeric(country_data_full$cases)
   
-  # Reshape data to wide format for correlation calculation
+  # Reshape data to wide format
   country_data_wide <- country_data_full %>%
     pivot_wider(names_from = epi_year, values_from = cases, values_fill = list(cases = 0))
   
-  # Ensure 2019 data is available
-  if (!"2019" %in% colnames(country_data_wide)) {
-    message(paste("Skipping", country, "- 2019 data not found"))
+  # Ensure the baseline year is available
+  if (!as.character(baseline_year) %in% colnames(country_data_wide)) {
+    message(paste("Skipping", country, "- Baseline year", baseline_year, "data not found"))
     return(NULL)
   }
   
   # Placeholder for CCF results
   ccf_results_list <- list()
   
-  # Loop through each comparison year (after 2021)
-  for (comp_year in comp_years) {
+  # Add the baseline year to comparison years for plotting
+  all_years <- unique(c(baseline_year, comp_years))
+  
+  # Loop through each year
+  for (comp_year in all_years) {
     if (!as.character(comp_year) %in% colnames(country_data_wide)) {
       message(paste("Skipping", country, "-", comp_year, "data not found"))
       next
     }
     
     # Compute cross-correlation function (CCF)
-    ccf_result <- ccf(country_data_wide$`2019`, country_data_wide[[as.character(comp_year)]], 
-                      lag.max = 20, plot = FALSE)
+    ccf_result <- ccf(country_data_wide[[as.character(baseline_year)]], 
+                      country_data_wide[[as.character(comp_year)]], 
+                      lag.max = 20, plot = TRUE)
     
     # Store results in a dataframe
     ccf_df <- data.frame(
       lag = ccf_result$lag,
       correlation = ccf_result$acf,
-      year = as.character(comp_year)  # convert to character for plotting
+      year = as.character(comp_year)
     )
     
     ccf_results_list[[as.character(comp_year)]] <- ccf_df
   }
   
-  # Combine all CCF results into one dataframe
+  # Combine all CCF results
   ccf_results_df <- bind_rows(ccf_results_list)
   
-  # Check if results are obtained
+  # Check if any results exist
   if (nrow(ccf_results_df) == 0) {
     message(paste("No valid data found for", country))
     return(NULL)
   }
   
-  # Plot the results with multiple years overlaid
-  ggplot(ccf_results_df, aes(x = lag, y = correlation, color = year, group = year)) +
-    geom_line(size = 1, na.rm = TRUE, aes(color = ifelse(year == "2019", "2019", year))) +
-    geom_point(size = 2, na.rm = TRUE, aes(color = ifelse(year == "2019", "2019", year))) +
+  # Define color values (Baseline in grey, others in Set1)
+  comp_colors <- if (length(comp_years) > 0) {
+    setNames(RColorBrewer::brewer.pal(min(8, length(comp_years)), "Set1"), as.character(comp_years))
+  } else {
+    c()
+  }
+  color_values <- c(setNames("grey50", as.character(baseline_year)), comp_colors)
+  
+  # Define line types (Baseline is dashed, others are solid)
+  line_types <- c(setNames("dashed", as.character(baseline_year)), 
+                  setNames(rep("solid", length(comp_years)), as.character(comp_years)))
+  
+  
+  ggplot(ccf_results_df, aes(x = lag, y = correlation, color = year, group = year, linetype = year)) +
+    geom_line(size = 1, na.rm = TRUE) +
     geom_vline(xintercept = 0, linetype = "dashed", color = "black") +  # Reference line at lag 0
-    scale_color_manual(values = c("2019" = "grey50", setNames(RColorBrewer::brewer.pal(max(3, length(comp_years) - 1), "Set1")[1:(length(comp_years) - 1)], comp_years[comp_years != 2019]))) +
+    scale_color_manual(values = color_values) +
+    scale_linetype_manual(values = line_types) +
     labs(
-      title = paste("Time-Lag Correlation, 2019 vs Post-2021 Years for", country),
+      title = paste("Time-Lag Correlation:", baseline_year, "vs Comparison Years for", country),
       x = "Lag (Weeks)",
-      y = "Correlation"
+      y = "Correlation",
+      caption = "Source: FLUNET/GOV | Data range: 2017 - latest available"
     ) +
     theme_fivethirtyeight() +
     theme(
@@ -167,7 +182,5 @@ plot_ccf <- function(data, country, comp_years) {
 }
 
 
-# plot the ccf, based on country and available years
-plot_ccf(flu_dataset, country="Australia", comp_years=c(2019,2022:2024))
-
-# this doesn't work with missing weeks (as in the week number, not cases = NA)
+# Example usage:
+plot_ccf(flu_dataset, country = "Germany", baseline_year = 2017, comp_years = c(2018:2024))
