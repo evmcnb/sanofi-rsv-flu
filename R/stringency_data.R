@@ -29,8 +29,11 @@ stringency <- read_csv("csv/stringency_data.csv") %>%
     Year = year(Date),
     Week = isoweek(Date)
   ) %>%
-  select(-Date) %>%
-  # take averages
+  select(-Date)
+
+
+# take averages over each week
+stringency <- stringency %>%
   group_by(CountryName, Year, Week) %>%
   summarise(
     StringencyIndex_Avg = mean(StringencyIndex_Average, na.rm = TRUE),
@@ -39,3 +42,7 @@ stringency <- read_csv("csv/stringency_data.csv") %>%
     EconomicSupportIndex_Avg = mean(EconomicSupportIndex, na.rm = TRUE),
     .groups = "drop"
   )
+
+# rename for consistency with main_dataset
+stringency <- stringency %>%
+  rename(country = CountryName, year = Year, week = Week)
