@@ -71,7 +71,7 @@ for (country_i in unique_countries) {
            subtitle = "Before Lockdown is defined as any data prior to 2021", 
            x = 'Week', 
            y = "Country Specific Metric",
-           caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", which.min(df_subset$year), "-", which.max(df_subset$year))) +
+           caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", df_subset$year[which.min(df_subset$year)], "-", df_subset$year[which.max(df_subset$year)])) +
       theme_fivethirtyeight() + 
       theme(
         axis.title = element_text(),
@@ -108,8 +108,8 @@ for (country_i in unique_countries) {
         geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01) +
         labs(
           title = paste0(country_i, " ", disease_i, " Density by Year"), 
-          x = paste0(disease_i, ' Season Week (Centred around Week 1)')
-        ) +
+          x = paste0(disease_i, ' Season Week (Centred around Week 1)'),
+          caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", df_subset$year[which.min(df_subset$year)], "-", df_subset$year[which.max(df_subset$year)])) +
         scale_x_continuous(
           breaks = c(1, 13, 26, 39),  # Key flu season weeks
           labels = c("Week 26", "Week 39", "Week 1", "Week 13")
@@ -137,7 +137,7 @@ for (country_i in unique_countries) {
         na.omit() %>%
         ggplot(aes(x = week, y = factor(year), height = metric, fill = factor(year))) +
         geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01, size = 1) +
-        labs(title = paste0(country_i, " ", disease_i, " Density by Year"), x = 'Week') +
+        labs(title = paste0(country_i, " ", disease_i, " Density by Year"), x = 'Week', caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", df_subset$year[which.min(df_subset$year)], "-", df_subset$year[which.max(df_subset$year)])) +
         theme_fivethirtyeight() +
         theme(
           legend.position = "none",
@@ -168,8 +168,8 @@ for (country_i in unique_countries) {
       na.omit() %>% 
       ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
       geom_line(size = 1) +
-      facet_wrap(~age) + 
-      labs(title = paste0(country_i, " ", disease_i, " by Age"), subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Country Specific Metric") +
+      facet_wrap(~age, scales = "free_y") + 
+      labs(title = paste0(country_i, " ", disease_i, " by Age"), subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Country Specific Metric", caption = paste0("Source: ", if_else(df_subset$source == "GOV", paste0(country_i, " Official Government Health Source"), "WHO FluNet"), " | Data range: ", df_subset$year[which.min(df_subset$year)], "-", df_subset$year[which.max(df_subset$year)])) +
       theme_fivethirtyeight() + 
       theme(
         legend.position = "bottom",
