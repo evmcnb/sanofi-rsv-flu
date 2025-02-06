@@ -266,6 +266,3 @@ main_plot <- Argentina_all_data %>%
   theme_minimal() +
   scale_x_continuous(breaks = seq(1, 52, by = 4))
 main_plot
-
-
-       x = "Year",

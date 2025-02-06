@@ -48,13 +48,13 @@ Japan_data %>%
   ) +
   coord_polar(theta = "x")
 
-ggsave(
-  filename = "plots/Polar/flu_jp_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 6,  # Width of the plot (in inches)
-  height = 6,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = "plots/Polar/flu_jp_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 6,  # Width of the plot (in inches)
+#   height = 6,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 Japan_data %>% 
@@ -98,14 +98,14 @@ Japan_data %>%
     axis.text.x = element_text(size = 10)
   )
 
-ggsave(
-  filename = "plots/Other/flu_jp_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 7,  # Width of the plot (in inches)
-  height = 7,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
-
+# ggsave(
+#   filename = "plots/Other/flu_jp_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 7,  # Width of the plot (in inches)
+#   height = 7,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
+# 
 
 
 
