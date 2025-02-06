@@ -16,7 +16,6 @@ getwd()
 
 df <- read_csv("csv/main_dataset.csv")
 
-
 # df %>% filter(country == "Armenia" & disease == "RSV") %>% view()
 # Loop through each country and disease type
 unique_countries <- unique(df$country)
@@ -229,3 +228,105 @@ for (country_i in unique_countries) {
 }
 
 print("Plots generated and saved in the 'plots' folder.")
+
+library(tidyverse)
+library(ggplot2)
+library(ggridges)
+library(viridis)
+
+# Prepare dataset for analysis
+df <- df %>%
+  mutate(is_covid = if_else(year < 2021, "Before Lockdown", "After Lockdown"))
+
+# 1. Summary Statistics
+summary_stats <- df %>%
+  group_by(continent, disease, is_covid) %>%
+  summarise(
+    total_cases = sum(metric, na.rm = TRUE),
+    mean_cases = mean(metric, na.rm = TRUE),
+    median_cases = median(metric, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Percentage change in cases per continent
+change_stats <- summary_stats %>%
+  pivot_wider(names_from = is_covid, values_from = total_cases) %>%
+  mutate(perc_change = 100 * (`After Lockdown` - `Before Lockdown`) / `Before Lockdown`)
+
+# 2a. Line Plot: Trends Over Time per Continent
+plot_continent_line <- df %>%
+  group_by(continent, year, week, is_covid, disease) %>%
+  summarise(metric = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = week, y = metric, color = continent)) +
+  geom_bar(size = 1) +
+  facet_wrap(~ disease, scales = "free_y") +
+  labs(title = "Disease Trends by Continent (Pre vs Post-Lockdown)", x = "Week", y = "Cases") +
+  theme_minimal()
+
+# 2b. Boxplot: Disease Burden by Continent
+plot_box <- ggplot(df, aes(x = continent, y = metric, fill = is_covid)) +
+  geom_boxplot(outlier.shape = NA) +
+  scale_y_log10() +
+  facet_wrap(~ disease, scales = "free_y") +
+  labs(title = "Distribution of Disease Burden by Continent", x = "Continent", y = "Cases (log scale)") +
+  theme_minimal()
+
+# 2c. Heatmap of Disease Cases by Week and Continent
+plot_heatmap <- df %>%
+  group_by(week, continent, is_covid) %>%
+  summarise(metric = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = week, y = continent, fill = metric)) +
+  geom_tile() +
+  scale_fill_viridis(option = "A") +
+  facet_wrap(~ is_covid) +
+  labs(title = "Heatmap of Disease Cases by Week & Continent", x = "Week", y = "Continent") +
+  theme_minimal()
+
+# 2d. Ridge Density Plot per Continent
+plot_ridge <- df %>%
+  ggplot(aes(x = week, y = continent, fill = is_covid)) +
+  geom_density_ridges(alpha = 0.6) +
+  facet_wrap(~ disease) +
+  scale_fill_manual(values = c("Before Lockdown" = "blue", "After Lockdown" = "red")) +
+  labs(title = "Density of Weekly Cases per Continent", x = "Week", y = "Continent") +
+  theme_minimal()
+
+# Print Summary Stats
+print(summary_stats)
+print(change_stats)
+
+# Display Plots
+plot_continent_line
+plot_box
+plot_heatmap
+plot_ridge
+
+df %>%
+  filter(year >= 2017) %>%
+  mutate(
+    is_covid = if_else(year < 2021, "Before Lockdown", "After Lockdown"),
+    is_covid = factor(is_covid, levels = c("Before Lockdown", "After Lockdown"))
+  ) %>%
+  group_by(continent, year, week, is_covid) %>%
+  summarise(weekly_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  arrange(continent, year, week) %>%
+  group_by(continent) %>%
+  mutate(cumulative_cases = cumsum(weekly_cases)) %>% 
+# Plot cumulative cases over time
+  ggplot(aes(x = week, y = cumulative_cases, colour = continent, group = continent)) +
+  geom_line(size = 1) +
+  facet_wrap(~is_covid, scales = "free_y") +
+  labs(
+    title = "Cumulative Disease Cases by Continent Since 2017",
+    x = "Week",
+    y = "Cumulative Cases",
+    caption = "Source: WHO FluNet / Government Health Sources"
+  ) +
+  theme_fivethirtyeight() +
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 10)
+  )
+

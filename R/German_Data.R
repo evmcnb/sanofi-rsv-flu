@@ -37,7 +37,7 @@ for (item in flu_data_list) {
       metric = metric,
       source = "GOV",
       week = Week,
-      year = 2015 + i) %>%
+      year = 2016 + i) %>%
     select(country, source, year, month, week, disease, age, metric) %>% 
     arrange(year, week)
   

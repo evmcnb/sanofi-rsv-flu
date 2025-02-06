@@ -367,7 +367,6 @@ filtered_data <- filtered_data %>%
 
 ba_df <- rbind(ba_df, filtered_data)
 
-
 df <- ba_df %>% 
   mutate(
     age = case_when(
@@ -382,9 +381,7 @@ df <- ba_df %>%
       TRUE ~ NA_character_
     ),
     month = factor(month, levels = month.abb, ordered = TRUE)
-  ) %>%
-  view()
-
+  )
 
 
 world_population <- read_csv("csv/world_population.csv") %>%
@@ -414,9 +411,7 @@ df <- df %>%
       TRUE ~ as.character(month)  # Convert to character before refactoring
     ),
     month = factor(month, levels = month.abb, ordered = TRUE)  # Convert back to ordered factor
-  ) %>% 
-  view()
-
+  ) 
 
 
 
@@ -424,7 +419,6 @@ df <- df %>%
   mutate(
     is_monthly = is.na(week) & !is.na(month)  # Identify monthly data
   )
-
 
 
 # Split the dataset into weekly and monthly parts
@@ -445,11 +439,11 @@ df_monthly <- df_monthly %>%
 # Combine back into the main dataset
 df <- bind_rows(df_weekly, df_monthly) %>%
   select(-is_monthly) %>% 
-  arrange(country, year, week) %>%
-  view()
-
+  arrange(country, year, week)
 
 write.csv(df, file="csv/main_dataset.csv", row.names = FALSE)
+
+print("CSV SAVED SUCCESSFULLY")
 
 # global_flu_season <- df %>%
 #   filter(disease == "Influenza") %>%
