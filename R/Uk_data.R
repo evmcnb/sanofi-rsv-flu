@@ -1,14 +1,70 @@
 
 # Flu data ----------------------------------------------------------------
 
-flu_uk_data <- read.csv("csv/UK/influenza.csv") %>%
+flu_uk_data <- read.csv("csv/UK/uk_flu_cases.csv") %>%
   mutate(year = as.numeric(year)) %>%
   mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
-  select(sex, age, year, month, epiweek, date, metric_value)
+  select(sex, age, year, month, epiweek, date, metric_value) %>%
+  mutate(
+    age = case_when(
+      age %in% c("00-04", "0-4") ~ "0-4",                 # Ages 0-4
+      age %in% c("05-14", "5-14") ~ "5-14",
+      age %in% c("15-44") ~ "15-44", # Ages 5-14
+      age %in% c("45-54", "45-64", "55-64") ~ "45-64", # Ages 15-64
+      age %in% c("65", "65-74", "65-79", "65+") ~ "65-79", # Ages 65+
+      age %in% c("75-84", "80+", "85+") ~ "80+", # Ages 65+
+      age == "all" ~ "all",                           # Keep "all" as a separate category
+      TRUE ~ NA_character_                            # Mark unexpected values as NA
+    ))
 
-rsv_uk_data <- read.csv("csv/UK/RSV.csv") %>%
+
+rsv_uk_data <- read.csv("csv/UK/uk_rsv_cases.csv") %>%
   mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
-  select(sex, age, year, month, epiweek, date, metric_value)
+  select(sex, age, year, month, epiweek, date, metric_value) %>% 
+  mutate(
+    age = case_when(
+      age %in% c("00-04", "0-4") ~ "0-4",                 # Ages 0-4
+      age %in% c("05-14", "5-14") ~ "5-14",
+      age %in% c("15-44") ~ "15-44", # Ages 5-14
+      age %in% c("45-54", "45-64", "55-64") ~ "45-64", # Ages 15-64
+      age %in% c("65", "65-74", "65-79", "65+") ~ "65-79", # Ages 65+
+      age %in% c("75-84", "80+", "85+") ~ "80+", # Ages 65+
+      age == "all" ~ "all",                           # Keep "all" as a separate category
+      TRUE ~ NA_character_                            # Mark unexpected values as NA
+    ))
+
+
+flu_uk_hosp <- read.csv("csv/UK/uk_flu_hosp.csv") %>%
+  mutate(year = as.numeric(year)) %>%
+  mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
+  select(sex, age, year, month, epiweek, date, metric_value) %>% 
+  mutate(
+    age = case_when(
+      age %in% c("00-04", "0-4") ~ "0-4",                 # Ages 0-4
+      age %in% c("05-14", "5-14") ~ "5-14",
+      age %in% c("15-44") ~ "15-44", # Ages 5-14
+      age %in% c("45-54", "45-64", "55-64") ~ "45-64", # Ages 15-64
+      age %in% c("65", "65-74", "65-79", "65+") ~ "65-79", # Ages 65+
+      age %in% c("75-84", "80+", "85+") ~ "80+", # Ages 65+
+      age == "all" ~ "all",                           # Keep "all" as a separate category
+      TRUE ~ NA_character_                            # Mark unexpected values as NA
+    ))
+
+rsv_uk_hosp <- read.csv("csv/UK/uk_rsv_hosp.csv") %>%
+  mutate(month = factor(month(date, label = TRUE, abbr = TRUE))) %>%
+  select(sex, age, year, month, epiweek, date, metric_value) %>% 
+  mutate(
+    age = case_when(
+      age %in% c("00-04", "0-4") ~ "0-4",                 # Ages 0-4
+      age %in% c("05-14", "5-14") ~ "5-14",
+      age %in% c("15-44") ~ "15-44", # Ages 5-14
+      age %in% c("45-54", "45-64", "55-64") ~ "45-64", # Ages 15-64
+      age %in% c("65", "65-74", "65-79", "65+") ~ "65-79", # Ages 65+
+      age %in% c("75-84", "80+", "85+") ~ "80+", # Ages 65+
+      age == "all" ~ "all",                           # Keep "all" as a separate category
+      TRUE ~ NA_character_                            # Mark unexpected values as NA
+    ))
+
 
 
 
@@ -137,13 +193,13 @@ flu_uk_data %>%
     axis.text.x = element_text(size = 10)
   )
 
-ggsave(
-  filename = "plots/Other/flu_uk_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 7,  # Width of the plot (in inches)
-  height = 7,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = "plots/Other/flu_uk_case_density.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 7,  # Width of the plot (in inches)
+#   height = 7,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 # Bar graphcs - cases per month
@@ -180,13 +236,14 @@ flu_uk_data %>%
 # Same as above but in polar coordinates. Very clear plot - defo final
 flu_uk_data %>%
   filter(age == "all") %>%
+  filter(epiweek < 53) %>% 
   mutate(is_covid = if_else(year < 2021, 0, 1),
          is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
   group_by(epiweek, is_covid) %>%
   summarise(cases = sum(metric_value)) %>%
   ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
   geom_line(size = 1) +
-  labs(title = 'UK Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Cumulative Hosptialization Rate per 10,000") +
+  labs(title = 'UK Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Cumulative Cases Rate per 10,000") +
   theme_fivethirtyeight() + 
   theme(
     axis.title = element_text(),
@@ -200,13 +257,118 @@ flu_uk_data %>%
   ) +
   coord_polar(theta = "x")
 
-ggsave(
-  filename = "plots/Polar/flu_uk_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = last_plot(),  # This refers to the last plot generated
-  width = 6,  # Width of the plot (in inches)
-  height = 6,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+flu_uk_hosp %>%
+  filter(age == "all") %>%
+  filter(epiweek < 53) %>% 
+  mutate(is_covid = if_else(year < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid) %>%
+  summarise(cases = sum(metric_value)) %>%
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  labs(title = 'UK Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Cumulative Cases Rate per 10,000") +
+  theme_fivethirtyeight() + 
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  coord_polar(theta = "x")
+
+# Same as above but in polar coordinates. Very clear plot - defo final
+rsv_uk_data %>%
+  filter(age == "all") %>%
+  filter(epiweek < 53) %>% 
+  mutate(is_covid = if_else(year < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid) %>%
+  summarise(cases = sum(metric_value)) %>%
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  labs(title = 'UK Influenza Data', subtitle = "Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Cumulative Cases Rate per 10,000") +
+  theme_fivethirtyeight() + 
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8),
+    axis.text.y = element_text()
+  ) +
+  coord_polar(theta = "x")
+
+flu_uk_data %>%
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid, age) %>%
+  summarise(cases = sum(metric_value)) %>%
+  na.omit() %>% 
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age) +
+  labs(title = 'UK Influenza Data', subtitle = "Age stratified case data. Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+
+
+flu_uk_hosp %>%
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid, age) %>%
+  summarise(cases = sum(metric_value)) %>%
+  na.omit() %>% 
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age) +
+  labs(title = 'UK Influenza Data', subtitle = "Age stratified case data. Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+
+rsv_uk_data %>%
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown"))) %>%
+  group_by(epiweek, is_covid, age) %>%
+  summarise(cases = sum(metric_value)) %>%
+  na.omit() %>% 
+  ggplot(aes(x = epiweek, y = cases, color = factor(is_covid))) +
+  geom_line(size = 1) +
+  facet_wrap(~age) +
+  labs(title = 'UK Influenza Data', subtitle = "Age stratified case data. Before Lockdown is defined as any data prior to 2021", x = 'Week', y = "Lab Confirmed Cases") +
+  theme_fivethirtyeight() + 
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    axis.title = element_text(),
+    panel.spacing = unit(0.1, "lines"),
+    strip.text.x = element_text(size = 8)
+  )
+
+# ggsave(
+#   filename = "plots/Polar/flu_uk_polar_plot.png",  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = last_plot(),  # This refers to the last plot generated
+#   width = 6,  # Width of the plot (in inches)
+#   height = 6,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 # Unfortunately not very useful
 flu_uk_data %>%

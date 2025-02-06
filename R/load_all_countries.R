@@ -12,7 +12,7 @@ library(leaflet)
 rm(list = ls())
 
 # Change this for all data
-setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
+#setwd("C:/Users/Evan/Documents/Code/sanofi-rsv-flu")
 getwd()
 
 source("R/France_data.R")
@@ -26,6 +26,7 @@ source("R/Ireland_code.R")
 source("R/Finland.R")
 source("R/Japan_data.R")
 source("R/Taiwan_data.R")
+source("R/German_data.R")
 
 ba_df <- data.frame(
   country = character(),
@@ -78,6 +79,32 @@ RSV_UK_MERGE <- rsv_uk_data %>%
   view()
 
 ba_df <- rbind(ba_df, RSV_UK_MERGE)
+
+FLU_UK_MERGE_HOSP <- flu_uk_hosp %>%
+  mutate(
+    country = "United Kingdom (Hosp)",
+    disease = "Influenza",
+    metric = metric_value,
+    week = epiweek,
+    source = "GOV") %>%
+  select(country, source, year, month, week, disease, age, metric) %>% 
+  arrange(year, week) %>%
+  view()
+
+ba_df <- rbind(ba_df, FLU_UK_MERGE_HOSP)
+
+RSV_UK_MERGE_HOSP <- rsv_uk_hosp %>%
+  mutate(
+    country = "United Kingdom (Hosp)",
+    disease = "RSV",
+    metric = metric_value,
+    week = epiweek,
+    source = "GOV") %>%
+  select(country, source, year, month, week, disease, age, metric) %>% 
+  arrange(year, week) %>%
+  view()
+
+ba_df <- rbind(ba_df, RSV_UK_MERGE_HOSP)
 
 FLU_AU_MERGE <- flu_au_data %>%
   mutate(
@@ -303,6 +330,9 @@ TAIWAN_MERGE_FLU <- Taiwan_flu %>%
 
 ba_df <- rbind(ba_df, TAIWAN_MERGE_FLU)
 
+ba_df <- rbind(ba_df, German_data)
+
+
 massive_flu_df <- read_csv("C:/Users/Evan/Downloads/VIW_FID.csv")
 
 # Filter the data for the selected date
@@ -311,7 +341,7 @@ filtered_data <- massive_flu_df %>%
   summarize(cases = sum(REPORTED_CASES, na.rm = TRUE),
             RSV = sum(RSV, na.ra = TRUE)) %>%
   filter(cases < 1e7) %>% 
-  filter(COUNTRY_CODE %in% c("AFG", "ALB", "ARM", "BEL", "BLR", "BRA", "BTN", "CAN", "CHL", "COL", "CRI", "CZE", "DEU", "EST", "GRC", "IRL", "ISR", "ITA", "JOR", "KAZ", "KEN", "KGZ", "LBN", "LTU", "MAR", "MEX", "MKD", "MLT", "MNE", "NOR", "POL", "PRY", "QAT", "RUS", "SVN", "TUK", "URY")) %>%
+  filter(COUNTRY_CODE %in% c("AFG", "ALB", "ARM", "BEL", "BLR", "BRA", "BTN", "CAN", "CHL", "COL", "CRI", "CZE", "EST", "GRC", "IRL", "ISR", "ITA", "JOR", "KAZ", "KEN", "KGZ", "LBN", "LTU", "MAR", "MEX", "MKD", "MLT", "MNE", "NOR", "POL", "PRY", "QAT", "RUS", "SVN", "TUK", "URY")) %>%
   arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
 
@@ -337,7 +367,6 @@ filtered_data <- filtered_data %>%
 
 ba_df <- rbind(ba_df, filtered_data)
 
-
 df <- ba_df %>% 
   mutate(
     age = case_when(
@@ -352,9 +381,7 @@ df <- ba_df %>%
       TRUE ~ NA_character_
     ),
     month = factor(month, levels = month.abb, ordered = TRUE)
-  ) %>%
-  view()
-
+  )
 
 
 world_population <- read_csv("csv/world_population.csv") %>%
@@ -384,9 +411,7 @@ df <- df %>%
       TRUE ~ as.character(month)  # Convert to character before refactoring
     ),
     month = factor(month, levels = month.abb, ordered = TRUE)  # Convert back to ordered factor
-  ) %>% 
-  view()
-
+  ) 
 
 
 
@@ -394,7 +419,6 @@ df <- df %>%
   mutate(
     is_monthly = is.na(week) & !is.na(month)  # Identify monthly data
   )
-
 
 
 # Split the dataset into weekly and monthly parts
@@ -415,33 +439,11 @@ df_monthly <- df_monthly %>%
 # Combine back into the main dataset
 df <- bind_rows(df_weekly, df_monthly) %>%
   select(-is_monthly) %>% 
-  arrange(country, year, week) %>%
-  view()
-
-
-au_test <- df %>%
-  filter(week < 53) %>% #
-  filter(country == "Australia") %>%
-  group_by(week) %>%
-  summarize(cases = sum(metric)) %>%
-  view()
-
+  arrange(country, year, week)
 
 write.csv(df, file="csv/main_dataset.csv", row.names = FALSE)
 
-au_test <- df_subset %>%
-  filter(week < 53) %>% 
-  group_by(week) %>%
-  summarize(cases = sum(metric)) %>%
-  view()
-
-au_test <- df %>%
-  filter(week < 53) %>% #
-  filter(country == "Australia") %>% 
-  view()
-
-flu_au_data %>% group_by(epi_week) %>% summarize(cases = sum(cases)) %>% view()
- 
+print("CSV SAVED SUCCESSFULLY")
 
 # global_flu_season <- df %>%
 #   filter(disease == "Influenza") %>%

@@ -12,6 +12,7 @@ library(rnaturalearth)
 library(sf)
 library(rnaturalearth)
 library(rnaturalearthdata)
+library(leaflet)
 
 # Load dataset
 flu_data <- read_csv("csv/main_dataset.csv")
