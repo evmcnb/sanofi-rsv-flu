@@ -6,7 +6,9 @@ library(ggridges)
 library(rnaturalearth)
 library(sf)
 library(rnaturalearthdata)
-
+library(viridis)
+library(lubridate)
+library(ISOweek)
 
 # rm(list = ls())
 
@@ -229,14 +231,10 @@ for (country_i in unique_countries) {
 
 print("Plots generated and saved in the 'plots' folder.")
 
-library(tidyverse)
-library(ggplot2)
-library(ggridges)
-library(viridis)
 
 # Prepare dataset for analysis
 df <- df %>%
-  mutate(is_covid = if_else(year < 2021, "Before Lockdown", "After Lockdown"))
+  mutate(is_covid = if_else(year > 2021, "After Lockdown", "Before Lockdown"))
 
 # 1. Summary Statistics
 summary_stats <- df %>%
@@ -258,7 +256,7 @@ plot_continent_line <- df %>%
   group_by(continent, year, week, is_covid, disease) %>%
   summarise(metric = sum(metric, na.rm = TRUE), .groups = "drop") %>%
   ggplot(aes(x = week, y = metric, color = continent)) +
-  geom_bar(size = 1) +
+  geom_line(size = 1) +
   facet_wrap(~ disease, scales = "free_y") +
   labs(title = "Disease Trends by Continent (Pre vs Post-Lockdown)", x = "Week", y = "Cases") +
   theme_minimal()
@@ -301,24 +299,25 @@ plot_box
 plot_heatmap
 plot_ridge
 
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(ISOweek)
+
 df %>%
-  filter(year >= 2017) %>%
-  mutate(
-    is_covid = if_else(year < 2021, "Before Lockdown", "After Lockdown"),
-    is_covid = factor(is_covid, levels = c("Before Lockdown", "After Lockdown"))
-  ) %>%
-  group_by(continent, year, week, is_covid) %>%
+  filter(year >= 2017 & year < 2025) %>%
+  filter(disease == "Influenza") %>% 
+  mutate(date = ISOweek2date(paste0(year, "-W", sprintf("%02d", week), "-1"))) %>% 
+  group_by(continent, date) %>%
   summarise(weekly_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
-  arrange(continent, year, week) %>%
+  arrange(continent, date) %>%
   group_by(continent) %>%
-  mutate(cumulative_cases = cumsum(weekly_cases)) %>% 
-# Plot cumulative cases over time
-  ggplot(aes(x = week, y = cumulative_cases, colour = continent, group = continent)) +
-  geom_line(size = 1) +
-  facet_wrap(~is_covid, scales = "free_y") +
+  mutate(cumulative_cases = cumsum(weekly_cases)) %>%
+  ggplot(aes(x = date, y = cumulative_cases, fill = continent)) +
+  geom_area(alpha = 0.6, size = 0.5, colour = "black") +
   labs(
     title = "Cumulative Disease Cases by Continent Since 2017",
-    x = "Week",
+    x = "Date",
     y = "Cumulative Cases",
     caption = "Source: WHO FluNet / Government Health Sources"
   ) +
@@ -329,4 +328,7 @@ df %>%
     panel.spacing = unit(0.1, "lines"),
     strip.text.x = element_text(size = 10)
   )
+
+
+
 

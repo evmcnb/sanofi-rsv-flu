@@ -1,5 +1,5 @@
 # set working directory
-setwd("C:\\Users\\lukeb\\Downloads\\LSHTM\\TERM 2\\Data Challenge\\github\\sanofi-rsv-flu")
+# setwd("C:\\Users\\lukeb\\Downloads\\LSHTM\\TERM 2\\Data Challenge\\github\\sanofi-rsv-flu")
 
 # packages and libraries
 install.packages("readxl")
@@ -183,4 +183,4 @@ plot_ccf <- function(data, country, baseline_year, comp_years) {
 
 
 # Example usage:
-plot_ccf(flu_dataset, country = "Germany", baseline_year = 2017, comp_years = c(2018:2024))
+plot_ccf(flu_dataset, country = "Japan", baseline_year = 2017, comp_years = c(2022:2025))
