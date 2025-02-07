@@ -356,3 +356,162 @@ for (country in target_countries) {
 }
 
 
+cum_continent_pres <- df %>%
+  filter(year >= 2017 & year < 2024) %>%
+  mutate(date = ISOweek2date(paste0(year, "-W", sprintf("%02d", week), "-1"))) %>%
+  group_by(continent, date, disease) %>%
+  summarise(weekly_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  arrange(continent, date) %>%
+  group_by(continent, disease) %>%
+  mutate(cumulative_cases = cumsum(weekly_cases)) %>%
+  tidyr::fill(cumulative_cases, .direction = "down") %>%  # Fill missing values forward
+  ggplot(aes(x = date, y = cumulative_cases, fill = continent)) +
+  geom_area(alpha = 0.6, size = 0.5, colour = "black") +
+  facet_wrap(~disease, scales="free_y") +
+  labs(
+    title = "Cumulative Reported Cases by Continent Since 2017",
+    x = "Date",
+    y = "Cumulative Cases",
+  ) +
+  bbc_style() +
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    panel.spacing = unit(0.1, "lines"),
+  )
+
+finalise_plot(plot_name = cum_continent_pres,
+              source = "Source: WHO FluNet / Government Health Sources", 
+              save_filepath = paste0("plots/final/", "cum_continent_cases_pres.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+              width_pixels = 1100, 
+              height_pixels = 700)
+
+
+cum_continent_rep <- df %>%
+  filter(year >= 2017 & year < 2024) %>%
+  mutate(date = ISOweek2date(paste0(year, "-W", sprintf("%02d", week), "-1"))) %>%
+  group_by(continent, date, disease) %>%
+  summarise(weekly_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  arrange(continent, date) %>%
+  group_by(continent, disease) %>%
+  mutate(cumulative_cases = cumsum(weekly_cases)) %>%
+  tidyr::fill(cumulative_cases, .direction = "down") %>%  # Fill missing values forward
+  ggplot(aes(x = date, y = cumulative_cases, fill = continent)) +
+  geom_area(alpha = 0.6, size = 0.5, colour = "black") +
+  facet_wrap(~disease, scales="free_y") +
+  labs(
+    x = "Date",
+    y = "Cumulative Cases",
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(),
+    legend.position = "bottom",
+    panel.spacing = unit(0.1, "lines"),
+  )
+
+ggsave(
+  filename = paste0("plots/final/", "cum_continent_cases_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = cum_continent_rep,  # This refers to the last plot generated
+  width = 6,  # Width of the plot (in inches)
+  height = 3,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
+
+continent_abbr <- c(
+  "Africa" = "AF", 
+  "Asia" = "AS", 
+  "Europe" = "EU", 
+  "North America" = "NA", 
+  "Oceania" = "OC", 
+  "South America" = "SA"
+)
+
+plot_box_pres <- df %>% 
+  mutate(period = factor(if_else(year < 2021, "Before 2021", "After 2021"), 
+                         levels = c("After 2021", "Before 2021")),
+         continent = recode(continent, !!!continent_abbr)) %>%   # Recode continents to abbreviations
+  drop_na(year) %>% 
+  ggplot(aes(x = continent, y = metric, fill = period)) +
+  geom_boxplot(outlier.shape = NA) +
+  scale_y_log10() +
+  facet_wrap(~ disease, scales = "free_y") +
+  labs(title = "Distribution of Disease Burden by Continent", x = "Continent", y = "Cases (log scale)") +
+  bbc_style()
+
+finalise_plot(plot_name = plot_box_pres,
+              source = "Source: WHO FluNet / Government Health Sources", 
+              save_filepath = paste0("plots/final/", "boxplot_continent_pres.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+              width_pixels = 1100, 
+              height_pixels = 700)
+
+
+plot_box_rep <- df %>% 
+  mutate(period = factor(if_else(year < 2021, "Before 2021", "After 2021"), 
+                         levels = c("After 2021", "Before 2021")),
+         continent = recode(continent, !!!continent_abbr)) %>%   # Recode continents to abbreviations
+  drop_na(year) %>% 
+  ggplot(aes(x = continent, y = metric, fill = period)) +
+  geom_boxplot(outlier.shape = NA) +
+  scale_y_log10() +
+  facet_wrap(~ disease, scales = "free_y") +
+  labs(title = "Distribution of Disease Burden by Continent", x = "Continent", y = "Cases (log scale)") +
+  theme_minimal()
+
+
+ggsave(
+  filename = paste0("plots/final/", "boxplot_continent_pres.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = plot_box_rep,  # This refers to the last plot generated
+  width = 6,  # Width of the plot (in inches)
+  height = 3,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
+
+
+seasonality_shift_rsv <- df %>%
+  filter(disease ==  "RSV") %>%
+  filter(country %in% c("United Kingdom", "Argentina", "Denmark", "Finland", "Germany", "Ireland", "Japan", "United States of America")) %>%  
+  mutate(period = if_else(year < 2021, "Before", "After")) %>%
+  group_by(country, period, week) %>%
+  summarise(total_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  group_by(country, period) %>%
+  filter(total_cases == max(total_cases)) %>%
+  summarise(peak_week = first(week), .groups = "drop") %>%
+  pivot_wider(names_from = period, values_from = peak_week) %>%
+  mutate(
+    raw_shift = After - Before,
+    week_shift = ifelse(
+      abs(raw_shift) > 26,  # If shift is more than half a year, wrap around
+      ifelse(raw_shift > 0, raw_shift - 52, raw_shift + 52),
+      raw_shift
+    )
+  )
+
+world_map_data_rsv <- ne_countries(scale = "medium", returnclass = "sf") %>% 
+  right_join(seasonality_shift_rsv, by = c("name" = "country"))
+
+ggplot(world_map_data_rsv) +
+  geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
+  # scale_point_fill_continuous() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
+  labs(title = "Change in Time of Influenza Peak Pre- and Post- COVID-19",
+       fill = "Week Shift") +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    axis.ticks = element_line(color = "gray50", size = 0.2),
+    axis.line = element_line(color = "gray50", size = 0.5),
+    legend.position = "bottom",
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 10),
+    panel.grid = element_blank(),
+    panel.background = element_blank(),  # removes panel background
+    plot.background = element_blank(),   # removes plot background
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    strip.text.x = element_text(size = 10),
+    plot.margin = margin(10, 10, 10, 10)
+  ) + 
+  theme_fivethirtyeight()
