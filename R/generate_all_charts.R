@@ -47,29 +47,29 @@ for (country_i in unique_countries) {
     if (nrow(na.omit(df_subset)) < 10) next
     
     df_subset <- df_subset %>%   
-    mutate(is_covid = if_else((year) < 2021, 0, 1),
-           is_covid = factor(is_covid, labels = c("Before Lockdown", "After Lockdown")))
-    # mutate(is_covid = case_when(
+    mutate(period = if_else((year) < 2021, 0, 1),
+           period = factor(period, labels = c("Before Lockdown", "After Lockdown")))
+    # mutate(period = case_when(
     #     year < 2021 ~ "Before Lockdown",
     #     year >= 2021 ~ "After Lockdown",
     #     TRUE ~ NA_character_  # Explicitly handle NA cases
     #   )) %>% 
-    #   mutate(is_covid = factor(is_covid, labels = c("After Lockdown", "Before Lockdown")))
+    #   mutate(period = factor(period, labels = c("After Lockdown", "Before Lockdown")))
     
     
-    if (sum(df_subset$metric[df_subset$is_covid == "After Lockdown"], na.rm = TRUE) < 100) next
-    if (sum(df_subset$metric[df_subset$is_covid == "Before Lockdown"], na.rm = TRUE) < 100) next
+    if (sum(df_subset$metric[df_subset$period == "After Lockdown"], na.rm = TRUE) < 100) next
+    if (sum(df_subset$metric[df_subset$period == "Before Lockdown"], na.rm = TRUE) < 100) next
     
     
     print(paste0("CURRENT COUTRNY: ", country_i, " DISEASE: ", disease_i))
     
     plot_polar <- df_subset %>%
       filter(age != "All") %>%
-      group_by(week, is_covid) %>%
+      group_by(week, period) %>%
       filter(week < 53) %>% 
       na.omit() %>% 
       summarise(metric = sum(metric)) %>% 
-      ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
+      ggplot(aes(x = week, y = metric, color = factor(period))) +
       geom_line(size = 1) +
       labs(title = paste0(country_i, " ", disease_i, " Polar Plot"), 
            subtitle = "Before Lockdown is defined as any data prior to 2021", 
@@ -168,18 +168,18 @@ for (country_i in unique_countries) {
     plot_age <- df_subset %>%
       filter(week < 53) %>%
       
-      # Step 1: Summarise total metric by age and is_covid
-      group_by(is_covid, age) %>%
+      # Step 1: Summarise total metric by age and period
+      group_by(period, age) %>%
       summarise(total_metric = sum(metric), .groups = "drop") %>%
       
       # Step 2: Filter out age groups with low data
       filter(total_metric > 10) %>%
       
       # Step 3: Join back to original data to retain only selected age groups
-      inner_join(df_subset, by = c("is_covid", "age")) %>%
+      inner_join(df_subset, by = c("period", "age")) %>%
       
       # Step 4: Summarise at the week level
-      group_by(week, is_covid, age) %>%
+      group_by(week, period, age) %>%
       summarise(metric = sum(metric), .groups = "drop") %>%
       
       # Remove any missing values
@@ -191,7 +191,7 @@ for (country_i in unique_countries) {
       plot_age <- NULL  # Return NULL if no valid data
     } else {
       plot_age <- plot_age %>%
-        ggplot(aes(x = week, y = metric, color = factor(is_covid))) +
+        ggplot(aes(x = week, y = metric, color = factor(period))) +
         geom_line(size = 1) +
         facet_wrap(~age, scales = "free_y") + 
         labs(
@@ -234,11 +234,11 @@ print("Plots generated and saved in the 'plots' folder.")
 
 # Prepare dataset for analysis
 df <- df %>%
-  mutate(is_covid = if_else(year > 2021, "After Lockdown", "Before Lockdown"))
+  mutate(period = if_else(year > 2021, "After Lockdown", "Before Lockdown"))
 
 # 1. Summary Statistics
 summary_stats <- df %>%
-  group_by(continent, disease, is_covid) %>%
+  group_by(continent, disease, period) %>%
   summarise(
     total_cases = sum(metric, na.rm = TRUE),
     mean_cases = mean(metric, na.rm = TRUE),
@@ -248,12 +248,12 @@ summary_stats <- df %>%
 
 # Percentage change in cases per continent
 change_stats <- summary_stats %>%
-  pivot_wider(names_from = is_covid, values_from = total_cases) %>%
+  pivot_wider(names_from = period, values_from = total_cases) %>%
   mutate(perc_change = 100 * (`After Lockdown` - `Before Lockdown`) / `Before Lockdown`)
 
 # 2a. Line Plot: Trends Over Time per Continent
 plot_continent_line <- df %>%
-  group_by(continent, year, week, is_covid, disease) %>%
+  group_by(continent, year, week, period, disease) %>%
   summarise(metric = sum(metric, na.rm = TRUE), .groups = "drop") %>%
   ggplot(aes(x = week, y = metric, color = continent)) +
   geom_line(size = 1) +
@@ -262,7 +262,7 @@ plot_continent_line <- df %>%
   theme_minimal()
 
 # 2b. Boxplot: Disease Burden by Continent
-plot_box <- ggplot(df, aes(x = continent, y = metric, fill = is_covid)) +
+plot_box <- ggplot(df, aes(x = continent, y = metric, fill = period)) +
   geom_boxplot(outlier.shape = NA) +
   scale_y_log10() +
   facet_wrap(~ disease, scales = "free_y") +
@@ -271,18 +271,18 @@ plot_box <- ggplot(df, aes(x = continent, y = metric, fill = is_covid)) +
 
 # 2c. Heatmap of Disease Cases by Week and Continent
 plot_heatmap <- df %>%
-  group_by(week, continent, is_covid) %>%
+  group_by(week, continent, period) %>%
   summarise(metric = sum(metric, na.rm = TRUE), .groups = "drop") %>%
   ggplot(aes(x = week, y = continent, fill = metric)) +
   geom_tile() +
   scale_fill_viridis(option = "A") +
-  facet_wrap(~ is_covid) +
+  facet_wrap(~ period) +
   labs(title = "Heatmap of Disease Cases by Week & Continent", x = "Week", y = "Continent") +
   theme_minimal()
 
 # 2d. Ridge Density Plot per Continent
 plot_ridge <- df %>%
-  ggplot(aes(x = week, y = continent, fill = is_covid)) +
+  ggplot(aes(x = week, y = continent, fill = period)) +
   geom_density_ridges(alpha = 0.6) +
   facet_wrap(~ disease) +
   scale_fill_manual(values = c("Before Lockdown" = "blue", "After Lockdown" = "red")) +
