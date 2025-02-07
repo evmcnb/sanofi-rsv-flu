@@ -534,10 +534,10 @@ server <- function(input, output, session) {
   
   output$export_table <- renderDT(server = TRUE, {
     datatable(df, 
-              options = list(scrollX=TRUE, lengthMenu = c(25,50,100),
+              options = list(scrollX=TRUE,
                              paging = TRUE, searching = TRUE,
                              fixedColumns = TRUE, autoWidth = TRUE,
-                             ordering = TRUE, dom = 'Bfrtip'))
+                             ordering = TRUE))
   })
   
   output$downloadData <- downloadHandler(
@@ -820,4 +820,4 @@ server <- function(input, output, session) {
   
 }
 
-shinyApp(ui, server, options = list(host = "172.26.184.54", port = 7047))
+shinyApp(ui, server, options = list(host = "192.168.68.67", port = 7047))
