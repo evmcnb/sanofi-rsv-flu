@@ -41,7 +41,7 @@ for (country_i in unique_countries) {
     # Filter data for the specific country and disease
     df_subset <- df %>%
       filter(country == country_i, disease == disease_i) %>% 
-      filter(year > 2016)
+      filter(year >= 2017)
       
     if (sum(df_subset$metric, na.rm = TRUE) < 100) next
     if (nrow(na.omit(df_subset)) < 10) next

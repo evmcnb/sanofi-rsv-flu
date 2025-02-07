@@ -6,23 +6,19 @@ filtered_data <- massive_flu_df %>%
   summarize(cases = sum(REPORTED_CASES, na.rm = TRUE),
             RSV = sum(RSV, na.rm = TRUE)) %>%
   filter(cases < 1e7) %>% 
-  arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>%
-  mutate(smooth_case = {
-    smoothed <- ksmooth(ISO_WEEKSTARTDATE, cases, "normal", bandwidth = 3)
-    smoothed$y[match(ISO_WEEKSTARTDATE, smoothed$x)]  # Extract corresponding smoothed value for each week
-  }) %>%
+  arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
 
 
 uk_standard_data <- uk_data %>% 
-  filter(age_group == "all") %>% 
+  filter(age == "all") %>% 
   mutate(COUNTRY_CODE = country_code, 
          ISO_WEEK = epiweek,
          ISO_YEAR = year,
          cases = flu_r10k * 10000,
          HEMISPHERE = "NH",
          ISO_WEEKSTARTDATE = NA,
-         AGE_GROUPCODE = age_group) %>% 
+         AGE_GROUPCODE = age) %>% 
   select(COUNTRY_CODE, AGE_GROUPCODE, ISO_WEEK, ISO_YEAR, ISO_WEEKSTARTDATE, HEMISPHERE, cases) %>% 
   arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
@@ -56,6 +52,28 @@ filtered_data %>%
   pull(COUNTRY_CODE) -> valid_countries
 
 excluded_countries <- c("MDA", "X10", "BIH", "GEO", "ISL", "LAO", "PRK", "X9", "MOZ", "NPL", "NER", "ROU", "SDN", "PCN", "CUB", "NRU")
+
+seasonality_shift <- filtered_data %>%
+  filter(cases < 1e7) %>% 
+  filter(COUNTRY_CODE %in% c("AFG", "ALB", "ARM", "BEL", "BLR", "BRA", "BTN", "BGR","CAN", "CHL", "COL", "CRI", "CZE", "CHE", "EST", "GRC", "IRL", "ISR", "ITA", "JOR", "JAM", "KAZ", "KGZ", "LBN", "LTU", "MAR", "MEX", "MKD", "MLT", "MNE", "MNG", "NOR", "POL", "PRY", "PER", "RUS", "SVN", "SVK", "TUK", "URY", "UZB", "XKX", "ZAF")) %>%
+  mutate(is_covid = if_else(ISO_YEAR < 2021, "Before", "After")) %>%
+  group_by(COUNTRY_CODE, is_covid, ISO_WEEK) %>%
+  summarise(total_cases = sum(cases, na.rm = TRUE), .groups = "drop") %>%
+  group_by(COUNTRY_CODE, is_covid) %>%
+  filter(total_cases == max(total_cases)) %>%
+  summarise(peak_week = first(ISO_WEEK), .groups = "drop") %>%
+  pivot_wider(names_from = is_covid, values_from = peak_week) %>%
+  mutate(
+    raw_shift = After - Before,
+    week_shift = ifelse(
+      abs(raw_shift) > 26,  # If shift is more than half a year, wrap around
+      ifelse(raw_shift > 0, raw_shift - 52, raw_shift + 52),
+      raw_shift
+    )
+  )
+
+write_csv(seasonality_shift, file = "csv/flu_net_shift.csv")
+
 
 filtered_data %>%
   filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
@@ -149,27 +167,6 @@ filtered_data %>%
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(ggcorrplot)
-
-seasonality_shift <- filtered_data %>%
-  filter(COUNTRY_CODE %in% valid_countries & !COUNTRY_CODE %in% excluded_countries) %>%
-  filter(age)
-  mutate(is_covid = if_else(ISO_YEAR < 2021, "Before", "After")) %>%
-  group_by(COUNTRY_CODE, is_covid, ISO_WEEK) %>%
-  summarise(total_cases = sum(cases, na.rm = TRUE), .groups = "drop") %>%
-  group_by(COUNTRY_CODE, is_covid) %>%
-  filter(total_cases == max(total_cases)) %>%
-  summarise(peak_week = first(ISO_WEEK), .groups = "drop") %>%
-  pivot_wider(names_from = is_covid, values_from = peak_week) %>%
-  mutate(
-    raw_shift = After - Before,
-    week_shift = ifelse(
-      abs(raw_shift) > 26,  # If shift is more than half a year, wrap around
-      ifelse(raw_shift > 0, raw_shift - 52, raw_shift + 52),
-      raw_shift
-    )
-  )
-
-write_csv(seasonality_shift, file = "csv/flu_net_shift.csv")
 
 world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>% 
   left_join(seasonality_shift, by = c("iso_a3" = "COUNTRY_CODE"))

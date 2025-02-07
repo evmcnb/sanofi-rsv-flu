@@ -13,6 +13,7 @@ rsv_data_list <- lapply(rsv_file_list, read_csv)
 
 German_data <- data.frame(
   country = character(),
+  continent = character(),
   year = integer(),
   month = integer(),
   week = integer(),
@@ -31,14 +32,15 @@ for (item in flu_data_list) {
                  values_to = "metric") %>%
     mutate(
       country = "Germany",
+      continent = "Europe",
       disease = "Influenza",
       month = NA,
       age = age,
-      metric = metric,
+      metric = replace_na(metric, 0),
       source = "GOV",
       week = Week,
       year = 2016 + i) %>%
-    select(country, source, year, month, week, disease, age, metric) %>% 
+    select(country, continent, source, year, month, week, disease, age, metric) %>% 
     arrange(year, week)
   
   German_data <- rbind(German_data, FLU_GERM_MERGE)
@@ -55,14 +57,15 @@ for (item in rsv_data_list) {
                  values_to = "metric") %>%
     mutate(
       country = "Germany",
+      continent = "Europe",
       disease = "RSV",
       month = NA,
       age = age,
-      metric = metric,
+      metric = replace_na(metric, 0),
       source = "GOV",
       week = Week,
       year = 2016 + i) %>%
-    select(country, source, year, month, week, disease, age, metric) %>% 
+    select(country, continent, source, year, month, week, disease, age, metric) %>% 
     arrange(year, week)
   
   German_data <- rbind(German_data, RSV_GERM_MERGE)

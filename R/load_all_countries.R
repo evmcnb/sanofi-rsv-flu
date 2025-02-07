@@ -30,6 +30,7 @@ source("R/German_data.R")
 
 ba_df <- data.frame(
   country = character(),
+  continent = character(),
   year = integer(),
   month = integer(),
   week = integer(),
@@ -43,12 +44,13 @@ ba_df <- data.frame(
 FLU_FR_MERGE <- flu_france_data %>%
   mutate(
     country = "France",
+    continent = "Europe",
     disease = "Influenza",
     month = NA,
     age = NA,
     metric = inc,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -57,11 +59,12 @@ ba_df <- rbind(ba_df, FLU_FR_MERGE)
 FLU_UK_MERGE <- flu_uk_data %>%
   mutate(
     country = "United Kingdom",
+    continent = "Europe",
     disease = "Influenza",
     metric = metric_value,
     week = epiweek,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -70,45 +73,47 @@ ba_df <- rbind(ba_df, FLU_UK_MERGE)
 RSV_UK_MERGE <- rsv_uk_data %>%
   mutate(
     country = "United Kingdom",
+    continent = "Europe",
     disease = "RSV",
     metric = metric_value,
     week = epiweek,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
 ba_df <- rbind(ba_df, RSV_UK_MERGE)
 
-FLU_UK_MERGE_HOSP <- flu_uk_hosp %>%
-  mutate(
-    country = "United Kingdom (Hosp)",
-    disease = "Influenza",
-    metric = metric_value,
-    week = epiweek,
-    source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
-  arrange(year, week) %>%
-  view()
-
-ba_df <- rbind(ba_df, FLU_UK_MERGE_HOSP)
-
-RSV_UK_MERGE_HOSP <- rsv_uk_hosp %>%
-  mutate(
-    country = "United Kingdom (Hosp)",
-    disease = "RSV",
-    metric = metric_value,
-    week = epiweek,
-    source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
-  arrange(year, week) %>%
-  view()
-
-ba_df <- rbind(ba_df, RSV_UK_MERGE_HOSP)
+# FLU_UK_MERGE_HOSP <- flu_uk_hosp %>%
+#   mutate(
+#     country = "United Kingdom (Hosp)",
+#     disease = "Influenza",
+#     metric = metric_value,
+#     week = epiweek,
+#     source = "GOV") %>%
+#   select(country, source, year, month, week, disease, age, metric) %>% 
+#   arrange(year, week) %>%
+#   view()
+# 
+# ba_df <- rbind(ba_df, FLU_UK_MERGE_HOSP)
+# 
+# RSV_UK_MERGE_HOSP <- rsv_uk_hosp %>%
+#   mutate(
+#     country = "United Kingdom (Hosp)",
+#     disease = "RSV",
+#     metric = metric_value,
+#     week = epiweek,
+#     source = "GOV") %>%
+#   select(country, source, year, month, week, disease, age, metric) %>% 
+#   arrange(year, week) %>%
+#   view()
+# 
+# ba_df <- rbind(ba_df, RSV_UK_MERGE_HOSP)
 
 FLU_AU_MERGE <- flu_au_data %>%
   mutate(
     country = "Australia",
+    continent = "Oceania",
     disease = "Influenza",
     metric = cases,
     month = NA,
@@ -116,7 +121,7 @@ FLU_AU_MERGE <- flu_au_data %>%
     year = epi_year,
     age = age_group,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -125,6 +130,7 @@ ba_df <- rbind(ba_df, FLU_AU_MERGE)
 FLU_DK_MERGE <- flu_dk_data %>%
   mutate(
     country = "Denmark",
+    continent = "Europe",
     disease = "Influenza",
     metric = admissions,
     month = NA,
@@ -132,7 +138,7 @@ FLU_DK_MERGE <- flu_dk_data %>%
     year = year,
     age = Age_group,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -141,12 +147,13 @@ ba_df <- rbind(ba_df, FLU_DK_MERGE)
 RSV_DK_MERGE <- rsv_dk_data %>%
   mutate(
     country = "Denmark",
+    continent = "Europe",
     disease = "RSV",
     metric = cases,
     month = NA,
     age = age_group,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>%  
   arrange(year, week) %>%
   view()
 
@@ -158,12 +165,13 @@ FLU_HK_MERGE <- flu_hk_data %>%
                values_to = "metric") %>%
   mutate(
     country = "Hong Kong",
+    continent = "Asia",
     disease = "Influenza",
     month = NA,
     year = Year,
     week = Week,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -175,12 +183,13 @@ RSV_HK_MERGE <- flu_hk_data %>%
                values_to = "metric") %>%
   mutate(
     country = "Hong Kong",
+    continent = "Asia",
     disease = "Influenza",
     month = NA,
     year = Year,
     week = Week,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>%  
   arrange(year, week) %>%
   view()
 
@@ -191,39 +200,42 @@ ARGENTINA_MERGE <- Argentina_all_data %>%
     week = epi_weeks,
     month = NA,
     country = "Argentina",
+    continent = "South America",
     age = age_group,
     disease = if_else(str_detect(event, regex("influenza", ignore_case = TRUE)), "Influenza", "RSV"),
     source = "GOV") %>%
-  group_by(country, source, year, month, week, disease, age) %>%
+  group_by(country, continent, source, year, month, week, disease, age) %>%
   summarise(metric = sum(num_cases), .groups = "drop") %>%
   arrange(year, week) %>%
   arrange(disease) %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   view()
 
 
 ba_df <- rbind(ba_df, ARGENTINA_MERGE)
 
 
-FLU_US_MERGE <- flu_us_data %>%
-  mutate(
-    country = "United States of America",
-    disease = "Influenza",
-    month = NA,
-    year = YEAR...4,
-    week = WEEK,
-    age = age_group,
-    metric = weekly_rate,
-    source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
-  arrange(year, week) %>%
-  view()
-
-ba_df <- rbind(ba_df, FLU_US_MERGE)
+# FLU_US_MERGE <- flu_us_data %>%
+#   mutate(
+#     country = "United States of America",
+#     continent = "North America",
+#     disease = "Influenza",
+#     month = NA,
+#     year = YEAR...4,
+#     week = WEEK,
+#     age = AGE_CATEGORY,
+#     metric = weekly_rate,
+#     source = "GOV") %>%
+#   select(country, continent, source, year, month, week, disease, age, metric) %>% 
+#   arrange(year, week) %>%
+#   view()
+# 
+# ba_df <- rbind(ba_df, FLU_US_MERGE)
 
 RSV_US_MERGE <- rsv_us_data %>%
   mutate(
-    country = "United States",
+    country = "United States of America",
+    continent = "North America",
     disease = "RSV",
     month = NA,
     year = year,
@@ -231,7 +243,7 @@ RSV_US_MERGE <- rsv_us_data %>%
     age = Age_Category,
     metric = weekly_rate,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -246,11 +258,12 @@ FLU_IR_MERGE <- flu_ireland %>%
   ) %>%
   mutate(
     country = "Ireland",
+    continent = "Europe",
     disease = "Influenza",
     week = as.numeric(str_sub(week, 2)),
     month = NA,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -264,11 +277,12 @@ RSV_IR_MERGE <- rsv_ireland %>%
   ) %>%
   mutate(
     country = "Ireland",
+    continent = "Europe",
     disease = "RSV",
     week = as.numeric(str_sub(week, 2)),
     month = NA,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   view()
 
@@ -277,6 +291,7 @@ ba_df <- rbind(ba_df, RSV_IR_MERGE)
 FINLAND_MERGE <- Finland_data %>%
   mutate(
     country = "Finland",
+    continent = "Europe",
     disease = Group,
     week = NA,
     month = Month,
@@ -284,7 +299,7 @@ FINLAND_MERGE <- Finland_data %>%
     age = NA,
     metric = Cases,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>%  
   arrange(year, week) %>%
   arrange(disease) %>%
   view()
@@ -300,12 +315,13 @@ JAPAN_MERGE <- Japan_data %>%
   mutate(
     disease = if_else(disease == "flu_cases", "Influenza", "RSV"),
     country = "Japan",
+    continent = "Asia",
     year = Year,
     week = Week,
     month = NA,
     age = NA,
     source = "GOV") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   arrange(disease) %>%
   view()
@@ -315,15 +331,16 @@ ba_df <- rbind(ba_df, JAPAN_MERGE)
 TAIWAN_MERGE_FLU <- Taiwan_flu %>%
   mutate(
     country = "Taiwan",
+    continent = "Asia",
     disease = "Influenza",
     week = NA,
     month = factor(month, labels = month.abb),
     year = year,
     age = age_group,
     source = "GOV") %>%
-  group_by(country, source, year, month, week, disease, age) %>%
+  group_by(country, continent, source, year, month, week, disease, age) %>%
   summarise(metric = sum(cases)) %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>% 
   arrange(year, week) %>%
   arrange(disease) %>%
   view()
@@ -341,28 +358,43 @@ filtered_data <- massive_flu_df %>%
   summarize(cases = sum(REPORTED_CASES, na.rm = TRUE),
             RSV = sum(RSV, na.ra = TRUE)) %>%
   filter(cases < 1e7) %>% 
-  filter(COUNTRY_CODE %in% c("AFG", "ALB", "ARM", "BEL", "BLR", "BRA", "BTN", "CAN", "CHL", "COL", "CRI", "CZE", "EST", "GRC", "IRL", "ISR", "ITA", "JOR", "KAZ", "KEN", "KGZ", "LBN", "LTU", "MAR", "MEX", "MKD", "MLT", "MNE", "NOR", "POL", "PRY", "QAT", "RUS", "SVN", "TUK", "URY")) %>%
+  filter(COUNTRY_CODE %in% c("AFG", "ALB", "ARM", "BEL", "BLR", "BRA", "BTN", "BGR","CAN", "CHL", "COL", "CRI", "CZE", "CHE", "EST", "GRC", "IRL", "ISR", "ITA", "JOR", "JAM", "KAZ", "KGZ", "LBN", "LTU", "MAR", "MEX", "MKD", "MLT", "MNE", "MNG", "NOR", "POL", "PRY", "PER", "RUS", "SVN", "SVK", "TUK", "URY", "UZB", "USA", "XKX", "ZAF")) %>%
   arrange(COUNTRY_CODE, ISO_YEAR, ISO_WEEK) %>% 
   view()
 
 world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>% 
-  select(iso_a3, name)
+  select(iso_a3, name, continent)
 
 filtered_data <- merge(filtered_data, world_map_data, by.x = "COUNTRY_CODE", by.y = "iso_a3")
 
+# filtered_data <- filtered_data %>%
+#   pivot_longer(cols = c("cases", "RSV"), names_to = "disease", values_to = "metric") %>%
+#   mutate(disease = if_else(disease == "cases", "Influenza", "RSV"),
+#        country = name,
+#        year = ISO_YEAR,
+#        week = ISO_WEEK,
+#        month = month(ISO_WEEKSTARTDATE),
+#        age = AGEGROUP_CODE,
+#        source = "FLUNET") %>%
+#   select(country, continent, source, year, month, week, disease, age, metric) %>% 
+#   arrange(country, year, week) %>% 
+#   arrange(disease) %>% 
+#   view()
+
 filtered_data <- filtered_data %>%
-  pivot_longer(cols = c("cases", "RSV"), names_to = "disease", values_to = "metric") %>%
-  mutate(disease = if_else(disease == "cases", "Influenza", "RSV"),
+  pivot_longer(cols = c("cases"), names_to = "disease", values_to = "metric") %>%
+  mutate(disease = "Influenza",
        country = name,
        year = ISO_YEAR,
        week = ISO_WEEK,
        month = month(ISO_WEEKSTARTDATE),
        age = AGEGROUP_CODE,
        source = "FLUNET") %>%
-  select(country, source, year, month, week, disease, age, metric) %>% 
-  arrange(country, year, week) %>% 
-  arrange(disease) %>% 
+  select(country, continent, source, year, month, week, disease, age, metric) %>%
+  arrange(country, year, week) %>%
+  arrange(disease) %>%
   view()
+
 
 
 ba_df <- rbind(ba_df, filtered_data)
@@ -370,7 +402,7 @@ ba_df <- rbind(ba_df, filtered_data)
 df <- ba_df %>% 
   mutate(
     age = case_when(
-      age %in% c("all", "All", "Adm_All", "Alle", "weekly_cases", NA) ~ "All",
+      age %in% c("all", "All", "Adm_All", "Alle", "weekly_cases", "Overall", NA) ~ "All",
       TRUE ~ age  
     ),
     week = as.numeric(week),

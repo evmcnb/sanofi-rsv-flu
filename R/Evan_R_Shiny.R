@@ -30,7 +30,8 @@ flu_data <- flu_data %>%
 
 # Categorise pre and post 2021
 flu_data <- flu_data %>%
-  mutate(period = ifelse(year < 2021, "Pre-2021", "Post-2021"))
+  mutate(is_covid = if_else((year) < 2021, 0, 1),
+         is_covid = factor(is_covid, labels = c("Before 2021", "After 2021")))
 
 
 # # Global Map Data and Plot

@@ -75,24 +75,13 @@ uk_data <- flu_uk_data %>%
          country_code = "GBR") %>%
   full_join(rsv_uk_data, by= c("age", "year","month", "epiweek", "date")) %>% 
   mutate(rsv_r10k = metric_value.y / 10) %>%
-  mutate(
-    age_group = case_when(
-      age %in% c("00-04") ~ "infant",                 # Ages 0-4
-      age %in% c("05-14") ~ "adolescent",             # Ages 5-14
-      age %in% c("15-44", "45-54", "55-64") ~ "adult", # Ages 15-64
-      age %in% c("65-74", "75-84", "75+", "85", "85+") ~ "elderly", # Ages 65+
-      age == "all" ~ "all",                           # Keep "all" as a separate category
-      TRUE ~ NA_character_                            # Mark unexpected values as NA
-    ),
-    age_group = factor(age_group, levels = c("infant", "adolescent", "adult", "elderly", "all"))
-  ) %>%
-  group_by(country, country_code, month, year, epiweek, age_group) %>% 
+  group_by(country, country_code, month, year, epiweek, age) %>% 
   summarize(
     flu_r10k = sum(flu_r10k, na.rm = TRUE),
     rsv_r10k = sum(rsv_r10k, na.rm = TRUE),
     .groups = "drop"
   ) %>% 
-  select(country, country_code, year, epiweek, month, age_group, flu_r10k, rsv_r10k) %>% 
+  select(country, country_code, year, epiweek, month, age, flu_r10k, rsv_r10k) %>% 
   view()
 
 
