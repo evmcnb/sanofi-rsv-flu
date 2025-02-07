@@ -183,7 +183,7 @@ ui <- dashboardPage(
         ), # fluidrow
         fluidRow(
           box(
-            title = "Cumulative Influenza Cases By Continent",
+            title = "Cumulative Reported Influenza Cases By Continent",
             width = 12,
             status = "lightblue",
             collapsible = FALSE,
@@ -192,7 +192,7 @@ ui <- dashboardPage(
         ), # fluidrow
         fluidRow(
           box(
-            title = "Cumulative RSV Cases By Continent",
+            title = "Cumulative Reported RSV Cases By Continent",
             width = 12,
             status = "maroon",
             collapsible = FALSE,
