@@ -7,6 +7,7 @@ setwd("C:\\Users\\lukeb\\Downloads\\LSHTM\\TERM 2\\Data Challenge\\github\\sanof
 install.packages("readxl")
 install.packages("ggthemes")
 install.packages("WaveletComp")
+install.packages("plotly")
 library(tidyverse)
 library(readxl)
 library(ggthemes)
@@ -15,6 +16,7 @@ library(dplyr)
 library(zoo) # library for rolling average
 library(WaveletComp) # library for wavelet transform analysis
 library(boot) # For bootstrap resampling
+library(plotly)
 
 # retrieve the main dataset with filters on years and disease
 
@@ -259,7 +261,7 @@ shift_data1 <- ccf_shift_data1(flu_dataset, chosen_countries, hemisphere_info)
 plot_seasonality_shift1(shift_data1)
 
 # select countries for report
-countries_rep <- c("Argentina", "Australia", "Denmark", "France", "Hong Kong",
+countries_rep <- c("Argentina", "Australia", "Denmark", "France", "Germany", "Hong Kong",
                    "Ireland", "Japan", "Taiwan", "United Kingdom", "United States of America")
 hemisphere_rep <- setNames(
   ifelse(countries_rep %in% southern_hemisphere, "S", "N"), 
@@ -268,6 +270,56 @@ hemisphere_rep <- setNames(
 
 shift_data_rep <- ccf_shift_data1(flu_dataset, countries_rep, hemisphere_rep)
 plot_seasonality_shift1(shift_data_rep)
+
+flu_dataset %>%
+  filter(country == "Chile") %>%
+  ggplot(aes(x = week, y = cases, group = year, color = factor(year))) +
+  geom_line(size = 1, alpha = 0.7) +
+  scale_color_viridis_d() +  # Colorblind-friendly palette
+  scale_x_continuous(breaks = seq(1, 52, by = 4)) +  # Show week numbers at intervals
+  labs(title = "Flu Cases by Week",
+       x = "Week",
+       y = "Cases",
+       color = "Year") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+
+
+# Interactive plot ----------------------------------------------------------
+# using this to pick out problematic countries
+
+
+plot_seasonality_shift_int <- function(lag_data) {
+  p <- ggplot(lag_data, aes(x = year, y = shift, 
+                            color = country, group = country, 
+                            text = paste("Country:", country, "<br>Year:", year, "<br>Shift:", shift))) +
+    geom_line(size = 1, na.rm = TRUE) +
+    geom_point(size = 3, na.rm = TRUE) +
+    labs(title = "Estimated Seasonality Shift in Weeks (Compared to 2019)",
+         x = "Year",
+         y = "Shift in Weeks") +
+    theme_fivethirtyeight() +  
+    theme(
+      axis.title = element_text(size = 12),
+      axis.text = element_text(size = 10),
+      legend.position = "right",
+      axis.ticks.y = element_line(),
+      axis.line.y.left = element_line(),
+      legend.title = element_blank(),
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8),
+      axis.text.y = element_text()
+    ) +
+    scale_x_continuous(breaks = unique(lag_data$year)) +  
+    ylim(-20, 20)  
+  
+  ggplotly(p, tooltip = "text")  # Convert ggplot to interactive plotly plot
+}
+
+
+plot_seasonality_shift_int(shift_data)
+
 
 
 # Week shift using rolling average -----------------------------------------------
@@ -464,7 +516,7 @@ plot_shift_bootstrap <- function(data, countries, hemisphere) {
       
       # Bootstrap sampling
       set.seed(123)  # For reproducibility
-      bootstrap_results <- boot(data = year_data, statistic = bootstrap_shift, R = 1000, 
+      bootstrap_results <- boot(data = year_data, statistic = bootstrap_shift, R = 100, 
                                 peak_2019 = peak_2019)
       
       # Calculate 90% confidence interval for the shift
@@ -496,6 +548,7 @@ plot_shift_bootstrap <- function(data, countries, hemisphere) {
       axis.title = element_text(size = 12),
       axis.text = element_text(size = 10),
       legend.position = "right",   # Positioning of the legend
+      legend.direction = "vertical",
       axis.ticks.y = element_line(),
       axis.line.y.left = element_line(),
       legend.title = element_blank(),
@@ -504,12 +557,23 @@ plot_shift_bootstrap <- function(data, countries, hemisphere) {
       axis.text.y = element_text()
     ) +
     scale_x_continuous(breaks = unique(peak_results_df$year)) +  # integer years on x-axis
-    ylim(-20, 20)  # set y-axis limit
+    ylim(-15, 15)  # set y-axis limit
 }
 
 
+# select countries for bootstrap
+countries_boot <- c("Australia",  
+                   "Japan", "South Africa",
+                   "United Kingdom", "United States of America") # omitted South America
+countries_boot <- c("United Kingdom", "Germany", "Ireland", "France",
+                    "Finland")
+hemisphere_boot <- setNames(
+  ifelse(countries_boot %in% southern_hemisphere, "S", "N"), 
+  countries_boot
+)
 
-plot_shift_bootstrap(flu_dataset, countries_rep, hemisphere_rep)
+
+plot_shift_bootstrap(flu_dataset, countries_boot, hemisphere_boot)
 
 
 # Week shift using wavelet transform analysis -----------------------------------
