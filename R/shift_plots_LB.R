@@ -580,6 +580,58 @@ shift_data_boot <- bootstrap_data(flu_dataset, countries_boot, hemisphere_boot)
 plot_shift_bootstrap(shift_data_boot)
 
 
+# alternative bootstrap plots which may look nicer
+
+# facet plots
+ggplot(shift_data_boot, aes(x = year, y = shift, group = country)) +
+  geom_line(size = 1, color = "steelblue") +
+  geom_point(size = 3, color = "steelblue") +
+  geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci), alpha = 0.2, fill = "lightblue") +
+  labs(title = "Peak Week Shift by Country",
+       x = "Year", y = "Peak Week Shift (Compared to 2019)") +
+  facet_wrap(~ country, scales = "free_y", ncol = 3) +  # One plot per country
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10)
+  ) +
+  scale_x_continuous(breaks = c(2022, 2023, 2024))
+
+# dumbbell plot
+ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = country)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2) +
+  geom_line(size = 0.8, linetype = "dashed") +
+  labs(title = "Peak Week Shift by Country",
+       x = "Year", y = "Peak Week Shift (Compared to 2019)") +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  scale_x_continuous(breaks = c(2022, 2023, 2024)) +
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
+
+# bar plot with error bars
+ggplot(shift_data_boot, aes(x = factor(year), y = shift, fill = country)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), position = position_dodge(0.9), width = 0.25) +
+  labs(title = "Peak Week Shift with Confidence Intervals by Country",
+       x = "Year", y = "Shift") +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  scale_fill_brewer(palette = "Set3")
+
+
+
 
 
 # Week shift using wavelet transform analysis -----------------------------------
