@@ -462,26 +462,26 @@ bootstrap_shift <- function(data, indices, peak_2019) {
   return(shift)
 }
 
-# calculate peak shifts and perform bootstrap sampling with 90% confidence intervals
-plot_shift_bootstrap <- function(data, countries, hemisphere) {
+# Function to calculate peak shifts and bootstrap results
+bootstrap_data <- function(data, countries, hemisphere) {
   
   peak_results <- list()
   
-  # loop through each country
+  # Loop through each country
   for (country in countries) {
     
-    # check it exists in the dataset
+    # Check if the country exists in the dataset
     if (!(country %in% unique(data$country))) {
       message(paste("Skipping", country, "- not in dataset"))
       next
     }
     
-    # retrieve country data and shift week based on hemisphere
+    # Retrieve country data and shift week based on hemisphere
     country_data <- data %>%
       filter(country == !!country) %>%
       mutate(epi_week = case_when(
         hemisphere[country] == "N" ~ (week + 26) %% 52,  # Shift by 26 weeks if North
-        TRUE ~ week  # Keep same if South
+        TRUE ~ week  # Keep the same if South
       )) %>%
       arrange(year, epi_week)
     
@@ -533,10 +533,14 @@ plot_shift_bootstrap <- function(data, countries, hemisphere) {
     peak_results[[country]] <- country_peak_shifts
   }
   
-  # Combine all results into a single dataframe
+  # Combine all results into a single data frame
   peak_results_df <- do.call(rbind, peak_results)
   
-  # Plot the results with confidence intervals
+  return(peak_results_df)
+}
+
+# Function to plot peak shift results
+plot_shift_bootstrap <- function(peak_results_df) {
   ggplot(peak_results_df, aes(x = year, y = shift, color = country, group = country)) +
     geom_line(size = 1) +
     geom_point(size = 3) +
@@ -556,24 +560,26 @@ plot_shift_bootstrap <- function(data, countries, hemisphere) {
       strip.text.x = element_text(size = 8),
       axis.text.y = element_text()
     ) +
-    scale_x_continuous(breaks = unique(peak_results_df$year)) +  # integer years on x-axis
-    ylim(-15, 15)  # set y-axis limit
+    scale_x_continuous(breaks = unique(peak_results_df$year)) +  # Integer years on x-axis
+    ylim(-15, 15)  # Set y-axis limit
 }
 
 
+
 # select countries for bootstrap
-countries_boot <- c("Australia",  
+countries_boot <- c("Australia", "Chile", 
                    "Japan", "South Africa",
-                   "United Kingdom", "United States of America") # omitted South America
-countries_boot <- c("United Kingdom", "Germany", "Ireland", "France",
-                    "Finland")
+                   "United Kingdom", "United States of America") # omitted South America (Chile)
 hemisphere_boot <- setNames(
   ifelse(countries_boot %in% southern_hemisphere, "S", "N"), 
   countries_boot
 )
 
+shift_data_boot <- bootstrap_data(flu_dataset, countries_boot, hemisphere_boot)
 
-plot_shift_bootstrap(flu_dataset, countries_boot, hemisphere_boot)
+plot_shift_bootstrap(shift_data_boot)
+
+
 
 
 # Week shift using wavelet transform analysis -----------------------------------
