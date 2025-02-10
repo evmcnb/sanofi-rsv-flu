@@ -632,7 +632,7 @@ ggplot(shift_data_boot, aes(x = factor(year), y = shift, fill = country)) +
 
 
 # combine facet wrap with aesthetic of error bar plot
-ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = country)) +
+plot_boot_facet <- ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = country)) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2) +
   geom_line(size = 0.8, linetype = "solid") +  # Changed to solid lines
@@ -657,7 +657,13 @@ ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = countr
   guides(color = guide_legend(nrow = 2, byrow = TRUE))
 
 
-
+ggsave(
+  filename = paste0("plots/Influenza/Other/flu_boot_facet.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = plot_boot_facet,  # This refers to the last plot generated
+  width = 8,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
 
 
 # Week shift using wavelet transform analysis -----------------------------------

@@ -150,7 +150,7 @@ ggplot(australia_data, aes(x = Date)) +
 
 # Filter for the countries of interest
 countries_of_interest <- c("Australia", "Chile", "Japan", "South Africa", "United Kingdom", "United States of America")
-
+countries_of_interest <- unique(flu_dataset$country)
 # Combine the stringency data with the case data by country, year, and week
 combined_data <- stringency %>%
   filter(country %in% countries_of_interest) %>%
@@ -229,3 +229,134 @@ ggplot(combined_data, aes(x = Date)) +
   
   # Facet grid by country with free y-axis scaling for cases
   facet_wrap(~country, scales = "free_y")  # Free y-axis scales so each country can have its own scale for cases
+
+
+
+
+# plot stringency vs shift
+
+ccf_shift_data <- function(data, countries, hemisphere, baseline_year = 2019, comp_years) {
+  
+  # Initialize list to store results
+  lag_results <- list()
+  
+  for (country in countries) {
+    
+    # Retrieve selected country data
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      select(epi_year, epi_week, cases)
+    
+    # Fill in missing weeks (ensures all 52 weeks are present)
+    country_data_full <- country_data %>%
+      complete(epi_year, epi_week = 1:52, fill = list(cases = 0))
+    
+    # Ensure 'cases' is numeric
+    country_data_full$cases <- as.numeric(country_data_full$cases)
+    
+    # Reshape data to wide format
+    country_data_wide <- country_data_full %>%
+      pivot_wider(names_from = epi_year, values_from = cases, values_fill = list(cases = 0))
+    
+    # Ensure the baseline year is available
+    if (!as.character(baseline_year) %in% colnames(country_data_wide)) {
+      message(paste("Skipping", country, "- Baseline year", baseline_year, "data not found"))
+      next
+    }
+    
+    # Add the baseline year to comparison years for plotting
+    years_to_analyse <- unique(c(baseline_year, comp_years))
+    
+    # Loop through each comparison year
+    for (comp_year in years_to_analyse) {
+      
+      if (!as.character(comp_year) %in% colnames(country_data_wide)) {
+        message(paste("Skipping", country, "-", comp_year, "data not found"))
+        next
+      }
+      
+      # Compute cross-correlation function (CCF)
+      ccf_result <- ccf(country_data_wide[[as.character(comp_year)]],
+                        country_data_wide[[as.character(baseline_year)]],
+                        lag.max = 20, plot = FALSE)
+      
+      # Find the lag with the highest correlation (best lag)
+      best_lag <- ccf_result$lag[which.max(ccf_result$acf)]  # Find lag with highest correlation
+      
+      # Store results in a dataframe
+      lag_results[[paste(country, comp_year, sep = "_")]] <- data.frame(
+        country = country,
+        year = comp_year,
+        shift = best_lag
+      )
+    }
+  }
+  
+  # Combine all lag results into a single dataframe
+  lag_data <- do.call(rbind, lag_results)
+  
+  # Return the final dataframe with lag results
+  return(lag_data)
+}
+
+
+southern_hemisphere <- c(
+  "Argentina", "Australia", "Bolivia", "Botswana", "Brazil", "Chile", "Colombia",
+  "Ecuador", "Eswatini", "Fiji", "Lesotho", "Madagascar", "Malawi", "Mauritius",
+  "Mozambique", "Namibia", "New Zealand", "Paraguay", "Peru", "Papua New Guinea",
+  "Rwanda", "Samoa", "Solomon Islands", "South Africa", "Tanzania", "Timor-Leste",
+  "Tonga", "Uruguay", "Vanuatu", "Zambia", "Zimbabwe"
+)
+countries_rep <- c("Australia", "Chile", 
+                    "Japan", "South Africa",
+                    "United Kingdom", "United States of America")
+countries_rep <- unique(flu_dataset$country)
+hemisphere_rep <- setNames(
+  ifelse(countries_rep %in% southern_hemisphere, "S", "N"), 
+  countries_rep
+)
+
+# obtain lag data
+lag_data <- ccf_shift_data(flu_dataset, countries_rep, hemisphere_rep, comp_years = 2022:2024)
+
+
+
+# Step 1: Calculate average stringency for each country (2020-2022)
+avg_stringency <- stringency %>%
+  filter(year %in% 2020:2022) %>%
+  group_by(country) %>%
+  summarise(avg_stringency = mean(StringencyIndex_Avg, na.rm = TRUE))
+
+# Step 2: Calculate average shift in seasonality for post-2021 (from lag_data)
+avg_shift <- lag_data %>%
+  filter(year > 2021) %>%
+  group_by(country) %>%
+  summarise(avg_shift = mean(shift, na.rm = TRUE))
+
+# Step 3: Merge the average stringency data with the average shift data
+merged_data <- left_join(avg_stringency, avg_shift, by = "country")
+
+# Step 4: Create the scatterplot
+# Calculate the correlation coefficient
+correlation <- cor(merged_data$avg_stringency, merged_data$avg_shift)
+
+ggplot(merged_data, aes(x = avg_stringency, y = avg_shift, color = country)) +
+  geom_point(size = 3, shape = 16, alpha = 0.7) +  # Scatter plot
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "solid", size = 1) +  # Add line of best fit
+  labs(
+    title = "Average Weekly Stringency vs. Average Seasonality Shift (Post-2021)",
+    x = "Average Stringency (2020-2022)",
+    y = "Average Shift in Seasonality (Post-2021)",
+    caption = paste("Source: FLUNET/GOV | Correlation: ", round(correlation, 2))  # Add correlation to the caption
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.position = "none",  # Remove the legend
+    plot.title = element_text(hjust = 0.5, size = 14),  # Center title and increase size
+    plot.caption = element_text(hjust = 0, size = 8),  # Align caption left and reduce size
+    plot.margin = margin(10, 10, 10, 10)  # Reduce margin space
+  ) +
+  coord_cartesian(xlim = c(min(merged_data$avg_stringency) - 5, max(merged_data$avg_stringency) + 5), 
+                  ylim = c(min(merged_data$avg_shift) - 2, max(merged_data$avg_shift) + 2))  # Adjust axis limits to fit data better
