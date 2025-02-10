@@ -334,11 +334,13 @@ avg_shift <- lag_data %>%
   summarise(avg_shift = mean(shift, na.rm = TRUE))
 
 # Step 3: Merge the average stringency data with the average shift data
-merged_data <- left_join(avg_stringency, avg_shift, by = "country")
+merged_data_clean <- na.omit(merged_data[, c("avg_stringency", "avg_shift")])
+
+# Calculate the correlation on complete data
+correlation <- cor(merged_data_clean$avg_stringency, merged_data_clean$avg_shift)
 
 # Step 4: Create the scatterplot
-# Calculate the correlation coefficient
-correlation <- cor(merged_data$avg_stringency, merged_data$avg_shift)
+correlation <- cor(merged_data$avg_stringency, merged_data$avg_shift, na.rm=TRUE)
 
 ggplot(merged_data, aes(x = avg_stringency, y = avg_shift, color = country)) +
   geom_point(size = 3, shape = 16, alpha = 0.7) +  # Scatter plot
