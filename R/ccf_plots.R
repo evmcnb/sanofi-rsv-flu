@@ -293,6 +293,15 @@ plot_ccf_multi <- function(data, countries, baseline_year, comp_years) {
     facet_wrap(~ country)  # Facet wrap for multiple countries
 }
 
-# Example usage:
+
 countries_rep <- c("Australia", "Chile", "Japan", "South Africa", "United Kingdom", "United States of America")
-plot_ccf_multi(flu_dataset, countries = countries_rep, baseline_year = 2019, comp_years = c(2022:2024))
+plot_ccf_facet <- plot_ccf_multi(flu_dataset, countries = countries_rep, baseline_year = 2019, comp_years = c(2022:2024))
+
+
+ggsave(
+  filename = paste0("plots/Influenza/Other/flu_ccf_facet.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = plot_ccf_facet,  # This refers to the last plot generated
+  width = 10,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
