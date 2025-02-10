@@ -631,6 +631,32 @@ ggplot(shift_data_boot, aes(x = factor(year), y = shift, fill = country)) +
   scale_fill_brewer(palette = "Set3")
 
 
+# combine facet wrap with aesthetic of error bar plot
+ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = country)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2) +
+  geom_line(size = 0.8, linetype = "solid") +  # Changed to solid lines
+  geom_ribbon(aes(ymin = lower_ci, ymax = upper_ci, fill = country), alpha = 0.2, color = NA) +  # Add ribbons for error intervals
+  labs(
+    title = "Peak Week Shift by Country",
+    x = "Year", 
+    y = "Peak Week Shift (Compared to 2019)"
+  ) +
+  facet_wrap(~ country, scales = "fixed", ncol = 3) +  # Y scale fixed across facets
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 10, face = "bold"),
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  scale_x_continuous(breaks = c(2022, 2023, 2024)) +
+  scale_color_manual(values = RColorBrewer::brewer.pal(n = 8, name = "Set1")) +  # Custom color palette for countries
+  scale_fill_manual(values = RColorBrewer::brewer.pal(n = 8, name = "Set1")) +  # Matching fill colors for ribbons
+  guides(color = guide_legend(nrow = 2, byrow = TRUE))
+
+
 
 
 

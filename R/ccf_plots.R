@@ -301,7 +301,7 @@ plot_ccf_facet <- plot_ccf_multi(flu_dataset, countries = countries_rep, baselin
 ggsave(
   filename = paste0("plots/Influenza/Other/flu_ccf_facet.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
   plot = plot_ccf_facet,  # This refers to the last plot generated
-  width = 10,  # Width of the plot (in inches)
+  width = 8,  # Width of the plot (in inches)
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
