@@ -350,3 +350,30 @@ peak_shift_boxplot <- df %>%
   scale_fill_manual(values = c("Before Lockdown" = "#6baed6", "After Lockdown" = "#fc9272")) +
   scale_y_continuous(breaks = seq(0, 52, by = 10)) +  # Ensures ticks at 0, 10, 20, etc.
   theme(panel.spacing = unit(1, "lines")) # Adds spacing between rows
+
+# cases per capita
+pop_normalized_burden <- df %>%
+  group_by(continent, period, disease) %>%
+  summarise(total_cases = sum(metric, na.rm = TRUE),
+            total_population = sum(population, na.rm = TRUE), .groups = "drop") %>%
+  mutate(cases_per_capita = total_cases / total_population) %>%
+  ggplot(aes(x = continent, y = cases_per_capita, fill = period)) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +  # Adjust bar width for better clarity
+  facet_wrap(~ disease, scales = "free_y") +  # Allow y-axis to scale independently for each disease
+  labs(title = "Population-normalized Disease Burden by Continent",
+       x = "Continent", y = "Cases per Capita") +
+  theme_minimal(base_size = 15) +  # Increase base size for better readability
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12, face = "bold"),  # Rotate x-axis and make labels bold
+    axis.text.y = element_text(size = 12),  # Make y-axis text larger
+    axis.title.x = element_text(size = 14, face = "bold"),  # Bold x-axis title
+    axis.title.y = element_text(size = 14, face = "bold"),  # Bold y-axis title
+    strip.text = element_text(size = 14, face = "bold"),  # Bold facet labels
+    panel.grid.major = element_line(size = 0.2, color = "gray"),  # Lighter grid lines for a cleaner look
+    panel.grid.minor = element_blank(),  # Remove minor grid lines
+    legend.title = element_text(size = 12),  # Size of legend title
+    legend.text = element_text(size = 12),  # Size of legend text
+    legend.position = "top"  # Move legend to the top for better clarity
+  ) +
+  scale_fill_manual(values = c("Before Lockdown" = "#6baed6", "After Lockdown" = "#fc9272"))
+
