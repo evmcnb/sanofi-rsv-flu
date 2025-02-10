@@ -29,6 +29,11 @@ world_map_data <- ne_countries(scale = "medium", returnclass = "sf") %>%
 df <- df %>% 
   left_join(world_map_data, by =  join_by(country == name))
 
+# handle duplicate continent issue
+df <- df %>%
+  select(-continent.x) %>%
+  rename(continent = continent.y)
+
 NH_COUNTRIES = c("Europe", "North America", "Asia")
 
 
@@ -236,6 +241,7 @@ print("Plots generated and saved in the 'plots' folder.")
 df <- df %>%
   mutate(period = if_else(year > 2021, "After Lockdown", "Before Lockdown"))
 
+
 # 1. Summary Statistics
 summary_stats <- df %>%
   group_by(continent, disease, period) %>%
@@ -330,5 +336,17 @@ df %>%
   )
 
 
-
-
+# boxplot of peak weeks to explore shift by disease and continent
+peak_shift_boxplot <- df %>%
+  group_by(continent, period, disease, year) %>%
+  summarise(peak_week = week[which.max(metric)], .groups = "drop") %>%
+  mutate(disease = factor(disease, levels = c("Influenza", "RSV"))) %>%  # Ensures order
+  ggplot(aes(x = period, y = peak_week, fill = period)) +
+  geom_boxplot(outlier.shape = NA) +
+  facet_grid(rows = vars(disease), cols = vars(continent), scales = "free_x", space = "free_x") + 
+  labs(title = "Peak Week of Disease Cases by Continent (Pre vs. Post-Lockdown)",
+       x = "Period", y = "Peak Week") +
+  theme_minimal() +
+  scale_fill_manual(values = c("Before Lockdown" = "#6baed6", "After Lockdown" = "#fc9272")) +
+  scale_y_continuous(breaks = seq(0, 52, by = 10)) +  # Ensures ticks at 0, 10, 20, etc.
+  theme(panel.spacing = unit(1, "lines")) # Adds spacing between rows
