@@ -9,6 +9,7 @@ library(rnaturalearthdata)
 library(viridis)
 library(lubridate)
 library(ISOweek)
+library(bbplot)
 
 # rm(list = ls())
 
@@ -246,7 +247,6 @@ plot_final <- function(data, target_country, plot_age) {
     
     if (plot_age == TRUE) {
       
-      
       plot_age_pres <- df_subset %>%
         
         # Step 1: Summarise total metric by age and period
@@ -329,7 +329,7 @@ plot_final <- function(data, target_country, plot_age) {
         )
       
       ggsave(
-        filename = paste0("plots/final/", country_i, "_ridge_plot_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+        filename = paste0("plots/final/", country_i, "_age_plot_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
         plot = plot_age_rep,  # This refers to the last plot generated
         width = 10,  # Width of the plot (in inches)
         height = 6,  # Height of the plot (in inches)
@@ -342,13 +342,15 @@ plot_final <- function(data, target_country, plot_age) {
   
 }
 
-target_countries = c("United Kingdom", "United States of America", "Argentina", "Australia", "South Africa", "Japan", "Israel")
+target_countries = c("United Kingdom", "United States of America", "Argentina", "Australia", "South Africa", "Japan")
 
 for (country in target_countries) {
   
   age_groups <- df %>% filter(country == !!country) %>% select(age)
   
-  if (length(unique(age_groups)) < 2) {
+  print((nrow(unique(age_groups)) < 2) )
+  
+  if (nrow(unique(age_groups)) < 2) {
     plot_age = FALSE
   } else {plot_age = TRUE}
   
@@ -490,7 +492,7 @@ seasonality_shift_rsv <- df %>%
   )
 
 world_map_data_rsv <- ne_countries(scale = "medium", returnclass = "sf") %>% 
-  right_join(seasonality_shift_rsv, by = c("name" = "country"))
+  left_join(seasonality_shift_rsv, by = c("name" = "country"))
 
 ggplot(world_map_data_rsv) +
   geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
@@ -498,6 +500,7 @@ ggplot(world_map_data_rsv) +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
   labs(title = "Change in Time of Influenza Peak Pre- and Post- COVID-19",
        fill = "Week Shift") +
+  bbc_style() +
   theme(
     axis.title = element_text(size = 12, face = "bold"),
     axis.text = element_text(size = 10),
@@ -513,5 +516,4 @@ ggplot(world_map_data_rsv) +
     plot.subtitle = element_text(size = 12, hjust = 0.5),
     strip.text.x = element_text(size = 10),
     plot.margin = margin(10, 10, 10, 10)
-  ) + 
-  theme_fivethirtyeight()
+  )
