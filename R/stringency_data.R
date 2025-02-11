@@ -10,6 +10,7 @@ library(ggplot2)
 library(dplyr)
 library(readr)
 library(lubridate)
+library(zoo)
 
 # gather data
 stringency <- read_csv("csv/stringency_data.csv") %>%
@@ -25,6 +26,7 @@ stringency <- read_csv("csv/stringency_data.csv") %>%
   filter(row_number() > 1) %>%
   # make year and week consistent with other data
   mutate(
+    CountryName = ifelse(CountryName == "United States", "United States of America", CountryName),
     Date = ymd(Date),
     Year = year(Date),
     Week = isoweek(Date)
@@ -50,6 +52,14 @@ stringency <- stringency %>%
 # drop unwanted variables
 stringency <- stringency %>%
   select(-c("GovernmentResponseIndex_Avg", "ContainmentHealthIndex_Avg", "EconomicSupportIndex_Avg"))
+
+
+# create new stringency dataset with rolling average for a smoother looking graph
+stringency_ra <- stringency %>%
+  arrange(country, year, week) %>%  # Ensure correct ordering
+  group_by(country) %>%  # Rolling average within each country
+  mutate(StringencyIndex_Avg = rollmean(StringencyIndex_Avg, k = 5, fill = 0, align = "right")) %>%
+  ungroup()
 
 
 flu_dataset <- read_csv("csv/main_dataset.csv", 
@@ -78,7 +88,7 @@ flu_dataset <- flu_dataset %>%
 
 # combine datasets together
 full <- flu_dataset %>%
-  left_join(stringency, by = c("country", "year", "week")) %>%
+  left_join(stringency, by = c("country", "year", "week")) %>% # use rolling average if needed
   mutate(
     # Create a new Date column combining Year and Week
     Date = as.Date(paste(year, week, 1, sep = "-"), format = "%Y-%U-%u")
@@ -192,45 +202,58 @@ inv_scale_function <- function(x, scale, shift) {
 }
 
 # Create the dual-axis plot with a bar plot for 'cases' and line plot for 'StringencyIndex_Avg', faceting by country
-ggplot(combined_data, aes(x = Date)) +
-  # Line plot for Stringency Index
-  geom_line(aes(y = StringencyIndex_Avg, color = "Stringency Index"), size = 1) +
+string_case_plot <- ggplot(combined_data, aes(x = Date)) +
+  # Line plot for Stringency Index (Now in Blue)
+  geom_line(aes(y = StringencyIndex_Avg, color = "Stringency Index"), size = 1.2) +
   
-  # Bar plot for Daily New Cases (on right y-axis), scaled by country-specific factors
-  geom_bar(aes(y = inv_scale_function(cases, scale, shift), fill = "Weekly New Cases"), stat = "identity", alpha = 0.6, position = "identity") +
+  # Bar plot for Weekly New Cases (Now in Soft Gray)
+  geom_bar(aes(y = inv_scale_function(cases, scale, shift), fill = "Weekly New Cases"), 
+           stat = "identity", alpha = 0.5, position = "identity") +
   
   scale_x_date(
     date_labels = "%b %Y",  # Display Month and Year (e.g., Mar 2020)
-    date_breaks = "3 months"  # Show a tick every 3 months
+    date_breaks = "6 months"  # Show a tick every 4 months
   ) +
   
   scale_y_continuous(
     name = "Stringency Index",
-    limits = c(min(combined_data$min_stringency), max(combined_data$max_stringency)),  # Set y-axis for Stringency Index
-    sec.axis = sec_axis(~scale_function(., combined_data$scale[1], combined_data$shift[1]), name = "Number of Cases")  # Secondary y-axis for cases, using country-specific scale
+    limits = c(min(combined_data$min_stringency), max(combined_data$max_stringency)),  
+    sec.axis = sec_axis(~scale_function(., combined_data$scale[1], combined_data$shift[1]), 
+                        name = "Number of Cases")  
   ) +
   
   labs(
-    title = "COVID-19 Stringency and Weekly Influenza Cases (2020-2022)",
-    x = "Date (2020-2022)",
+    title = "Stringency Index and Weekly Influenza Cases (2020-2022)",
+    x = NULL,
     color = "",
     fill = ""
   ) +
   
-  scale_color_manual(values = c("Stringency Index" = "red")) +
-  scale_fill_manual(values = c("Weekly New Cases" = "orange")) +
+  # New color scheme
+  scale_color_manual(values = c("Stringency Index" = "#1f78b4")) +  # Blue for Stringency Index
+  scale_fill_manual(values = c("Weekly New Cases" = "#E69F00")) +  # Improved orange for cases
   
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels for readability
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 11),  # Rotate and enlarge x-axis labels
+    axis.title.y = element_text(size = 12),  # Enlarge y-axis title for readability
     legend.title = element_blank(),
-    legend.position = "top"
+    legend.position = "top",
+    legend.text = element_text(size = 11)  # Slightly enlarge legend text for clarity
   ) +
   
   # Facet grid by country with free y-axis scaling for cases
-  facet_wrap(~country, scales = "free_y")  # Free y-axis scales so each country can have its own scale for cases
+  facet_wrap(~country, scales = "free_y")  
 
 
+
+ggsave(
+  filename = paste0("plots/Influenza/Other/stringency_cases.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = string_case_plot,  # This refers to the last plot generated
+  width = 8,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
 
 
 # plot stringency vs shift
@@ -321,13 +344,13 @@ lag_data <- ccf_shift_data(flu_dataset, countries_rep, hemisphere_rep, comp_year
 
 
 
-# Step 1: Calculate average stringency for each country (2020-2022)
+# calculate average stringency for each country (2020-2022)
 avg_stringency <- stringency %>%
   filter(year %in% 2020:2022) %>%
   group_by(country) %>%
   summarise(avg_stringency = mean(StringencyIndex_Avg, na.rm = TRUE))
 
-# Step 2: Calculate average shift in seasonality for post-2021 (from lag_data)
+# calculate average shift in seasonality for post-2021 (from lag_data)
 avg_shift <- lag_data %>%
   filter(year > 2021) %>%
   group_by(country) %>%
@@ -362,3 +385,4 @@ ggplot(merged_data, aes(x = avg_stringency, y = avg_shift, color = country)) +
   ) +
   coord_cartesian(xlim = c(min(merged_data$avg_stringency) - 5, max(merged_data$avg_stringency) + 5), 
                   ylim = c(min(merged_data$avg_shift) - 2, max(merged_data$avg_shift) + 2))  # Adjust axis limits to fit data better
+
