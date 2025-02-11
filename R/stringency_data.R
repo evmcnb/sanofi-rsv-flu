@@ -26,6 +26,7 @@ stringency <- read_csv("csv/stringency_data.csv") %>%
   filter(row_number() > 1) %>%
   # make year and week consistent with other data
   mutate(
+    CountryName = ifelse(CountryName == "United States", "United States of America", CountryName),
     Date = ymd(Date),
     Year = year(Date),
     Week = isoweek(Date)
@@ -201,7 +202,7 @@ inv_scale_function <- function(x, scale, shift) {
 }
 
 # Create the dual-axis plot with a bar plot for 'cases' and line plot for 'StringencyIndex_Avg', faceting by country
-ggplot(combined_data, aes(x = Date)) +
+string_case_plot <- ggplot(combined_data, aes(x = Date)) +
   # Line plot for Stringency Index (Now in Blue)
   geom_line(aes(y = StringencyIndex_Avg, color = "Stringency Index"), size = 1.2) +
   
@@ -246,7 +247,13 @@ ggplot(combined_data, aes(x = Date)) +
 
 
 
-
+ggsave(
+  filename = paste0("plots/Influenza/Other/stringency_cases.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = string_case_plot,  # This refers to the last plot generated
+  width = 8,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
 
 
 # plot stringency vs shift
@@ -337,13 +344,13 @@ lag_data <- ccf_shift_data(flu_dataset, countries_rep, hemisphere_rep, comp_year
 
 
 
-# Step 1: Calculate average stringency for each country (2020-2022)
+# calculate average stringency for each country (2020-2022)
 avg_stringency <- stringency %>%
   filter(year %in% 2020:2022) %>%
   group_by(country) %>%
   summarise(avg_stringency = mean(StringencyIndex_Avg, na.rm = TRUE))
 
-# Step 2: Calculate average shift in seasonality for post-2021 (from lag_data)
+# calculate average shift in seasonality for post-2021 (from lag_data)
 avg_shift <- lag_data %>%
   filter(year > 2021) %>%
   group_by(country) %>%
@@ -378,3 +385,4 @@ ggplot(merged_data, aes(x = avg_stringency, y = avg_shift, color = country)) +
   ) +
   coord_cartesian(xlim = c(min(merged_data$avg_stringency) - 5, max(merged_data$avg_stringency) + 5), 
                   ylim = c(min(merged_data$avg_shift) - 2, max(merged_data$avg_shift) + 2))  # Adjust axis limits to fit data better
+
