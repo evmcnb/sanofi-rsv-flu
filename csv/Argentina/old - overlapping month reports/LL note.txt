@@ -1,3 +1,0 @@
-From file 2020_until_Sep_2022 , that is now moved to folder old ,
-I have removed the cases until Sep 2022 , because this is an incomplete year . 
-the next file ' 2022_until_Apr_2024 includes the whole year.

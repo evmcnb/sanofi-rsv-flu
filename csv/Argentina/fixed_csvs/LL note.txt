@@ -1,8 +1,0 @@
-I downloaded a fresh file today for the period 2018-2020. this covers only 1 week of Jan, 
-checked the period 2020 until Sep 2022 and the Jan week doesn't overlap.
-
-2020_until_Sep_2022 > because it was an incomplete year, deleted the cases Jan-Sep 2022 and instead used the file Jan 2022 to Jul 2023
-
-DECIDED NOT TO DO THIS--July_2023_to_Dec_2023 > kept only all rows from week 27 2023. this is because weeks until 26, 2023 was in the file Jan 2022 to July 2023 
-
-2022_until_Apr_2024 > used only the full year 2023 and 2022 from this dataset
