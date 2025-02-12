@@ -184,21 +184,19 @@ ui <- dashboardPage(
         fluidRow(
           box(
             title = "Cumulative Reported Influenza Cases By Continent",
-            width = 12,
+            width = 6,
             status = "lightblue",
             collapsible = FALSE,
             plotlyOutput("cumulative_plot_flu")
-          )
-        ), # fluidrow
-        fluidRow(
+          ),
           box(
             title = "Cumulative Reported RSV Cases By Continent",
-            width = 12,
+            width = 6,
             status = "maroon",
             collapsible = FALSE,
             plotlyOutput("cumulative_plot_rsv")
           )
-        ) # fluidrow
+        ) # fluidro
       ), # tabitem
       ##------------------------------------------------------------------------------      
       
@@ -732,11 +730,11 @@ server <- function(input, output, session) {
       ) +
       theme_minimal() +
       theme(
-        legend.title = element_blank()
+        legend.title = element_text()
       )
       ylim(-1, 1)
     
-    ggplotly(p)
+    ggplotly(p) %>% layout(legend = list(title = list(text = NULL)))
   })
   
   output$cumulative_plot_flu <- renderPlotly({
@@ -762,11 +760,12 @@ server <- function(input, output, session) {
         axis.title = element_text(),
         legend.position = "bottom",
         panel.spacing = unit(0.1, "lines"),
-        strip.text.x = element_text(size = 10)
+        strip.text.x = element_text(size = 10),
+        legend.title = element_text()
       )
     
     # Convert the ggplot object into an interactive Plotly object
-    ggplotly(p)
+    ggplotly(p) %>% layout(legend = list(title = list(text = NULL)))
   })
   
   output$cumulative_plot_rsv <- renderPlotly({
@@ -792,11 +791,12 @@ server <- function(input, output, session) {
         axis.title = element_text(),
         legend.position = "bottom",
         panel.spacing = unit(0.1, "lines"),
-        strip.text.x = element_text(size = 10)
+        strip.text.x = element_text(size = 10),
+        legend.title = element_text()
       )
     
     # Convert the ggplot object into an interactive Plotly object
-    ggplotly(p)
+    ggplotly(p) %>% layout(legend = list(title = list(text = NULL)))
   })
   
   
@@ -808,10 +808,10 @@ server <- function(input, output, session) {
       facet_wrap(~ disease, scales = "free_y") +
       labs(x = "Continent", y = "Cases (log scale)") +
       theme_minimal() +
-      theme(legend.title = element_blank())
+      theme(legend.title = element_text())
     
     # Convert the ggplot object into an interactive Plotly object
-    ggplotly(p)
+    ggplotly(p) %>% layout(legend = list(title = list(text = NULL)))
   })
   
   
@@ -820,4 +820,4 @@ server <- function(input, output, session) {
   
 }
 
-shinyApp(ui, server, options = list(host = "192.168.68.67", port = 7047))
+shinyApp(ui, server)#, options = list(host = "192.168.68.67", port = 7047))

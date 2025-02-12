@@ -32,7 +32,7 @@ plot_final <- function(data, target_country, plot_age) {
       filter(country == target_country, week < 53) %>%  
       filter(year >= 2017 & year < 2025) %>% 
       mutate(period = factor(if_else(year < 2021, "Before 2021", "After 2021"), 
-                             levels = c("After 2021", "Before 2021")))  # Reverse order if needed
+                             levels = c("Before 2021", "After 2021")))  # Reverse order if needed
     
     country_i <- unique(df_subset$country)
     disease_i <- unique(df_subset$disease)
@@ -492,9 +492,99 @@ seasonality_shift_rsv <- df %>%
   )
 
 world_map_data_rsv <- ne_countries(scale = "medium", returnclass = "sf") %>% 
-  left_join(seasonality_shift_rsv, by = c("name" = "country"))
+  left_join(seasonality_shift_rsv, by = c("name" = "country")) %>% 
+  filter(name != "Antarctica")
 
 ggplot(world_map_data_rsv) +
+  geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
+  # scale_point_fill_continuous() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
+  labs(title = "Change in Time of RSV Peak Pre- and Post- COVID-19",
+       fill = "Week Shift") +
+  bbc_style() +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    axis.ticks = element_line(color = "gray50", size = 0.2),
+    axis.line = element_line(color = "gray50", size = 0.5),
+    legend.position = "bottom",
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 10),
+    panel.grid = element_blank(),
+    panel.background = element_blank(),  # removes panel background
+    plot.background = element_blank(),   # removes plot background
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    strip.text.x = element_text(size = 10),
+    plot.margin = margin(10, 10, 10, 10)
+  )
+
+finalise_plot(plot_name = last_plot(),
+              source = "Source: WHO FluNet / Government Health Sources", 
+              save_filepath = paste0("plots/final/", "world_map_rsv_pres.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+              width_pixels = 1000, 
+              height_pixels = 500)
+
+
+ggplot(world_map_data_rsv) +
+  geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
+  # scale_point_fill_continuous() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
+  labs(fill = "Week Shift") +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    axis.ticks = element_line(color = "gray50", size = 0.2),
+    axis.line = element_line(color = "gray50", size = 0.5),
+    legend.position = "bottom",
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 10),
+    panel.grid = element_blank(),
+    panel.background = element_blank(),  # removes panel background
+    plot.background = element_blank(),   # removes plot background
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    strip.text.x = element_text(size = 10),
+    plot.margin = margin(10, 10, 10, 10)
+  )
+
+ggsave(
+  filename = paste0("plots/final/", "world_map_rsv_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = last_plot(),  # This refers to the last plot generated
+  width = 6,  # Width of the plot (in inches)
+  height = 3,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
+
+
+
+seasonality_shift_flu <- df %>%
+  filter(disease ==  "Influenza") %>%
+  mutate(period = if_else(year < 2021, "Before", "After")) %>%
+  group_by(country, period, week) %>%
+  summarise(total_cases = sum(metric, na.rm = TRUE), .groups = "drop") %>%
+  group_by(country, period) %>%
+  filter(total_cases == max(total_cases)) %>%
+  summarise(peak_week = first(week), .groups = "drop") %>%
+  pivot_wider(names_from = period, values_from = peak_week) %>%
+  mutate(
+    raw_shift = After - Before,
+    week_shift = ifelse(
+      abs(raw_shift) > 26,  # If shift is more than half a year, wrap around
+      ifelse(raw_shift > 0, raw_shift - 52, raw_shift + 52),
+      raw_shift
+    )
+  )
+
+
+
+world_map_data_flu <- ne_countries(scale = "medium", returnclass = "sf") %>% 
+  left_join(seasonality_shift_flu, by = c("name" = "country")) %>% 
+  filter(name != "Antarctica")
+
+ggplot(world_map_data_flu) +
   geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
   # scale_point_fill_continuous() +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
@@ -517,3 +607,42 @@ ggplot(world_map_data_rsv) +
     strip.text.x = element_text(size = 10),
     plot.margin = margin(10, 10, 10, 10)
   )
+
+finalise_plot(plot_name = last_plot(),
+              source = "Source: WHO FluNet / Government Health Sources", 
+              save_filepath = paste0("plots/final/", "world_map_flu_pres.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+              width_pixels = 1000, 
+              height_pixels = 500)
+
+
+
+ggplot(world_map_data_flu) +
+  geom_sf(aes(fill = week_shift), color = "black", size = 0.1) +
+  # scale_point_fill_continuous() +
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0, na.value = "gray70") +
+  labs(fill = "Week Shift") +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    axis.ticks = element_line(color = "gray50", size = 0.2),
+    axis.line = element_line(color = "gray50", size = 0.5),
+    legend.position = "bottom",
+    legend.title = element_text(size = 12, face = "bold"),
+    legend.text = element_text(size = 10),
+    panel.grid = element_blank(),
+    panel.background = element_blank(),  # removes panel background
+    plot.background = element_blank(),   # removes plot background
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5),
+    strip.text.x = element_text(size = 10),
+    plot.margin = margin(10, 10, 10, 10)
+  )
+
+ggsave(
+  filename = paste0("plots/final/", "world_map_flu_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = last_plot(),  # This refers to the last plot generated
+  width = 6,  # Width of the plot (in inches)
+  height = 3,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)

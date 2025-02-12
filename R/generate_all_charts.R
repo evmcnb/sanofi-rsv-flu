@@ -234,13 +234,8 @@ for (country_i in unique_countries) {
   }
 }
 
-print("Plots generated and saved in the 'plots' folder.")
-
-
-# Prepare dataset for analysis
-df <- df %>%
-  mutate(period = if_else(year > 2021, "After Lockdown", "Before Lockdown"))
-
+df <- df %>% mutate(period = if_else((year) < 2021, 0, 1),
+            period = factor(period, labels = c("Before Lockdown", "After Lockdown")))
 
 # 1. Summary Statistics
 summary_stats <- df %>%
@@ -347,7 +342,6 @@ peak_shift_boxplot <- df %>%
   labs(title = "Peak Week of Disease Cases by Continent (Pre vs. Post-Lockdown)",
        x = "Period", y = "Peak Week") +
   theme_minimal() +
-  scale_fill_manual(values = c("Before Lockdown" = "#6baed6", "After Lockdown" = "#fc9272")) +
   scale_y_continuous(breaks = seq(0, 52, by = 10)) +  # Ensures ticks at 0, 10, 20, etc.
   theme(panel.spacing = unit(1, "lines")) # Adds spacing between rows
 
@@ -374,6 +368,12 @@ pop_normalized_burden <- df %>%
     legend.title = element_text(size = 12),  # Size of legend title
     legend.text = element_text(size = 12),  # Size of legend text
     legend.position = "top"  # Move legend to the top for better clarity
-  ) +
-  scale_fill_manual(values = c("Before Lockdown" = "#6baed6", "After Lockdown" = "#fc9272"))
+  )
+
+
+
+print("Plots generated and saved in the 'plots' folder.")
+
+
+
 
