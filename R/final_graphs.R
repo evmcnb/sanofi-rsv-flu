@@ -86,7 +86,7 @@ plot_final <- function(data, target_country, plot_age) {
       theme_minimal() + 
       theme(
         #   axis.title = element_text(),
-        legend.position = "bottom",
+        legend.position = "right",
         axis.ticks.y = element_line(),
         axis.line.y.left = element_line(),
         legend.title = element_blank(),
@@ -100,7 +100,7 @@ plot_final <- function(data, target_country, plot_age) {
       filename = paste0("plots/final/", country_i, "_polar_plot_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
       plot = plot_polar_rep,  # This refers to the last plot generated
       width = 6,  # Width of the plot (in inches)
-      height = 3,  # Height of the plot (in inches)
+      height = 2,  # Height of the plot (in inches)
       dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
     )
   
@@ -175,9 +175,9 @@ plot_final <- function(data, target_country, plot_age) {
       
       ggsave(
         filename = paste0("plots/final/", country_i, "_ridge_plot_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-        plot = plot_polar_rep,  # This refers to the last plot generated
+        plot = plot_ridge_rep,  # This refers to the last plot generated
         width = 6,  # Width of the plot (in inches)
-        height = 3,  # Height of the plot (in inches)
+        height = 2,  # Height of the plot (in inches)
         dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
       )
       
@@ -235,7 +235,7 @@ plot_final <- function(data, target_country, plot_age) {
         filename = paste0("plots/final/", country_i, "_ridge_plot_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
         plot = plot_ridge_rep,  # This refers to the last plot generated
         width = 6,  # Width of the plot (in inches)
-        height = 3,  # Height of the plot (in inches)
+        height = 2,  # Height of the plot (in inches)
         dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
       )
       
@@ -412,13 +412,13 @@ cum_continent_rep <- df %>%
     panel.spacing = unit(0.1, "lines"),
   )
 
-ggsave(
-  filename = paste0("plots/final/", "cum_continent_cases_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
-  plot = cum_continent_rep,  # This refers to the last plot generated
-  width = 6,  # Width of the plot (in inches)
-  height = 3,  # Height of the plot (in inches)
-  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
-)
+# ggsave(
+#   filename = paste0("plots/final/", "cum_continent_cases_rep.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+#   plot = cum_continent_rep,  # This refers to the last plot generated
+#   width = 6,  # Width of the plot (in inches)
+#   height = 3,  # Height of the plot (in inches)
+#   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+# )
 
 
 continent_abbr <- c(
@@ -537,7 +537,7 @@ ggplot(world_map_data_rsv) +
     axis.text = element_text(size = 10),
     axis.ticks = element_line(color = "gray50", size = 0.2),
     axis.line = element_line(color = "gray50", size = 0.5),
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_text(size = 12, face = "bold"),
     legend.text = element_text(size = 10),
     panel.grid = element_blank(),
@@ -627,7 +627,7 @@ ggplot(world_map_data_flu) +
     axis.text = element_text(size = 10),
     axis.ticks = element_line(color = "gray50", size = 0.2),
     axis.line = element_line(color = "gray50", size = 0.5),
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_text(size = 12, face = "bold"),
     legend.text = element_text(size = 10),
     panel.grid = element_blank(),
@@ -644,5 +644,79 @@ ggsave(
   plot = last_plot(),  # This refers to the last plot generated
   width = 6,  # Width of the plot (in inches)
   height = 3,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
+
+
+plot_ridge_rep_big <- df %>%
+  filter(country %in% target_countries) %>% 
+  filter(year >= 2017 & year < 2025) %>% 
+  mutate(country = case_when(
+    country == "United States of America" ~ "USA",
+    country == "United Kingdom" ~ "UK",
+    TRUE ~ country
+  )) %>%
+  group_by(week, year, disease, country) %>%
+  summarise(metric = sum(metric)) %>%
+  na.omit() %>%
+  ggplot(aes(x = week, y = factor(year), height = metric, fill = factor(year))) +
+  geom_density_ridges(stat = "identity", scale = 1, rel_min_height = 0.01, size = 1) +
+  labs(x = 'Week') +
+  facet_grid(~ disease + country) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    panel.spacing = unit(0.1, "lines"),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    strip.text.x = element_text(size = 8),
+    axis.text.x = element_blank()  # Rotates the x-axis labels for better readability
+  )
+
+
+ggsave(
+  filename = paste0("plots/final/ridge_plot_rep_big.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = plot_ridge_rep_big,  # This refers to the last plot generated
+  width = 8,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
+  dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
+)
+
+
+plot_polar_rep_big <- df %>%
+  filter(country %in% target_countries) %>% 
+  mutate(period = factor(if_else(year < 2021, "Before 2021", "After 2021"), 
+                         levels = c("Before 2021", "After 2021"))) %>%
+  mutate(country = case_when(
+    country == "United States of America" ~ "USA",
+    country == "United Kingdom" ~ "UK",
+    TRUE ~ country
+  )) %>%
+  group_by(week, period, disease, country) %>%
+  summarise(metric = sum(metric), .groups = "drop") %>%
+  ggplot(aes(x = week, y = metric, color = period)) +
+  geom_line(size = 1) +
+  facet_wrap(disease ~ country, scales = "free_y") +
+  labs(x = 'Week', 
+       y = "Country-Specific Metric") +
+  theme_minimal() + 
+  theme(
+    legend.position = "right",
+    axis.ticks.y = element_line(),
+    axis.line.y.left = element_line(),
+    legend.title = element_blank(),
+    axis.text.y = element_text(),
+    strip.placement = "outside",  # Places facet labels outside the axis
+    panel.spacing.x = unit(1.5, "lines")  # Increases spacing to mimic columns
+  ) +
+  coord_polar(theta = "x")
+
+
+ggsave(
+  filename = paste0("plots/final/plot_polar_rep_big.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
+  plot = plot_polar_rep_big,  # This refers to the last plot generated
+  width = 8,  # Width of the plot (in inches)
+  height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
