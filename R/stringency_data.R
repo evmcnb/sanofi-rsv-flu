@@ -160,7 +160,7 @@ ggplot(australia_data, aes(x = Date)) +
 
 # Filter for the countries of interest
 countries_of_interest <- c("Australia", "Chile", "Japan", "South Africa", "United Kingdom", "United States of America")
-countries_of_interest <- unique(flu_dataset$country)
+#countries_of_interest <- unique(flu_dataset$country)
 # Combine the stringency data with the case data by country, year, and week
 combined_data <- stringency %>%
   filter(country %in% countries_of_interest) %>%
@@ -254,6 +254,70 @@ ggsave(
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
+
+
+
+
+#########
+
+
+
+
+
+
+
+
+# Create the dual-axis plot with a bar plot for 'cases' and line plot for 'StringencyIndex_Avg', faceting by country
+string_case_plot <- ggplot(combined_data, aes(x = Date)) +
+  # Line plot for Stringency Index (Now in Blue)
+  geom_line(aes(y = StringencyIndex_Avg, color = "Stringency Index"), size = 1.2) +
+  
+  # Bar plot for Weekly New Cases (Now in Soft Gray)
+  geom_bar(aes(y = inv_scale_function(cases, scale, shift), fill = "Weekly New Cases"), 
+           stat = "identity", alpha = 0.5, position = "identity") +
+  
+  scale_x_date(
+    date_labels = "%b %Y",  # Display Month and Year (e.g., Mar 2020)
+    date_breaks = "6 months"  # Show a tick every 6 months
+  ) +
+  
+  scale_y_continuous(
+    name = "Stringency Index (%)",
+    limits = c(min(combined_data$min_stringency), max(combined_data$max_stringency)),  
+    sec.axis = sec_axis(~scale_function(., combined_data$scale[1], combined_data$shift[1]), 
+                        name = "Number of Cases")  
+  ) +
+  labs(
+    title = NULL,
+    x = NULL,
+    color = "",
+    fill = ""
+  ) +
+  # New color scheme
+  scale_color_manual(values = c("Stringency Index" = "#1f78b4")) +  # Blue for Stringency Index
+  scale_fill_manual(values = c("Weekly New Cases" = "#E69F00")) +  # Improved orange for cases
+  bbc_style() +  # Apply BBC style
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 14),  # Rotate and enlarge x-axis labels
+    axis.title.y = element_text(size = 14),  # Enlarge y-axis title for readability
+    legend.title = element_blank(),
+    legend.position = "bottom",
+    legend.text = element_text(size = 11)  # Slightly enlarge legend text for clarity
+  ) +
+  
+  # Facet grid by country with free y-axis scaling for cases
+  facet_wrap(~country, scales = "free_y")  
+
+# Save the plot using finalise_plot() with BBC style
+finalise_plot(plot_name = string_case_plot,
+              source = "Source: Oxford Coronavirus Government Response Tracker (OxCGRT)",
+              save_filepath = "plots/Influenza/Other/stringency_cases_bbc.png",  # Specify file path and name
+              width_pixels = 1100, 
+              height_pixels = 700)
+
+
+########
+
 
 
 # plot stringency vs shift
