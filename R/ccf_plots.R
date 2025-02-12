@@ -271,7 +271,7 @@ plot_ccf_multi <- function(data, countries, baseline_year, comp_years) {
     scale_linetype_manual(values = line_types) +
     labs(
       title = paste("Time-Lag Correlation:", baseline_year, "vs Comparison Years"),
-      x = "Lag (Weeks)",
+      x = "Week Shift",
       y = "Correlation",
       caption = "Source: FLUNET/GOV | Data range: 2017 - latest available"
     ) +
@@ -305,3 +305,141 @@ ggsave(
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
+
+
+
+
+
+
+plot_ccf_multi_agg <- function(data, countries, comp_years) {
+  
+  ccf_results_list <- list()
+  
+  for (country in countries) {
+    # Retrieve selected country data
+    country_data <- data %>%
+      filter(country == !!country) %>%
+      select(epi_year, epi_week, cases)
+    
+    # Fill in missing weeks (ensures all 52 weeks are present)
+    country_data_full <- country_data %>%
+      complete(epi_year, epi_week = 1:52, fill = list(cases = 0))
+    
+    # Ensure 'cases' is numeric
+    country_data_full$cases <- as.numeric(country_data_full$cases)
+    
+    # Aggregate pre-2021 data to form the baseline
+    baseline_data <- country_data_full %>%
+      filter(epi_year < 2021) %>%
+      group_by(epi_week) %>%
+      summarise(pre2021_baseline = sum(cases, na.rm = TRUE)) %>%
+      ungroup()
+    
+    # Reshape comparison data to wide format
+    country_data_wide <- country_data_full %>%
+      filter(epi_year %in% comp_years) %>%
+      pivot_wider(names_from = epi_year, values_from = cases, values_fill = list(cases = 0))
+    
+    # Ensure there is valid baseline data
+    if (nrow(baseline_data) == 0) {
+      message(paste("Skipping", country, "- No pre-2021 data available"))
+      next
+    }
+    
+    # Merge baseline data with the wide-format dataset
+    country_data_wide <- left_join(country_data_wide, baseline_data, by = "epi_week")
+    
+    # Loop through each comparison year
+    for (comp_year in comp_years) {
+      if (!as.character(comp_year) %in% colnames(country_data_wide)) {
+        message(paste("Skipping", country, "-", comp_year, "data not found"))
+        next
+      }
+      
+      # Compute cross-correlation function (CCF)
+      ccf_result <- ccf(country_data_wide[[as.character(comp_year)]],
+                        country_data_wide$pre2021_baseline,
+                        lag.max = 20, plot = FALSE)
+      
+      # Store results in a dataframe
+      ccf_df <- data.frame(
+        lag = ccf_result$lag,
+        correlation = ccf_result$acf,
+        year = as.character(comp_year),
+        country = country  # Add country column for facet wrapping
+      )
+      
+      ccf_results_list[[paste(country, comp_year, sep = "_")]] <- ccf_df
+    }
+  }
+  
+  # Combine all CCF results
+  ccf_results_df <- bind_rows(ccf_results_list)
+  
+  # Check if any results exist
+  if (nrow(ccf_results_df) == 0) {
+    message("No valid data found for the selected countries.")
+    return(NULL)
+  }
+  
+  # Define color values (Baseline in grey, others in Set1)
+  comp_colors <- if (length(comp_years) > 0) {
+    setNames(RColorBrewer::brewer.pal(min(8, length(comp_years)), "Set1"), as.character(comp_years))
+  } else {
+    c()
+  }
+  color_values <- c(setNames("grey50", "Pre-2021"), comp_colors)
+  
+  # Define line types (Baseline is dashed, others are solid)
+  line_types <- c(setNames("dashed", "Pre-2021"), 
+                  setNames(rep("solid", length(comp_years)), as.character(comp_years)))
+  
+  plot_ccf_facet_agg <- ggplot(ccf_results_df, aes(x = lag, y = correlation, color = year, group = year, linetype = year)) +
+    geom_line(size = 2, na.rm = TRUE) +
+    geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+    scale_color_manual(values = color_values) +
+    scale_linetype_manual(values = line_types) +
+    labs(
+      title = NULL,
+      x = "Week Shift",
+      y = "Correlation",
+      caption = "Source: FLUNET/GOV | Data range: 2017 - latest available",
+      color = "Year",  # Set legend title to "Year"
+      linetype = "Year"
+    ) +
+    bbc_style() +
+    theme(
+      axis.title = element_text(size = 20),  # Slightly bigger axis titles
+      axis.text = element_text(size = 18),  # Slightly bigger axis text
+      legend.position = "right",  # Keep legend on the right
+      legend.text = element_text(size = 18),  # Bigger legend text
+      legend.title = element_text(size = 20, face = "bold"),  # "Year" title for legend
+      legend.key.width = unit(1.8, "cm"),  # Adjust legend key width
+      legend.spacing.y = unit(0.6, "cm"),  # Space out legend entries
+      legend.direction = "vertical",  # Stack legend vertically
+      axis.ticks.y = element_line(),
+      axis.line.y.left = element_line(),
+      panel.spacing = unit(1.2, "lines"),  # Increase spacing between plots
+      strip.text = element_text(size = 20, face = "bold"),  # Bigger country names
+      strip.background = element_blank(),  # Remove grey background from country names
+      panel.grid.major = element_line(color = "grey90", size = 0.3),  # Faint grid lines
+      panel.grid.minor = element_line(color = "grey95", size = 0.2)  # Even fainter minor grid lines
+    ) +
+    scale_x_continuous(breaks = seq(-20, 20, by = 5)) +
+    ylim(-1, 1) +
+    facet_wrap(~ country, scales = "free_y")  # Allow different y-axis scales per country if needed
+  
+  finalise_plot(
+    plot_name = plot_ccf_facet_agg, 
+    source = "FLUNET/GOV | Data range: 2017 - latest available", 
+    save_filepath = "plots/Influenza/Other/flu_ccf_facet_agg.png", 
+    width_pixels = 1400,  # Slightly wider to fit text and legend
+    height_pixels = 950  # Increased height for better readability
+  )
+  
+  
+}
+
+countries_rep <- c("Australia", "Chile", "Japan", "South Africa", "United Kingdom", "United States of America")
+plot_ccf_facet_agg <- plot_ccf_multi_agg(flu_dataset, countries = countries_rep, comp_years = c(2022:2024))
+
