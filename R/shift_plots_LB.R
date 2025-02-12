@@ -8,6 +8,9 @@ install.packages("readxl")
 install.packages("ggthemes")
 install.packages("WaveletComp")
 install.packages("plotly")
+install.packages("gt")
+install.packages("gtExtras")
+install.packages("rlang")
 library(tidyverse)
 library(readxl)
 library(ggthemes)
@@ -17,6 +20,9 @@ library(zoo) # library for rolling average
 library(WaveletComp) # library for wavelet transform analysis
 library(boot) # For bootstrap resampling
 library(plotly)
+library(gt)
+library(gtExtras)
+library(scales)
 
 # retrieve the main dataset with filters on years and disease
 
@@ -631,7 +637,16 @@ ggplot(shift_data_boot, aes(x = factor(year), y = shift, fill = country)) +
   scale_fill_brewer(palette = "Set3")
 
 
-# combine facet wrap with aesthetic of error bar plot
+# set colours to match continent cumulative plots
+country_colors <- c(
+  "Australia" = "#5A9BD5",
+  "Chile" = "#F27C8B",
+  "Japan" = "#F5D300",
+  "United Kingdom" = "#7AC943",
+  "United States of America" = "#66C2A5",
+  "South Africa" = "#F4A4A4"
+)
+
 plot_boot_facet <- ggplot(shift_data_boot, aes(x = year, y = shift, group = country, color = country)) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.2) +
@@ -652,8 +667,8 @@ plot_boot_facet <- ggplot(shift_data_boot, aes(x = year, y = shift, group = coun
     legend.title = element_blank()
   ) +
   scale_x_continuous(breaks = c(2022, 2023, 2024)) +
-  scale_color_manual(values = RColorBrewer::brewer.pal(n = 8, name = "Set1")) +  # Custom color palette for countries
-  scale_fill_manual(values = RColorBrewer::brewer.pal(n = 8, name = "Set1")) +  # Matching fill colors for ribbons
+  scale_color_manual(values = country_colors) +  # Using the continent colors mapped to countries
+  scale_fill_manual(values = country_colors) +  # Matching fill colors for ribbons
   guides(color = guide_legend(nrow = 2, byrow = TRUE))
 
 
@@ -664,6 +679,29 @@ ggsave(
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
+
+
+
+
+
+# produce summary table instead
+shift_data_boot1 <- shift_data_boot %>%
+  mutate(
+    shift = round(shift, 2),
+    lower_ci = round(lower_ci, 2),
+    upper_ci = round(upper_ci, 2)
+  ) %>%
+  filter(year == 2023)
+
+
+kable(shift_data_boot1, format = "html", col.names = c("Country", "Year", "Median Shift", "Lower CI", "Upper CI"), row.names = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE) %>%
+  column_spec(3, color = "white", background = "#5A9BD5") %>%  # Highlight shift column
+  column_spec(4:5, background = "#F5F5F5") %>%  # Light gray for CI columns
+  row_spec(0, bold = TRUE, color = "white", background = "#333333")  # Header formatting
+
+
+
 
 
 # Week shift using wavelet transform analysis -----------------------------------

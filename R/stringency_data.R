@@ -250,7 +250,7 @@ string_case_plot <- ggplot(combined_data, aes(x = Date)) +
 ggsave(
   filename = paste0("plots/Influenza/Other/stringency_cases.png"),  # Name of the file (you can change the extension to .jpg, .pdf, etc.)
   plot = string_case_plot,  # This refers to the last plot generated
-  width = 8,  # Width of the plot (in inches)
+  width = 9,  # Width of the plot (in inches)
   height = 6,  # Height of the plot (in inches)
   dpi = 300  # Resolution (dots per inch) - 300 is good for print quality
 )
