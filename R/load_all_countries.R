@@ -350,7 +350,7 @@ ba_df <- rbind(ba_df, TAIWAN_MERGE_FLU)
 ba_df <- rbind(ba_df, German_data)
 
 
-massive_flu_df <- read_csv("C:/Users/Evan/Downloads/VIW_FID.csv")
+massive_flu_df <- read_csv("csv/VIW_FID.csv")
 
 # Filter the data for the selected date
 filtered_data <- massive_flu_df %>%
