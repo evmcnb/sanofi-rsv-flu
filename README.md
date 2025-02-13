@@ -35,6 +35,9 @@ setwd("/path/to/sanofi-rsv-flu")
 
 The packages required must be install manually. The only package not available on CRAN is bbplot which can be found here: https://github.com/bbc/bbplot
 
+The FluNet CSV must be downloaded from https://www.who.int/teams/global-influenza-programme/surveillance-and-monitoring/influenza-surveillance-outputs
+This CSV needs to be linked in the `load_all_countries.R` file at the appropriate spot.
+
 
 ### 3. PYHTON ONLY FROM HERE - Create a Virtual Environment
 
