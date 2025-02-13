@@ -10,6 +10,7 @@ library(ggthemes)
 library(ggplot2)
 library(dplyr)
 library(readr)
+library(viridis)
 
 
 # retrieve the main dataset with filters on years and disease
@@ -254,7 +255,7 @@ plot_ccf_multi <- function(data, countries, baseline_year, comp_years) {
   
   # Define color values (Baseline in grey, others in Set1)
   comp_colors <- if (length(comp_years) > 0) {
-    setNames(RColorBrewer::brewer.pal(min(8, length(comp_years)), "Set1"), as.character(comp_years))
+    setNames(viridis::viridis(length(comp_years)), as.character(comp_years))
   } else {
     c()
   }
@@ -309,6 +310,9 @@ ggsave(
 
 
 
+
+
+# updated function to compare to entire pre-2021 data rater than a single baseline year
 
 
 plot_ccf_multi_agg <- function(data, countries, comp_years) {
@@ -384,7 +388,7 @@ plot_ccf_multi_agg <- function(data, countries, comp_years) {
   
   # Define color values (Baseline in grey, others in Set1)
   comp_colors <- if (length(comp_years) > 0) {
-    setNames(RColorBrewer::brewer.pal(min(8, length(comp_years)), "Set1"), as.character(comp_years))
+    setNames(viridis::viridis(length(comp_years)), as.character(comp_years))
   } else {
     c()
   }
